@@ -1,0 +1,149 @@
+#!/usr/bin/env bash
+#
+# SPDX-FileCopyrightText: 2026 Marcus Baw
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Search every fetched board-meeting transcript and print matches as clickable,
+# timestamped YouTube links. This is the main tool for finding quotable moments.
+#
+#   s/search 'opt.?out'
+#   s/search 'federated data platform'
+#   s/search -C 6 palantir        # 6 cues of context either side
+#
+# The pattern is an extended regex (ERE), matched case-insensitively.
+#
+# How it works: captions are split into short cues, so a spoken sentence is
+# usually broken across several of them. A plain grep therefore misses most
+# phrases. This script joins each cue with the following two before matching, so
+# phrases spanning up to three cues are found. Longer phrases still will not
+# match - search a distinctive single word or short pair instead.
+#
+# Gotchas:
+#   - Auto-captions mistranscribe names, acronyms and numbers. "opt-outs" appears
+#     as "ops out" in at least one meeting. Search loosely, then read the context.
+#   - Reported timestamps are the start of the first matching cue, rounded down a
+#     couple of seconds so the quote is not clipped on playback.
+#   - Never quote from these files on air. Open the link, listen, transcribe.
+
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+
+OUT_DIR="nhs-board-transcripts"
+MANIFEST="${OUT_DIR}/manifest.tsv"
+CONTEXT=2
+LEAD=2 # seconds to rewind the emitted link, so playback starts before the words
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -C)
+      CONTEXT="$2"
+      shift 2
+      ;;
+    -C*)
+      CONTEXT="${1#-C}"
+      shift
+      ;;
+    -h | --help)
+      sed -n '2,30p' "$0" | sed 's/^# \{0,1\}//'
+      exit 0
+      ;;
+    *) break ;;
+  esac
+done
+
+if [[ $# -lt 1 ]]; then
+  echo "usage: s/search [-C cues] <extended-regex>" >&2
+  exit 2
+fi
+PATTERN="$1"
+
+shopt -s nullglob
+files=("$OUT_DIR"/*.vtt)
+if [[ ${#files[@]} -eq 0 ]]; then
+  echo "error: no transcripts in ${OUT_DIR}. Run s/fetch-transcripts first." >&2
+  exit 1
+fi
+
+# Prefer the tidier en-GB track where a video also has auto-caption tracks, so
+# the same words are not reported twice per video.
+declare -A chosen=()
+declare -A chosen_lang=()
+for f in "${files[@]}"; do
+  base="$(basename "$f")"
+  id="$(awk -F. '{print $2}' <<<"$base")"
+  lang="$(sed -E 's/^[^.]+\.[^.]+\.(.+)\.vtt$/\1/' <<<"$base")"
+  # First file wins, unless a later one is the tidier en-GB track.
+  if [[ -z "${chosen[$id]:-}" ]] || { [[ "$lang" == "en-GB" ]] && [[ "${chosen_lang[$id]}" != "en-GB" ]]; }; then
+    chosen[$id]="$f"
+    chosen_lang[$id]="$lang"
+  fi
+done
+
+total=0
+for id in $(printf '%s\n' "${!chosen[@]}" | sort); do
+  f="${chosen[$id]}"
+  title=""
+  if [[ -f "$MANIFEST" ]]; then
+    title="$(awk -F'\t' -v id="$id" '$1 == id { print $2; exit }' "$MANIFEST")"
+  fi
+  [[ -z "$title" ]] && title="$(basename "$f")"
+
+  out="$(
+    awk -v pat="$PATTERN" -v ctx="$CONTEXT" -v lead="$LEAD" -v vid="$id" '
+      function secs(t,   p, h, m, s) {
+        split(t, p, ":")
+        h = p[1] + 0; m = p[2] + 0; s = p[3] + 0
+        return int(h * 3600 + m * 60 + s)
+      }
+      # Cue timing line: 00:01:02.345 --> 00:01:04.567
+      /^[0-9][0-9]:[0-9][0-9]:[0-9][0-9][.,][0-9]+ -->/ {
+        n++
+        split($0, parts, " --> ")
+        start[n] = secs(parts[1])
+        text[n] = ""
+        incue = 1
+        next
+      }
+      /^[[:space:]]*$/ { incue = 0; next }
+      /^(WEBVTT|NOTE|STYLE|REGION|Kind:|Language:)/ { next }
+      incue {
+        line = $0
+        gsub(/<[^>]*>/, "", line)          # strip inline karaoke/word timing tags
+        gsub(/^[[:space:]]+|[[:space:]]+$/, "", line)
+        if (line != "") text[n] = (text[n] == "" ? line : text[n] " " line)
+      }
+      END {
+        for (i = 1; i <= n; i++) {
+          # Join a rolling window of 3 cues so phrases spanning cue breaks match.
+          win = text[i]
+          if (i + 1 <= n) win = win " " text[i + 1]
+          if (i + 2 <= n) win = win " " text[i + 2]
+          if (tolower(win) ~ tolower(pat)) {
+            if (i <= lastprinted) continue      # collapse overlapping windows
+            t = start[i] - lead; if (t < 0) t = 0
+            hh = int(t / 3600); mm = int((t % 3600) / 60); ss = t % 60
+            printf "  %02d:%02d:%02d  https://www.youtube.com/watch?v=%s&t=%d\n", hh, mm, ss, vid, t
+            lo = i - ctx; if (lo < 1) lo = 1
+            hi = i + ctx; if (hi > n) hi = n
+            for (j = lo; j <= hi; j++) if (text[j] != "") printf "    %s\n", text[j]
+            print ""
+            lastprinted = hi
+          }
+        }
+      }
+    ' "$f"
+  )"
+
+  if [[ -n "$out" ]]; then
+    hits=$(grep -c 'watch?v=' <<<"$out")
+    total=$((total + hits))
+    printf '\n\033[1m%s\033[0m  (%s, %s hit%s)\n' "$title" "$id" "$hits" "$([[ $hits -eq 1 ]] || echo s)"
+    printf '%s\n' "$out"
+  fi
+done
+
+if [[ "$total" -eq 0 ]]; then
+  echo "No matches for /${PATTERN}/i across ${#chosen[@]} transcript(s)." >&2
+  exit 1
+fi
+printf '\033[1m%s match(es) across %s transcript(s).\033[0m\n' "$total" "${#chosen[@]}" >&2

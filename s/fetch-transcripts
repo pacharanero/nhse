@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+#
+# SPDX-FileCopyrightText: 2026 Marcus Baw
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Gather caption tracks for every NHS England Board meeting on YouTube into
+# nhs-board-transcripts/, skipping anything already fetched.
+#
+# Run it once to backfill the archive, then re-run whenever a new board meeting
+# is published. It is idempotent: dedup is by video ID present on disk, so an
+# interrupted run resumes cleanly and a video that failed to yield captions is
+# retried next time rather than being silently marked done.
+#
+# Two phases:
+#   1. Enumerate the "NHS England Board meetings" playlist into manifest.tsv.
+#   2. Download caption tracks for the video IDs that have no file yet.
+#
+# One-time setup: none, if `uv` is installed (it provides `uvx`). Otherwise
+# install yt-dlp onto PATH yourself. yt-dlp is deliberately not vendored - it
+# needs frequent updates to keep working against YouTube.
+#
+# Gotchas:
+#   - YouTube rate-limits hard. A full 225-video backfill takes a long while and
+#     will hit HTTP 429 if SLEEP is lowered. If you get 429s, stop, wait, re-run.
+#   - Auto-captions are unreliable on proper nouns and drop words. Never quote a
+#     transcript on air without checking it against the video audio.
+#   - Default is the en-GB track only, to keep the repo a sane size. Auto-caption
+#     tracks (en, en-orig) carry word-level timing and are roughly 5x larger.
+#     Override with: SUB_LANGS="en-GB,en,en-orig" s/fetch-transcripts
+#   - Filenames use YouTube *upload* date, not the meeting date, because upload
+#     date is machine-reliable and titles are not. Upload is typically a few days
+#     after the meeting. The meeting date is in the title, in manifest.tsv.
+#
+# Extra arguments are forwarded to the yt-dlp download phase, so you can limit a
+# run while testing:
+#   s/fetch-transcripts --playlist-items 1-5
+
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+
+PLAYLIST_ID="${PLAYLIST_ID:-PL6IQwMACXkj0U7BzZm4AxeykK5OgnS2sl}"
+PLAYLIST_URL="https://www.youtube.com/playlist?list=${PLAYLIST_ID}"
+OUT_DIR="nhs-board-transcripts"
+MANIFEST="${OUT_DIR}/manifest.tsv"
+SLEEP="${SLEEP:-2}"
+SUB_LANGS="${SUB_LANGS:-en-GB}"
+
+# Preflight: find a yt-dlp we can run.
+if command -v yt-dlp >/dev/null 2>&1; then
+  YTDLP=(yt-dlp)
+elif command -v uvx >/dev/null 2>&1; then
+  YTDLP=(uvx yt-dlp)
+else
+  cat >&2 <<'EOF'
+error: neither yt-dlp nor uvx found on PATH.
+
+Install one of:
+  uv    - https://docs.astral.sh/uv/getting-started/installation/  (then uvx runs yt-dlp on demand)
+  yt-dlp - pipx install yt-dlp
+EOF
+  exit 1
+fi
+
+mkdir -p "$OUT_DIR"
+
+echo "==> Enumerating playlist ${PLAYLIST_ID}" >&2
+# Flat enumeration: one cheap request set, no per-video metadata fetch.
+# Tab-separated so titles containing commas, dashes and en-dashes survive.
+tmp_manifest="$(mktemp)"
+trap 'rm -f "$tmp_manifest" "${tmp_manifest}.batch"' EXIT
+
+TAB=$'\t'
+{
+  printf 'video_id\ttitle\turl\n'
+  # Real tab characters, not \t escapes: yt-dlp does not expand escapes in --print.
+  "${YTDLP[@]}" --flat-playlist --ignore-errors \
+    --print "%(id)s${TAB}%(title)s${TAB}https://www.youtube.com/watch?v=%(id)s" \
+    "$PLAYLIST_URL" \
+    | awk -F'\t' 'NF >= 3 && $1 != "NA" && !seen[$1]++'
+} >"$tmp_manifest"
+
+playlist_count=$(($(wc -l <"$tmp_manifest") - 1))
+if [[ "$playlist_count" -le 0 ]]; then
+  echo "error: playlist enumeration returned no videos; not overwriting ${MANIFEST}" >&2
+  exit 1
+fi
+mv "$tmp_manifest" "$MANIFEST"
+echo "==> ${playlist_count} unique videos in playlist" >&2
+
+# Which IDs already have at least one caption file on disk?
+# Filenames are DATE.VIDEOID.LANG.vtt, so field 2 is the ID.
+have_ids="$(find "$OUT_DIR" -maxdepth 1 -name '*.vtt' -exec basename {} \; 2>/dev/null | awk -F. '{print $2}' | sort -u || true)"
+
+# Build the batch of URLs still to fetch.
+batch="${MANIFEST%.tsv}.batch"
+tail -n +2 "$MANIFEST" | awk -F'\t' -v have="$have_ids" '
+  BEGIN { n = split(have, a, "\n"); for (i = 1; i <= n; i++) if (a[i] != "") h[a[i]] = 1 }
+  !($1 in h) { print $3 }
+' >"$batch"
+
+missing_count=$(wc -l <"$batch" | tr -d ' ')
+echo "==> ${missing_count} videos without a caption file" >&2
+
+if [[ "$missing_count" -eq 0 ]]; then
+  rm -f "$batch"
+  echo "==> Nothing to fetch. Up to date." >&2
+  exit 0
+fi
+
+echo "==> Fetching ${SUB_LANGS} captions (sleep ${SLEEP}s between requests)" >&2
+echo "    Interrupt safely at any time; re-run to resume." >&2
+
+# --no-abort-on-error so one dead video does not end the run.
+# Failures are reported at the end rather than trusted to an archive file.
+set +e
+"${YTDLP[@]}" \
+  --skip-download \
+  --write-subs \
+  --write-auto-subs \
+  --sub-langs "$SUB_LANGS" \
+  --sub-format vtt \
+  --ignore-errors \
+  --no-abort-on-error \
+  --sleep-requests "$SLEEP" \
+  --retries 5 \
+  --paths "$OUT_DIR" \
+  -o "%(upload_date>%Y-%m-%d)s.%(id)s.%(ext)s" \
+  -a "$batch" \
+  "$@"
+ytdlp_status=$?
+set -e
+
+# Re-check and report gaps, so a video with no en-GB track is visible rather
+# than quietly absent. These are retried on the next run by design.
+have_ids="$(find "$OUT_DIR" -maxdepth 1 -name '*.vtt' -exec basename {} \; 2>/dev/null | awk -F. '{print $2}' | sort -u || true)"
+still_missing="$(tail -n +2 "$MANIFEST" | awk -F'\t' -v have="$have_ids" '
+  BEGIN { n = split(have, a, "\n"); for (i = 1; i <= n; i++) if (a[i] != "") h[a[i]] = 1 }
+  !($1 in h) { print $1 "\t" $2 }
+')"
+
+rm -f "$batch"
+
+echo >&2
+if [[ -n "$still_missing" ]]; then
+  count=$(printf '%s\n' "$still_missing" | wc -l | tr -d ' ')
+  echo "==> ${count} videos still have no caption file (showing up to 15):" >&2
+  printf '%s\n' "$still_missing" | head -15 | sed 's/^/    /' >&2
+  [[ "$count" -gt 15 ]] && echo "    ... and $((count - 15)) more" >&2
+  echo >&2
+  echo "    If you limited this run with --playlist-items, that is expected." >&2
+  echo "    Otherwise these likely have no ${SUB_LANGS} track. Try:" >&2
+  echo "      SUB_LANGS=\"en-GB,en,en-orig\" s/fetch-transcripts" >&2
+else
+  echo "==> All playlist videos have a caption file." >&2
+fi
+
+exit "$ytdlp_status"

@@ -1,0 +1,15 @@
+# Agent and browser-automation scratch output
+.playwright-mcp/
+.playwright/
+playwright-report/
+blob-report/
+test-results/
+.claude/
+
+# Retained local-only notes, captures, and reports
+/.private/
+
+# Transient fetch state
+nhs-board-transcripts/*.batch
+nhs-board-transcripts/*.part
+nhs-board-transcripts/*.ytdl
