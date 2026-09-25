@@ -1,0 +1,209 @@
+#!/usr/bin/env python3
+#
+# SPDX-FileCopyrightText: 2026 Marcus Baw
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Build and maintain an index of every NHS England blog post ever published,
+# with an archive link for each, into nhs-england-blogs/manifest.tsv.
+#
+# The problem this solves: everything NHS England published on
+# www.england.nhs.uk/blog/ before some point in 2025 has been moved to the
+# UK Government Web Archive (UKGWA, run by The National Archives via
+# MirrorWeb). UKGWA's own search UI cannot find most of it, and its CDX API
+# (webarchive.nationalarchives.gov.uk/ukgwa/cdx) hard-caps at ~18,420 rows
+# per query *before* any filter or collapse is applied - a wildcard query
+# for the whole /blog/ prefix runs out of budget on query-string noise
+# (?replytocom=..., ?utm_source=..., etc.) before it reaches most of the
+# alphabet, and nothing in the API surfaces a way to page past that cap.
+#
+# The Internet Archive crawled the same domain independently, and its own
+# CDX API (web.archive.org/cdx) does not have that problem - it supports
+# `collapse=urlkey` properly, giving a clean deduplicated list of every
+# distinct blog post URL ever captured. So:
+#
+#   Phase 1 (discovery, fast, ~1 request): query archive.org's CDX for
+#   every distinct .../blog/<slug>/ URL, with its first and last capture
+#   date and a Wayback Machine link.
+#
+#   Phase 2 (cross-reference, slow, one request per post): for posts not
+#   yet checked, query UKGWA's *per-URL* timemap - a single-URL lookup does
+#   not hit the wildcard-query cap - to find NHS England's own archived
+#   copy, which is the more "official" citation now that the live page
+#   404s. Resumable: interrupt any time, re-run to continue from where it
+#   left off.
+#
+# This only builds the index. It does not extract post content - that is
+# phase 1 "data gathering" work for individual entries, same division of
+# labour as nhs-board-transcripts/ (fetch the corpus) versus fdp/entries/
+# (extract dated facts from it).
+#
+# Usage:
+#   s/fetch-blog-index              # discovery + continue UKGWA cross-ref
+#   s/fetch-blog-index --skip-ukgwa # discovery only, fast
+#   s/fetch-blog-index --ukgwa-limit 50   # cross-ref only the next N posts
+
+import argparse
+import csv
+import json
+import re
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+OUT_DIR = ROOT / "nhs-england-blogs"
+MANIFEST = OUT_DIR / "manifest.tsv"
+
+IA_CDX = (
+    "http://web.archive.org/cdx/search/cdx"
+    "?url=england.nhs.uk/blog/&matchType=prefix&output=json"
+    "&collapse=urlkey&filter=statuscode:200"
+)
+UKGWA_TIMEMAP = "https://webarchive.nationalarchives.gov.uk/ukgwa/timemap/link/{url}"
+
+POST_URL_RE = re.compile(r"^https://www\.england\.nhs\.uk/blog/([a-z0-9][a-z0-9.\-]*)/?$", re.I)
+SKIP_SLUGS = {"blog", "blog-authors", "feed", "wp-json"}
+SKIP_PREFIXES = ("page/", "category/", "tag/", "author/", "wp-")
+FIELDNAMES = ["slug", "first_seen", "last_seen", "wayback_url", "ukgwa_url"]
+UKGWA_MEMENTO_RE = re.compile(
+    r'<(https://webarchive\.nationalarchives\.gov\.uk/ukgwa/\d+\w*/[^>]+)>;\s*rel="memento"'
+)
+
+
+def http_get(url, timeout=20):
+    req = urllib.request.Request(url, headers={"User-Agent": "nhse-research-archive/1 (contact: see repo)"})
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.read().decode("utf-8", errors="replace")
+
+
+def discover():
+    print("==> Querying archive.org CDX for the full blog post list", file=sys.stderr)
+    data = json.loads(http_get(IA_CDX, timeout=90))
+    if not data:
+        print("error: empty response from archive.org CDX", file=sys.stderr)
+        sys.exit(1)
+    header = data[0]
+    idx = {name: i for i, name in enumerate(header)}
+
+    posts = {}
+    for row in data[1:]:
+        url = row[idx["original"]]
+        if "?" in url:
+            continue
+        m = POST_URL_RE.match(url)
+        if not m:
+            continue
+        slug = m.group(1).rstrip("/")
+        if slug in SKIP_SLUGS or slug.startswith(SKIP_PREFIXES) or "/" in slug:
+            continue
+        ts = row[idx["timestamp"]]
+        entry = posts.setdefault(slug, {"first": ts, "last": ts, "last_url": url})
+        if ts < entry["first"]:
+            entry["first"] = ts
+        if ts >= entry["last"]:
+            entry["last"] = ts
+            entry["last_url"] = url
+
+    print(f"==> {len(posts)} distinct blog post URLs found", file=sys.stderr)
+    return posts
+
+
+def fmt_date(ts):
+    return f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]}"
+
+
+def load_manifest():
+    rows = {}
+    if MANIFEST.exists():
+        with open(MANIFEST, newline="") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                rows[row["slug"]] = row
+    return rows
+
+
+def write_manifest(rows):
+    OUT_DIR.mkdir(exist_ok=True)
+    with open(MANIFEST, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=FIELDNAMES, delimiter="\t")
+        writer.writeheader()
+        for slug in sorted(rows):
+            writer.writerow(rows[slug])
+
+
+def merge_discovery(existing, posts):
+    for slug, entry in posts.items():
+        wayback_url = f"https://web.archive.org/web/{entry['last']}/{entry['last_url']}"
+        if slug in existing:
+            existing[slug]["first_seen"] = fmt_date(entry["first"])
+            existing[slug]["last_seen"] = fmt_date(entry["last"])
+            existing[slug]["wayback_url"] = wayback_url
+        else:
+            existing[slug] = {
+                "slug": slug,
+                "first_seen": fmt_date(entry["first"]),
+                "last_seen": fmt_date(entry["last"]),
+                "wayback_url": wayback_url,
+                "ukgwa_url": "",
+            }
+    return existing
+
+
+def cross_reference_ukgwa(rows, limit=None, sleep=0.4):
+    todo = [slug for slug, row in rows.items() if not row.get("ukgwa_url")]
+    if limit is not None:
+        todo = todo[:limit]
+    if not todo:
+        print("==> All posts already have a UKGWA cross-reference (or none pending).", file=sys.stderr)
+        return
+
+    print(f"==> Cross-referencing {len(todo)} posts against UKGWA (sleep {sleep}s between requests)", file=sys.stderr)
+    original_url = "https://www.england.nhs.uk/blog/{}/"
+    done = 0
+    for slug in todo:
+        url = original_url.format(slug)
+        try:
+            text = http_get(UKGWA_TIMEMAP.format(url=url), timeout=15)
+            mementos = UKGWA_MEMENTO_RE.findall(text)
+            rows[slug]["ukgwa_url"] = mementos[-1] if mementos else "not-found"
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                rows[slug]["ukgwa_url"] = "not-found"
+            else:
+                print(f"  {slug}: HTTP {e.code}, will retry next run", file=sys.stderr)
+        except Exception as e:  # noqa: BLE001 - network flakiness, log and continue
+            print(f"  {slug}: {e}, will retry next run", file=sys.stderr)
+
+        done += 1
+        if done % 25 == 0:
+            write_manifest(rows)
+            print(f"  ...{done}/{len(todo)}, checkpointed", file=sys.stderr)
+        time.sleep(sleep)
+
+    write_manifest(rows)
+    print(f"==> Cross-referenced {done} posts.", file=sys.stderr)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skip-ukgwa", action="store_true", help="Discovery only, skip the slow per-URL UKGWA pass")
+    parser.add_argument("--ukgwa-limit", type=int, default=None, help="Only cross-reference this many posts this run")
+    parser.add_argument("--ukgwa-sleep", type=float, default=0.4, help="Seconds between UKGWA requests")
+    args = parser.parse_args()
+
+    rows = load_manifest()
+    posts = discover()
+    rows = merge_discovery(rows, posts)
+    write_manifest(rows)
+    print(f"==> Wrote {MANIFEST.relative_to(ROOT)} with {len(rows)} posts", file=sys.stderr)
+
+    missing = sum(1 for r in rows.values() if not r.get("ukgwa_url"))
+    print(f"==> {missing} posts have no UKGWA cross-reference yet", file=sys.stderr)
+
+    if not args.skip_ukgwa:
+        cross_reference_ukgwa(rows, limit=args.ukgwa_limit, sleep=args.ukgwa_sleep)
+
+
+if __name__ == "__main__":
+    main()

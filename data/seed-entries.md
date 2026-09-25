@@ -221,3 +221,142 @@ The Labour peer and former deputy leader joined Palantir full time as senior vic
 On a Palantir earnings call, answering what he would say to individual investors: "we are doing what we do in the United Kingdom and many other places. Palantir is here to disrupt and make the institutions we partner with the very best in the world, and when it's necessary to scare enemies and on occasion kill them. And we hope you're in favor of that."
 
 **Blocked on**: identifying which earnings call, and citing Palantir's own investor-relations transcript. Do not publish citing a reupload.
+
+---
+
+## 2024-01-12 - Palantir announces strategic partnership with Israeli Ministry of Defense
+
+- category: `contract`
+- date_precision: `day`
+- verified: `document`
+- source: Bloomberg, 12 Jan 2024, reprint hosted by Palantir - <https://www.palantir.com/assets/xrfr7uokpv1b/3MuEeA8MLbLDAyxixTsiIe/9e4a11a7fb058554a8a1e3cd83e31c09/C134184_finaleprint.pdf>
+
+Palantir agreed a strategic partnership with the Israeli Defense Ministry to supply technology "to help the country's war effort", following a meeting in Tel Aviv between Israeli defence officials and Peter Thiel and Alex Karp. Palantir hosts the reprint on its own site.
+
+Out of scope for the FDP timeline proper, but retained because it is the evidential basis for claims made about Palantir's conduct when the NHS contract is debated.
+
+---
+
+## 2025-04 - ICE awards Palantir $30m for ImmigrationOS
+
+- category: `contract`
+- date_precision: `month`
+- verified: `secondary`
+- source: Business Insider, 18 Apr 2025 - <https://www.businessinsider.com/ice-palantir-new-technology-30-million-visa-overstays-self-deportation-2025-4>; Axios, 1 May 2025
+
+ICE awarded Palantir a $30m contract modification for the Immigration Lifecycle Operating System, prototype due 25 September 2025, giving "near real-time visibility" on people self-deporting and supporting selection and apprehension. Federal contract ID 70CTD022FR0000170. Builds on the Investigative Case Management system ICE has used since 2014.
+
+Characterised in oversight documents as a reversal of Palantir's 2020 position declining certain ICE contracts over risks of "disproportionate immigration enforcement".
+
+---
+
+## 2025-07 - UN Special Rapporteur report names Palantir
+
+- category: `legal`
+- date_precision: `month`
+- verified: `document` - read in the PDF, paragraph 42
+- source: A/HRC/59/23 - <https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session59/advance-version/a-hrc-59-23-aev.pdf>
+
+"From economy of occupation to economy of genocide", report of the Special Rapporteur Francesca Albanese. Paragraph 42 finds "reasonable grounds to believe Palantir has provided automatic predictive policing technology, core defence infrastructure for rapid and scaled-up construction and deployment of military software, and its Artificial Intelligence Platform, which allows real-time battlefield data integration for automated decision-making."
+
+Footnote 106 cites a letter from Palantir dated 22 May 2025 addressed to the Special Rapporteur, so the company engaged with the report.
+
+`contested`: "reasonable grounds to believe" is the Rapporteur's standard, not a court finding. The US sanctioned Albanese in July 2025 following the report.
+
+---
+
+## 2026-01-14 - Parliamentary petition on an FDP opt-out opens
+
+- category: `civil`
+- date_precision: `day`
+- verified: `document` - petitions API
+- source: <https://petition.parliament.uk/petitions/752855>
+
+"Introduce an NHS data opt-out & require a consultation for system expansions", seeking a clear national opt-out for data processed in the FDP and the National Data Integration Tenant. Created 30 Nov 2025, opened 14 Jan 2026, closed 14 Jul 2026 with **33,183 signatures**. Response threshold reached 6 Feb 2026; 100k debate threshold not reached.
+
+The only FDP petition on the parliamentary site.
+
+---
+
+## 2026-02-26 - Government confirms the national data opt-out does not apply to the FDP
+
+- category: `scope`
+- date_precision: `day`
+- verified: `document`
+- source: DHSC response to petition 752855 - <https://petition.parliament.uk/petitions/752855>
+
+DHSC: "The NDOO does not apply to the FDP because: No confidential patient information is processed by any product in the national platform of FDP to which the NDOO would apply. Confidential patient information that is being used in a local platform of the FDP is only being used for the purposes of direct care, and therefore the NDOO does not apply."
+
+And: "There is, therefore, no specific opt-out for the NDIT, or plans to introduce one, as the data processing occurs under a legal requirement."
+
+The response also states that the FDP DPIA "underwent extensive external review (including by the Information Commissioner's Office (ICO) and National Data Guardian (NDG))", and that NHS England "has agreed to consult with patient groups and other organisations, including the NDG and the ICO, before any other Use Cases are agreed."
+
+`related`: the 2023-12-07 board entry, where the chief data officer told the board that for direct care "it's not in their interest to opt out, obviously they can". The national data opt-out has never applied to direct care, so the choice described does not exist in the form implied. Note fairly that this is long-standing policy rather than a later change.
+
+---
+
+## 2026-04-30 - Computer Weekly begins Tom Bartlett's exclusive "Inside FDP" series
+
+- category: `media`
+- date_precision: `day`
+- verified: `document`
+- source: <https://www.computerweekly.com/opinion/Inside-FDP-part-1-Understanding-the-problems-facing-NHS-data>
+
+Computer Weekly's standfirst: "Inside FDP is an exclusive series of articles written by the former deputy director of data engineering at NHS England, Tom Bartlett, who led the 150-person team that built the Federated Data Platform."
+
+Bartlett left NHS England at the end of March 2026. His LinkedIn headline markets "Founder, Bartlett Data Ltd | FDP clarity for NHS organisations and health tech companies | Industry briefings and writing on NHS...".
+
+Palantir UK and Europe CEO Louis Mosley has reposted the series on X. Amplification, not payment - do not conflate.
+
+---
+
+## 2026-06-06 - NHS England adds a causality caveat to FDP benefits claims
+
+- category: `official`
+- date_precision: `day`
+- verified: `document`
+- source: OSR statement - <https://osr.statisticsauthority.gov.uk/news/nhs-england-federated-data-platform-fdp-presentation-and-communication-of-information-and-performance-metrics/>
+
+NHS England added "We cannot therefore draw conclusions about cause and effect as other variables have not been controlled for" to every section of the FDP uptake and benefits methods page resting on a before/after comparison. NHS England told OSR this was motivated "in part, by NHS England having received numerous Freedom of Information requests".
+
+---
+
+## 2026-07-09 - Health and Social Care Committee tells the minister to drop the FDP
+
+- category: `legal`
+- date_precision: `day`
+- verified: `document`
+- source: <https://committees.parliament.uk/committee/81/health-and-social-care-committee/news/214760/drop-palantirs-federated-data-platform-and-look-for-alternative-mps-tell-health-minister/>
+
+Letter to Health Innovation Minister Preet Kaur Gill recommending the government drop the product **when the break clause comes up in February 2027**, and asking what advice DHSC has received on the feasibility of a new contractor by March 2027. Cites "serious mistrust" towards Palantir and the government's acceptance that some trusts have capabilities exceeding the FDP.
+
+Layla Moran MP: "Little by little, the government's arguments for sticking with the FDP has unravelled."
+
+**This pins the break clause to February 2027.**
+
+---
+
+## 2026-07-22 - Statistics regulator concludes casework on FDP performance claims
+
+- category: `legal`
+- date_precision: `day`
+- verified: `document`
+- source: <https://osr.statisticsauthority.gov.uk/news/nhs-england-federated-data-platform-fdp-presentation-and-communication-of-information-and-performance-metrics/>
+
+The Office for Statistics Regulation concluded casework prompted by members of the public and journalists. NHS England committed to: a causality caveat on the main benefits page; labelling before/after comparisons in public communications; an independent Imperial College evaluation prioritising Inpatients and OPTICA, with Health Foundation analysts invited; flagging methods changes; a publishing schedule for trust-level data; and clarifying that FDP case studies "are written by organisations using FDP themselves and are not authored or verified by NHS England".
+
+OSR: "We expect NHS England to ensure that any figures cited by ministers or in official briefings about the FDP and its effectiveness are communicated in a clear, accurate manner. We will be monitoring future uses of FDP data."
+
+On suppression: OSR records that correspondence "raised concerns about the possibility of a culture within NHS England which suppressed criticism of the role or impact of the FDP". It was assured of the independence of NHS England's Head of Profession for Statistics, but stated that "OSR cannot comment on the organisational culture of NHS England in relation to the FDP beyond its statistical functions."
+
+**This is neither a finding of suppression nor a clearing.** OSR declined jurisdiction over everything beyond the statistical function. Do not report it as either.
+
+`related`: Foxglove, 22 Jul 2026, identifying the disputed claim as "over 100,000 additional NHS operations" - <https://www.foxglove.org.uk/2026/07/22/ministers-must-correct-record-on-nhs-palantir-claims-after-stats-watchdog-criticism/>
+
+---
+
+## Reference note - the £480m vs £330m figures
+
+Both circulate and both are correct. The January 2023 tender anticipated £360m over five years with an option for two twelve-month extensions worth a further £120m, a £480m ceiling; the award is reported at £330m. Source: BCS / FCI position paper, October 2024 - <https://www.bcs.org/media/2tpowatr/federated-data-platform-fci-positionpaper.pdf>
+
+Say "up to £480m as tendered, awarded at £330m".

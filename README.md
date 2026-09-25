@@ -12,6 +12,7 @@ Early. The FDP timeline has a first batch of sourced entries and a working stati
 - `fdp/entries/` - FDP timeline entries, one YAML file each. `fdp/index.json` is generated from these by `s/build-index` - never hand-edited.
 - `people/` - biographical role timelines (appointment/departure dates) for individuals who recur across topics.
 - `nhs-board-transcripts/` - YouTube caption tracks for NHS England Board meetings, 2013 onwards, plus `manifest.tsv` mapping video IDs to titles and URLs.
+- `nhs-england-blogs/` - index of every NHS England blog post found, with archive links (`manifest.tsv`, from `s/fetch-blog-index`). Pre-2025 posts were moved to the UK Government Web Archive; see the script's header comment for why its search is effectively broken and how this works around it.
 - `index.html`, `css/`, `js/` - the static timeline viewer. No build step: open `index.html` via any static file server.
 - `s/` - the repeated processes.
 - `CONTRIBUTING.md` - how to add an entry, including the archive-at-entry-time step.
