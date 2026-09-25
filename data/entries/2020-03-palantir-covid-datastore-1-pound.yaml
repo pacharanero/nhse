@@ -1,0 +1,18 @@
+id: 2020-03-palantir-covid-datastore-1-pound
+date: 2020-03-01
+date_precision: month
+category: contract
+title: Palantir contracted to build NHS COVID-19 Data Store for £1
+summary: >-
+  Palantir Technologies UK was contracted to provide data integration work
+  on the NHS COVID-19 Data Store using its Foundry software, for a nominal
+  fee of £1. The contract listed NHS Arden & GEM CSU as the buyer and covered
+  ingestion and integration of agreed data sources, Foundry configuration,
+  and user training.
+source_url: https://www.cnbc.com/2020/06/08/palantir-nhs-covid-19-data.html
+source_title: "CNBC: Britain gave Palantir access to sensitive medical data"
+archive_url: http://web.archive.org/web/20260829155757/https://www.cnbc.com/2020/06/08/palantir-nhs-covid-19-data.html
+related:
+  - 2020-03-nhsx-assembles-covid-datastore-partners
+  - 2020-06-05-covid-datastore-contracts-published
+  - 2020-07-16-palantir-covid-datastore-1m-extension

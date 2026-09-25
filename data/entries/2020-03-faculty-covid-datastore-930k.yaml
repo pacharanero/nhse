@@ -1,0 +1,17 @@
+id: 2020-03-faculty-covid-datastore-930k
+date: 2020-03-01
+date_precision: month
+category: contract
+title: Faculty contracted for £930,000 to support NHSX AI Lab's COVID response
+summary: >-
+  Faculty, an AI firm whose director Ben Warner had worked on the Vote Leave
+  campaign's data operation, was contracted to provide short- and long-term
+  forecasting on COVID-19's spread and impact on NHS resources, and strategic
+  support to the NHSX AI Lab. The published contract valued the work at
+  £930,000.
+source_url: https://www.computerweekly.com/news/252484257/NHS-Covid-19-datastore-contracts-published-under-pressure-from-privacy-groups
+source_title: "Computer Weekly: NHS Covid-19 datastore contracts published under pressure from privacy groups"
+archive_url: http://web.archive.org/web/20260411043922/https://www.computerweekly.com/news/252484257/NHS-Covid-19-datastore-contracts-published-under-pressure-from-privacy-groups
+related:
+  - 2020-03-nhsx-assembles-covid-datastore-partners
+  - 2020-06-05-covid-datastore-contracts-published

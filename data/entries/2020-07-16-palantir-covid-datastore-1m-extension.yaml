@@ -1,0 +1,15 @@
+id: 2020-07-16-palantir-covid-datastore-1m-extension
+date: 2020-07-16
+date_precision: day
+category: contract
+title: Palantir's £1 COVID-19 Data Store contract extended by £1m
+summary: >-
+  As its original term expired, Palantir's contract to work on the NHS
+  COVID-19 Data Store was extended for four months at a cost of £1m,
+  moving the engagement beyond its original nominal fee.
+source_url: https://www.cnbc.com/2020/07/16/peter-thiel-palantir-nhs-deal.html
+source_title: "CNBC: Peter Thiel's Palantir to receive £1 million from Britain's NHS"
+archive_url: http://web.archive.org/web/20250602004642/https://www.cnbc.com/2020/07/16/peter-thiel-palantir-nhs-deal.html
+related:
+  - 2020-03-palantir-covid-datastore-1-pound
+  - 2020-12-11-palantir-covid-datastore-23-5m-two-year

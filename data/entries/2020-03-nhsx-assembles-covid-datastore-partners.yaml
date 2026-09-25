@@ -1,0 +1,16 @@
+id: 2020-03-nhsx-assembles-covid-datastore-partners
+date: 2020-03-01
+date_precision: month
+category: contract
+title: NHSX enlists Microsoft, Palantir and Google to build COVID-19 Data Store
+summary: >-
+  NHSX brought in Microsoft, Palantir Technologies UK and Google to build a
+  data store to support the pandemic response, integrating data from sources
+  including 999 calls, hospital occupancy and testing. Amazon Web Services
+  joined shortly after, hosting Palantir's Foundry software.
+source_url: https://www.computerweekly.com/news/252480796/Coronavirus-NHS-corrals-Microsoft-Palantir-and-Google-to-hone-data-analysis
+source_title: "Computer Weekly: Coronavirus: NHS corrals Microsoft, Palantir and Google to hone data analysis"
+archive_url: http://web.archive.org/web/20260419184045/https://www.computerweekly.com/news/252480796/Coronavirus-NHS-corrals-Microsoft-Palantir-and-Google-to-hone-data-analysis
+related:
+  - 2020-03-palantir-covid-datastore-1-pound
+  - 2020-03-faculty-covid-datastore-930k

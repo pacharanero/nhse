@@ -1,0 +1,16 @@
+id: 2023-11-22-fdp-contract-executed
+date: 2023-11-22
+date_precision: day
+category: contract
+title: FDP-AS contract formally executed with Palantir-led consortium
+summary: >-
+  The Federated Data Platform and Associated Services contract was formally
+  executed with the consortium led by Palantir Technologies, including
+  Accenture, PwC, Carnall Farrar and NECS, one day after NHS England's
+  public announcement of the award.
+source_url: https://www.england.nhs.uk/long-read/federated-data-platform-update/
+source_title: "NHS England: Federated Data Platform update"
+archive_url: http://web.archive.org/web/20260828031847/https://www.england.nhs.uk/long-read/federated-data-platform-update/
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2023-12-22-fdp-contract-award-notice-published

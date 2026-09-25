@@ -1,0 +1,23 @@
+id: 2020-06-05-covid-datastore-contracts-published
+date: 2020-06-05
+date_precision: day
+category: contract
+title: Government publishes COVID-19 Data Store contracts hours before legal deadline
+summary: >-
+  Hours before openDemocracy was due to file for judicial review over the
+  lack of transparency around the COVID-19 Data Store, the government
+  published the underlying contracts with Amazon, Microsoft, Google, Faculty
+  and Palantir. The published terms showed suppliers, including Faculty and
+  Palantir, had originally been granted intellectual property rights over
+  data derived from the project.
+source_url: https://www.computerweekly.com/news/252484257/NHS-Covid-19-datastore-contracts-published-under-pressure-from-privacy-groups
+source_title: "Computer Weekly: NHS Covid-19 datastore contracts published under pressure from privacy groups"
+archive_url: http://web.archive.org/web/20260411043922/https://www.computerweekly.com/news/252484257/NHS-Covid-19-datastore-contracts-published-under-pressure-from-privacy-groups
+related:
+  - 2020-03-palantir-covid-datastore-1-pound
+  - 2020-03-faculty-covid-datastore-930k
+contested: >-
+  Government lawyers told openDemocracy a subsequent, undisclosed amendment
+  had addressed the IP rights issue in Faculty's contract, but did not
+  release that amendment; openDemocracy and Foxglove disputed that this
+  resolved the concern.

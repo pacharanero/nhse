@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+#
+# SPDX-FileCopyrightText: 2026 Marcus Baw
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Regenerate data/index.json from data/entries/*.yaml and do a minimal schema
+# check: required fields present, id matches filename, ids unique, date is
+# ISO, archive_url present, quote_verified present when quote is.
+#
+# GitHub Pages has no directory listing, so the client-side site needs an
+# index telling it which entry files exist. This script is the only thing
+# that should write data/index.json - never hand-edit it.
+#
+# Run after adding or editing any file in data/entries/:
+#   s/build-index
+
+import json
+import re
+import sys
+from pathlib import Path
+
+import yaml
+
+ROOT = Path(__file__).resolve().parent.parent
+ENTRIES_DIR = ROOT / "data" / "entries"
+INDEX_PATH = ROOT / "data" / "index.json"
+
+REQUIRED = ["id", "date", "date_precision", "category", "title", "summary", "source_url", "source_title", "archive_url"]
+VALID_PRECISION = {"day", "month", "quarter"}
+VALID_CATEGORY = {"scope", "contract", "official", "media", "board", "legal", "civil"}
+VALID_VERIFICATION = {"audio", "document", "secondary"}
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def main():
+    errors = []
+    entries = []
+    seen_ids = set()
+
+    files = sorted(ENTRIES_DIR.glob("*.yaml"))
+    if not files:
+        print(f"error: no entries in {ENTRIES_DIR}", file=sys.stderr)
+        sys.exit(1)
+
+    for path in files:
+        expected_id = path.stem
+        data = yaml.safe_load(path.read_text()) or {}
+
+        for field in REQUIRED:
+            if not data.get(field):
+                errors.append(f"{path.name}: missing required field '{field}'")
+
+        entry_id = data.get("id")
+        if entry_id and entry_id != expected_id:
+            errors.append(f"{path.name}: id '{entry_id}' does not match filename")
+        if entry_id in seen_ids:
+            errors.append(f"{path.name}: duplicate id '{entry_id}'")
+        seen_ids.add(entry_id)
+
+        date = data.get("date")
+        if date and not ISO_DATE.match(str(date)):
+            errors.append(f"{path.name}: date '{date}' is not ISO YYYY-MM-DD")
+
+        precision = data.get("date_precision")
+        if precision and precision not in VALID_PRECISION:
+            errors.append(f"{path.name}: invalid date_precision '{precision}'")
+
+        category = data.get("category")
+        if category and category not in VALID_CATEGORY:
+            errors.append(f"{path.name}: invalid category '{category}'")
+
+        if data.get("quote") and not data.get("quote_verified"):
+            errors.append(f"{path.name}: has 'quote' but no 'quote_verified'")
+        if data.get("quote_verified") and data["quote_verified"] not in VALID_VERIFICATION:
+            errors.append(f"{path.name}: invalid quote_verified '{data['quote_verified']}'")
+
+        entries.append({
+            "id": expected_id,
+            "date": data.get("date"),
+            "date_precision": precision,
+            "category": category,
+            "title": data.get("title"),
+            "file": f"data/entries/{path.name}",
+        })
+
+    if errors:
+        print("s/build-index: validation failed", file=sys.stderr)
+        for e in errors:
+            print(f"  {e}", file=sys.stderr)
+        sys.exit(1)
+
+    entries.sort(key=lambda e: (e["date"] or "", e["id"]))
+    INDEX_PATH.write_text(json.dumps(entries, indent=2) + "\n")
+    print(f"==> wrote {INDEX_PATH.relative_to(ROOT)} with {len(entries)} entries", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()

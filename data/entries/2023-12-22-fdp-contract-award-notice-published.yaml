@@ -1,0 +1,19 @@
+id: 2023-12-22-fdp-contract-award-notice-published
+date: 2023-12-22
+date_precision: day
+category: contract
+title: Formal Contract Award Notice for FDP-AS published, recording £182m value
+summary: >-
+  The statutory Contract Award Notice for the Federated Data Platform and
+  Associated Services procurement was published on Contracts Finder,
+  recording a contract value of £182m - a lower figure than the "up to
+  £330m over seven years" and "up to £480m" figures used elsewhere,
+  reflecting a different valuation basis (committed spend versus ceiling
+  spend across options).
+source_url: https://www.contractsfinder.service.gov.uk/notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
+source_title: "Contracts Finder: Federated Data Platform and Associated Services (Contract Award Notice)"
+archive_url: http://web.archive.org/web/20260828043237/https://www.contractsfinder.service.gov.uk/Notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
+related:
+  - 2023-01-10-fdp-contract-notice-published
+  - 2023-11-21-fdp-contract-awarded
+  - 2023-11-22-fdp-contract-executed

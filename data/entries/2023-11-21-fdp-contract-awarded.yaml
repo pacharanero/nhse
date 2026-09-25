@@ -1,0 +1,23 @@
+id: 2023-11-21-fdp-contract-awarded
+date: 2023-11-21
+date_precision: day
+category: contract
+title: NHS England awards £330m Federated Data Platform contract to Palantir-led group
+summary: >-
+  NHS England announced it had awarded the Federated Data Platform and
+  Associated Services contract, following an open and competitive
+  procurement, to a group led by Palantir Technologies UK with Accenture,
+  PwC, NECS and Carnall Farrar. The deal was described as worth up to £330m
+  over seven years, with at least £25.6m of investment in the first
+  contract year. The contract includes a break clause exercisable in
+  February 2027. Palantir CEO Alex Karp welcomed the award (see quote).
+quote: "There is no more important institution in the UK than the NHS and we are humbled to have now been chosen to provide that software across England to help bring down waiting lists, improve patient care and reduce health inequalities."
+quote_verified: document
+source_url: https://www.digitalhealth.net/2023/11/nhs-england-awards-330m-federated-data-platform-contract-to-palantir/
+source_title: "Digital Health: NHS England awards £330m Federated Data Platform contract to Palantir"
+archive_url: http://web.archive.org/web/20260623183008/https://www.digitalhealth.net/2023/11/nhs-england-awards-330m-federated-data-platform-contract-to-palantir/
+related:
+  - 2023-01-10-fdp-contract-notice-published
+  - 2023-11-21-pet-contract-iqvia-awarded
+  - 2023-11-22-fdp-contract-executed
+  - 2023-12-22-fdp-contract-award-notice-published

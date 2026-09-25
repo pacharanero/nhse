@@ -1,0 +1,18 @@
+id: 2023-01-10-fdp-contract-notice-published
+date: 2023-01-10
+date_precision: day
+category: contract
+title: NHS England launches competitive procurement for FDP, worth up to £480m
+summary: >-
+  NHS England published the formal contract notice launching a competitive
+  dialogue procurement for the Federated Data Platform and Associated
+  Services (FDP-AS), to replace the COVID-19 Data Store. The notice
+  estimated a 5-year contract value of up to £360m, rising to up to £480m
+  with optional 12+12 month extensions.
+source_url: https://www.find-tender.service.gov.uk/Notice/000669-2023
+source_title: "Find a Tender: NHS Federated Data Platform and Associated Services (Notice 2023/S 000-000669)"
+archive_url: http://web.archive.org/web/20251214141223/https://www.find-tender.service.gov.uk/Notice/000669-2023
+related:
+  - 2022-04-01-fdp-pin-published
+  - 2023-02-09-fdp-tender-deadline
+  - 2023-11-21-fdp-contract-awarded

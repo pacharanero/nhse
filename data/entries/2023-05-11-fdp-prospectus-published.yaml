@@ -1,0 +1,15 @@
+id: 2023-05-11-fdp-prospectus-published
+date: 2023-05-11
+date_precision: day
+category: contract
+title: NHS England publishes FDP-AS prospectus to the market
+summary: >-
+  NHS England published its prospectus for the Federated Data Platform and
+  Associated Services procurement, setting out the programme's aims under
+  the introduction of Tim Ferris, then national director of transformation.
+source_url: https://www.england.nhs.uk/publication/nhs-federated-data-platform-and-associated-services/
+source_title: "NHS England: NHS Federated Data Platform and Associated Services (publication page)"
+archive_url: http://web.archive.org/web/20260615110621/https://www.england.nhs.uk/publication/nhs-federated-data-platform-and-associated-services/
+related:
+  - 2023-01-10-fdp-contract-notice-published
+  - 2023-11-21-fdp-contract-awarded

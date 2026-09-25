@@ -1,0 +1,18 @@
+id: 2022-04-01-fdp-pin-published
+date: 2022-04-01
+date_precision: day
+category: contract
+title: NHS England publishes Prior Information Notice for Federated Data Platform
+summary: >-
+  NHS England published a Prior Information Notice announcing plans to
+  procure a Federated Data Platform (FDP) to replace the COVID-19 Data
+  Store, estimating a contract value of £240m across five use cases:
+  population health and person insight, care coordination, elective
+  recovery, vaccines and immunisation, and supply chain.
+source_url: https://www.find-tender.service.gov.uk/Notice/008755-2022
+source_title: "Find a Tender: NHS Federated Data Platform (Notice 2022/S 000-008755)"
+archive_url: http://web.archive.org/web/20260114065439/https://www.find-tender.service.gov.uk/Notice/008755-2022
+related:
+  - 2020-12-11-palantir-covid-datastore-23-5m-two-year
+  - 2022-04-13-fdp-supplier-briefing
+  - 2023-01-10-fdp-contract-notice-published

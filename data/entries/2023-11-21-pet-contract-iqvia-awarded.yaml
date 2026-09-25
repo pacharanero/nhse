@@ -1,0 +1,15 @@
+id: 2023-11-21-pet-contract-iqvia-awarded
+date: 2023-11-21
+date_precision: day
+category: contract
+title: NHS England awards separate privacy-enhancing technology contract to IQVIA
+summary: >-
+  Alongside the Federated Data Platform award, NHS England awarded a
+  separate contract to IQVIA to provide privacy-enhancing technology (PET),
+  intended as an additional safeguard for data used in the FDP and other
+  NHS data platforms.
+source_url: https://www.england.nhs.uk/long-read/fdp-check-and-challenge-group-minutes-24-november-2023/
+source_title: "NHS England: FDP Check and Challenge Group minutes, 24 November 2023"
+archive_url: http://web.archive.org/web/20260416113146/https://www.england.nhs.uk/long-read/fdp-check-and-challenge-group-minutes-24-november-2023/
+related:
+  - 2023-11-21-fdp-contract-awarded
