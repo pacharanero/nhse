@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FDP Timeline — nhse</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <h1>NHS Federated Data Platform: timeline</h1>
+  <p class="strapline">A filterable, source-linked timeline of the FDP, from the COVID-19 datastore contract to the 2027 break clause. Every entry links to a primary source and an archived copy. See <a href="spec/fdp-timeline.md">the spec</a> for editorial policy.</p>
+</header>
+
+<main>
+  <div class="controls">
+    <div class="filters" id="category-filters" role="group" aria-label="Filter by category"></div>
+    <input type="search" id="search-box" placeholder="Search titles and summaries…" aria-label="Search entries">
+    <span class="count" id="result-count"></span>
+  </div>
+
+  <ol class="timeline" id="timeline"></ol>
+</main>
+
+<div class="card-backdrop" id="card-backdrop" hidden></div>
+<div class="card" id="entry-card" hidden role="dialog" aria-modal="false"></div>
+
+<footer class="site-footer">
+  <p>Data: <a href="fdp/entries/">fdp/entries/</a> · <a href="CONTRIBUTING.md">Contribute an entry</a> · Licensed CC-BY-SA-4.0 (prose), AGPL-3.0-or-later (code).</p>
+</footer>
+
+<script src="js/vendor/js-yaml.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

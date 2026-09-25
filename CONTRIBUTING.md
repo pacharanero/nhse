@@ -1,12 +1,30 @@
 # Contributing
 
+## Repo structure
+
+This repo covers more than the FDP timeline over time. Each research topic
+gets its own top-level folder:
+
+- `fdp/` - the Federated Data Platform timeline (`spec/fdp-timeline.md`). The
+  only topic so far.
+- `people/` - biographical role timelines (appointment and departure dates,
+  with sources) for individuals who recur across topics, e.g. NHS England
+  executives. One YAML file per person. Referenced by topic entries, not
+  itself rendered as a timeline.
+- `nhs-board-transcripts/` - the shared board-meeting caption corpus, not
+  specific to any one topic.
+
+When a new topic starts, give it its own top-level folder and its own spec
+file under `spec/`, following the `fdp/` pattern: `<topic>/entries/*.yaml`
+plus a `<topic>/index.json` built the same way as `s/build-index`.
+
 This is a research corpus, not a wiki. The bar for adding an entry is: is this a documented event, decision, statement, or disclosure, with a date and a primary source? If yes, it belongs here. If it's an opinion about one of those things, it doesn't - see `spec/fdp-timeline.md` for the full editorial policy, especially "What this is not" and "Contested claims". Read that spec first; this file is the mechanics of adding to it.
 
 ## Adding an entry
 
-One entry is one YAML file in `data/entries/`, named `<id>.yaml`.
+One entry is one YAML file in `fdp/entries/`, named `<id>.yaml`.
 
-Copy an existing entry as a starting point (any file in `data/entries/` will do) rather than writing one from scratch, so you don't miss a field.
+Copy an existing entry as a starting point (any file in `fdp/entries/` will do) rather than writing one from scratch, so you don't miss a field.
 
 ### Fields
 
@@ -69,11 +87,11 @@ Rebuild the index the site reads from:
 s/build-index
 ```
 
-This regenerates `data/index.json` from everything in `data/entries/` and checks required fields, unique ids, ISO dates, and that `archive_url` is present. Commit the updated `index.json` alongside your entry.
+This regenerates `fdp/index.json` from everything in `fdp/entries/` and checks required fields, unique ids, ISO dates, and that `archive_url` is present. Commit the updated `index.json` alongside your entry.
 
 ## Local preview
 
-The site is static and reads `data/index.json` plus each entry's YAML directly in the browser - no build step. Serve the repo root with any static file server, e.g.:
+The site is static and reads `fdp/index.json` plus each entry's YAML directly in the browser - no build step. Serve the repo root with any static file server, e.g.:
 
 ```sh
 python3 -m http.server 8000
@@ -90,7 +108,7 @@ Then open `http://localhost:8000/`.
 
 ## What not to do
 
-- Don't hand-edit `data/index.json` - it's generated.
+- Don't hand-edit `fdp/index.json` - it's generated.
 - Don't hand-edit `nhs-board-transcripts/*.vtt` or `manifest.tsv` - those come from `s/fetch-transcripts`.
 - Don't add a scraper or technique for bypassing a paywall. See "Paywalled sources - handling" in the spec.
 - Don't invent day-precision dates to fill in a gap.

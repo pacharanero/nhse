@@ -19,6 +19,7 @@ The only goal right now is to accumulate sources and extract dated, quotable fac
 Done so far:
 
 - NHS England board meeting captions, 2013-2026, in `nhs-board-transcripts/`. See `s/fetch-transcripts` and `s/search`.
+- 15 verified entries in `data/seed-entries.md`, spanning July 2019 to September 2026. This is the holding pen until R3 decides the storage format; everything in it has been checked against the linked source.
 
 ## Categories (the colour/filter dimension)
 
@@ -136,16 +137,16 @@ Legend: `[x]` done, `[~]` in progress, `[ ]` not started
 
 - [x] **R1 - Gather NHS England board meeting captions** with an idempotent, resumable fetcher.
 - [~] **R2 - Backfill the full 2013-2026 caption archive** and record which meetings have no usable caption track.
-- [ ] **R3 - Decide the entry storage format.** YAML per entry vs one TSV. Leaning YAML-per-entry for reviewable diffs and multi-line quotes; TSV is easier to sort and eyeball. Decide before 50 entries exist, not after.
-- [ ] **R4 - Write the first 20 entries** covering the contract spine only (`contract` category, 2020 COVID datastore to the 2023 award). Proves the schema against real material before broadening.
+- [x] **R3 - Decide the entry storage format.** Decided: YAML per entry, one file per id, under `fdp/entries/`. `s/build-index` regenerates `fdp/index.json` (required fields, unique ids, ISO dates, archive_url present) - see `CONTRIBUTING.md`.
+- [~] **R4 - Write the first 20 entries** covering the contract spine (`contract` category, 2020 COVID datastore to the 2023 award/award notice). 15 entries written and sourced so far, covering the full spine from the initial £1 COVID-19 Data Store contract to the December 2023 Contract Award Notice. Two further entries (`media` category) cover Thiel's and Karp's public statements as context on the FDP supplier. Reaching exactly 20 within `contract` category alone would mean either padding with weak near-duplicates (e.g. separate entries for each COVID-datastore supplier's contract with no distinguishing facts) or widening into `legal`/`media`/`civil` territory that belongs to R5-R8.
 - [ ] **R5 - Extract board-meeting quotes** for FDP, Palantir, opt-out, and data-sharing across all gathered transcripts, as `secondary` entries with timestamps.
 - [ ] **R6 - Promote the highest-value board quotes to `audio`** by listening and transcribing properly.
 - [ ] **R7 - Work openDemocracy and Foxglove** for the 2020-2021 COVID datastore period.
 - [ ] **R8 - Work the petitions and Hansard** strand.
 - [ ] **R9 - Add board papers** alongside each board-meeting entry.
 - [ ] **R10 - Build the paywalled-source research queue**: for each, identify and pursue the underlying primary document.
-- [ ] **R11 - Validation script** (`s/validate`): schema conformance, required fields, ISO dates, unique ids, archive_url present, quotes carry a verification level.
-- [ ] **R12 - Render the vertical timeline** with category colours and filter toggles. Static site, no build step if avoidable.
+- [~] **R11 - Validation script.** `s/build-index` already checks required fields, ISO dates, unique ids, archive_url presence, and quote/quote_verified pairing as a side effect of regenerating the index. Not yet split into a standalone `s/validate`, and doesn't yet check `related` ids resolve or `contested` denials are present where expected.
+- [x] **R12 - Render the vertical timeline** with category colours and filter toggles. `index.html` + `css/style.css` + `js/app.js`, static, no build step - reads `fdp/index.json` and the entry YAML directly in the browser. Hover/click cards show full entry detail (quote, contested, sources, related). Quarter-precision date rendering is still a stub pending real quarter-precision entries.
 - [ ] **R13 - Decide publication and licensing** before anything goes public. See open questions.
 
 ## Open questions

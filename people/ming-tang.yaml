@@ -1,0 +1,45 @@
+name: Ming Tang
+notes: >-
+  Joined the NHS in 2009, initially leading commissioning support services
+  in the West Midlands. Became NHS England's Chief Data and Analytics
+  Officer at some point before February 2021 (documented in post by that
+  date); exact appointment date not yet established - see roles below for
+  what is currently sourced.
+roles:
+  - title: Chief Data and Analytics Officer, NHS England
+    start_date: null
+    start_date_precision: unknown
+    end_date: 2026-04-30
+    end_date_precision: month
+    note: >-
+      Held continuously through the interim CDIO appointment below; end
+      date is the same departure announced for both roles. Start date not
+      yet sourced to a specific announcement - she is recorded holding the
+      title by February 2021.
+    source_url: https://www.dataiq.global/dataiq100/9-ming-tang-chief-data-and-analytics-officer-nhs-england/
+    source_title: "DataIQ: Ming Tang, Chief Data and Analytics Officer, NHS England"
+    archive_url: null
+  - title: Interim Chief Digital and Information Officer, NHS England
+    start_date: 2025-04-01
+    start_date_precision: day
+    end_date: 2026-04-30
+    end_date_precision: month
+    note: >-
+      Appointed on an interim basis, held alongside the CDAO role, following
+      the departure of John Quinn. Departure from both roles announced
+      1 February 2026, effective end of April 2026.
+    source_url: https://www.digitalhealth.net/2025/04/ming-tang-appointed-interim-cdio-at-nhs-england/
+    source_title: "Digital Health: Ming Tang appointed interim CDIO at NHS England"
+    archive_url: http://web.archive.org/web/20250805163600/https://www.digitalhealth.net/2025/04/ming-tang-appointed-interim-cdio-at-nhs-england/
+departure_announcement:
+  date: 2026-02-01
+  date_precision: day
+  summary: >-
+    Ming Tang announced she will step down as Chief Data and Analytics
+    Officer and interim Chief Digital and Information Officer at the end
+    of April 2026, citing 16 years at the NHS and a wish to take time out
+    before a new challenge. Her tenure included the COVID-19 Data Store,
+    the NHS App, and delivery of the Federated Data Platform.
+  source_url: https://www.digitalhealth.net/2026/02/nhs-england-cdio-ming-tang-announces-departure/
+  source_title: "Digital Health: NHS England CDIO Ming Tang announces departure"
+  archive_url: http://web.archive.org/web/20260409091605/https://www.digitalhealth.net/2026/02/nhs-england-cdio-ming-tang-announces-departure/

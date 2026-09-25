@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2020-03-faculty-covid-datastore-930k",
+    "date": "2020-03-01",
+    "date_precision": "month",
+    "category": "contract",
+    "title": "Faculty contracted for \u00a3930,000 to support NHSX AI Lab's COVID response",
+    "file": "fdp/entries/2020-03-faculty-covid-datastore-930k.yaml"
+  },
+  {
+    "id": "2020-03-nhsx-assembles-covid-datastore-partners",
+    "date": "2020-03-01",
+    "date_precision": "month",
+    "category": "contract",
+    "title": "NHSX enlists Microsoft, Palantir and Google to build COVID-19 Data Store",
+    "file": "fdp/entries/2020-03-nhsx-assembles-covid-datastore-partners.yaml"
+  },
+  {
+    "id": "2020-03-palantir-covid-datastore-1-pound",
+    "date": "2020-03-01",
+    "date_precision": "month",
+    "category": "contract",
+    "title": "Palantir contracted to build NHS COVID-19 Data Store for \u00a31",
+    "file": "fdp/entries/2020-03-palantir-covid-datastore-1-pound.yaml"
+  },
+  {
+    "id": "2020-06-05-covid-datastore-contracts-published",
+    "date": "2020-06-05",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "Government publishes COVID-19 Data Store contracts hours before legal deadline",
+    "file": "fdp/entries/2020-06-05-covid-datastore-contracts-published.yaml"
+  },
+  {
+    "id": "2020-07-16-palantir-covid-datastore-1m-extension",
+    "date": "2020-07-16",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "Palantir's \u00a31 COVID-19 Data Store contract extended by \u00a31m",
+    "file": "fdp/entries/2020-07-16-palantir-covid-datastore-1m-extension.yaml"
+  },
+  {
+    "id": "2020-12-11-palantir-covid-datastore-23-5m-two-year",
+    "date": "2020-12-11",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "Palantir awarded two-year, up to \u00a323.5m COVID-19 Data Store contract",
+    "file": "fdp/entries/2020-12-11-palantir-covid-datastore-23-5m-two-year.yaml"
+  },
+  {
+    "id": "2022-04-01-fdp-pin-published",
+    "date": "2022-04-01",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "NHS England publishes Prior Information Notice for Federated Data Platform",
+    "file": "fdp/entries/2022-04-01-fdp-pin-published.yaml"
+  },
+  {
+    "id": "2022-04-13-fdp-supplier-briefing",
+    "date": "2022-04-13",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "NHS England holds supplier briefing session for FDP procurement",
+    "file": "fdp/entries/2022-04-13-fdp-supplier-briefing.yaml"
+  },
+  {
+    "id": "2023-01-10-fdp-contract-notice-published",
+    "date": "2023-01-10",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "NHS England launches competitive procurement for FDP, worth up to \u00a3480m",
+    "file": "fdp/entries/2023-01-10-fdp-contract-notice-published.yaml"
+  },
+  {
+    "id": "2023-01-16-thiel-nhs-stockholm-syndrome",
+    "date": "2023-01-16",
+    "date_precision": "day",
+    "category": "media",
+    "title": "Peter Thiel tells Oxford Union British affection for NHS is \"Stockholm syndrome\"",
+    "file": "fdp/entries/2023-01-16-thiel-nhs-stockholm-syndrome.yaml"
+  },
+  {
+    "id": "2023-02-09-fdp-tender-deadline",
+    "date": "2023-02-09",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "Deadline for tenders in the FDP-AS competitive procurement",
+    "file": "fdp/entries/2023-02-09-fdp-tender-deadline.yaml"
+  },
+  {
+    "id": "2023-05-11-fdp-prospectus-published",
+    "date": "2023-05-11",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "NHS England publishes FDP-AS prospectus to the market",
+    "file": "fdp/entries/2023-05-11-fdp-prospectus-published.yaml"
+  },
+  {
+    "id": "2023-11-21-fdp-contract-awarded",
+    "date": "2023-11-21",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "NHS England awards \u00a3330m Federated Data Platform contract to Palantir-led group",
+    "file": "fdp/entries/2023-11-21-fdp-contract-awarded.yaml"
+  },
+  {
+    "id": "2023-11-21-pet-contract-iqvia-awarded",
+    "date": "2023-11-21",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "NHS England awards separate privacy-enhancing technology contract to IQVIA",
+    "file": "fdp/entries/2023-11-21-pet-contract-iqvia-awarded.yaml"
+  },
+  {
+    "id": "2023-11-22-fdp-contract-executed",
+    "date": "2023-11-22",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "FDP-AS contract formally executed with Palantir-led consortium",
+    "file": "fdp/entries/2023-11-22-fdp-contract-executed.yaml"
+  },
+  {
+    "id": "2023-12-22-fdp-contract-award-notice-published",
+    "date": "2023-12-22",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "Formal Contract Award Notice for FDP-AS published, recording \u00a3182m value",
+    "file": "fdp/entries/2023-12-22-fdp-contract-award-notice-published.yaml"
+  },
+  {
+    "id": "2025-02-03-karp-kill-enemies-earnings-call",
+    "date": "2025-02-03",
+    "date_precision": "day",
+    "category": "media",
+    "title": "Palantir CEO Karp tells investors the company will \"on occasion kill\" enemies",
+    "file": "fdp/entries/2025-02-03-karp-kill-enemies-earnings-call.yaml"
+  }
+]

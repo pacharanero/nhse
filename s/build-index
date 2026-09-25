@@ -3,15 +3,15 @@
 # SPDX-FileCopyrightText: 2026 Marcus Baw
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
-# Regenerate data/index.json from data/entries/*.yaml and do a minimal schema
+# Regenerate fdp/index.json from fdp/entries/*.yaml and do a minimal schema
 # check: required fields present, id matches filename, ids unique, date is
 # ISO, archive_url present, quote_verified present when quote is.
 #
 # GitHub Pages has no directory listing, so the client-side site needs an
 # index telling it which entry files exist. This script is the only thing
-# that should write data/index.json - never hand-edit it.
+# that should write fdp/index.json - never hand-edit it.
 #
-# Run after adding or editing any file in data/entries/:
+# Run after adding or editing any file in fdp/entries/:
 #   s/build-index
 
 import json
@@ -22,8 +22,8 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-ENTRIES_DIR = ROOT / "data" / "entries"
-INDEX_PATH = ROOT / "data" / "index.json"
+ENTRIES_DIR = ROOT / "fdp" / "entries"
+INDEX_PATH = ROOT / "fdp" / "index.json"
 
 REQUIRED = ["id", "date", "date_precision", "category", "title", "summary", "source_url", "source_title", "archive_url"]
 VALID_PRECISION = {"day", "month", "quarter"}
@@ -76,11 +76,11 @@ def main():
 
         entries.append({
             "id": expected_id,
-            "date": data.get("date"),
+            "date": str(data.get("date")),
             "date_precision": precision,
             "category": category,
             "title": data.get("title"),
-            "file": f"data/entries/{path.name}",
+            "file": f"fdp/entries/{path.name}",
         })
 
     if errors:

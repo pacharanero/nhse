@@ -4,13 +4,19 @@ Research corpus and source material on NHS England digital programmes, starting 
 
 ## Status
 
-Early. Phase 1 is data gathering: accumulate primary sources and extract dated, citable facts. The timeline visualisation comes later, once the corpus is worth rendering.
+Early. The FDP timeline has a first batch of sourced entries and a working static viewer. Board-meeting caption backfill (2013-2026) is ongoing.
 
 ## What is here
 
-- `spec/fdp-timeline.md` - what the timeline is, the entry schema, the source list, and the roadmap. **Read this first.**
+- `spec/fdp-timeline.md` - what the FDP timeline is, the entry schema, the source list, and the roadmap. **Read this first.**
+- `fdp/entries/` - FDP timeline entries, one YAML file each. `fdp/index.json` is generated from these by `s/build-index` - never hand-edited.
+- `people/` - biographical role timelines (appointment/departure dates) for individuals who recur across topics.
 - `nhs-board-transcripts/` - YouTube caption tracks for NHS England Board meetings, 2013 onwards, plus `manifest.tsv` mapping video IDs to titles and URLs.
+- `index.html`, `css/`, `js/` - the static timeline viewer. No build step: open `index.html` via any static file server.
 - `s/` - the repeated processes.
+- `CONTRIBUTING.md` - how to add an entry, including the archive-at-entry-time step.
+
+Each new research topic beyond FDP gets its own top-level folder following the same `<topic>/entries/*.yaml` pattern - see `CONTRIBUTING.md`.
 
 ## What this is not
 
@@ -22,9 +28,13 @@ Not a campaign site and not an argument. Entries state what happened, when, with
 s/fetch-transcripts          # gather any board-meeting captions not already present
 s/search 'federated data'    # search all transcripts, get timestamped YouTube links
 s/search -C 6 'opt.?out'     # wider context around each hit
+s/build-index                # regenerate fdp/index.json after adding/editing an entry
+python3 -m http.server 8000  # preview the site at localhost:8000
 ```
 
 `s/fetch-transcripts` needs either `yt-dlp` on `PATH` or `uv` installed (it will run yt-dlp via `uvx`). It is idempotent - re-run it whenever a new board meeting is published and it fetches only what is missing.
+
+`s/build-index` needs `pyyaml` (`pip install pyyaml` or equivalent).
 
 ## Caption reliability
 
