@@ -1,0 +1,34 @@
+id: 2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick
+date: 2018-03-24
+date_precision: day
+category: media
+title: Leaked emails show Cambridge academics accused Kogan of "get rich quick" deal with Cambridge Analytica's parent
+summary: >-
+  The Guardian published internal Cambridge University emails from May 2014
+  showing the Psychometrics Centre's director, Prof John Rust, accused
+  psychologist Aleksandr Kogan of trying to make $1m in "personal profit"
+  from a commercial deal with SCL Group (Cambridge Analytica's parent),
+  built on personality-prediction research pioneered by colleagues Michal
+  Kosinski and David Stillwell, while offering them only $100,000 between
+  them. When the deal with SCL via Kosinski and Stillwell collapsed, Kogan
+  and his business partner Joseph Chancellor built their own data-harvesting
+  app instead, which went on to harvest over 50 million Facebook profiles.
+  Relevance to the FDP timeline: an early, internally documented example of
+  a researcher moving university-adjacent, publicly funded data science work
+  into a private commercial data deal once a dispute over credit and money
+  arose with the academic colleagues who had done the underlying research.
+quote: "I must insist that you do not take advantage of your position in the university to fund a 'get rich quick' scheme at our expense."
+quote_verified: document
+source_url: https://www.theguardian.com/education/2018/mar/24/cambridge-analytica-academics-work-upset-university-colleagues
+source_title: "The Guardian: Cambridge Analytica academic's work upset university colleagues"
+archive_url: https://web.archive.org/web/20261006101815/https://www.theguardian.com/education/2018/mar/24/cambridge-analytica-academics-work-upset-university-colleagues
+related:
+  - 2018-03-27-cambridge-analytica-palantir-staff-link
+contested: >-
+  Kogan told the Guardian the $500,000 figure Rust and colleagues sought was
+  not warranted in SCL's view and that he tried to find a "middle road"
+  before SCL asked him to remove Kosinski and Stillwell from the project.
+  Cambridge University said it commissioned external legal advice on the
+  IP dispute and that Kogan signed a legal assurance that no university
+  data, models or software had been or would be used for the benefit of
+  SCL.

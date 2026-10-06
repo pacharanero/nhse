@@ -1,0 +1,41 @@
+id: 2018-03-27-cambridge-analytica-palantir-staff-link
+date: 2018-03-27
+date_precision: day
+category: media
+title: Cambridge Analytica whistleblower names Palantir staff in Facebook data harvest
+summary: >-
+  Christopher Wylie told UK parliament, and separately The New York Times
+  reported, that Palantir employees - including London-based business
+  development staffer Alfredas Chmieliauskas by name - worked with Cambridge
+  Analytica's data scientists on the Facebook data later used to build
+  psychographic voter-targeting models, and that   Chmieliauskas suggested the
+  personality-quiz app approach used to harvest over 50 million Facebook
+  profiles. No formal contract existed between the two companies.
+  Precedent relevance to the FDP timeline: this establishes that senior
+  Palantir staff were materially involved, outside any formal contract or
+  public accountability, in one of the largest unauthorised personal-data
+  harvesting operations of the decade, and that Palantir's own public denial
+  ("never had a relationship with Cambridge Analytica") was revised within
+  24 hours once a named employee was confirmed.
+quote: "There were Palantir staff who would come into the office and work on the data. And we would go and meet with Palantir staff at Palantir."
+quote_verified: document
+source_url: https://www.cnbc.com/2018/03/28/new-york-times-digital-peter-thiel-employee-helped-cambridge-analytica-before-it-harvested-data.html
+source_title: "CNBC, citing The New York Times: Peter Thiel employee helped harvest Cambridge Analytica data"
+archive_url: http://web.archive.org/web/20250722084417/https://www.cnbc.com/2018/03/28/new-york-times-digital-peter-thiel-employee-helped-cambridge-analytica-before-it-harvested-data.html
+related:
+  - 2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick
+  - 2018-03-17-cambridge-analytica-facebook-revealed
+contested: >-
+  Palantir initially said in a statement it had "never had a relationship
+  with Cambridge Analytica, nor have we ever worked on any Cambridge
+  Analytica data." Hours later, after Chmieliauskas was named, Palantir
+  revised its account: "We learned today that an employee, in 2013-2014,
+  engaged in an entirely personal capacity with people associated with
+  Cambridge Analytica. We are looking into this and will take the
+  appropriate action," and said it knew of no other employees involved -
+  contradicting Wylie's testimony that multiple Palantir staff took part.
+  Separately, Cambridge University said it received a signed legal
+  assurance from Aleksandr Kogan that no university data, models or
+  software had been or would be used for the benefit of SCL, and that an
+  internal dispute over intellectual property was reviewed by external
+  lawyers.

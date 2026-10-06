@@ -1,0 +1,33 @@
+id: 2018-03-17-cambridge-analytica-facebook-revealed
+date: 2018-03-17
+date_precision: day
+category: media
+title: Guardian/Observer reveal Cambridge Analytica harvested 50 million Facebook profiles
+summary: >-
+  The Observer published whistleblower Christopher Wylie's account of how
+  Cambridge Analytica - then headed by Steve Bannon and owned by Robert
+  Mercer - harvested personal data from over 50 million Facebook profiles,
+  taken in early 2014 via a personality-quiz app, and used it to build
+  voter-targeting software for the 2016 Trump campaign. Facebook had been
+  informed of the scale of the harvesting by late 2015 but did not notify
+  affected users and took only limited steps to secure the data. Facebook
+  suspended Cambridge Analytica, Aleksandr Kogan and whistleblower Wylie
+  from the platform two days after the Observer sought comment. This is the
+  story that broke open the Palantir staff link documented in the related
+  entry below.
+quote: "We exploited Facebook to harvest millions of people's profiles. And built models to exploit what we knew about them and target their inner demons. That was the basis the entire company was built on."
+quote_verified: document
+source_url: https://www.theguardian.com/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election
+source_title: "The Observer/Guardian: Revealed: 50 million Facebook profiles harvested for Cambridge Analytica in major data breach"
+archive_url: https://web.archive.org/web/20261006101841/https://www.theguardian.com/news/2018/mar/17/cambridge-analytica-facebook-influence-us-election
+related:
+  - 2018-03-27-cambridge-analytica-palantir-staff-link
+  - 2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick
+contested: >-
+  Facebook disputed that the harvesting constituted a "data breach," saying
+  Kogan "gained access to this information in a legitimate way and through
+  the proper channels" but violated its rules by passing data to third
+  parties. Cambridge Analytica CEO Alexander Nix told a UK parliamentary
+  inquiry in February 2018 "we do not work with Facebook data and we do not
+  have Facebook data," a claim the Guardian's evidence and Wylie's
+  subsequent testimony directly contradicted.

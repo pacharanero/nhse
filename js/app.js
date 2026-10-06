@@ -150,7 +150,12 @@
     `;
 
     cardEl.hidden = false;
-    backdropEl.hidden = false;
+    // The backdrop exists to let a click-pinned card be dismissed by
+    // clicking outside it. It must stay hidden for a passive hover
+    // preview: showing it would sit on top of the hovered title (z-index
+    // 20 vs the title's implicit 0), which triggers a spurious mouseleave
+    // on the title the instant the card appears, closing it again.
+    backdropEl.hidden = !pinned;
     positionCard(anchor);
     anchor.setAttribute("aria-expanded", "true");
 
@@ -158,8 +163,6 @@
       pinned = false;
       hideCard();
     });
-    cardEl.addEventListener("mouseenter", () => clearTimeout(hoverTimer));
-    cardEl.addEventListener("mouseleave", scheduleHide);
   }
 
   function positionCard(anchor) {
@@ -183,6 +186,9 @@
     pinned = false;
     hideCard();
   });
+
+  cardEl.addEventListener("mouseenter", () => clearTimeout(hoverTimer));
+  cardEl.addEventListener("mouseleave", scheduleHide);
 
   function escapeHtml(str) {
     return String(str).replace(/[&<>"']/g, (c) => ({

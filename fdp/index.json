@@ -1,5 +1,29 @@
 [
   {
+    "id": "2018-03-17-cambridge-analytica-facebook-revealed",
+    "date": "2018-03-17",
+    "date_precision": "day",
+    "category": "media",
+    "title": "Guardian/Observer reveal Cambridge Analytica harvested 50 million Facebook profiles",
+    "file": "fdp/entries/2018-03-17-cambridge-analytica-facebook-revealed.yaml"
+  },
+  {
+    "id": "2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick",
+    "date": "2018-03-24",
+    "date_precision": "day",
+    "category": "media",
+    "title": "Leaked emails show Cambridge academics accused Kogan of \"get rich quick\" deal with Cambridge Analytica's parent",
+    "file": "fdp/entries/2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick.yaml"
+  },
+  {
+    "id": "2018-03-27-cambridge-analytica-palantir-staff-link",
+    "date": "2018-03-27",
+    "date_precision": "day",
+    "category": "media",
+    "title": "Cambridge Analytica whistleblower names Palantir staff in Facebook data harvest",
+    "file": "fdp/entries/2018-03-27-cambridge-analytica-palantir-staff-link.yaml"
+  },
+  {
     "id": "2020-03-faculty-covid-datastore-930k",
     "date": "2020-03-01",
     "date_precision": "month",
@@ -46,6 +70,30 @@
     "category": "contract",
     "title": "Palantir awarded two-year, up to \u00a323.5m COVID-19 Data Store contract",
     "file": "fdp/entries/2020-12-11-palantir-covid-datastore-23-5m-two-year.yaml"
+  },
+  {
+    "id": "2021-02-foxglove-opendemocracy-jr-launched",
+    "date": "2021-02-01",
+    "date_precision": "month",
+    "category": "legal",
+    "title": "Foxglove and openDemocracy launch judicial review over Palantir COVID-19 Data Store deal",
+    "file": "fdp/entries/2021-02-foxglove-opendemocracy-jr-launched.yaml"
+  },
+  {
+    "id": "2021-03-30-government-concedes-palantir-jr",
+    "date": "2021-03-30",
+    "date_precision": "day",
+    "category": "legal",
+    "title": "Government concedes judicial review, commits to public consultation before extending Palantir's NHS role",
+    "file": "fdp/entries/2021-03-30-government-concedes-palantir-jr.yaml"
+  },
+  {
+    "id": "2021-09-11-dhsc-ends-palantir-adult-social-care-deal",
+    "date": "2021-09-11",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "DHSC ends separate Palantir deal covering adult social care data",
+    "file": "fdp/entries/2021-09-11-dhsc-ends-palantir-adult-social-care-deal.yaml"
   },
   {
     "id": "2022-04-01-fdp-pin-published",
@@ -120,12 +168,28 @@
     "file": "fdp/entries/2023-11-22-fdp-contract-executed.yaml"
   },
   {
+    "id": "2023-11-30-foxglove-legal-action-fdp-award",
+    "date": "2023-11-30",
+    "date_precision": "day",
+    "category": "legal",
+    "title": "Foxglove, Just Treatment, DAUK and National Pensioners Convention launch legal action against \u00a3330m FDP award",
+    "file": "fdp/entries/2023-11-30-foxglove-legal-action-fdp-award.yaml"
+  },
+  {
     "id": "2023-12-22-fdp-contract-award-notice-published",
     "date": "2023-12-22",
     "date_precision": "day",
     "category": "contract",
     "title": "Formal Contract Award Notice for FDP-AS published, recording \u00a3182m value",
     "file": "fdp/entries/2023-12-22-fdp-contract-award-notice-published.yaml"
+  },
+  {
+    "id": "2024-01-fdp-explainer-drops-opt-out-line",
+    "date": "2024-01-01",
+    "date_precision": "quarter",
+    "category": "official",
+    "title": "NHS England patient-facing FDP explainer quietly drops national data opt-out line",
+    "file": "fdp/entries/2024-01-fdp-explainer-drops-opt-out-line.yaml"
   },
   {
     "id": "2025-02-03-karp-kill-enemies-earnings-call",

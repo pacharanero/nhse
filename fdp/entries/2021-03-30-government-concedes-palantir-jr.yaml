@@ -1,0 +1,20 @@
+id: 2021-03-30-government-concedes-palantir-jr
+date: 2021-03-30
+date_precision: day
+category: legal
+title: Government concedes judicial review, commits to public consultation before extending Palantir's NHS role
+summary: >-
+  Facing Foxglove and openDemocracy's judicial review over the December 2020
+  Palantir COVID-19 Data Store contract, the government conceded and
+  committed that Palantir would not be able to process NHS data for
+  non-COVID purposes without public consultation, including citizens'
+  juries, and that a data protection impact assessment would be required
+  for any contract extension.
+quote: "After months of insisting citizens had no right to a say in this NHS contract, the government has finally committed not to allow Palantir to start using the NHS datastore for non-Covid matters without consulting the public first."
+quote_verified: document
+source_url: https://www.foxglove.org.uk/2021/04/01/success-uk-government-concedes-lawsuit-over-23m-nhs-data-deal-with-controversial-us-tech-corporation-palantir/
+source_title: "Foxglove: Success! UK government concedes lawsuit over £23m NHS data deal with controversial US tech corporation Palantir"
+archive_url: https://web.archive.org/web/20261006125927/https://www.foxglove.org.uk/2021/04/01/success-uk-government-concedes-lawsuit-over-23m-nhs-data-deal-with-controversial-us-tech-corporation-palantir/
+related:
+  - 2021-02-foxglove-opendemocracy-jr-launched
+  - 2020-12-11-palantir-covid-datastore-23-5m-two-year

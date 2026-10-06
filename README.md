@@ -12,7 +12,7 @@ Early. The FDP timeline has a first batch of sourced entries and a working stati
 - `fdp/entries/` - FDP timeline entries, one YAML file each. `fdp/index.json` is generated from these by `s/build-index` - never hand-edited.
 - `people/` - biographical role timelines (appointment/departure dates) for individuals who recur across topics.
 - `nhs-board-transcripts/` - YouTube caption tracks for NHS England Board meetings, 2013 onwards, plus `manifest.tsv` mapping video IDs to titles and URLs.
-- `nhs-england-blogs/` - index of every NHS England blog post found, with archive links (`manifest.tsv`, from `s/fetch-blog-index`). Pre-2025 posts were moved to the UK Government Web Archive; see the script's header comment for why its search is effectively broken and how this works around it.
+- `nhs-england-blogs/` - index of every NHS England blog post found, with archive links (`manifest.tsv`, from `s/fetch-blog-index`). 1,825 posts indexed so far (2017 onwards - nothing earlier is showing up in either archive yet), each with a Wayback Machine link and a UK Government Web Archive link. Pre-2025 posts were moved to UKGWA; see the script's header comment for why its own search is effectively broken and how this works around it.
 - `index.html`, `css/`, `js/` - the static timeline viewer. No build step: open `index.html` via any static file server.
 - `s/` - the repeated processes.
 - `CONTRIBUTING.md` - how to add an entry, including the archive-at-entry-time step.
@@ -29,6 +29,7 @@ Not a campaign site and not an argument. Entries state what happened, when, with
 s/fetch-transcripts          # gather any board-meeting captions not already present
 s/search 'federated data'    # search all transcripts, get timestamped YouTube links
 s/search -C 6 'opt.?out'     # wider context around each hit
+s/fetch-blog-index           # build/extend the NHS England blog post index + archive links
 s/build-index                # regenerate fdp/index.json after adding/editing an entry
 python3 -m http.server 8000  # preview the site at localhost:8000
 ```

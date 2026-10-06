@@ -1,0 +1,37 @@
+id: 2024-01-fdp-explainer-drops-opt-out-line
+date: 2024-01-01
+date_precision: quarter
+category: official
+title: NHS England patient-facing FDP explainer quietly drops national data opt-out line
+summary: >-
+  NHS England's own patient-facing explainer page for the Federated Data
+  Platform - "What this means for people, patients and service users" -
+  carried an explicit line telling readers they could opt out of their
+  data being used beyond individual care, via the national data opt-out.
+  That sentence was removed at some point between the last capture that
+  contains it (7 December 2023) and the first capture that does not
+  (7 April 2024); exact edit date is not established closer than that
+  four-month window. The replacement text points readers to a general
+  "privacy and confidentiality" page instead of naming the opt-out
+  mechanism. The page's worked patient example about being kept in
+  hospital awaiting a care-home bed and being "discharged" via the
+  platform - the direct-care use case this entry was found while
+  chasing - was not affected by this edit and is still present, reworded,
+  in the most recent capture checked (28 August 2026). The page has since
+  moved URL at least four times as NHS England restructured this section
+  of its site (from
+  .../digitising-connecting-and-transforming-health-and-care/... in 2023,
+  through .../learn-about-the-fdp/..., .../how-does-the-nhs-federated-data-platform-work/...,
+  to .../nhs-fdp-explained/... by late 2025), which is likely why this
+  change is not discoverable by browsing the current site.
+quote: "If you don't want your data to be used for reasons other than your individual care, you can opt out using the national data opt out"
+quote_verified: document
+source_url: https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/nhs-fdp-explained/what-this-means-for-people-patients-and-service-users/
+source_title: "NHS England: What this means for people, patients and service users (FDP explainer, current URL as of the 2025-2026 site structure)"
+archive_url: https://web.archive.org/web/20231207110704/https://www.england.nhs.uk/digitaltechnology/digitising-connecting-and-transforming-health-and-care/what-this-means-for-people-patients-and-service-users/
+related:
+  - 2023-11-21-fdp-contract-awarded
+contested: >-
+  Not put to NHS England. This entry records a diff between two archived
+  captures of the same NHS England URL; no allegation of intent is made
+  here about why the wording changed.

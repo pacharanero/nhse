@@ -1,0 +1,20 @@
+id: 2021-09-11-dhsc-ends-palantir-adult-social-care-deal
+date: 2021-09-11
+date_precision: day
+category: contract
+title: DHSC ends separate Palantir deal covering adult social care data
+summary: >-
+  The Department of Health and Social Care published a procurement document
+  stating it was seeking a supplier to migrate adult social care data off a
+  system designed and run by Palantir, moving to an in-house system built by
+  British defence contractor BAE Systems. This was a narrower, separate
+  Palantir engagement covering adult social care data - distinct from the
+  COVID-19 Data Store / Federated Data Platform line that continued and
+  later became the FDP. Reported as following campaigner pressure after
+  openDemocracy and Foxglove's judicial review win in March 2021.
+paywalled: true
+source_url: https://www.opendemocracy.net/en/opendemocracyuk/uk-health-department-ends-data-deal-with-spy-tech-company-palantir/
+source_title: "openDemocracy: UK health department ends data deal with 'spy tech' company Palantir"
+archive_url: https://web.archive.org/web/20261006130318/https://www.opendemocracy.net/en/uk-health-department-ends-data-deal-with-spy-tech-company-palantir/
+related:
+  - 2021-03-30-government-concedes-palantir-jr

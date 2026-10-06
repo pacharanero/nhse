@@ -13,6 +13,11 @@ gets its own top-level folder:
   itself rendered as a timeline.
 - `nhs-board-transcripts/` - the shared board-meeting caption corpus, not
   specific to any one topic.
+- `nhs-england-blogs/` - index of every NHS England blog post found (via
+  `s/fetch-blog-index`), with a Wayback Machine link and, where found, a UK
+  Government Web Archive (UKGWA) link for each. This is raw source
+  material, like the transcripts - extracting dated facts from a specific
+  post into a topic's `entries/` is a separate step, done by hand.
 
 When a new topic starts, give it its own top-level folder and its own spec
 file under `spec/`, following the `fdp/` pattern: `<topic>/entries/*.yaml`

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#
+# SPDX-FileCopyrightText: 2026 Marcus Baw
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Serve the repo root over HTTP and open the timeline in the default browser.
+#
+# The site is static (index.html + css/ + js/) and reads fdp/index.json plus
+# each entry's YAML directly via fetch(), so it needs to be served over HTTP
+# rather than opened as a file:// URL (browsers block fetch() against local
+# files). This script starts python3's http.server if nothing is already
+# listening on the port, then opens the browser - idempotent, so re-running
+# it while the server is already up just opens another tab.
+#
+# Usage:
+#   s/up            # serve on port 8420, open browser
+#   PORT=9000 s/up   # use a different port
+
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+
+PORT="${PORT:-8420}"
+URL="http://localhost:${PORT}/"
+
+if ! curl -s -o /dev/null --max-time 1 "$URL" 2>/dev/null; then
+  echo "==> Starting static server on :${PORT}" >&2
+  nohup python3 -m http.server "$PORT" >/tmp/nhse-server-"${PORT}".log 2>&1 &
+  disown
+  # Give it a moment to bind before the browser requests it.
+  for _ in 1 2 3 4 5; do
+    curl -s -o /dev/null --max-time 1 "$URL" 2>/dev/null && break
+    sleep 0.3
+  done
+else
+  echo "==> Server already running on :${PORT}" >&2
+fi
+
+echo "==> Opening ${URL}" >&2
+if command -v xdg-open >/dev/null 2>&1; then
+  xdg-open "$URL" >/dev/null 2>&1 &
+elif command -v open >/dev/null 2>&1; then
+  open "$URL"
+else
+  echo "error: no xdg-open or open found; browse to ${URL} manually" >&2
+  exit 1
+fi
