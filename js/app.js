@@ -11,6 +11,18 @@
     civil: "Civil society",
   };
 
+  // Left: what NHS England / government / the supplier did or said.
+  // Right: how the outside world found out, reacted, or pushed back.
+  const CATEGORY_SIDE = {
+    scope: "left",
+    contract: "left",
+    official: "left",
+    board: "left",
+    media: "right",
+    legal: "right",
+    civil: "right",
+  };
+
   const timelineEl = document.getElementById("timeline");
   const filtersEl = document.getElementById("category-filters");
   const searchEl = document.getElementById("search-box");
@@ -74,8 +86,9 @@
     );
     timelineEl.innerHTML = "";
     visible.forEach((entry) => {
+      const side = CATEGORY_SIDE[entry.category] || "left";
       const li = document.createElement("li");
-      li.className = "timeline-item";
+      li.className = `timeline-item side-${side}`;
       li.style.setProperty("--dot-color", `var(--cat-${entry.category})`);
 
       const dateSpan = document.createElement("span");

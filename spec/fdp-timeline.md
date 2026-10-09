@@ -141,13 +141,14 @@ Legend: `[x]` done, `[~]` in progress, `[ ]` not started
 - [~] **R4 - Write the first 20 entries** covering the contract spine (`contract` category, 2020 COVID datastore to the 2023 award/award notice). 15 entries written and sourced so far, covering the full spine from the initial £1 COVID-19 Data Store contract to the December 2023 Contract Award Notice. Two further entries (`media` category) cover Thiel's and Karp's public statements as context on the FDP supplier. Reaching exactly 20 within `contract` category alone would mean either padding with weak near-duplicates (e.g. separate entries for each COVID-datastore supplier's contract with no distinguishing facts) or widening into `legal`/`media`/`civil` territory that belongs to R5-R8.
 - [ ] **R5 - Extract board-meeting quotes** for FDP, Palantir, opt-out, and data-sharing across all gathered transcripts, as `secondary` entries with timestamps.
 - [ ] **R6 - Promote the highest-value board quotes to `audio`** by listening and transcribing properly.
-- [ ] **R7 - Work openDemocracy and Foxglove** for the 2020-2021 COVID datastore period.
+- [~] **R7 - Work openDemocracy and Foxglove** for the 2020-2021 COVID datastore period. The core thread is in: the Feb 2021 judicial review launch, the March 2021 government concession, and the September 2021 end of a separate Palantir adult social care deal. Foxglove's 2023 FDP-specific campaign and legal action are also in. Not yet covered: the fuller openDemocracy FOI material on the original COVID-19 datastore contracts, and Foxglove's post-2023 ongoing litigation.
 - [ ] **R8 - Work the petitions and Hansard** strand.
 - [ ] **R9 - Add board papers** alongside each board-meeting entry.
 - [ ] **R10 - Build the paywalled-source research queue**: for each, identify and pursue the underlying primary document.
 - [~] **R11 - Validation script.** `s/build-index` already checks required fields, ISO dates, unique ids, archive_url presence, and quote/quote_verified pairing as a side effect of regenerating the index. Not yet split into a standalone `s/validate`, and doesn't yet check `related` ids resolve or `contested` denials are present where expected.
 - [x] **R12 - Render the vertical timeline** with category colours and filter toggles. `index.html` + `css/style.css` + `js/app.js`, static, no build step - reads `fdp/index.json` and the entry YAML directly in the browser. Hover/click cards show full entry detail (quote, contested, sources, related). Quarter-precision date rendering is still a stub pending real quarter-precision entries.
 - [ ] **R13 - Decide publication and licensing** before anything goes public. See open questions.
+- [x] **R14 - Let readers propose entries without needing git/YAML.** The site footer and this repo's [issue template](../.github/ISSUE_TEMPLATE/new-entry.yml) (`Propose an entry`, pre-filled against this spec's entry schema) let anyone open a GitHub Issue with a dated, sourced suggestion. Still gated on R13 - the repo is private while gathering, so this only works for people with access until publication is decided.
 
 ## Open questions
 

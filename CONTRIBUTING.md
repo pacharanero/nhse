@@ -1,5 +1,10 @@
 # Contributing
 
+Don't want to touch git or YAML? Open an
+[issue using the entry template](https://github.com/pacharanero/nhse/issues/new?template=new-entry.yml) -
+it asks for exactly the fields below and someone will turn it into an entry.
+Everything from here down is for contributing directly via a pull request.
+
 ## Repo structure
 
 This repo covers more than the FDP timeline over time. Each research topic

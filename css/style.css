@@ -31,7 +31,7 @@ a { color: var(--link); }
 
 .site-header {
   padding: 1.5rem 1rem 1rem;
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -44,10 +44,11 @@ a { color: var(--link); }
   color: var(--muted);
   font-size: 0.92rem;
   margin: 0;
+  max-width: 70ch;
 }
 
 main {
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1rem 3rem;
 }
@@ -115,30 +116,55 @@ main {
 }
 
 .timeline {
+  position: relative;
   list-style: none;
   margin: 1.5rem 0 0;
   padding: 0;
-  border-left: 2px solid var(--border);
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+  transform: translateX(-50%);
 }
 
 .timeline-item {
   position: relative;
-  padding: 0 0 1.4rem 1.2rem;
-  margin-left: -2px;
-  border-left: 2px solid transparent;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 0 1.6rem;
+  clear: both;
+}
+
+.timeline-item.side-left {
+  left: 0;
+  padding-right: 2.4rem;
+}
+
+.timeline-item.side-right {
+  left: 50%;
+  padding-left: 2.4rem;
 }
 
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -7px;
   top: 0.3rem;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--dot-color, #999);
   border: 2px solid var(--bg);
+  z-index: 1;
 }
+
+.timeline-item.side-left::before { right: -6px; }
+.timeline-item.side-right::before { left: -6px; }
 
 .entry-date {
   font-size: 0.75rem;
@@ -162,6 +188,24 @@ main {
   margin-top: 0.15rem;
   cursor: pointer;
   color: var(--text);
+  text-align: left;
+}
+
+@media (max-width: 720px) {
+  .timeline::before { left: 0; }
+  .timeline-item,
+  .timeline-item.side-left,
+  .timeline-item.side-right {
+    width: 100%;
+    left: 0;
+    padding-left: 1.2rem;
+    padding-right: 0;
+  }
+  .timeline-item.side-left::before,
+  .timeline-item.side-right::before {
+    left: -6px;
+    right: auto;
+  }
 }
 
 .entry-title:hover,
@@ -230,7 +274,7 @@ main {
 }
 
 .site-footer {
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 1rem;
   color: var(--muted);

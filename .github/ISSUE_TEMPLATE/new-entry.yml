@@ -1,0 +1,153 @@
+name: Propose a timeline entry
+description: Suggest a dated, sourced event for the FDP timeline (or another topic in this repo).
+title: "[entry] "
+labels: ["new-entry"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Thanks for proposing something. The bar is: is this a documented
+        event, decision, statement, or disclosure, with a date and a primary
+        source? If yes, it belongs here. If it's your opinion about one of
+        those things, it doesn't - see the
+        [spec](https://github.com/pacharanero/nhse/blob/main/spec/fdp-timeline.md)
+        and [contributor guide](https://github.com/pacharanero/nhse/blob/main/CONTRIBUTING.md)
+        for the full editorial policy.
+
+        You don't need to write the YAML entry yourself - filling in this
+        form is enough. If you're comfortable with YAML and git, a pull
+        request against `fdp/entries/` following the
+        [contributor guide](https://github.com/pacharanero/nhse/blob/main/CONTRIBUTING.md)
+        is even more useful.
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Factual, under ~90 characters, no adjectives.
+      placeholder: "NHS England awards £330m Federated Data Platform contract to Palantir-led group"
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: >-
+        When the thing *happened*, not when it was reported. ISO format
+        (YYYY-MM-DD). If you only know the month or quarter, give the first
+        day of it and say so in "date precision" below.
+      placeholder: "2023-11-21"
+    validations:
+      required: true
+  - type: dropdown
+    id: date_precision
+    attributes:
+      label: Date precision
+      description: Don't guess a day you don't actually know.
+      options:
+        - day
+        - month
+        - quarter
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Exactly one. See the spec for the full definitions.
+      options:
+        - "scope (what data is in/out, opt-out, use cases)"
+        - "contract (procurement, awards, contract value changes)"
+        - "official (NHS England/DHSC statements, blogs, board papers)"
+        - "media (investigative reporting that disclosed something new)"
+        - "board (NHS England board meeting quote)"
+        - "legal (judicial review, ICO, select committees, Hansard, FOI)"
+        - "civil (campaigns, petitions, open letters, position statements)"
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: 1-3 sentences. What happened - not why it matters.
+      placeholder: "NHS England announced it had awarded the Federated Data Platform contract to a group led by Palantir Technologies UK..."
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: Quote (optional)
+      description: Verbatim, with speaker and role at the time.
+    validations:
+      required: false
+  - type: dropdown
+    id: quote_verified
+    attributes:
+      label: Quote verification level (required if you gave a quote above)
+      description: >-
+        "audio" = someone listened to the recording. "document" = from a
+        published document/transcript of record. "secondary" = quoted by a
+        journalist, not independently verified. Board-meeting auto-captions
+        are never a verification level on their own - they start at
+        "secondary" until someone has listened to the audio.
+      options:
+        - audio
+        - document
+        - secondary
+        - "(no quote given)"
+      default: 3
+    validations:
+      required: false
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Primary source where possible.
+      placeholder: "https://www.england.nhs.uk/..."
+    validations:
+      required: true
+  - type: input
+    id: source_title
+    attributes:
+      label: Source title
+      description: Publication or body, and headline.
+      placeholder: "NHS England: NHS England awards £330m Federated Data Platform contract to Palantir"
+    validations:
+      required: true
+  - type: input
+    id: archive_url
+    attributes:
+      label: Archive URL
+      description: >-
+        A Wayback Machine (web.archive.org) or archive.today capture of the
+        source URL above. If you don't have one, say so and someone will
+        create it before the entry is merged - but please try, via
+        https://web.archive.org/save/<url>.
+    validations:
+      required: false
+  - type: checkboxes
+    id: paywalled
+    attributes:
+      label: Paywall
+      options:
+        - label: The source is paywalled
+          required: false
+  - type: textarea
+    id: contested
+    attributes:
+      label: Contested (optional)
+      description: >-
+        If a party denies or disputes the claim in this entry, say what they
+        said and where. Denials travel with the claim they deny, not a
+        separate issue/entry.
+    validations:
+      required: false
+  - type: textarea
+    id: related
+    attributes:
+      label: Related entries (optional)
+      description: >-
+        If you know of other entries (or other issues/PRs) this connects
+        to, list them here.
+    validations:
+      required: false
