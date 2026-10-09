@@ -85,7 +85,17 @@
       (e) => activeCategories.has(e.category) && matchesSearch(e, q)
     );
     timelineEl.innerHTML = "";
+    let lastYear = null;
     visible.forEach((entry) => {
+      const year = entry.date.slice(0, 4);
+      if (year !== lastYear) {
+        const marker = document.createElement("li");
+        marker.className = "timeline-year";
+        marker.innerHTML = `<span class="label">${year}</span>`;
+        timelineEl.appendChild(marker);
+        lastYear = year;
+      }
+
       const side = CATEGORY_SIDE[entry.category] || "left";
       const li = document.createElement("li");
       li.className = `timeline-item side-${side}`;

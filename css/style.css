@@ -166,6 +166,26 @@ main {
 .timeline-item.side-left::before { right: -6px; }
 .timeline-item.side-right::before { left: -6px; }
 
+.timeline-year {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin: 0.4rem 0 1.4rem;
+}
+
+.timeline-year .label {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.9rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 .entry-date {
   font-size: 0.75rem;
   color: var(--muted);
