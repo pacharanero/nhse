@@ -166,8 +166,13 @@
       ${data.quote ? `<blockquote>${escapeHtml(data.quote)}<br><small>verification: ${escapeHtml(data.quote_verified || "unverified")}</small></blockquote>` : ""}
       ${data.contested ? `<div class="contested"><strong>Contested:</strong> ${escapeHtml(data.contested)}</div>` : ""}
       <div class="sources">
-        <div><a href="${data.source_url}" target="_blank" rel="noopener">${escapeHtml(data.source_title)}</a></div>
-        <div><a href="${data.archive_url}" target="_blank" rel="noopener">Archived copy</a></div>
+        <div class="source-line">
+          <span class="source-title">${escapeHtml(data.source_title)}</span>
+          <span class="source-links">
+            <a href="${data.source_url}" target="_blank" rel="noopener" title="Live source (may have moved or changed)">web</a>
+            <a href="${data.archive_url}" target="_blank" rel="noopener" title="Archived copy, as captured">wayback</a>
+          </span>
+        </div>
       </div>
       ${related.length ? `<div class="sources"><strong>Related:</strong> ${related.map((r) => escapeHtml(r.title)).join("; ")}</div>` : ""}
     `;

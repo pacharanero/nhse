@@ -1,0 +1,21 @@
+id: 2024-02-18-good-law-project-redacted-contract-legal-action
+date: 2024-02-18
+date_precision: day
+category: legal
+title: Good Law Project launches legal action over Palantir's heavily redacted FDP contract
+summary: >-
+  Good Law Project launched legal action against NHS England after the
+  published version of the £330m Palantir FDP contract turned out to have
+  417 of its 586 pages completely blanked out, with no reasons given for
+  the redactions as government policy requires. A later update (19 March
+  2024) found NHS England was still negotiating contractual provisions,
+  including clauses on data protection, after the contract had already
+  been awarded and signed.
+quote: "Almost three quarters of the contract between the tech giant and the NHS is completely blanked out. It's time to see what it's hiding."
+quote_verified: document
+source_url: https://goodlawproject.org/case/were-taking-legal-action-to-uncover-palantirs-blanked-out-contract/
+source_title: "Good Law Project: We're taking legal action to uncover Palantir's blanked-out contract"
+archive_url: https://web.archive.org/web/20261009213818/https://goodlawproject.org/case/were-taking-legal-action-to-uncover-palantirs-blanked-out-contract/
+related:
+  - 2023-12-22-fdp-contract-award-notice-published
+  - 2023-11-21-fdp-contract-awarded

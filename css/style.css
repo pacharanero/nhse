@@ -282,6 +282,39 @@ main {
   margin-top: 0.6rem;
 }
 
+.source-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.source-title {
+  color: var(--text);
+}
+
+.source-links {
+  display: inline-flex;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.source-links a {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.05rem 0.4rem;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.source-links a:hover {
+  color: var(--link);
+  border-color: var(--link);
+}
+
 .card .close-btn {
   position: absolute;
   top: 0.4rem;
