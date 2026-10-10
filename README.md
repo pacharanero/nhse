@@ -9,6 +9,7 @@ Early. The FDP timeline has a first batch of sourced entries and a working stati
 ## What is here
 
 - `spec/fdp-timeline.md` - what the FDP timeline is, the entry schema, the source list, and the roadmap. **Read this first.**
+- `spec/roadmap.md` - notes on where this repo is headed beyond the FDP timeline, including an early-stage idea for an "atlas of vendor capture" across registers of interest, meeting transparency logs, and revolving-door appointments.
 - `fdp/entries/` - FDP timeline entries, one YAML file each. `fdp/index.json` is generated from these by `s/build-index` - never hand-edited.
 - `people/` - biographical role timelines (appointment/departure dates) for individuals who recur across topics.
 - `nhs-board-transcripts/` - YouTube caption tracks for NHS England Board meetings, 2013 onwards, plus `manifest.tsv` mapping video IDs to titles and URLs.
