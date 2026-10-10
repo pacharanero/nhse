@@ -1,0 +1,25 @@
+id: 2023-10-24-diwakar-powis-power-blog-fdp-patients
+date: 2023-10-24
+date_precision: day
+category: official
+title: NHS England publishes patient-facing case for the FDP ahead of the award
+summary: >-
+  Dr Vin Diwakar, Professor Stephen Powis and Patients Association chief
+  executive Rachel Power published a joint blog making the patient-facing
+  case for the FDP, less than a month before the contract was awarded. It
+  leads with the discharge-coordination use case later echoed in NHS
+  England's own patient-facing FDP explainer pages (see
+  2024-01-fdp-explainer-drops-opt-out-line), and cites Patients Association
+  research on patient attitudes to data sharing. The post promises NHS
+  England will "announce the next steps in its plan to procure, configure
+  and roll out the Federated Data Platform" in the coming weeks - the award
+  followed four weeks later.
+quote: "No one wants to stay in hospital longer than they need to, yet discharge is often delayed, in part, because services are not as coordinated as they could be with better data shared between the teams who care for patients."
+quote_verified: document
+source_url: https://www.england.nhs.uk/blog/taking-patients-with-us-on-the-federated-data-platform/
+source_title: "NHS England: Taking patients with us on the Federated Data Platform"
+archive_url: http://web.archive.org/web/20231026053825/https://www.england.nhs.uk/blog/taking-patients-with-us-on-the-federated-data-platform/
+related:
+  - 2023-01-10-ferris-tang-blog-fdp-launch
+  - 2023-11-21-fdp-contract-awarded
+  - 2024-01-fdp-explainer-drops-opt-out-line

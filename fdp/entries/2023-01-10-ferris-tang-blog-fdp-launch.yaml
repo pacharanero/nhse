@@ -1,0 +1,21 @@
+id: 2023-01-10-ferris-tang-blog-fdp-launch
+date: 2023-01-10
+date_precision: day
+category: official
+title: Ferris and Tang publish NHS England's public introduction to the FDP
+summary: >-
+  Dr Timothy Ferris (National Director of Transformation) and Ming Tang
+  (Chief Data and Analytics Officer) published NHS England's first
+  public-facing blog explaining why it was investing in a federated data
+  platform to replace the COVID-19 Data Platform, on the same day the
+  formal procurement notice was published on Find a Tender. The post states
+  each trust and ICS will be the data controller for its own platform
+  instance, and that "the software provider will not hold or have access
+  to NHS data."
+quote: "Federation means that each trust and ICS has a separate platform for which they are the data controller. Access for each platform will be governed and managed by each individual organisation. The software provider will not hold or have access to NHS data."
+quote_verified: document
+source_url: https://www.england.nhs.uk/blog/better-insights-better-decisions-better-health/
+source_title: "NHS England: Better insights, better decisions, better health"
+archive_url: http://web.archive.org/web/20230110102910/https://www.england.nhs.uk/blog/better-insights-better-decisions-better-health/
+related:
+  - 2023-01-10-fdp-contract-notice-published
