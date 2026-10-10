@@ -184,6 +184,22 @@
     "file": "fdp/entries/2023-11-30-foxglove-legal-action-fdp-award.yaml"
   },
   {
+    "id": "2023-12-07-board-announces-fdp-award",
+    "date": "2023-12-07",
+    "date_precision": "day",
+    "category": "board",
+    "title": "Ming Tang tells NHS England board the FDP contract has been awarded",
+    "file": "fdp/entries/2023-12-07-board-announces-fdp-award.yaml"
+  },
+  {
+    "id": "2023-12-07-board-opt-out-levels-not-materialised",
+    "date": "2023-12-07",
+    "date_precision": "day",
+    "category": "board",
+    "title": "Board told opt-out rate after FDP award \"has not really materialised as much as we feared\"",
+    "file": "fdp/entries/2023-12-07-board-opt-out-levels-not-materialised.yaml"
+  },
+  {
     "id": "2023-12-22-fdp-contract-award-notice-published",
     "date": "2023-12-22",
     "date_precision": "day",

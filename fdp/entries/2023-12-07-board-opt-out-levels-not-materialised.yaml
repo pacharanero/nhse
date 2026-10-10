@@ -1,0 +1,26 @@
+id: 2023-12-07-board-opt-out-levels-not-materialised
+date: 2023-12-07
+date_precision: day
+category: board
+title: Board told opt-out rate after FDP award "has not really materialised as much as we feared"
+summary: >-
+  Asked by a board member what the impact on care would be for patients who
+  opt out of data sharing, Ming Tang told the board that opt-outs saw "a
+  slight peak" around the FDP award announcement, driven by social media
+  activity from Foxglove and other privacy campaigners, but that the
+  opt-out rate had not risen as much as NHS England had feared. This is the
+  same meeting referenced in the spec's caption-reliability note: the
+  auto-captions render "opt-outs" as "ops out" partway through this
+  exchange, while rendering it correctly elsewhere in the same discussion -
+  confirmed directly in the raw transcript while preparing this entry.
+quote: "I would say that we are tracking [opt-outs] quite well and at the moment, we saw a slight peak when the announcement was made when there was quite a lot of social media by Foxglove and other privacy campaigners. But the opt-out level has not really materialised as much as we feared."
+quote_verified: secondary
+video_id: W6ZGpIS4jlA
+t: 6411
+source_url: https://www.youtube.com/watch?v=W6ZGpIS4jlA&t=6411
+source_title: "NHS England Board Meeting, 7 December 2023 (YouTube)"
+archive_url: http://web.archive.org/web/20241128000949/https://www.youtube.com/watch?v=W6ZGpIS4jlA
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2023-11-30-foxglove-legal-action-fdp-award
+  - 2024-01-fdp-explainer-drops-opt-out-line

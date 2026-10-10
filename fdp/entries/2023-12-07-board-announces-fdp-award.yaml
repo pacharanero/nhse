@@ -1,0 +1,25 @@
+id: 2023-12-07-board-announces-fdp-award
+date: 2023-12-07
+date_precision: day
+category: board
+title: Ming Tang tells NHS England board the FDP contract has been awarded
+summary: >-
+  At the first board meeting after the public announcement, Ming Tang (then
+  Chief Data and Analytics Officer) told the board the FDP and Associated
+  Services contract had been awarded to the Palantir-led consortium, and
+  separately that the privacy enhancing technology (PET) contract had gone
+  to IQVIA. The caption renders one consortium member as "Next CSU" - almost
+  certainly NECS (North of England Commissioning Support Unit), the partner
+  named in NHS England's own announcement - a caption error of exactly the
+  kind flagged in this repo's caption-reliability notes.
+quote: "So really delighted to inform the board that we've awarded the federated data platform and associated services contract to a consortium led by Palantir, including Accenture, PWC, and Next CSU, which is really important because it demonstrates the breadth that FDP and the associated services cover. It's not just a data platform but actually how we then deploy and adopt it and create new products off it."
+quote_verified: secondary
+video_id: W6ZGpIS4jlA
+t: 6050
+source_url: https://www.youtube.com/watch?v=W6ZGpIS4jlA&t=6050
+source_title: "NHS England Board Meeting, 7 December 2023 (YouTube)"
+archive_url: http://web.archive.org/web/20241128000949/https://www.youtube.com/watch?v=W6ZGpIS4jlA
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2023-11-21-pet-contract-iqvia-awarded
+  - 2023-12-22-fdp-contract-award-notice-published
