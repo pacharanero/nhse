@@ -20,7 +20,7 @@ Not yet assessed for what's actually scrapeable or how far back each goes. A fir
 - **Post-departure employment and ACOBA** - the Advisory Committee on Business Appointments publishes its advice on senior civil servants' and some NHS officials' new roles after leaving public service, including the employer and any conditions attached. This is the cleanest single source for "revolving door" moves, where it covers the person at all - ACOBA's remit has gaps (NHS England board members' coverage, for instance, needs checking).
 - **Companies House** - directorships, persons with significant control, and incorporation dates for vendors and the companies people move to/from. Good for confirming a departure-to-directorship link with a precise date.
 - **Lobbying registers** - the Office of the Registrar of Consultant Lobbyists covers consultant lobbyists only, which excludes most in-house corporate affairs teams; worth checking what it actually captures for FDP-relevant vendors before relying on it.
-- **FOI disclosures** - already a source for the FDP timeline (see "Sources to work through" in `spec/fdp-timeline.md`); likely to surface meeting records, internal emails about a vendor relationship, or declarations not otherwise published.
+- **FOI disclosures** - already a source for the FDP timeline (see "Sources to work through" in `spec/fdp-timeline.md`); likely to surface meeting records, internal emails about a vendor relationship, or declarations not otherwise published. Specifically: NHS England, NHSX, and NHS Digital each ran (or run) their own FOI disclosure log - publicly published request-and-response pairs. NHSX and NHS Digital no longer exist as separate bodies (merged into NHS England), but their disclosure logs are historical record and worth pulling in full, not just searching for FDP-relevant hits - the whole corpus is useful raw material for this topic and for the vendor-capture atlas, and nobody else has pulled it into one place with archive links.
 
 ### Why this is hard, honestly
 
@@ -43,3 +43,20 @@ Likely structure, not yet built:
 1. **Scope.** Every NHS vendor, or start with Palantir/FDP-adjacent vendors and expand once the method is proven? Starting narrow and proven seems safer than starting broad and stalling.
 2. **Editorial discipline.** The FDP timeline's "facts not arguments" discipline gets harder here, because the whole point is spotting a pattern a reader is meant to find suspicious. Need an explicit equivalent of the "contested" field and the "no speculation about motive" rule from `spec/fdp-timeline.md`, adapted for linked-fact entries - report the co-occurrence, not the inference.
 3. **Where this starts.** Not scoped into FDP timeline roadmap items (R1-R14). Needs its own spec once someone's ready to build it, written the way `spec/fdp-timeline.md` was: purpose, schema, source list, roadmap, open questions.
+
+## Operating principle: every fetcher is idempotent and re-runnable
+
+This applies across the whole repo, not just the vendor-capture idea - it's how `s/fetch-transcripts` and `s/fetch-blog-index` already work, and every future source fetcher should follow the same shape.
+
+For any ongoing source - FOI disclosure logs, board papers, board-meeting transcripts, registers of interest, meeting transparency returns, whatever comes next - the fetcher script should be:
+
+- **Deterministic.** Same inputs, same outputs. No fetcher should depend on being run in a particular order relative to another, or on state that isn't either in the repo or in the source itself.
+- **Idempotent.** Running it again when nothing's changed upstream should be a no-op (or close to one) - it checks what's already present, fetches only what's missing or changed, and doesn't duplicate or corrupt existing data. `s/fetch-transcripts` dedupes by video ID already on disk; `s/fetch-blog-index` checkpoints and resumes. New fetchers should do the equivalent for their source.
+- **Safe to schedule unattended.** The point of the above two properties is that a fetcher can be run on a cadence - monthly is the default assumption - without a human needing to watch it or clean up afterwards if it's interrupted or re-run.
+
+Two ways to actually run these on a schedule, neither built yet:
+
+- **GitHub Actions**, on a cron schedule, committing any new data straight back to the repo (or opening a PR for review, if a source is judged to need a human check before merging). The natural long-term home for this once a fetcher is stable and trusted.
+- **An overnight agent run** - the same scripts, run by an agent session rather than a workflow, useful before a source is stable enough to trust unattended in CI, or where a source genuinely needs judgement calls (e.g. deciding whether a cross-register match is worth a vendor-capture entry) that a plain script shouldn't make on its own.
+
+Either way, the fetcher itself should not care which one is calling it - it is a dumb, idempotent, scriptable layer, and the judgement calls (what's worth an entry, how to phrase it, whether a `contested` field is needed) happen afterwards, by a human or an agent working from what the fetcher gathered. Keep that separation. Don't let a fetcher script start making editorial decisions.

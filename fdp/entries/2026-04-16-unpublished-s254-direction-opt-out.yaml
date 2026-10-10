@@ -1,0 +1,25 @@
+id: 2026-04-16-unpublished-s254-direction-opt-out
+date: 2026-04-16
+date_precision: day
+category: scope
+title: MP says opt-out exemption rests on an unpublished s.254 Health and Social Care Act direction
+summary: >-
+  In the Westminster Hall debate on the FDP, Iqbal Mohamed MP said patient
+  data opt-outs do not apply to the platform "due to a legal direction
+  issued under section 254 of the Health and Social Care Act 2012," and
+  that this direction "has not been published or named or been subject to
+  scrutiny." If accurate, this identifies the specific legal mechanism
+  behind the opt-out exemption later confirmed in general terms by
+  minister Preet Kaur Gill (see 2026-06-04 entry) - a directive power
+  rather than a published policy document. Not independently verified
+  against the direction itself, which this entry's source says has not
+  been published; worth checking against NHS England's FDP Information
+  Governance Framework and any FOI response naming the direction.
+quote: "Perhaps most concerning of all are the reports that patient data opt-outs do not apply to the federated data platform due to a legal direction issued under section 254 of the Health and Social Care Act 2012, yet that direction has not been published or named or been subject to scrutiny."
+quote_verified: document
+source_url: https://hansard.parliament.uk/commons/2026-04-16/debates/2FDCA71C-D0C1-4738-BEE8-A4BDA311DB99/NHSFederatedDataPlatform
+source_title: "Hansard: NHS Federated Data Platform, Westminster Hall, 16 April 2026"
+archive_url: https://web.archive.org/web/20260512165541/https://hansard.parliament.uk/Commons/2026-04-16/debates/2FDCA71C-D0C1-4738-BEE8-A4BDA311DB99/NHSFederatedDataPlatform
+related:
+  - 2026-04-16-westminster-hall-debate-fdp
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp

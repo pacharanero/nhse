@@ -1,0 +1,33 @@
+id: 2026-04-16-westminster-hall-debate-fdp
+date: 2026-04-16
+date_precision: day
+category: legal
+title: Westminster Hall debates the FDP, MPs press for the break clause
+summary: >-
+  Martin Wrigley MP (Newton Abbot) led a Westminster Hall debate on the
+  FDP, arguing the contract delivers no software or intellectual property
+  to the NHS - only a subscription service with total vendor lock-in - and
+  pressing the minister to use the February 2027 break clause rather than
+  extend it. Multiple MPs raised the Good Law Project's redaction finding
+  (417 of 586 contract pages blanked out), Peter Thiel's "freedom and
+  democracy are not compatible" remarks, and Palantir CEO Alex Karp's
+  "on occasion kill them" earnings-call quote. Kim Johnson MP raised
+  unminuted 2019 meetings between Boris Johnson, Dominic Cummings and
+  Peter Thiel, and a 2025 visit to Palantir's offices by Peter Mandelson
+  and the Prime Minister, calling for both to be made public.
+quote: "The current contract delivers a subscription service that leaves no deliverables after the subscription - no software, no improvements and no intellectual property after spending more than £330 million. All the specially written software and intellectual property rights belong to the supplier, says the contract."
+quote_verified: document
+source_url: https://hansard.parliament.uk/commons/2026-04-16/debates/2FDCA71C-D0C1-4738-BEE8-A4BDA311DB99/NHSFederatedDataPlatform
+source_title: "Hansard: NHS Federated Data Platform, Westminster Hall, 16 April 2026"
+archive_url: https://web.archive.org/web/20260512165541/https://hansard.parliament.uk/Commons/2026-04-16/debates/2FDCA71C-D0C1-4738-BEE8-A4BDA311DB99/NHSFederatedDataPlatform
+related:
+  - 2024-02-18-good-law-project-redacted-contract-legal-action
+  - 2025-02-03-karp-kill-enemies-earnings-call
+  - 2023-01-16-thiel-nhs-stockholm-syndrome
+  - 2026-07-14-democracy-for-sale-project-onion-investigation
+contested: >-
+  The debate itself records no government/Palantir rebuttal of the
+  specific claims made (it is MPs speaking, not a ministerial statement) -
+  the minister's response, if recorded separately in the debate text, is
+  not captured in this entry and should be checked against the full
+  transcript before being treated as settled.
