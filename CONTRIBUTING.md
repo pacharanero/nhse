@@ -2,7 +2,8 @@
 
 Don't want to touch git or YAML? Open an
 [issue using the entry template](https://github.com/pacharanero/nhse/issues/new?template=new-entry.yml) -
-it asks for exactly the fields below and someone will turn it into an entry.
+a link and a sentence or two is enough, nothing is required, and someone
+will turn it into an entry using the schema below.
 Everything from here down is for contributing directly via a pull request.
 
 ## Repo structure

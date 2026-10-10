@@ -4,7 +4,7 @@ Research corpus and source material on NHS England digital programmes, starting 
 
 ## Status
 
-Early. The FDP timeline has a first batch of sourced entries and a working static viewer. Board-meeting caption backfill (2013-2026) is ongoing.
+Public. Live at <https://pacharanero.github.io/nhse/>. The FDP timeline has 33 sourced entries and a working static viewer. Board-meeting caption backfill (2013-2026) is ongoing.
 
 ## What is here
 
