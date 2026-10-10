@@ -262,5 +262,13 @@
     "category": "civil",
     "title": "DAUK and allies launch \"Back the Break Clause\" campaign",
     "file": "fdp/entries/2026-09-01-back-the-break-clause-campaign-launched.yaml"
+  },
+  {
+    "id": "2027-02-15-fdp-break-clause-deadline",
+    "date": "2027-02-15",
+    "date_precision": "day",
+    "category": "contract",
+    "title": "FDP contract's initial three-year commitment ends - break clause point",
+    "file": "fdp/entries/2027-02-15-fdp-break-clause-deadline.yaml"
   }
 ]

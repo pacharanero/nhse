@@ -1,0 +1,27 @@
+id: 2027-02-15-fdp-break-clause-deadline
+date: 2027-02-15
+date_precision: day
+category: contract
+title: FDP contract's initial three-year commitment ends - break clause point
+summary: >-
+  The FDP and Associated Services contract's initial three-year commitment
+  ends on 15 February 2027, the point at which the government can exercise
+  the contract's break clause rather than continue into further option
+  years of the up-to-seven-year, up-to-£330m deal. This is a scheduled
+  contractual date, not yet a past event - recorded here as the timeline's
+  current endpoint, per the spec's framing of the break clause as "the
+  timeline's endpoint and its reason for existing." Multiple parliamentary
+  and campaign sources through 2026 treat this as the decision point,
+  though none found so far specify whether the government must act by
+  15 February 2027 itself or whether the date marks contract-term expiry
+  with some decision lead time before it.
+quote: "The initial three-year commitment ends on 15 February 2027."
+quote_verified: document
+source_url: https://publications.parliament.uk/pa/cm5902/cmselect/cmsctech/61/report.html
+source_title: "House of Commons Science, Innovation and Technology Committee: Rewiring the state - Delivering digital government (First Report of Session 2026-27), para 86"
+archive_url: https://web.archive.org/web/20261010203126/https://publications.parliament.uk/pa/cm5902/cmselect/cmsctech/61/report.html
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2026-06-03-science-committee-report-break-clause
+  - 2026-07-09-health-social-care-committee-letter-break-clause
+  - 2026-09-01-back-the-break-clause-campaign-launched
