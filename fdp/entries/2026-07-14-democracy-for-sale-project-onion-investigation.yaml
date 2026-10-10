@@ -1,0 +1,33 @@
+id: 2026-07-14-democracy-for-sale-project-onion-investigation
+date: 2026-07-14
+date_precision: day
+category: media
+title: Investigation reveals Palantir's £30k/month Mandelson lobbying operation, codenamed "Project Onion"
+summary: >-
+  Democracy for Sale (Peter Geoghegan and Lucas Amin), in an investigation
+  also published in the London Review of Books, revealed that Palantir
+  hired Peter Mandelson's lobbying firm Global Counsel in 2018 to position
+  it as "a respectable partner to the British government," on a retainer
+  worth over £30,000 a month, run under the internal code name "Project
+  Onion." The investigation reported that Global Counsel exploited gaps in
+  UK lobbying registration rules to avoid declaring Palantir as a client,
+  and that a rival bidder for the FDP contract, Shane Tickell, said Palantir
+  "had all these people to open doors and lobby and pitch long before the
+  procurement started." The same investigation found that NHS usage data
+  obtained by FOI showed 52 of 139 "live" trusts had not used a single one
+  of the FDP's eight apps in the twelve months to June 2026, and that the
+  flagship Cancer 360 tool was used by only six trusts.
+quote: "For Palantir, the NHS was the holy grail. Years of lobbying tilted the FDP tender in Palantir's favour."
+quote_verified: document
+source_url: https://democracyforsale.substack.com/p/its-just-a-waste-of-time-inside-palantir-nhs-peter-mandelson
+source_title: "Democracy for Sale: \"It's just a waste of time\": inside Palantir's £330m NHS failure"
+archive_url: http://web.archive.org/web/20261010214012/https://democracyforsale.substack.com/p/its-just-a-waste-of-time-inside-palantir-nhs-peter-mandelson
+related:
+  - 2022-04-01-fdp-pin-published
+  - 2023-11-21-fdp-contract-awarded
+  - 2026-06-03-science-committee-report-break-clause
+contested: >-
+  Palantir's head of UK corporate affairs told Democracy for Sale the
+  company is merely a software provider: "How that software is used is
+  controlled by the NHS trusts who use it." The piece does not record a
+  specific company response to the lobbying/Project Onion findings.
