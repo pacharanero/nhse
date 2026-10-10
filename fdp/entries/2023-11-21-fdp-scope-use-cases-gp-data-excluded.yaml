@@ -1,0 +1,21 @@
+id: 2023-11-21-fdp-scope-use-cases-gp-data-excluded
+date: 2023-11-21
+date_precision: day
+category: scope
+title: NHS England defines FDP's five use cases and excludes GP data
+summary: >-
+  Alongside the contract award, NHS England set out the FDP's scope: five
+  use cases (population health and person insight, care coordination,
+  supply chain, vaccination and immunisation, and elective recovery), a
+  statement that no company involved can access health and care data
+  without explicit NHS permission, that data within the platform is used
+  only for direct care and planning rather than research, and that GP data
+  "will not feed into the national version of the software platform."
+quote: "All data within the platform is under the control of the NHS and will only be used for direct care and planning. It will not be used to access data for research purposes and GP data will not feed into the national version of the software platform."
+quote_verified: document
+source_url: https://www.digitalhealth.net/2023/11/nhs-england-awards-330m-federated-data-platform-contract-to-palantir/
+source_title: "Digital Health: NHS England awards £330m Federated Data Platform contract to Palantir"
+archive_url: http://web.archive.org/web/20260623183008/https://www.digitalhealth.net/2023/11/nhs-england-awards-330m-federated-data-platform-contract-to-palantir/
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2024-01-fdp-explainer-drops-opt-out-line
