@@ -80,6 +80,8 @@ curl -s "https://archive.org/wayback/available?url=<url-encoded-source_url>"
 
 Use the returned `web.archive.org/web/...` URL as `archive_url`. An entry without one is incomplete and will fail `s/build-index`.
 
+**If archive.org genuinely can't capture the page** - repeated `HTTP 520` from `/save/`, confirmed from more than one IP, while other pages on the same domain archive fine (so it's not a general Wayback outage) - that's a targeted block, not a retry-later problem. In that case: retain the primary document or a full text copy of the page in `fdp/sources/` (see "Repo structure" above), and point `archive_url` at that file's URL in this repo instead of a Wayback link. Note why in the entry's `contested` field so a reader isn't left wondering why the link goes to GitHub rather than web.archive.org. Try archive.today first if you haven't - it sometimes succeeds where archive.org fails, and is the preferred fallback when it works.
+
 ### Dates
 
 Use the date the thing *happened*, not the date it was reported. If a document is undated, use `month` or `quarter` precision rather than guessing a day - a timeline that silently invents day-precision dates is worse than one with visible fuzziness.

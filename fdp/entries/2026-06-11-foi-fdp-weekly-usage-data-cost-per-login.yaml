@@ -1,0 +1,54 @@
+id: 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
+date: 2026-06-11
+date_precision: day
+tags:
+  - legal
+  - nhse
+  - statistics
+  - cost
+  - foi
+title: FOI discloses FDP weekly login data, enabling a rough cost-per-login figure
+summary: >-
+  Responding to a Freedom of Information request, NHS England released a
+  table of weekly user logins by FDP product, broken down by local
+  instance, covering 85 NHS trusts and one Integrated Care Board. NHS
+  England described the figure for each trust/product as an average
+  across the weeks that trust/product was actually in use over the
+  preceding 12 months, rather than a single sampled week. A parallel FOI
+  to DHSC drew a response that DHSC does not hold this data. NHS England
+  separately declined (in a follow-up request) to supply equivalent
+  usage data broken down by ICB, saying product-level data is not
+  currently collected on that basis.
+
+  This repo's own arithmetic, not an NHS England or BMJ figure: summing
+  every cell in the released table gives approximately 4,030 weekly
+  logins nationally, across all FDP products, at the 85 trusts covered.
+  Annualised (x52) on the assumption that this run-rate holds, that is
+  roughly 210,000 logins a year. Against the FDP contract's stated value
+  of up to £330m over 7 years (£47.1m/year on a straight-line average),
+  that works out to roughly £225 per login. This is a rough,
+  back-of-envelope figure with real limits: it covers only the 85 trusts
+  in this dataset, against NHS England's separately stated 139 "live"
+  trusts; the £330m funds central platform infrastructure as well as the
+  trust-facing apps counted here, so dividing the whole contract by app
+  logins likely overstates true cost-per-use; and "login" is NHS
+  England's own metric, not a defined unit of value delivered.
+quote: "The weekly log in total shows an average across actual weeks of use to provide comparable figures."
+quote_verified: document
+source_url: https://www.whatdotheyknow.com/request/national_usage_statistics_for_fe_2
+source_title: "WhatDoTheyKnow: National usage statistics for Federated Data Platform (FOI request to NHS England by Nye Hudson, ref FOI-2605-2328520)"
+archive_url: https://github.com/pacharanero/nhse/blob/main/fdp/sources/2026-foi-nhse-weekly-trust-users-by-product.pdf
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2026-07-15-bmj-third-trusts-not-using-fdp-apps
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+contested: >-
+  Archive.org has repeatedly failed to capture this WhatDoTheyKnow page
+  (HTTP 520 on every save attempt, including from a different IP),
+  despite other pages on the same domain - including the near-identical
+  DHSC request - archiving normally. This looks like a targeted block on
+  archive.org's crawler rather than a transient fault. The source PDF
+  and a full transcript of the FOI correspondence are retained in
+  fdp/sources/ as the archive record instead; see
+  fdp/sources/2026-foi-nhse-weekly-trust-users-by-product.md for the
+  detail of why.
