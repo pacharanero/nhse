@@ -88,7 +88,7 @@ def main():
             "date_precision": precision,
             "tags": tags,
             "title": data.get("title"),
-            "file": f"fdp/entries/{path.name}",
+            "file": f"entries/{path.name}",
         })
 
     if errors:

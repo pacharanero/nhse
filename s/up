@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: 2026 Marcus Baw
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
-# Serve the repo root over HTTP and open the timeline in the default browser.
+# Serve the repo root over HTTP and open the landing page in the default browser.
 #
 # The site is static (index.html + css/ + js/) and reads fdp/index.json plus
 # each entry's YAML directly via fetch(), so it needs to be served over HTTP

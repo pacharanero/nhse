@@ -338,7 +338,7 @@
   async function init() {
     readStateFromURL();
 
-    const res = await fetch("fdp/index.json");
+    const res = await fetch("index.json");
     index = await res.json();
 
     const otherTags = new Set();

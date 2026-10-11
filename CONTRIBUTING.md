@@ -12,7 +12,13 @@ This repo covers more than the FDP timeline over time. Each research topic
 gets its own top-level folder:
 
 - `fdp/` - the Federated Data Platform timeline (`spec/fdp-timeline.md`). The
-  only topic so far.
+  only topic so far. Its viewer is `fdp/index.html`, served at `/fdp/`;
+  it shares `css/style.css` and `js/app.js` with the root landing page
+  rather than keeping its own copies.
+- `index.html` (repo root) - the landing page linking out to each topic's
+  viewer, e.g. `fdp/`. When a new topic gets its own viewer, add a card
+  for it here. `css/landing.css` holds landing-page-only styling, layered
+  on top of the shared `css/style.css` tokens.
 - `people/` - biographical role timelines (appointment and departure dates,
   with sources) for individuals who recur across topics, e.g. NHS England
   executives. One YAML file per person. Referenced by topic entries, not
@@ -115,13 +121,13 @@ This regenerates `fdp/index.json` from everything in `fdp/entries/` and checks r
 
 ## Local preview
 
-The site is static and reads `fdp/index.json` plus each entry's YAML directly in the browser - no build step. Serve the repo root with any static file server, e.g.:
+The site is static and reads `fdp/index.json` plus each entry's YAML directly in the browser - no build step. The root `index.html` is a landing page linking to each utility (the FDP timeline lives at `/fdp/`); serve the repo root with any static file server, e.g.:
 
 ```sh
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000/`.
+Then open `http://localhost:8000/fdp/` (or `http://localhost:8000/` for the landing page).
 
 ## URL querystring convention
 
