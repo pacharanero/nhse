@@ -1,7 +1,11 @@
 id: 2023-01-10-ferris-tang-blog-fdp-launch
 date: 2023-01-10
 date_precision: day
-category: official
+tags:
+  - official
+  - nhse
+  - ming-tang
+  - tim-ferris
 title: Ferris and Tang publish NHS England's public introduction to the FDP
 summary: >-
   Dr Timothy Ferris (National Director of Transformation) and Ming Tang

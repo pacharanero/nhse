@@ -1,7 +1,10 @@
 id: 2020-03-faculty-covid-datastore-930k
 date: 2020-03-01
 date_precision: month
-category: contract
+tags:
+  - contract
+  - nhsx
+  - cost
 title: Faculty contracted for £930,000 to support NHSX AI Lab's COVID response
 summary: >-
   Faculty, an AI firm whose director Ben Warner had worked on the Vote Leave

@@ -14,9 +14,15 @@
 
 <main>
   <div class="controls">
-    <div class="filters" id="category-filters" role="group" aria-label="Filter by category"></div>
-    <input type="search" id="search-box" placeholder="Search titles and summaries…" aria-label="Search entries">
-    <span class="count" id="result-count"></span>
+    <div class="filters" id="tag-filters" role="group" aria-label="Filter by tag"></div>
+    <div class="controls-row">
+      <input type="search" id="search-box" placeholder="Search titles and summaries…" aria-label="Search entries">
+      <div class="sort-toggle" role="group" aria-label="Sort order">
+        <button type="button" class="sort-btn" data-sort="desc">Newest first</button>
+        <button type="button" class="sort-btn" data-sort="asc">Oldest first</button>
+      </div>
+      <span class="count" id="result-count"></span>
+    </div>
   </div>
 
   <ol class="timeline" id="timeline"></ol>

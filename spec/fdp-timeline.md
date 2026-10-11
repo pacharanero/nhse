@@ -21,11 +21,13 @@ Done so far:
 - NHS England board meeting captions, 2013-2026, in `nhs-board-transcripts/`. See `s/fetch-transcripts` and `s/search`.
 - 15 verified entries in `data/seed-entries.md`, spanning July 2019 to September 2026. This is the holding pen until R3 decides the storage format; everything in it has been checked against the linked source.
 
-## Categories (the colour/filter dimension)
+## Tags (the colour/filter dimension)
 
-Every entry carries exactly one category. These are the filter toggles in the final view.
+Originally this was a single exclusive `category` field (R3-era decision). Replaced by a `tags` list - every entry carries one or more tags, and can be filtered by any combination, ANDed together (see `CONTRIBUTING.md`'s "Tags" section for the mechanics). Two kinds of tag:
 
-| Key | Category | Covers |
+**Kind tags** - the original seven categories, now the first tag in an entry's list, still exclusive in practice (an entry has one) because they drive the entry's colour and which side of the timeline it renders on:
+
+| Key | Kind | Covers |
 |---|---|---|
 | `scope` | Scope | What data is in and out: GP data, primary care, direct care vs secondary use, opt-out definition, use cases added or withdrawn. |
 | `contract` | Contract & procurement | The COVID-19 datastore contracts, the £1 emergency award, extensions, the FDP tender, the award, contract value changes, the 2027 break clause. |
@@ -35,10 +37,12 @@ Every entry carries exactly one category. These are the filter toggles in the fi
 | `legal` | Legal, regulatory & parliamentary | Judicial review, ICO, National Data Guardian, select committee sessions, Westminster Hall debates, petitions, FOI outcomes. |
 | `civil` | Civil society | Campaign launches, petitions, open letters, professional body positions. |
 
-Two categories were folded in deliberately rather than split out:
+Two kind tags were folded in deliberately rather than split out:
 
-- Petitions sit under `civil` when launched and `legal` when they trigger a parliamentary response. Record the response as a separate entry.
-- Blogs by named officials sit under `official`, not `media`, even when published on a personal site, because the point is what the institution was saying at the time.
+- Petitions carry `civil` when launched and `legal` when they trigger a parliamentary response. Record the response as a separate entry.
+- Blogs by named officials carry `official`, not `media`, even when published on a personal site, because the point is what the institution was saying at the time.
+
+**Free tags** - everything else an entry carries alongside its kind tag: organisations (`nhse`, `nhsx`, `nhsd`, `dhsc`...), named people, topics (`opt-out`, `break-clause`, `cost`...), source outlets. No fixed vocabulary - see what's already in use before inventing a near-duplicate. This is the dimension that makes cross-cutting queries possible ("show me every `parliament` entry that's also tagged `break-clause`"), which a single exclusive category never could.
 
 ## Entry schema
 
@@ -49,7 +53,7 @@ One record per event. Store as YAML or TSV in `data/`; the format decision is R3
 | `id` | yes | Stable slug, e.g. `2023-11-21-fdp-contract-awarded`. Never reused or renumbered. |
 | `date` | yes | ISO `YYYY-MM-DD`. See date precision below. |
 | `date_precision` | yes | `day`, `month`, or `quarter`. Renders differently; prevents false precision. |
-| `category` | yes | One of the keys above. |
+| `tags` | yes | List, at least one. First tag should be a kind tag (table above); any further tags are free-form. |
 | `title` | yes | Factual, under ~90 chars. No adjectives. |
 | `summary` | yes | 1-3 sentences. What happened. Not why it matters. |
 | `quote` | no | Verbatim, with speaker and role at the time. |
@@ -149,6 +153,7 @@ Legend: `[x]` done, `[~]` in progress, `[ ]` not started
 - [x] **R12 - Render the vertical timeline** with category colours and filter toggles. `index.html` + `css/style.css` + `js/app.js`, static, no build step - reads `fdp/index.json` and the entry YAML directly in the browser. Hover/click cards show full entry detail (quote, contested, sources, related). Quarter-precision date rendering is still a stub pending real quarter-precision entries.
 - [x] **R13 - Decide publication and licensing.** Decided: the repo is public, and the timeline is live via GitHub Pages at <https://pacharanero.github.io/nhse/>. Open question 2 below (transcript licensing) was not separately resolved before this - it's now a live question about content that is actually public, not a hypothetical one, and should be revisited.
 - [x] **R14 - Let readers propose entries without needing git/YAML.** The site footer and this repo's [issue template](../.github/ISSUE_TEMPLATE/new-entry.yml) (`Propose an entry`) let anyone open a GitHub Issue with just a link and a sentence or two - deliberately low-friction, nothing required beyond a title, so it shifts the write-up work to whoever actions the issue rather than asking a casual reader to learn the schema first. No longer gated on R13 - the repo is public.
+- [x] **R15 - Tags, sort order, and shareable filtered views.** Replaced the single exclusive `category` field with a `tags` list (all 42 entries migrated; see "Tags" above and in `CONTRIBUTING.md`). Site now has: a sort toggle, newest-first by default (so a visitor doesn't land on 2018); a "today" marker line so past and future entries (the break clause, dated 2027) are visually distinguished regardless of sort direction; a tag filter that ANDs selections together, intended for surfacing overlaps rather than just narrowing by type; and a URL querystring convention (`?tags=...&q=...&sort=...`) that round-trips full filter state, documented in `CONTRIBUTING.md` as a pattern for future topic sites to reuse.
 
 ## Open questions
 

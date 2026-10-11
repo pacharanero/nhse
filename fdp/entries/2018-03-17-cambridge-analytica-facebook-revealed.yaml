@@ -1,7 +1,12 @@
 id: 2018-03-17-cambridge-analytica-facebook-revealed
 date: 2018-03-17
 date_precision: day
-category: media
+tags:
+  - media
+  - palantir
+  - parliament
+  - cambridge-analytica
+  - guardian
 title: Guardian/Observer reveal Cambridge Analytica harvested 50 million Facebook profiles
 summary: >-
   The Observer published whistleblower Christopher Wylie's account of how

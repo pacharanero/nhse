@@ -1,7 +1,11 @@
 id: 2020-03-palantir-covid-datastore-1-pound
 date: 2020-03-01
 date_precision: month
-category: contract
+tags:
+  - contract
+  - palantir
+  - cost
+  - cnbc
 title: Palantir contracted to build NHS COVID-19 Data Store for £1
 summary: >-
   Palantir Technologies UK was contracted to provide data integration work

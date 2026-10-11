@@ -1,7 +1,11 @@
 id: 2023-01-16-thiel-nhs-stockholm-syndrome
 date: 2023-01-16
 date_precision: day
-category: media
+tags:
+  - media
+  - palantir
+  - thiel
+  - guardian
 title: Peter Thiel tells Oxford Union British affection for NHS is "Stockholm syndrome"
 summary: >-
   Speaking at the Oxford Union, Palantir co-founder and chairman Peter Thiel

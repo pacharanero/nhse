@@ -1,7 +1,12 @@
 id: 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
 date: 2026-06-04
 date_precision: day
-category: scope
+tags:
+  - scope
+  - palantir
+  - parliament
+  - opt-out
+  - gdpr
 title: Government confirms the National Data Opt-Out does not apply to FDP products
 summary: >-
   In a written parliamentary answer to Labour MP Neil Duncan-Jordan, health

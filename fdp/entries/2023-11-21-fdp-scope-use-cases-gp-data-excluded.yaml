@@ -1,7 +1,12 @@
 id: 2023-11-21-fdp-scope-use-cases-gp-data-excluded
 date: 2023-11-21
 date_precision: day
-category: scope
+tags:
+  - scope
+  - palantir
+  - nhse
+  - cost
+  - digital-health
 title: NHS England defines FDP's five use cases and excludes GP data
 summary: >-
   Alongside the contract award, NHS England set out the FDP's scope: five

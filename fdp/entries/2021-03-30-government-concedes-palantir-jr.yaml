@@ -1,7 +1,12 @@
 id: 2021-03-30-government-concedes-palantir-jr
 date: 2021-03-30
 date_precision: day
-category: legal
+tags:
+  - legal
+  - palantir
+  - foxglove
+  - opendemocracy
+  - cost
 title: Government concedes judicial review, commits to public consultation before extending Palantir's NHS role
 summary: >-
   Facing Foxglove and openDemocracy's judicial review over the December 2020

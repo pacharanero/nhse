@@ -1,7 +1,12 @@
 id: 2024-02-18-good-law-project-redacted-contract-legal-action
 date: 2024-02-18
 date_precision: day
-category: legal
+tags:
+  - legal
+  - palantir
+  - nhse
+  - good-law-project
+  - cost
 title: Good Law Project launches legal action over Palantir's heavily redacted FDP contract
 summary: >-
   Good Law Project launched legal action against NHS England after the

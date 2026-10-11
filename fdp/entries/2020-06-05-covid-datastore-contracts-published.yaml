@@ -1,7 +1,11 @@
 id: 2020-06-05-covid-datastore-contracts-published
 date: 2020-06-05
 date_precision: day
-category: contract
+tags:
+  - contract
+  - palantir
+  - foxglove
+  - opendemocracy
 title: Government publishes COVID-19 Data Store contracts hours before legal deadline
 summary: >-
   Hours before openDemocracy was due to file for judicial review over the

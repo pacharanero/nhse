@@ -1,7 +1,12 @@
 id: 2021-02-foxglove-opendemocracy-jr-launched
 date: 2021-02-01
 date_precision: month
-category: legal
+tags:
+  - legal
+  - palantir
+  - foxglove
+  - opendemocracy
+  - cost
 title: Foxglove and openDemocracy launch judicial review over Palantir COVID-19 Data Store deal
 summary: >-
   Foxglove supported openDemocracy in launching a judicial review claim

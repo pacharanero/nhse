@@ -44,7 +44,7 @@ Copy an existing entry as a starting point (any file in `fdp/entries/` will do) 
 | `id` | yes | Stable slug, same as the filename minus `.yaml`. Format: `YYYY-MM-DD-short-description`, or `YYYY-MM-short-description` for month precision. Never reused or renumbered once merged. |
 | `date` | yes | ISO `YYYY-MM-DD`. For `month` or `quarter` precision, use the first day (`2022-04-01` for April 2022) - `date_precision` tells the renderer not to trust the day. |
 | `date_precision` | yes | `day`, `month`, or `quarter`. |
-| `category` | yes | One of: `scope`, `contract`, `official`, `media`, `board`, `legal`, `civil`. See the table in the spec. |
+| `tags` | yes | List of lowercase-hyphenated tags, at least one. Lowercase a-z0-9 and hyphens only (`s/build-index` enforces this). See "Tags" below. |
 | `title` | yes | Factual, under ~90 characters, no adjectives. |
 | `summary` | yes | 1-3 sentences. What happened, not why it matters. |
 | `quote` | no | Verbatim, with speaker and role at the time. |
@@ -78,9 +78,14 @@ Use the returned `web.archive.org/web/...` URL as `archive_url`. An entry withou
 
 Use the date the thing *happened*, not the date it was reported. If a document is undated, use `month` or `quarter` precision rather than guessing a day - a timeline that silently invents day-precision dates is worse than one with visible fuzziness.
 
-### Categories are exclusive
+### Tags
 
-Every entry carries exactly one `category`. If an event spans two - say, a petition (`civil`) that triggers a government response (`legal`) - record it as two linked entries via `related`, not one entry with two categories.
+Every entry carries a `tags` list - at least one, usually several. Two kinds of tag, mixed freely in the same list:
+
+- **Kind tags** - the old fixed categories, still exactly seven: `scope`, `contract`, `official`, `media`, `board`, `legal`, `civil`. See the table in the spec for what each means. Put one of these first in the list where it clearly applies - the site uses whichever kind tag appears first to pick the entry's colour and which side of the timeline it renders on. An entry can only usefully have one kind tag; if an event genuinely spans two (a petition that triggers a government response), record it as two linked entries via `related`, not one entry wearing both kinds.
+- **Free tags** - anything else: organisations (`nhse`, `nhsx`, `nhsd`, `dhsc`, `foxglove`, `dauk`...), people (`thiel`, `karp`, `ming-tang`...), topics (`opt-out`, `break-clause`, `cost`, `gdpr`...), source outlets (`guardian`, `bmj`, `the-register`...). Add as many as genuinely apply - this is what makes cross-cutting filtering possible (e.g. every `parliament` entry that also touches `break-clause`). No fixed vocabulary; just keep tags lowercase-hyphenated and reuse an existing tag rather than inventing a near-duplicate (check `fdp/index.json` or the site's filter list for what's already in use before adding a new one).
+
+The site's tag filter ANDs whatever you select - picking `nhse` and `parliament` together shows only entries with both, which is the point: it's how coincidences and overlaps surface.
 
 ### Quotes
 
@@ -109,6 +114,18 @@ python3 -m http.server 8000
 ```
 
 Then open `http://localhost:8000/`.
+
+## URL querystring convention
+
+The FDP site's filters, search, and sort order all round-trip through the URL, so a filtered view is a shareable link. Any future topic site in this repo should use the same three parameters, so links behave consistently across the whole project:
+
+| Param | Example | Notes |
+|---|---|---|
+| `tags` | `?tags=nhse,parliament` | Comma-separated, ANDed together (all must match, not any). Omit entirely when no filter is active. |
+| `q` | `?q=opt-out` | Free-text search string. Omit when empty. |
+| `sort` | `?sort=asc` | Only written when it differs from the site's default (`desc`, newest-first, on the FDP site) - keeps default-state URLs clean. |
+
+Read once on load, written back with `history.replaceState` (not `pushState`) on every change, so adjusting filters doesn't spam the browser's back button. See `js/app.js`'s `readStateFromURL` / `writeStateToURL` for the reference implementation.
 
 ## Style
 

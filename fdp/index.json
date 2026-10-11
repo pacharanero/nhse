@@ -3,7 +3,13 @@
     "id": "2018-03-17-cambridge-analytica-facebook-revealed",
     "date": "2018-03-17",
     "date_precision": "day",
-    "category": "media",
+    "tags": [
+      "media",
+      "palantir",
+      "parliament",
+      "cambridge-analytica",
+      "guardian"
+    ],
     "title": "Guardian/Observer reveal Cambridge Analytica harvested 50 million Facebook profiles",
     "file": "fdp/entries/2018-03-17-cambridge-analytica-facebook-revealed.yaml"
   },
@@ -11,7 +17,11 @@
     "id": "2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick",
     "date": "2018-03-24",
     "date_precision": "day",
-    "category": "media",
+    "tags": [
+      "media",
+      "cambridge-analytica",
+      "guardian"
+    ],
     "title": "Leaked emails show Cambridge academics accused Kogan of \"get rich quick\" deal with Cambridge Analytica's parent",
     "file": "fdp/entries/2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick.yaml"
   },
@@ -19,7 +29,14 @@
     "id": "2018-03-27-cambridge-analytica-palantir-staff-link",
     "date": "2018-03-27",
     "date_precision": "day",
-    "category": "media",
+    "tags": [
+      "media",
+      "palantir",
+      "parliament",
+      "thiel",
+      "cambridge-analytica",
+      "cnbc"
+    ],
     "title": "Cambridge Analytica whistleblower names Palantir staff in Facebook data harvest",
     "file": "fdp/entries/2018-03-27-cambridge-analytica-palantir-staff-link.yaml"
   },
@@ -27,7 +44,11 @@
     "id": "2020-03-faculty-covid-datastore-930k",
     "date": "2020-03-01",
     "date_precision": "month",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "nhsx",
+      "cost"
+    ],
     "title": "Faculty contracted for \u00a3930,000 to support NHSX AI Lab's COVID response",
     "file": "fdp/entries/2020-03-faculty-covid-datastore-930k.yaml"
   },
@@ -35,7 +56,11 @@
     "id": "2020-03-nhsx-assembles-covid-datastore-partners",
     "date": "2020-03-01",
     "date_precision": "month",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "nhsx"
+    ],
     "title": "NHSX enlists Microsoft, Palantir and Google to build COVID-19 Data Store",
     "file": "fdp/entries/2020-03-nhsx-assembles-covid-datastore-partners.yaml"
   },
@@ -43,7 +68,12 @@
     "id": "2020-03-palantir-covid-datastore-1-pound",
     "date": "2020-03-01",
     "date_precision": "month",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "cost",
+      "cnbc"
+    ],
     "title": "Palantir contracted to build NHS COVID-19 Data Store for \u00a31",
     "file": "fdp/entries/2020-03-palantir-covid-datastore-1-pound.yaml"
   },
@@ -51,7 +81,12 @@
     "id": "2020-06-05-covid-datastore-contracts-published",
     "date": "2020-06-05",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "foxglove",
+      "opendemocracy"
+    ],
     "title": "Government publishes COVID-19 Data Store contracts hours before legal deadline",
     "file": "fdp/entries/2020-06-05-covid-datastore-contracts-published.yaml"
   },
@@ -59,7 +94,13 @@
     "id": "2020-07-16-palantir-covid-datastore-1m-extension",
     "date": "2020-07-16",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "cost",
+      "thiel",
+      "cnbc"
+    ],
     "title": "Palantir's \u00a31 COVID-19 Data Store contract extended by \u00a31m",
     "file": "fdp/entries/2020-07-16-palantir-covid-datastore-1m-extension.yaml"
   },
@@ -67,7 +108,13 @@
     "id": "2020-12-11-palantir-covid-datastore-23-5m-two-year",
     "date": "2020-12-11",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "nhse",
+      "opendemocracy",
+      "cost"
+    ],
     "title": "Palantir awarded two-year, up to \u00a323.5m COVID-19 Data Store contract",
     "file": "fdp/entries/2020-12-11-palantir-covid-datastore-23-5m-two-year.yaml"
   },
@@ -75,7 +122,13 @@
     "id": "2021-02-foxglove-opendemocracy-jr-launched",
     "date": "2021-02-01",
     "date_precision": "month",
-    "category": "legal",
+    "tags": [
+      "legal",
+      "palantir",
+      "foxglove",
+      "opendemocracy",
+      "cost"
+    ],
     "title": "Foxglove and openDemocracy launch judicial review over Palantir COVID-19 Data Store deal",
     "file": "fdp/entries/2021-02-foxglove-opendemocracy-jr-launched.yaml"
   },
@@ -83,7 +136,13 @@
     "id": "2021-03-30-government-concedes-palantir-jr",
     "date": "2021-03-30",
     "date_precision": "day",
-    "category": "legal",
+    "tags": [
+      "legal",
+      "palantir",
+      "foxglove",
+      "opendemocracy",
+      "cost"
+    ],
     "title": "Government concedes judicial review, commits to public consultation before extending Palantir's NHS role",
     "file": "fdp/entries/2021-03-30-government-concedes-palantir-jr.yaml"
   },
@@ -91,7 +150,13 @@
     "id": "2021-09-11-dhsc-ends-palantir-adult-social-care-deal",
     "date": "2021-09-11",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "dhsc",
+      "foxglove",
+      "opendemocracy"
+    ],
     "title": "DHSC ends separate Palantir deal covering adult social care data",
     "file": "fdp/entries/2021-09-11-dhsc-ends-palantir-adult-social-care-deal.yaml"
   },
@@ -99,7 +164,11 @@
     "id": "2022-04-01-fdp-pin-published",
     "date": "2022-04-01",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "nhse",
+      "cost"
+    ],
     "title": "NHS England publishes Prior Information Notice for Federated Data Platform",
     "file": "fdp/entries/2022-04-01-fdp-pin-published.yaml"
   },
@@ -107,7 +176,10 @@
     "id": "2022-04-13-fdp-supplier-briefing",
     "date": "2022-04-13",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "nhse"
+    ],
     "title": "NHS England holds supplier briefing session for FDP procurement",
     "file": "fdp/entries/2022-04-13-fdp-supplier-briefing.yaml"
   },
@@ -115,7 +187,11 @@
     "id": "2023-01-10-fdp-contract-notice-published",
     "date": "2023-01-10",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "nhse",
+      "cost"
+    ],
     "title": "NHS England launches competitive procurement for FDP, worth up to \u00a3480m",
     "file": "fdp/entries/2023-01-10-fdp-contract-notice-published.yaml"
   },
@@ -123,7 +199,12 @@
     "id": "2023-01-10-ferris-tang-blog-fdp-launch",
     "date": "2023-01-10",
     "date_precision": "day",
-    "category": "official",
+    "tags": [
+      "official",
+      "nhse",
+      "ming-tang",
+      "tim-ferris"
+    ],
     "title": "Ferris and Tang publish NHS England's public introduction to the FDP",
     "file": "fdp/entries/2023-01-10-ferris-tang-blog-fdp-launch.yaml"
   },
@@ -131,7 +212,12 @@
     "id": "2023-01-16-thiel-nhs-stockholm-syndrome",
     "date": "2023-01-16",
     "date_precision": "day",
-    "category": "media",
+    "tags": [
+      "media",
+      "palantir",
+      "thiel",
+      "guardian"
+    ],
     "title": "Peter Thiel tells Oxford Union British affection for NHS is \"Stockholm syndrome\"",
     "file": "fdp/entries/2023-01-16-thiel-nhs-stockholm-syndrome.yaml"
   },
@@ -139,7 +225,10 @@
     "id": "2023-02-09-fdp-tender-deadline",
     "date": "2023-02-09",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "nhse"
+    ],
     "title": "Deadline for tenders in the FDP-AS competitive procurement",
     "file": "fdp/entries/2023-02-09-fdp-tender-deadline.yaml"
   },
@@ -147,7 +236,11 @@
     "id": "2023-05-11-fdp-prospectus-published",
     "date": "2023-05-11",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "nhse",
+      "tim-ferris"
+    ],
     "title": "NHS England publishes FDP-AS prospectus to the market",
     "file": "fdp/entries/2023-05-11-fdp-prospectus-published.yaml"
   },
@@ -155,7 +248,16 @@
     "id": "2023-08-02-foxglove-launches-fdp-campaign",
     "date": "2023-08-02",
     "date_precision": "day",
-    "category": "civil",
+    "tags": [
+      "civil",
+      "palantir",
+      "foxglove",
+      "parliament",
+      "cost",
+      "thiel",
+      "karp",
+      "digital-health"
+    ],
     "title": "Foxglove launches \"Email your MP\" campaign against FDP procurement",
     "file": "fdp/entries/2023-08-02-foxglove-launches-fdp-campaign.yaml"
   },
@@ -163,7 +265,11 @@
     "id": "2023-10-24-diwakar-powis-power-blog-fdp-patients",
     "date": "2023-10-24",
     "date_precision": "day",
-    "category": "official",
+    "tags": [
+      "official",
+      "nhse",
+      "opt-out"
+    ],
     "title": "NHS England publishes patient-facing case for the FDP ahead of the award",
     "file": "fdp/entries/2023-10-24-diwakar-powis-power-blog-fdp-patients.yaml"
   },
@@ -171,7 +277,15 @@
     "id": "2023-11-21-fdp-contract-awarded",
     "date": "2023-11-21",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "nhse",
+      "break-clause",
+      "cost",
+      "karp",
+      "digital-health"
+    ],
     "title": "NHS England awards \u00a3330m Federated Data Platform contract to Palantir-led group",
     "file": "fdp/entries/2023-11-21-fdp-contract-awarded.yaml"
   },
@@ -179,7 +293,13 @@
     "id": "2023-11-21-fdp-scope-use-cases-gp-data-excluded",
     "date": "2023-11-21",
     "date_precision": "day",
-    "category": "scope",
+    "tags": [
+      "scope",
+      "palantir",
+      "nhse",
+      "cost",
+      "digital-health"
+    ],
     "title": "NHS England defines FDP's five use cases and excludes GP data",
     "file": "fdp/entries/2023-11-21-fdp-scope-use-cases-gp-data-excluded.yaml"
   },
@@ -187,7 +307,11 @@
     "id": "2023-11-21-pet-contract-iqvia-awarded",
     "date": "2023-11-21",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "nhse",
+      "iqvia"
+    ],
     "title": "NHS England awards separate privacy-enhancing technology contract to IQVIA",
     "file": "fdp/entries/2023-11-21-pet-contract-iqvia-awarded.yaml"
   },
@@ -195,7 +319,11 @@
     "id": "2023-11-22-fdp-contract-executed",
     "date": "2023-11-22",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "palantir",
+      "nhse"
+    ],
     "title": "FDP-AS contract formally executed with Palantir-led consortium",
     "file": "fdp/entries/2023-11-22-fdp-contract-executed.yaml"
   },
@@ -203,7 +331,13 @@
     "id": "2023-11-30-foxglove-legal-action-fdp-award",
     "date": "2023-11-30",
     "date_precision": "day",
-    "category": "legal",
+    "tags": [
+      "legal",
+      "palantir",
+      "foxglove",
+      "dauk",
+      "cost"
+    ],
     "title": "Foxglove, Just Treatment, DAUK and National Pensioners Convention launch legal action against \u00a3330m FDP award",
     "file": "fdp/entries/2023-11-30-foxglove-legal-action-fdp-award.yaml"
   },
@@ -211,7 +345,14 @@
     "id": "2023-12-07-board-announces-fdp-award",
     "date": "2023-12-07",
     "date_precision": "day",
-    "category": "board",
+    "tags": [
+      "board",
+      "palantir",
+      "nhse",
+      "iqvia",
+      "board-meeting",
+      "ming-tang"
+    ],
     "title": "Ming Tang tells NHS England board the FDP contract has been awarded",
     "file": "fdp/entries/2023-12-07-board-announces-fdp-award.yaml"
   },
@@ -219,7 +360,14 @@
     "id": "2023-12-07-board-opt-out-levels-not-materialised",
     "date": "2023-12-07",
     "date_precision": "day",
-    "category": "board",
+    "tags": [
+      "board",
+      "nhse",
+      "foxglove",
+      "opt-out",
+      "board-meeting",
+      "ming-tang"
+    ],
     "title": "Board told opt-out rate after FDP award \"has not really materialised as much as we feared\"",
     "file": "fdp/entries/2023-12-07-board-opt-out-levels-not-materialised.yaml"
   },
@@ -227,7 +375,10 @@
     "id": "2023-12-22-fdp-contract-award-notice-published",
     "date": "2023-12-22",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "cost"
+    ],
     "title": "Formal Contract Award Notice for FDP-AS published, recording \u00a3182m value",
     "file": "fdp/entries/2023-12-22-fdp-contract-award-notice-published.yaml"
   },
@@ -235,7 +386,11 @@
     "id": "2024-01-fdp-explainer-drops-opt-out-line",
     "date": "2024-01-01",
     "date_precision": "quarter",
-    "category": "official",
+    "tags": [
+      "official",
+      "nhse",
+      "opt-out"
+    ],
     "title": "NHS England patient-facing FDP explainer quietly drops national data opt-out line",
     "file": "fdp/entries/2024-01-fdp-explainer-drops-opt-out-line.yaml"
   },
@@ -243,7 +398,13 @@
     "id": "2024-02-18-good-law-project-redacted-contract-legal-action",
     "date": "2024-02-18",
     "date_precision": "day",
-    "category": "legal",
+    "tags": [
+      "legal",
+      "palantir",
+      "nhse",
+      "good-law-project",
+      "cost"
+    ],
     "title": "Good Law Project launches legal action over Palantir's heavily redacted FDP contract",
     "file": "fdp/entries/2024-02-18-good-law-project-redacted-contract-legal-action.yaml"
   },
@@ -251,7 +412,16 @@
     "id": "2024-04-03-picket-nhs-england-hq-palantir-gaza",
     "date": "2024-04-03",
     "date_precision": "day",
-    "category": "civil",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse",
+      "thiel",
+      "karp",
+      "gaza",
+      "protest",
+      "daily-mail"
+    ],
     "title": "Pro-Palestinian medical activists picket NHS England HQ over Palantir's Israel ties",
     "file": "fdp/entries/2024-04-03-picket-nhs-england-hq-palantir-gaza.yaml"
   },
@@ -259,7 +429,11 @@
     "id": "2025-02-03-karp-kill-enemies-earnings-call",
     "date": "2025-02-03",
     "date_precision": "day",
-    "category": "media",
+    "tags": [
+      "media",
+      "palantir",
+      "karp"
+    ],
     "title": "Palantir CEO Karp tells investors the company will \"on occasion kill\" enemies",
     "file": "fdp/entries/2025-02-03-karp-kill-enemies-earnings-call.yaml"
   },
@@ -267,7 +441,12 @@
     "id": "2026-04-16-unpublished-s254-direction-opt-out",
     "date": "2026-04-16",
     "date_precision": "day",
-    "category": "scope",
+    "tags": [
+      "scope",
+      "nhse",
+      "parliament",
+      "opt-out"
+    ],
     "title": "MP says opt-out exemption rests on an unpublished s.254 Health and Social Care Act direction",
     "file": "fdp/entries/2026-04-16-unpublished-s254-direction-opt-out.yaml"
   },
@@ -275,7 +454,17 @@
     "id": "2026-04-16-westminster-hall-debate-fdp",
     "date": "2026-04-16",
     "date_precision": "day",
-    "category": "legal",
+    "tags": [
+      "legal",
+      "palantir",
+      "good-law-project",
+      "parliament",
+      "break-clause",
+      "cost",
+      "thiel",
+      "karp",
+      "mandelson"
+    ],
     "title": "Westminster Hall debates the FDP, MPs press for the break clause",
     "file": "fdp/entries/2026-04-16-westminster-hall-debate-fdp.yaml"
   },
@@ -283,7 +472,12 @@
     "id": "2026-06-03-science-committee-report-break-clause",
     "date": "2026-06-03",
     "date_precision": "day",
-    "category": "legal",
+    "tags": [
+      "legal",
+      "palantir",
+      "parliament",
+      "break-clause"
+    ],
     "title": "Science, Innovation and Technology Committee urges government to exercise FDP break clause",
     "file": "fdp/entries/2026-06-03-science-committee-report-break-clause.yaml"
   },
@@ -291,7 +485,13 @@
     "id": "2026-06-04-national-data-opt-out-does-not-apply-to-fdp",
     "date": "2026-06-04",
     "date_precision": "day",
-    "category": "scope",
+    "tags": [
+      "scope",
+      "palantir",
+      "parliament",
+      "opt-out",
+      "gdpr"
+    ],
     "title": "Government confirms the National Data Opt-Out does not apply to FDP products",
     "file": "fdp/entries/2026-06-04-national-data-opt-out-does-not-apply-to-fdp.yaml"
   },
@@ -299,7 +499,13 @@
     "id": "2026-07-09-health-social-care-committee-letter-break-clause",
     "date": "2026-07-09",
     "date_precision": "day",
-    "category": "legal",
+    "tags": [
+      "legal",
+      "palantir",
+      "nhse",
+      "parliament",
+      "break-clause"
+    ],
     "title": "Health and Social Care Committee tells minister to drop Palantir and find an alternative",
     "file": "fdp/entries/2026-07-09-health-social-care-committee-letter-break-clause.yaml"
   },
@@ -307,7 +513,13 @@
     "id": "2026-07-14-democracy-for-sale-project-onion-investigation",
     "date": "2026-07-14",
     "date_precision": "day",
-    "category": "media",
+    "tags": [
+      "media",
+      "palantir",
+      "democracy-for-sale",
+      "cost",
+      "mandelson"
+    ],
     "title": "Investigation reveals Palantir's \u00a330k/month Mandelson lobbying operation, codenamed \"Project Onion\"",
     "file": "fdp/entries/2026-07-14-democracy-for-sale-project-onion-investigation.yaml"
   },
@@ -315,7 +527,14 @@
     "id": "2026-09-01-back-the-break-clause-campaign-launched",
     "date": "2026-09-01",
     "date_precision": "day",
-    "category": "civil",
+    "tags": [
+      "civil",
+      "palantir",
+      "dauk",
+      "amnesty",
+      "parliament",
+      "break-clause"
+    ],
     "title": "DAUK and allies launch \"Back the Break Clause\" campaign",
     "file": "fdp/entries/2026-09-01-back-the-break-clause-campaign-launched.yaml"
   },
@@ -323,7 +542,15 @@
     "id": "2026-10-01-palantir-protests-45108-objections",
     "date": "2026-10-01",
     "date_precision": "day",
-    "category": "civil",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse",
+      "38-degrees",
+      "gdpr",
+      "protest",
+      "bmj"
+    ],
     "title": "Coordinated protest day and 45,108 GDPR objections target Palantir's NHS role",
     "file": "fdp/entries/2026-10-01-palantir-protests-45108-objections.yaml"
   },
@@ -331,7 +558,12 @@
     "id": "2027-02-15-fdp-break-clause-deadline",
     "date": "2027-02-15",
     "date_precision": "day",
-    "category": "contract",
+    "tags": [
+      "contract",
+      "parliament",
+      "break-clause",
+      "cost"
+    ],
     "title": "FDP contract's initial three-year commitment ends - break clause point",
     "file": "fdp/entries/2027-02-15-fdp-break-clause-deadline.yaml"
   }

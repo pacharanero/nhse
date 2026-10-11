@@ -1,7 +1,9 @@
 id: 2023-12-22-fdp-contract-award-notice-published
 date: 2023-12-22
 date_precision: day
-category: contract
+tags:
+  - contract
+  - cost
 title: Formal Contract Award Notice for FDP-AS published, recording £182m value
 summary: >-
   The statutory Contract Award Notice for the Federated Data Platform and

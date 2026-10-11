@@ -13,3 +13,7 @@ test-results/
 nhs-board-transcripts/*.batch
 nhs-board-transcripts/*.part
 nhs-board-transcripts/*.ytdl
+
+# Python bytecode cache
+__pycache__/
+*.pyc

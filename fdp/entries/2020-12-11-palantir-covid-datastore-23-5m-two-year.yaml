@@ -1,7 +1,12 @@
 id: 2020-12-11-palantir-covid-datastore-23-5m-two-year
 date: 2020-12-11
 date_precision: day
-category: contract
+tags:
+  - contract
+  - palantir
+  - nhse
+  - opendemocracy
+  - cost
 title: Palantir awarded two-year, up to £23.5m COVID-19 Data Store contract
 summary: >-
   NHS England awarded Palantir a new contract, worth up to £23.5m over two

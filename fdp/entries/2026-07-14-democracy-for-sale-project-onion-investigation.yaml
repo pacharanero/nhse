@@ -1,7 +1,12 @@
 id: 2026-07-14-democracy-for-sale-project-onion-investigation
 date: 2026-07-14
 date_precision: day
-category: media
+tags:
+  - media
+  - palantir
+  - democracy-for-sale
+  - cost
+  - mandelson
 title: Investigation reveals Palantir's £30k/month Mandelson lobbying operation, codenamed "Project Onion"
 summary: >-
   Democracy for Sale (Peter Geoghegan and Lucas Amin), in an investigation

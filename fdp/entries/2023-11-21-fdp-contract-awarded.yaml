@@ -1,7 +1,14 @@
 id: 2023-11-21-fdp-contract-awarded
 date: 2023-11-21
 date_precision: day
-category: contract
+tags:
+  - contract
+  - palantir
+  - nhse
+  - break-clause
+  - cost
+  - karp
+  - digital-health
 title: NHS England awards £330m Federated Data Platform contract to Palantir-led group
 summary: >-
   NHS England announced it had awarded the Federated Data Platform and

@@ -1,7 +1,10 @@
 id: 2018-03-24-cambridge-academics-dispute-kogan-get-rich-quick
 date: 2018-03-24
 date_precision: day
-category: media
+tags:
+  - media
+  - cambridge-analytica
+  - guardian
 title: Leaked emails show Cambridge academics accused Kogan of "get rich quick" deal with Cambridge Analytica's parent
 summary: >-
   The Guardian published internal Cambridge University emails from May 2014

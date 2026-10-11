@@ -5,7 +5,8 @@
 #
 # Regenerate fdp/index.json from fdp/entries/*.yaml and do a minimal schema
 # check: required fields present, id matches filename, ids unique, date is
-# ISO, archive_url present, quote_verified present when quote is.
+# ISO, tags present and slug-shaped, archive_url present, quote_verified
+# present when quote is.
 #
 # GitHub Pages has no directory listing, so the client-side site needs an
 # index telling it which entry files exist. This script is the only thing
@@ -25,11 +26,11 @@ ROOT = Path(__file__).resolve().parent.parent
 ENTRIES_DIR = ROOT / "fdp" / "entries"
 INDEX_PATH = ROOT / "fdp" / "index.json"
 
-REQUIRED = ["id", "date", "date_precision", "category", "title", "summary", "source_url", "source_title", "archive_url"]
+REQUIRED = ["id", "date", "date_precision", "tags", "title", "summary", "source_url", "source_title", "archive_url"]
 VALID_PRECISION = {"day", "month", "quarter"}
-VALID_CATEGORY = {"scope", "contract", "official", "media", "board", "legal", "civil"}
 VALID_VERIFICATION = {"audio", "document", "secondary"}
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+TAG_SLUG = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 
 def main():
@@ -65,9 +66,16 @@ def main():
         if precision and precision not in VALID_PRECISION:
             errors.append(f"{path.name}: invalid date_precision '{precision}'")
 
-        category = data.get("category")
-        if category and category not in VALID_CATEGORY:
-            errors.append(f"{path.name}: invalid category '{category}'")
+        tags = data.get("tags")
+        if tags is not None:
+            if not isinstance(tags, list) or not tags:
+                errors.append(f"{path.name}: 'tags' must be a non-empty list")
+            else:
+                for t in tags:
+                    if not isinstance(t, str) or not TAG_SLUG.match(t):
+                        errors.append(f"{path.name}: tag '{t}' is not a lowercase-hyphenated slug")
+                if len(set(tags)) != len(tags):
+                    errors.append(f"{path.name}: duplicate tag in {tags}")
 
         if data.get("quote") and not data.get("quote_verified"):
             errors.append(f"{path.name}: has 'quote' but no 'quote_verified'")
@@ -78,7 +86,7 @@ def main():
             "id": expected_id,
             "date": str(data.get("date")),
             "date_precision": precision,
-            "category": category,
+            "tags": tags,
             "title": data.get("title"),
             "file": f"fdp/entries/{path.name}",
         })

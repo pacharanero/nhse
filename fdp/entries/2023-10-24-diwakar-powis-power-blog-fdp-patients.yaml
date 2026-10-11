@@ -1,7 +1,10 @@
 id: 2023-10-24-diwakar-powis-power-blog-fdp-patients
 date: 2023-10-24
 date_precision: day
-category: official
+tags:
+  - official
+  - nhse
+  - opt-out
 title: NHS England publishes patient-facing case for the FDP ahead of the award
 summary: >-
   Dr Vin Diwakar, Professor Stephen Powis and Patients Association chief

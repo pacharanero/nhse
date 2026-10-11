@@ -1,7 +1,10 @@
 id: 2020-03-nhsx-assembles-covid-datastore-partners
 date: 2020-03-01
 date_precision: month
-category: contract
+tags:
+  - contract
+  - palantir
+  - nhsx
 title: NHSX enlists Microsoft, Palantir and Google to build COVID-19 Data Store
 summary: >-
   NHSX brought in Microsoft, Palantir Technologies UK and Google to build a

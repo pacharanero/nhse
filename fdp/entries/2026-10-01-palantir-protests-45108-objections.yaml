@@ -1,7 +1,14 @@
 id: 2026-10-01-palantir-protests-45108-objections
 date: 2026-10-01
 date_precision: day
-category: civil
+tags:
+  - civil
+  - palantir
+  - nhse
+  - 38-degrees
+  - gdpr
+  - protest
+  - bmj
 title: Coordinated protest day and 45,108 GDPR objections target Palantir's NHS role
 summary: >-
   Dozens of protests took place outside NHS offices and hospitals across

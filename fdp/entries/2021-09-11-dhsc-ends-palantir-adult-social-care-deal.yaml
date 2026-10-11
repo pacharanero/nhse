@@ -1,7 +1,12 @@
 id: 2021-09-11-dhsc-ends-palantir-adult-social-care-deal
 date: 2021-09-11
 date_precision: day
-category: contract
+tags:
+  - contract
+  - palantir
+  - dhsc
+  - foxglove
+  - opendemocracy
 title: DHSC ends separate Palantir deal covering adult social care data
 summary: >-
   The Department of Health and Social Care published a procurement document

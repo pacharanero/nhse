@@ -1,7 +1,13 @@
 id: 2018-03-27-cambridge-analytica-palantir-staff-link
 date: 2018-03-27
 date_precision: day
-category: media
+tags:
+  - media
+  - palantir
+  - parliament
+  - thiel
+  - cambridge-analytica
+  - cnbc
 title: Cambridge Analytica whistleblower names Palantir staff in Facebook data harvest
 summary: >-
   Christopher Wylie told UK parliament, and separately The New York Times

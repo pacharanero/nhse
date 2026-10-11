@@ -1,7 +1,9 @@
 id: 2022-04-13-fdp-supplier-briefing
 date: 2022-04-13
 date_precision: day
-category: contract
+tags:
+  - contract
+  - nhse
 title: NHS England holds supplier briefing session for FDP procurement
 summary: >-
   NHS England held a briefing session for suppliers interested in the
