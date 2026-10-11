@@ -1,0 +1,27 @@
+id: 2023-11-14-fdp-easy-read-claims-efficacy-no-caveat
+date: 2023-11-14
+date_precision: day
+tags:
+  - official
+  - nhse
+  - statistics
+title: NHS England public explainer states FDP benefits as fact, with no causality caveat
+summary: >-
+  NHS England published an easy-read explainer stating, without
+  qualification, that NHS organisations testing FDP-like software had
+  seen "shorter waiting times", better theatre use, "up to 35 more
+  operations every week" at one trust, long-term hospital stays down 30%,
+  and stays of 21+ days down 36% at another trust. The page presented
+  these as results of using the software, not as observational
+  before/after comparisons with uncontrolled variables. It was last
+  updated 21 March 2024 and remained live with this wording through
+  2026. NHS England's FDP benefits methodology page would not carry an
+  equivalent causality caveat until forced to by the Office for
+  Statistics Regulation in June 2026, two and a half years later.
+quote: "The NHS organisations testing the FDP have seen better use of operating theatres and more patient treatments. One NHS trust carried out up to 35 more operations every week."
+quote_verified: document
+source_url: https://www.england.nhs.uk/long-read/federated-data-platform-improving-and-connecting-our-health-information/
+source_title: "NHS England: Federated data platform - improving and connecting our health information"
+archive_url: https://web.archive.org/web/20231207210957/https://www.england.nhs.uk/long-read/federated-data-platform-improving-and-connecting-our-health-information/
+related:
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat

@@ -274,6 +274,18 @@
     "file": "fdp/entries/2023-10-24-diwakar-powis-power-blog-fdp-patients.yaml"
   },
   {
+    "id": "2023-11-14-fdp-easy-read-claims-efficacy-no-caveat",
+    "date": "2023-11-14",
+    "date_precision": "day",
+    "tags": [
+      "official",
+      "nhse",
+      "statistics"
+    ],
+    "title": "NHS England public explainer states FDP benefits as fact, with no causality caveat",
+    "file": "fdp/entries/2023-11-14-fdp-easy-read-claims-efficacy-no-caveat.yaml"
+  },
+  {
     "id": "2023-11-21-fdp-contract-awarded",
     "date": "2023-11-21",
     "date_precision": "day",
@@ -522,6 +534,32 @@
     ],
     "title": "Investigation reveals Palantir's \u00a330k/month Mandelson lobbying operation, codenamed \"Project Onion\"",
     "file": "fdp/entries/2026-07-14-democracy-for-sale-project-onion-investigation.yaml"
+  },
+  {
+    "id": "2026-07-15-bmj-third-trusts-not-using-fdp-apps",
+    "date": "2026-07-15",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "statistics",
+      "bmj"
+    ],
+    "title": "BMJ reports a third of \"live\" FDP trusts had not logged into its apps for a year",
+    "file": "fdp/entries/2026-07-15-bmj-third-trusts-not-using-fdp-apps.yaml"
+  },
+  {
+    "id": "2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat",
+    "date": "2026-07-22",
+    "date_precision": "day",
+    "tags": [
+      "legal",
+      "nhse",
+      "statistics",
+      "osr"
+    ],
+    "title": "Statistics regulator concludes NHS England's FDP benefit claims needed a causality caveat",
+    "file": "fdp/entries/2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat.yaml"
   },
   {
     "id": "2026-09-01-back-the-break-clause-campaign-launched",

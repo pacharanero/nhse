@@ -1,0 +1,42 @@
+id: 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+date: 2026-07-22
+date_precision: day
+tags:
+  - legal
+  - nhse
+  - statistics
+  - osr
+title: Statistics regulator concludes NHS England's FDP benefit claims needed a causality caveat
+summary: >-
+  The Office for Statistics Regulation (OSR) published the findings of a
+  casework investigation, triggered by complaints from members of the
+  public and journalists, into NHS England's presentation of FDP uptake
+  and benefits data. NHS England had added a sentence - "we cannot
+  therefore draw conclusions about cause and effect as other variables
+  have not been controlled for" - to its methodology page on 6 June 2026,
+  after years of publishing before/after performance figures (additional
+  patients treated, reduced discharge delay days, faster cancer diagnosis)
+  attributed to FDP products without that caveat. NHS England told OSR
+  the change was prompted in part by FOI requests seeking detail on how
+  the figures were calculated. OSR found NHS England's statistical
+  independence intact, but required a clearer causality caveat on the
+  main benefits page, commissioned an independent Imperial College
+  evaluation (prioritising Inpatients and OPTICA, where the causality
+  issue was most evident), a published schedule for releasing trust-level
+  data, and a note that FDP case studies are written by the user
+  organisations themselves, not verified by NHS England.
+quote: "We understand why many users took this to represent a significant change in how NHS England was communicating the benefits of FDP data in relation to NHS performance."
+quote_verified: document
+source_url: https://osr.statisticsauthority.gov.uk/news/nhs-england-federated-data-platform-fdp-presentation-and-communication-of-information-and-performance-metrics/
+source_title: "Office for Statistics Regulation: NHS England Federated Data Platform (FDP) - presentation and communication of information and performance metrics"
+archive_url: https://web.archive.org/web/20261005135311/https://osr.statisticsauthority.gov.uk/news/nhs-england-federated-data-platform-fdp-presentation-and-communication-of-information-and-performance-metrics/
+related:
+  - 2026-06-03-science-committee-report-break-clause
+  - 2026-07-09-health-social-care-committee-letter-break-clause
+contested: >-
+  NHS England disputes that the earlier (pre-6 June 2026) wording claimed
+  causality: it told OSR the prior methodology description stated the
+  figures were a before/after comparison without asserting the change was
+  caused by FDP. OSR's report notes it understands why users read the
+  June 2026 caveat as a substantive change in NHS England's messaging,
+  without itself ruling that the earlier page was misleading.

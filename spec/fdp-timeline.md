@@ -12,14 +12,12 @@ The timeline is a **research and accountability artefact**, not an argument. Eac
 - Not a Palantir dossier. FDP decisions made by NHS England, DHSC and ministers are as much in scope as anything the supplier did.
 - Not a news aggregator. An item earns a place because it is a documented event, decision, statement, or disclosure - not because someone published an opinion about one.
 
-## Phase 1: data gathering (current phase)
+## Status
 
-The only goal right now is to accumulate sources and extract dated, quotable facts. Do not build the visualisation yet. An incomplete timeline rendered beautifully is worse than a complete corpus in a spreadsheet.
-
-Done so far:
+The timeline is live (R12/R13) at <https://pacharanero.github.io/nhse/>, built from `fdp/entries/*.yaml` via `s/build-index` (R3). Data gathering continues alongside the published site - see the roadmap below for what's worked and what's open.
 
 - NHS England board meeting captions, 2013-2026, in `nhs-board-transcripts/`. See `s/fetch-transcripts` and `s/search`.
-- 15 verified entries in `data/seed-entries.md`, spanning July 2019 to September 2026. This is the holding pen until R3 decides the storage format; everything in it has been checked against the linked source.
+- 45 entries in `fdp/entries/`, spanning March 2018 to February 2027 (future-dated: the break clause deadline). Every entry is checked against its linked, archived source before being added.
 
 ## Tags (the colour/filter dimension)
 
@@ -46,7 +44,7 @@ Two kind tags were folded in deliberately rather than split out:
 
 ## Entry schema
 
-One record per event. Store as YAML or TSV in `data/`; the format decision is R3 below.
+One record per event, stored as YAML under `fdp/entries/` (decided by R3 below).
 
 | Field | Required | Notes |
 |---|---|---|
@@ -96,6 +94,7 @@ Listed in rough order of expected yield. For each, the task is to extract dated 
 - **Contracts Finder / Find a Tender** - award notices, values, and variations. The authoritative record of the `contract` category.
 - **FOI disclosures** - NHS England's disclosure log, plus FOI material obtained by others (the national data guardian emails obtained by the FT, the Engineering Board disclosure).
 - **ICO and National Data Guardian** - published correspondence, statements, and the NDG's own blog posts. Archive both draft and published versions where a rewrite is alleged.
+- **Office for Statistics Regulation (OSR)** - casework findings and correspondence on NHS England's and DHSC's statistical claims. The FDP benefits/methodology pages on england.nhs.uk are themselves primary sources worth re-checking periodically, since NHS England revises the stated methodology (baseline calculation, caveats) without necessarily flagging the change prominently - see R16.
 
 ### Campaign and civil society
 
@@ -154,6 +153,7 @@ Legend: `[x]` done, `[~]` in progress, `[ ]` not started
 - [x] **R13 - Decide publication and licensing.** Decided: the repo is public, and the timeline is live via GitHub Pages at <https://pacharanero.github.io/nhse/>. Open question 2 below (transcript licensing) was not separately resolved before this - it's now a live question about content that is actually public, not a hypothetical one, and should be revisited.
 - [x] **R14 - Let readers propose entries without needing git/YAML.** The site footer and this repo's [issue template](../.github/ISSUE_TEMPLATE/new-entry.yml) (`Propose an entry`) let anyone open a GitHub Issue with just a link and a sentence or two - deliberately low-friction, nothing required beyond a title, so it shifts the write-up work to whoever actions the issue rather than asking a casual reader to learn the schema first. No longer gated on R13 - the repo is public.
 - [x] **R15 - Tags, sort order, and shareable filtered views.** Replaced the single exclusive `category` field with a `tags` list (all 42 entries migrated; see "Tags" above and in `CONTRIBUTING.md`). Site now has: a sort toggle, newest-first by default (so a visitor doesn't land on 2018); a "today" marker line so past and future entries (the break clause, dated 2027) are visually distinguished regardless of sort direction; a tag filter that ANDs selections together, intended for surfacing overlaps rather than just narrowing by type; and a URL querystring convention (`?tags=...&q=...&sort=...`) that round-trips full filter state, documented in `CONTRIBUTING.md` as a pattern for future topic sites to reuse.
+- [~] **R16 - Statistics watchdog strand: NHS England's efficacy claims.** Three entries added: the November 2023 public explainer stating FDP benefit figures (theatre use, length-of-stay reductions) as plain fact with no causality caveat; the July 2026 BMJ report (FOI-sourced) that a third of "live" trusts hadn't logged into FDP apps in a year, contradicting officials' use of the "live trust" count as a success metric; and the OSR's 22 July 2026 casework finding that NHS England's benefit claims needed an explicit "cannot draw conclusions about cause and effect" caveat, with the regulatory remedies it required. The underlying WhatDoTheyKnow FOI request/response behind the BMJ piece could not be archived (archive.org returning HTTP 520 against whatdotheyknow.com, same failure mode as the Hansard page in R8) - still needs a manual capture before it can be added as its own entry.
 
 ## Open questions
 

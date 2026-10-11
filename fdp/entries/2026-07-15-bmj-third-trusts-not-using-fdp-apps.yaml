@@ -1,0 +1,33 @@
+id: 2026-07-15-bmj-third-trusts-not-using-fdp-apps
+date: 2026-07-15
+date_precision: day
+tags:
+  - media
+  - nhse
+  - statistics
+  - bmj
+title: BMJ reports a third of "live" FDP trusts had not logged into its apps for a year
+summary: >-
+  The BMJ reported that FOI data showed roughly a third of the 139 NHS
+  trusts officially counted as "live" with the FDP appeared not to have
+  logged into its applications in the preceding year. Officials,
+  including Rob Thompson (chief digital, data and technology officer
+  across DHSC and NHS England), had repeatedly cited the count of "live"
+  trusts to the Health and Social Care Committee and elsewhere as
+  evidence of the platform's popularity and success. The underlying FOI
+  request and response are published on WhatDoTheyKnow.
+quote: "Rob Thompson, for example, chief digital, data, and technology officer across the Department of Health and Social Care and NHS England, told the Commons' Health and Social Care Committee last month that this metric indicated the FDP's popularity among trusts."
+quote_verified: secondary
+paywalled: true
+source_url: https://www.bmj.com/content/394/bmj-2026-100294
+source_title: "The BMJ: Third of NHS hospitals signed up to Palantir software seem to not be using its apps (Rebecca McBride Osborne)"
+archive_url: https://web.archive.org/web/20260828031631/https://www.bmj.com/content/394/bmj-2026-100294
+related:
+  - 2026-06-03-science-committee-report-break-clause
+  - 2026-07-09-health-social-care-committee-letter-break-clause
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+contested: >-
+  Not yet put to NHS England in this entry. The BMJ piece reports the FOI
+  figures and officials' prior statements side by side; it does not
+  record an NHS England response to the specific "a third not logged in"
+  finding.
