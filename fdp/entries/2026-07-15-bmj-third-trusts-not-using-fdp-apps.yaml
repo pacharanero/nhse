@@ -15,7 +15,10 @@ summary: >-
   across DHSC and NHS England), had repeatedly cited the count of "live"
   trusts to the Health and Social Care Committee and elsewhere as
   evidence of the platform's popularity and success. The underlying FOI
-  request and response are published on WhatDoTheyKnow.
+  request and response, including the raw weekly trust-level usage data
+  by product, are published on WhatDoTheyKnow as a request to NHS
+  England (a near-identical request to DHSC drew a response that DHSC
+  does not hold this data).
 quote: "Rob Thompson, for example, chief digital, data, and technology officer across the Department of Health and Social Care and NHS England, told the Commons' Health and Social Care Committee last month that this metric indicated the FDP's popularity among trusts."
 quote_verified: secondary
 paywalled: true

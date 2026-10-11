@@ -24,6 +24,12 @@ gets its own top-level folder:
   Government Web Archive (UKGWA) link for each. This is raw source
   material, like the transcripts - extracting dated facts from a specific
   post into a topic's `entries/` is a separate step, done by hand.
+- `fdp/sources/` - raw primary documents retained alongside the entries
+  that cite them, for cases where the source isn't a stable URL (an FOI
+  response attachment, for example) or where archive.org has proved
+  unable to capture the page itself. Named `<id-prefix>-<short
+  description>.<ext>`. This supplements, not replaces, `archive_url` -
+  an entry still needs one.
 
 When a new topic starts, give it its own top-level folder and its own spec
 file under `spec/`, following the `fdp/` pattern: `<topic>/entries/*.yaml`

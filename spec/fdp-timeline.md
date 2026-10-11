@@ -160,10 +160,21 @@ Legend: `[x]` done, `[~]` in progress, `[ ]` not started
 These need decisions, not guesses.
 
 1. ~~**Repo visibility.**~~ Resolved: the repo is public and the timeline is live on GitHub Pages.
-2. **Transcript licensing - now live, not hypothetical.** The caption files in `nhs-board-transcripts/` are derived from NHS England's YouTube uploads and are publicly readable in this repo right now. NHS England content is typically Open Government Licence, but the YouTube uploads are under YouTube's standard licence unless stated otherwise, and OGL coverage of auto-generated captions is untested. This was flagged as "resolve before publishing the transcript corpus" - the repo going public happened without a separate decision on this. Worth a deliberate look rather than leaving it as an accidental default.
+2. **Transcript licensing - now live, not hypothetical.** The caption files in `nhs-board-transcripts/` are derived from NHS England's YouTube uploads and are publicly readable in this repo right now. NHS England content is typically Open Government Licence, but the YouTube uploads are under YouTube's standard licence unless stated otherwise, and OGL coverage of auto-generated captions is untested. This was flagged as "resolve before publishing the transcript corpus" - the repo going public happened without a separate decision on this. Worth a deliberate look rather than leaving it as an accidental default. 
+
+> I'd say it is unlikely to be important for the overall utility of the timeline. Standard YouTube licensing applies, and the captions are auto-generated, so the risk is minimal.
+
 3. **Naming individuals.** The timeline will name people in `official` and `board` entries. The discipline from the EDH episode briefs applies: documented facts only, denials carried inline, no speculation about motive or future employment. Worth writing down as an explicit editorial policy file before R12.
+
+> I think risk is low, but we should present only facts.
+
 4. ~~**Where the break clause sits.**~~ Resolved: `fdp/entries/2027-02-15-fdp-break-clause-deadline.yaml`, dated and sourced to the Science, Innovation and Technology Committee's report (which cites the Contracts Finder notice). Renders like any other entry, future-dated - no special "marker" treatment built. Still open: whether the government must act by that date or whether it marks contract-term expiry with some decision lead time before it; none of the sources found so far say which.
+
+> done
+
 5. **Relationship to the EDH episodes.** This repo is the evidence base; the episodes are the argument. Keep them separate, and link from episode planning files to timeline entry ids rather than duplicating research.
+
+> yes. separate
 
 ## Related work
 
