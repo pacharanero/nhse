@@ -1,0 +1,13 @@
+{
+  "name": "nhse",
+  "private": true,
+  "description": "Build tooling for the nhse static site's Tailwind CSS + DaisyUI stylesheet.",
+  "scripts": {
+    "build:css": "tailwindcss -i css/tailwind.css -o css/app.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "daisyui": "^5.7.47",
+    "tailwindcss": "^4.3.3"
+  }
+}

@@ -4,39 +4,71 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FDP Timeline — nhse</title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/app.css">
+<script>
+  (function () {
+    var t = localStorage.getItem("nhse-theme");
+    if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "business" : "corporate";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
 </head>
-<body>
-<header class="site-header">
-  <p class="breadcrumb"><a href="../">NHSE database</a> / FDP timeline</p>
-  <h1>NHS Federated Data Platform: timeline</h1>
-  <p class="strapline">A filterable, source-linked timeline of the FDP, from the COVID-19 datastore contract to the 2027 break clause. Every entry links to a primary source and an archived copy. See <a href="../spec/fdp-timeline.md">the spec</a> for editorial policy.</p>
+<body class="bg-base-100">
+
+<div class="navbar bg-base-100 border-b border-base-200 max-w-4xl mx-auto px-4">
+  <div class="flex-1 text-sm">
+    <a href="../" class="link link-hover">NHSE database</a>
+    <span class="opacity-60">/ FDP timeline</span>
+  </div>
+  <button type="button" class="btn btn-sm btn-ghost" data-theme-toggle aria-pressed="false">🌙 Dark</button>
+</div>
+
+<header class="max-w-4xl mx-auto px-4 pt-6 pb-2">
+  <h1 class="text-xl font-bold mb-2">NHS Federated Data Platform: timeline</h1>
+  <p class="text-sm text-base-content/70 max-w-prose">
+    A filterable, source-linked timeline of the FDP, from the COVID-19
+    datastore contract to the 2027 break clause. Every entry links to a
+    primary source and an archived copy. See
+    <a class="link" href="../spec/fdp-timeline.md">the spec</a>
+    for editorial policy.
+  </p>
 </header>
 
-<main>
-  <div class="controls">
-    <div class="filters" id="tag-filters" role="group" aria-label="Filter by tag"></div>
-    <div class="controls-row">
-      <input type="search" id="search-box" placeholder="Search titles and summaries…" aria-label="Search entries">
-      <div class="sort-toggle" role="group" aria-label="Sort order">
-        <button type="button" class="sort-btn" data-sort="desc">Newest first</button>
-        <button type="button" class="sort-btn" data-sort="asc">Oldest first</button>
+<main class="max-w-4xl mx-auto px-4 pb-16">
+
+  <div class="sticky top-0 bg-base-100/95 backdrop-blur border-b border-base-200 py-3 z-10">
+    <div id="tag-filters" class="flex flex-wrap gap-1 items-center" role="group" aria-label="Filter by tag"></div>
+    <div class="flex flex-wrap gap-2 items-center mt-2">
+      <input type="search" id="search-box" placeholder="Search titles and summaries…" aria-label="Search entries"
+             class="input input-sm input-bordered flex-1 min-w-[160px]">
+      <div class="join" role="group" aria-label="Sort order">
+        <button type="button" class="btn btn-sm join-item sort-btn" data-sort="desc">Newest first</button>
+        <button type="button" class="btn btn-sm join-item sort-btn" data-sort="asc">Oldest first</button>
       </div>
-      <span class="count" id="result-count"></span>
+      <span class="text-xs text-base-content/60 whitespace-nowrap ml-auto" id="result-count"></span>
     </div>
   </div>
 
-  <ol class="timeline" id="timeline"></ol>
+  <ul class="timeline timeline-vertical mt-4" id="timeline"></ul>
+
 </main>
 
-<div class="card-backdrop" id="card-backdrop" hidden></div>
-<div class="card" id="entry-card" hidden role="dialog" aria-modal="false"></div>
+<dialog id="entry-modal" class="modal">
+  <div class="modal-box" id="entry-modal-body"></div>
+  <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
 
-<footer class="site-footer">
-  <p>Data: <a href="entries/">entries/</a> · <a href="https://github.com/pacharanero/nhse/issues/new?template=new-entry.yml">Propose an entry</a> · <a href="../CONTRIBUTING.md">Contributor guide</a> · Licensed CC-BY-SA-4.0 (prose), AGPL-3.0-or-later (code).</p>
+<footer class="max-w-4xl mx-auto px-4 py-4 border-t border-base-200 text-sm text-base-content/60">
+  <p>
+    Data: <a class="link" href="entries/">entries/</a> ·
+    <a class="link" href="https://github.com/pacharanero/nhse/issues/new?template=new-entry.yml">Propose an entry</a> ·
+    <a class="link" href="../CONTRIBUTING.md">Contributor guide</a> ·
+    Licensed CC-BY-SA-4.0 (prose), AGPL-3.0-or-later (code).
+  </p>
 </footer>
 
 <script src="../js/vendor/js-yaml.min.js"></script>
+<script src="../js/theme-toggle.js"></script>
 <script src="../js/app.js"></script>
 </body>
 </html>

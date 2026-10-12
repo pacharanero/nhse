@@ -4,27 +4,58 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NHSE database — nhse</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/landing.css">
+<link rel="stylesheet" href="css/app.css">
+<script>
+  (function () {
+    var t = localStorage.getItem("nhse-theme");
+    if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "business" : "corporate";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
 </head>
-<body>
-<header class="site-header">
-  <h1>NHSE database</h1>
-  <p class="strapline">A growing set of source-linked tools for following NHS England's operations — contracts, statements, and the paper trail behind them. Everything here links to a primary source and an archived copy.</p>
+<body class="bg-base-100">
+
+<div class="navbar bg-base-100 border-b border-base-200 max-w-5xl mx-auto px-4">
+  <div class="flex-1">
+    <span class="text-lg font-bold">NHSE database</span>
+  </div>
+  <button type="button" class="btn btn-sm btn-ghost" data-theme-toggle aria-pressed="false">🌙 Dark</button>
+</div>
+
+<header class="max-w-5xl mx-auto px-4 pt-6 pb-2">
+  <p class="text-base-content/70 max-w-prose">
+    A growing set of source-linked tools for following NHS England's
+    operations — contracts, statements, and the paper trail behind them.
+    Everything here links to a primary source and an archived copy.
+  </p>
 </header>
 
-<main class="landing-main">
-  <div class="utility-grid">
-    <a class="utility-card" href="fdp/">
-      <h2>FDP timeline</h2>
-      <p>A filterable, source-linked timeline of the NHS Federated Data Platform, from the COVID-19 datastore contract to the 2027 break clause.</p>
-      <span class="utility-card-link">Open the timeline →</span>
+<main class="max-w-5xl mx-auto px-4 pb-16">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+    <a href="fdp/" class="card bg-base-100 border border-base-300 hover:border-primary transition-colors">
+      <div class="card-body">
+        <h2 class="card-title text-base">FDP timeline</h2>
+        <p class="text-sm text-base-content/70">
+          A filterable, source-linked timeline of the NHS Federated Data
+          Platform, from the COVID-19 datastore contract to the 2027 break
+          clause.
+        </p>
+        <div class="card-actions justify-end mt-2">
+          <span class="link link-primary text-sm font-semibold">Open the timeline →</span>
+        </div>
+      </div>
     </a>
   </div>
 </main>
 
-<footer class="site-footer">
-  <p><a href="https://github.com/pacharanero/nhse">Source on GitHub</a> · <a href="CONTRIBUTING.md">Contributor guide</a> · Licensed CC-BY-SA-4.0 (prose), AGPL-3.0-or-later (code).</p>
+<footer class="max-w-5xl mx-auto px-4 py-4 border-t border-base-200 text-sm text-base-content/60">
+  <p>
+    <a class="link" href="https://github.com/pacharanero/nhse">Source on GitHub</a> ·
+    <a class="link" href="CONTRIBUTING.md">Contributor guide</a> ·
+    Licensed CC-BY-SA-4.0 (prose), AGPL-3.0-or-later (code).
+  </p>
 </footer>
+
+<script src="js/theme-toggle.js"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
 (function () {
   "use strict";
 
-  // "Kind" tags are the old fixed categories, kept as a known vocabulary so
-  // every entry still gets a colour and a left/right side. Any other tag on
-  // an entry is free-form and just used for filtering/search - see
-  // spec/fdp-timeline.md for what each kind means.
+  // Renders fdp/index.json as a filterable timeline using DaisyUI's
+  // timeline, badge, and modal components. See spec/fdp-timeline.md for
+  // what each kind tag means.
+
   const KIND_LABELS = {
     scope: "Scope",
     contract: "Contract & procurement",
@@ -15,32 +15,41 @@
     civil: "Civil society",
   };
 
-  // Left: what NHS England / government / the supplier did or said.
-  // Right: how the outside world found out, reacted, or pushed back.
+  // Left (timeline-start): what NHS England / government / the supplier
+  // did or said. Right (timeline-end): how the outside world found out,
+  // reacted, or pushed back.
   const KIND_SIDE = {
-    scope: "left",
-    contract: "left",
-    official: "left",
-    board: "left",
-    media: "right",
-    legal: "right",
-    civil: "right",
+    scope: "start",
+    contract: "start",
+    official: "start",
+    board: "start",
+    media: "end",
+    legal: "end",
+    civil: "end",
+  };
+
+  const KIND_COLOR = {
+    scope: "secondary",
+    contract: "error",
+    official: "success",
+    media: "warning",
+    board: "info",
+    legal: "neutral",
+    civil: "accent",
   };
 
   const timelineEl = document.getElementById("timeline");
   const filtersEl = document.getElementById("tag-filters");
   const searchEl = document.getElementById("search-box");
   const countEl = document.getElementById("result-count");
-  const cardEl = document.getElementById("entry-card");
-  const backdropEl = document.getElementById("card-backdrop");
+  const modalEl = document.getElementById("entry-modal");
+  const modalBodyEl = document.getElementById("entry-modal-body");
   const sortBtns = Array.from(document.querySelectorAll(".sort-btn"));
 
   const entryCache = new Map(); // id -> parsed yaml
   const activeTags = new Set(); // empty = no filter; selecting tags ANDs them together
   let allOtherTags = []; // non-kind tags, discovered once the index loads
   let index = [];
-  let pinned = false;
-  let hoverTimer = null;
   let sortOrder = "desc"; // "desc" = newest first (default), "asc" = oldest first
 
   // --- URL querystring state -------------------------------------------
@@ -54,9 +63,7 @@
   function readStateFromURL() {
     const params = new URLSearchParams(window.location.search);
     const tags = params.get("tags");
-    if (tags) {
-      tags.split(",").filter(Boolean).forEach((t) => activeTags.add(t));
-    }
+    if (tags) tags.split(",").filter(Boolean).forEach((t) => activeTags.add(t));
     const q = params.get("q");
     if (q) searchEl.value = q;
     const sort = params.get("sort");
@@ -69,8 +76,7 @@
     if (searchEl.value.trim()) params.set("q", searchEl.value.trim());
     if (sortOrder !== "desc") params.set("sort", sortOrder);
     const qs = params.toString();
-    const url = window.location.pathname + (qs ? `?${qs}` : "");
-    window.history.replaceState(null, "", url);
+    window.history.replaceState(null, "", window.location.pathname + (qs ? `?${qs}` : ""));
   }
 
   function primaryKind(tags) {
@@ -80,14 +86,10 @@
   function fmtDate(entry) {
     const [y] = entry.date.split("-");
     if (entry.date_precision === "day") {
-      return new Date(entry.date + "T00:00:00").toLocaleDateString("en-GB", {
-        year: "numeric", month: "short", day: "numeric",
-      });
+      return new Date(entry.date + "T00:00:00").toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
     }
     if (entry.date_precision === "month") {
-      return new Date(entry.date + "T00:00:00").toLocaleDateString("en-GB", {
-        year: "numeric", month: "long",
-      });
+      return new Date(entry.date + "T00:00:00").toLocaleDateString("en-GB", { year: "numeric", month: "long" });
     }
     return `Q? ${y}`; // quarter precision: refine once quarter data exists
   }
@@ -96,40 +98,34 @@
     filtersEl.innerHTML = "";
 
     Object.entries(KIND_LABELS).forEach(([key, label]) => {
+      const color = KIND_COLOR[key];
       const btn = document.createElement("button");
-      btn.className = "filter-btn" + (activeTags.has(key) ? " active" : "");
       btn.type = "button";
-      btn.dataset.tag = key;
-      btn.innerHTML = `<span class="swatch" style="background:var(--cat-${key})"></span>${label}`;
-      btn.addEventListener("click", () => toggleTag(key, btn));
+      btn.className = `btn btn-xs ${activeTags.has(key) ? `btn-${color}` : `btn-outline btn-${color}`}`;
+      btn.textContent = label;
+      btn.addEventListener("click", () => toggleTag(key));
       filtersEl.appendChild(btn);
     });
 
     if (allOtherTags.length) {
       const sep = document.createElement("span");
-      sep.className = "filter-sep";
+      sep.className = "divider divider-horizontal mx-0";
       filtersEl.appendChild(sep);
 
       allOtherTags.forEach((tag) => {
         const btn = document.createElement("button");
-        btn.className = "filter-btn plain" + (activeTags.has(tag) ? " active" : "");
         btn.type = "button";
-        btn.dataset.tag = tag;
-        btn.textContent = tag;
-        btn.addEventListener("click", () => toggleTag(tag, btn));
+        btn.className = `badge badge-sm cursor-pointer ${activeTags.has(tag) ? "badge-primary" : "badge-outline"}`;
+        btn.textContent = `#${tag}`;
+        btn.addEventListener("click", () => toggleTag(tag));
         filtersEl.appendChild(btn);
       });
     }
   }
 
-  function toggleTag(tag, btn) {
-    if (activeTags.has(tag)) {
-      activeTags.delete(tag);
-      btn.classList.remove("active");
-    } else {
-      activeTags.add(tag);
-      btn.classList.add("active");
-    }
+  function toggleTag(tag) {
+    if (activeTags.has(tag)) activeTags.delete(tag); else activeTags.add(tag);
+    buildFilters();
     render();
     writeStateToURL();
   }
@@ -153,10 +149,15 @@
     return visible;
   }
 
+  function markerLi(label, badgeClass) {
+    const li = document.createElement("li");
+    li.innerHTML = `<hr><div class="timeline-middle"></div><div class="timeline-end badge ${badgeClass} badge-sm">${label}</div><hr>`;
+    return li;
+  }
+
   function render() {
     const visible = sortedVisible();
     const todayStr = new Date().toISOString().slice(0, 10);
-
     timelineEl.innerHTML = "";
     let lastYear = null;
     let todayInserted = false;
@@ -164,83 +165,49 @@
     visible.forEach((entry) => {
       const crossedToday = sortOrder === "asc" ? entry.date > todayStr : entry.date < todayStr;
       if (!todayInserted && crossedToday) {
-        const marker = document.createElement("li");
-        marker.className = "timeline-today";
-        marker.innerHTML = `<span class="label">Today - ${todayStr}</span>`;
-        timelineEl.appendChild(marker);
+        timelineEl.appendChild(markerLi(`Today — ${todayStr}`, "badge-error"));
         todayInserted = true;
       }
 
       const year = entry.date.slice(0, 4);
       if (year !== lastYear) {
-        const marker = document.createElement("li");
-        marker.className = "timeline-year";
-        marker.innerHTML = `<span class="label">${year}</span>`;
-        timelineEl.appendChild(marker);
+        timelineEl.appendChild(markerLi(year, "badge-neutral"));
         lastYear = year;
       }
 
       const kind = primaryKind(entry.tags);
-      const side = kind ? (KIND_SIDE[kind] || "left") : "left";
-      const li = document.createElement("li");
-      li.className = `timeline-item side-${side}`;
-      if (kind) li.style.setProperty("--dot-color", `var(--cat-${kind})`);
-
-      const dateSpan = document.createElement("span");
-      dateSpan.className = "entry-date";
-      dateSpan.textContent = fmtDate(entry);
-
-      const catSpan = document.createElement("span");
-      catSpan.className = "entry-category";
-      catSpan.textContent = kind ? KIND_LABELS[kind] : "Uncategorised";
-
+      const side = kind ? KIND_SIDE[kind] : "end";
+      const color = kind ? KIND_COLOR[kind] : "neutral";
       const extraTags = entry.tags.filter((t) => t !== kind && !KIND_LABELS[t]);
-      let extraSpan = null;
-      if (extraTags.length) {
-        extraSpan = document.createElement("span");
-        extraSpan.className = "entry-extra-tags";
-        extraSpan.textContent = extraTags.join(", ");
-      }
 
-      const titleBtn = document.createElement("button");
-      titleBtn.className = "entry-title";
-      titleBtn.type = "button";
-      titleBtn.textContent = entry.title;
-      titleBtn.setAttribute("aria-expanded", "false");
-      titleBtn.addEventListener("mouseenter", () => scheduleShow(entry, titleBtn));
-      titleBtn.addEventListener("mouseleave", scheduleHide);
-      titleBtn.addEventListener("focus", () => showCard(entry, titleBtn));
-      titleBtn.addEventListener("click", () => {
-        pinned = true;
-        showCard(entry, titleBtn);
-      });
+      const li = document.createElement("li");
+      const content = `
+        <div class="timeline-box bg-base-100 border border-base-300 cursor-pointer hover:border-${color}" data-entry-id="${entry.id}">
+          <div class="text-xs text-base-content/60">${fmtDate(entry)}</div>
+          <div class="badge badge-${color} badge-xs mt-1">${kind ? KIND_LABELS[kind] : "Uncategorised"}</div>
+          <div class="font-semibold text-sm mt-1">${escapeHtml(entry.title)}</div>
+          ${extraTags.length ? `<div class="text-xs text-base-content/50 mt-1">${extraTags.map((t) => `#${t}`).join(" ")}</div>` : ""}
+        </div>
+      `;
 
-      li.appendChild(dateSpan);
-      li.appendChild(catSpan);
-      if (extraSpan) li.appendChild(extraSpan);
-      li.appendChild(titleBtn);
+      li.innerHTML = `
+        <hr>
+        <div class="timeline-middle">
+          <span class="inline-block w-3 h-3 rounded-full bg-${color}"></span>
+        </div>
+        <div class="timeline-${side}">${content}</div>
+        <hr>
+      `;
       timelineEl.appendChild(li);
+
+      li.querySelector("[data-entry-id]").addEventListener("click", () => showEntry(entry));
     });
 
     if (!todayInserted) {
-      const marker = document.createElement("li");
-      marker.className = "timeline-today";
-      marker.innerHTML = `<span class="label">Today - ${todayStr}</span>`;
-      timelineEl.appendChild(marker);
+      timelineEl.appendChild(markerLi(`Today — ${todayStr}`, "badge-error"));
     }
 
     countEl.textContent = `${visible.length} of ${index.length} entries`;
-  }
-
-  function scheduleShow(entry, anchor) {
-    clearTimeout(hoverTimer);
-    hoverTimer = setTimeout(() => showCard(entry, anchor), 120);
-  }
-
-  function scheduleHide() {
-    if (pinned) return;
-    clearTimeout(hoverTimer);
-    hoverTimer = setTimeout(hideCard, 250);
   }
 
   async function loadEntry(id, file) {
@@ -252,87 +219,44 @@
     return data;
   }
 
-  async function showCard(summaryEntry, anchor) {
-    clearTimeout(hoverTimer);
+  async function showEntry(summaryEntry) {
     const data = await loadEntry(summaryEntry.id, summaryEntry.file);
-
-    const related = (data.related || [])
-      .map((id) => index.find((e) => e.id === id))
-      .filter(Boolean);
-
     const kind = primaryKind(data.tags);
-    const tagChips = data.tags.map((t) => `<span class="tag-chip">${escapeHtml(t)}</span>`).join("");
+    const color = kind ? KIND_COLOR[kind] : "neutral";
+    const related = (data.related || []).map((id) => index.find((e) => e.id === id)).filter(Boolean);
+    const tagChips = data.tags.map((t) => `<span class="badge badge-sm badge-outline">#${escapeHtml(t)}</span>`).join(" ");
 
-    cardEl.innerHTML = `
-      <button class="close-btn" type="button" aria-label="Close">×</button>
-      <h3>${escapeHtml(data.title)}</h3>
-      <div class="meta">${fmtDate(summaryEntry)} · ${kind ? KIND_LABELS[kind] : "Uncategorised"}${data.paywalled ? " · paywalled source" : ""}</div>
-      <div class="tags">${tagChips}</div>
-      <p>${escapeHtml(data.summary)}</p>
-      ${data.quote ? `<blockquote>${escapeHtml(data.quote)}<br><small>verification: ${escapeHtml(data.quote_verified || "unverified")}</small></blockquote>` : ""}
-      ${data.contested ? `<div class="contested"><strong>Contested:</strong> ${escapeHtml(data.contested)}</div>` : ""}
-      <div class="sources">
-        <div class="source-line">
-          <span class="source-title">${escapeHtml(data.source_title)}</span>
-          <span class="source-links">
-            <a href="${data.source_url}" target="_blank" rel="noopener" title="Live source (may have moved or changed)">web</a>
-            <a href="${data.archive_url}" target="_blank" rel="noopener" title="Archived copy, as captured">wayback</a>
-          </span>
-        </div>
+    modalBodyEl.innerHTML = `
+      <h3 class="font-bold text-lg">${escapeHtml(data.title)}</h3>
+      <div class="text-xs text-base-content/60 mt-1">
+        ${fmtDate(summaryEntry)} ·
+        <span class="badge badge-${color} badge-xs align-middle">${kind ? KIND_LABELS[kind] : "Uncategorised"}</span>
+        ${data.paywalled ? " · paywalled source" : ""}
       </div>
-      ${related.length ? `<div class="sources"><strong>Related:</strong> ${related.map((r) => escapeHtml(r.title)).join("; ")}</div>` : ""}
+      <div class="flex flex-wrap gap-1 mt-2">${tagChips}</div>
+      <p class="text-sm mt-3">${escapeHtml(data.summary)}</p>
+      ${data.quote ? `<blockquote class="border-l-4 border-base-300 pl-3 italic text-sm mt-3">${escapeHtml(data.quote)}<br><small class="text-base-content/60">verification: ${escapeHtml(data.quote_verified || "unverified")}</small></blockquote>` : ""}
+      ${data.contested ? `<div class="alert alert-warning alert-soft mt-3 text-sm"><span><strong>Contested:</strong> ${escapeHtml(data.contested)}</span></div>` : ""}
+      <div class="text-sm mt-3">
+        <span>${escapeHtml(data.source_title)}</span>
+        <a class="link link-primary ml-2" href="${data.source_url}" target="_blank" rel="noopener">web</a>
+        <a class="link link-primary ml-1" href="${data.archive_url}" target="_blank" rel="noopener">wayback</a>
+      </div>
+      ${related.length ? `<div class="text-sm mt-3"><strong>Related:</strong> ${related.map((r) => escapeHtml(r.title)).join("; ")}</div>` : ""}
+      <div class="modal-action">
+        <form method="dialog"><button class="btn btn-sm">Close</button></form>
+      </div>
     `;
-
-    cardEl.hidden = false;
-    // The backdrop exists to let a click-pinned card be dismissed by
-    // clicking outside it. It must stay hidden for a passive hover
-    // preview: showing it would sit on top of the hovered title (z-index
-    // 20 vs the title's implicit 0), which triggers a spurious mouseleave
-    // on the title the instant the card appears, closing it again.
-    backdropEl.hidden = !pinned;
-    positionCard(anchor);
-    anchor.setAttribute("aria-expanded", "true");
-
-    cardEl.querySelector(".close-btn").addEventListener("click", () => {
-      pinned = false;
-      hideCard();
-    });
+    modalEl.showModal();
   }
-
-  function positionCard(anchor) {
-    const rect = anchor.getBoundingClientRect();
-    const cardWidth = cardEl.offsetWidth;
-    let left = rect.left + window.scrollX;
-    if (left + cardWidth > window.scrollX + window.innerWidth - 16) {
-      left = window.scrollX + window.innerWidth - cardWidth - 16;
-    }
-    cardEl.style.left = `${Math.max(16, left)}px`;
-    cardEl.style.top = `${rect.bottom + window.scrollY + 6}px`;
-  }
-
-  function hideCard() {
-    cardEl.hidden = true;
-    backdropEl.hidden = true;
-    document.querySelectorAll('.entry-title[aria-expanded="true"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
-  }
-
-  backdropEl.addEventListener("click", () => {
-    pinned = false;
-    hideCard();
-  });
-
-  cardEl.addEventListener("mouseenter", () => clearTimeout(hoverTimer));
-  cardEl.addEventListener("mouseleave", scheduleHide);
 
   function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
-    }[c]));
+    return String(str).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
   function setSortOrder(order) {
     sortOrder = order;
-    sortBtns.forEach((b) => b.classList.toggle("active", b.dataset.sort === order));
+    sortBtns.forEach((b) => b.classList.toggle("btn-active", b.dataset.sort === order));
   }
 
   async function init() {
@@ -348,30 +272,14 @@
     buildFilters();
     setSortOrder(sortOrder);
 
-    sortBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        setSortOrder(btn.dataset.sort);
-        render();
-        writeStateToURL();
-      });
-    });
-
-    searchEl.addEventListener("input", () => {
-      render();
-      writeStateToURL();
-    });
+    sortBtns.forEach((btn) => btn.addEventListener("click", () => { setSortOrder(btn.dataset.sort); render(); writeStateToURL(); }));
+    searchEl.addEventListener("input", () => { render(); writeStateToURL(); });
 
     render();
 
     // Pull summaries in for search once loaded, then re-render so search
     // covers summary text too.
-    await Promise.all(
-      index.map((entry) =>
-        loadEntry(entry.id, entry.file).then((data) => {
-          entry.summarySnippet = data.summary;
-        })
-      )
-    );
+    await Promise.all(index.map((entry) => loadEntry(entry.id, entry.file).then((data) => { entry.summarySnippet = data.summary; })));
     render();
   }
 

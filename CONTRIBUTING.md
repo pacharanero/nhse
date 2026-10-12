@@ -13,12 +13,14 @@ gets its own top-level folder:
 
 - `fdp/` - the Federated Data Platform timeline (`spec/fdp-timeline.md`). The
   only topic so far. Its viewer is `fdp/index.html`, served at `/fdp/`;
-  it shares `css/style.css` and `js/app.js` with the root landing page
-  rather than keeping its own copies.
+  it shares `css/app.css` and `js/theme-toggle.js` with the root landing
+  page rather than keeping its own copies.
 - `index.html` (repo root) - the landing page linking out to each topic's
   viewer, e.g. `fdp/`. When a new topic gets its own viewer, add a card
-  for it here. `css/landing.css` holds landing-page-only styling, layered
-  on top of the shared `css/style.css` tokens.
+  for it here.
+- `css/app.css` - the compiled Tailwind CSS + daisyUI stylesheet every
+  page loads. **Generated, do not hand-edit** - see "Styling" below.
+  `css/tailwind.css` is the source file that generates it.
 - `people/` - biographical role timelines (appointment and departure dates,
   with sources) for individuals who recur across topics, e.g. NHS England
   executives. One YAML file per person. Referenced by topic entries, not
@@ -119,9 +121,24 @@ s/build-index
 
 This regenerates `fdp/index.json` from everything in `fdp/entries/` and checks required fields, unique ids, ISO dates, and that `archive_url` is present. Commit the updated `index.json` alongside your entry.
 
+## Styling
+
+The site uses [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisyui.com/) for layout and components (timeline, badges, modal, theme switching). This has a build step, but only for people editing styles - the committed `css/app.css` is what ships, and viewing the site needs nothing beyond a static file server (see "Local preview" below).
+
+If you're changing markup (adding a new daisyUI component class to `index.html` or `fdp/index.html`, say) or editing `css/tailwind.css` itself, install the dev dependencies once and rebuild:
+
+```sh
+npm install
+npm run build:css
+```
+
+`npm run build:css` runs the Tailwind CLI, scans the HTML/JS for class names in use, and writes a minified `css/app.css`. Commit the regenerated `css/app.css` alongside whatever markup change prompted it - a stale `app.css` silently drops styles for classes added since the last build.
+
+Two daisyUI themes are enabled: `corporate` (light, default) and `business` (dark, used when the visitor's OS prefers dark mode or they've toggled it). The theme toggle button (`[data-theme-toggle]` in `js/theme-toggle.js`) persists the choice to `localStorage` under the `nhse-theme` key, read by a small inline `<head>` script on each page to avoid a flash of the wrong theme. Keep the two theme names in sync between `css/tailwind.css`'s `@plugin "daisyui"` line and `js/theme-toggle.js`'s `LIGHT`/`DARK` constants if either changes.
+
 ## Local preview
 
-The site is static and reads `fdp/index.json` plus each entry's YAML directly in the browser - no build step. The root `index.html` is a landing page linking to each utility (the FDP timeline lives at `/fdp/`); serve the repo root with any static file server, e.g.:
+The site is static and reads `fdp/index.json` plus each entry's YAML directly in the browser - no build step needed just to view it (see "Styling" above for when a CSS rebuild is needed). The root `index.html` is a landing page linking to each utility (the FDP timeline lives at `/fdp/`); serve the repo root with any static file server, e.g.:
 
 ```sh
 python3 -m http.server 8000
@@ -151,6 +168,7 @@ Read once on load, written back with `history.replaceState` (not `pushState`) on
 ## What not to do
 
 - Don't hand-edit `fdp/index.json` - it's generated.
+- Don't hand-edit `css/app.css` - it's generated from `css/tailwind.css` by `npm run build:css`.
 - Don't hand-edit `nhs-board-transcripts/*.vtt` or `manifest.tsv` - those come from `s/fetch-transcripts`.
 - Don't add a scraper or technique for bypassing a paywall. See "Paywalled sources - handling" in the spec.
 - Don't invent day-precision dates to fill in a gap.

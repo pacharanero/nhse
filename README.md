@@ -14,7 +14,7 @@ Public. Live at <https://pacharanero.github.io/nhse/>, landing on a list of util
 - `people/` - biographical role timelines (appointment/departure dates) for individuals who recur across topics.
 - `nhs-board-transcripts/` - YouTube caption tracks for NHS England Board meetings, 2013 onwards, plus `manifest.tsv` mapping video IDs to titles and URLs.
 - `nhs-england-blogs/` - index of every NHS England blog post found, with archive links (`manifest.tsv`, from `s/fetch-blog-index`). 1,825 posts indexed so far (2017 onwards - nothing earlier is showing up in either archive yet), each with a Wayback Machine link and a UK Government Web Archive link. Pre-2025 posts were moved to UKGWA; see the script's header comment for why its own search is effectively broken and how this works around it.
-- `index.html` - landing page linking to each utility. `fdp/index.html` is the FDP timeline viewer, served at `/fdp/`. Both share `css/style.css` and `js/app.js`; no build step, just open via any static file server.
+- `index.html` - landing page linking to each utility. `fdp/index.html` is the FDP timeline viewer, served at `/fdp/`. Both share `css/app.css` (compiled Tailwind CSS + daisyUI, light/dark theme toggle) and viewing needs no build step - just open via any static file server. Editing styles does need a build step; see "Styling" in `CONTRIBUTING.md`.
 - `s/` - the repeated processes.
 - `CONTRIBUTING.md` - how to add an entry, including the archive-at-entry-time step.
 
@@ -38,6 +38,8 @@ python3 -m http.server 8000  # preview the site at localhost:8000 (FDP timeline 
 `s/fetch-transcripts` needs either `yt-dlp` on `PATH` or `uv` installed (it will run yt-dlp via `uvx`). It is idempotent - re-run it whenever a new board meeting is published and it fetches only what is missing.
 
 `s/build-index` needs `pyyaml` (`pip install pyyaml` or equivalent).
+
+Styling (`css/app.css`) is generated from `css/tailwind.css` via `npm install && npm run build:css` - only needed if you're changing markup or styles, not for viewing the site. See "Styling" in `CONTRIBUTING.md`.
 
 ## Caption reliability
 

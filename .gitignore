@@ -17,3 +17,6 @@ nhs-board-transcripts/*.ytdl
 # Python bytecode cache
 __pycache__/
 *.pyc
+
+# npm (CSS build tooling only - see package.json)
+node_modules/
