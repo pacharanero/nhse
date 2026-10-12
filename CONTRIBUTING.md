@@ -60,7 +60,7 @@ Copy an existing entry as a starting point (any file in `fdp/entries/` will do) 
 | `date_precision` | yes | `day`, `month`, or `quarter`. |
 | `tags` | yes | List of lowercase-hyphenated tags, at least one. Lowercase a-z0-9 and hyphens only (`s/build-index` enforces this). See "Tags" below. |
 | `title` | yes | Factual, under ~90 characters, no adjectives. |
-| `summary` | yes | 1-3 sentences. What happened, not why it matters. |
+| `summary` | yes | 1-3 sentences. What happened, not why it matters. Supports inline markdown links - see "Inline source links" below. |
 | `quote` | no | Verbatim, with speaker and role at the time. |
 | `quote_verified` | if `quote` is set | `audio`, `document`, or `secondary`. Board-meeting captions start at `secondary` until someone has listened to the audio - see the spec's "Caption reliability" section. |
 | `source_url` | yes | Primary source where possible. |
@@ -110,6 +110,20 @@ Don't quote from `nhs-board-transcripts/*.vtt` directly. Those are YouTube auto-
 ### Contested claims
 
 If a party denies or disputes something in the entry, add it to the same entry's `contested` field. Don't create a second entry for the denial and don't omit it.
+
+### Inline source links
+
+The goal is for this to be the densest, most easily-navigable resource on the FDP, not just a list of entries - so when `summary` names a specific claim or assertion (someone saying something, a figure, a characterisation), and that claim has its own citable source distinct from the entry's main `source_url`, link it inline rather than leaving the reader to go searching:
+
+```yaml
+summary: >-
+  ... peer Tom Watson publicly defended the company, accusing critics of
+  [\"mob rule\"](https://www.bbc.co.uk/sounds/play/m0032qly).
+```
+
+Plain markdown link syntax, `[text](https://...)` - only `http(s)://` URLs are linkified; anything else is left as literal text, and `s/build-index` rejects a malformed one rather than silently dropping it. Prefer the same archived-copy discipline as `archive_url` where practical, but a live link is better than no link - a streaming-audio source like BBC Sounds often can't be archived at all (see `contested` for recording why, same pattern as the `fdp/sources/` fallback above).
+
+If the claim is substantial enough to want its own date, full quote, and independent sourcing - not just a passing mention - give it its own entry instead (or as well), linked back via `related`. Inline links are for citing a claim in passing; a full entry is for claims that are events in their own right.
 
 ## After adding or editing entries
 

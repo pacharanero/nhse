@@ -234,7 +234,7 @@
         ${data.paywalled ? " · paywalled source" : ""}
       </div>
       <div class="flex flex-wrap gap-1 mt-2">${tagChips}</div>
-      <p class="text-sm mt-3">${escapeHtml(data.summary)}</p>
+      <p class="text-sm mt-3">${linkifySummary(data.summary)}</p>
       ${data.quote ? `<blockquote class="border-l-4 border-base-300 pl-3 italic text-sm mt-3">${escapeHtml(data.quote)}<br><small class="text-base-content/60">verification: ${escapeHtml(data.quote_verified || "unverified")}</small></blockquote>` : ""}
       ${data.contested ? `<div class="alert alert-warning alert-soft mt-3 text-sm"><span><strong>Contested:</strong> ${escapeHtml(data.contested)}</span></div>` : ""}
       <div class="text-sm mt-3">
@@ -248,6 +248,28 @@
       </div>
     `;
     modalEl.showModal();
+  }
+
+  // Renders `summary`'s inline markdown links - see "Inline source links"
+  // in CONTRIBUTING.md. Matches against the raw string (not pre-escaped)
+  // so a URL containing '&' isn't corrupted by HTML-escaping before the
+  // link regex sees it; each text/URL piece is escaped individually
+  // instead. s/build-index already rejects non-http(s) URLs at commit
+  // time, but this still only linkifies http(s) targets as a second line
+  // of defence.
+  function linkifySummary(summary) {
+    const text = String(summary);
+    const re = /\[([^\]]+)\]\((https?:\/\/[^)]*)\)/g;
+    let result = "";
+    let lastIndex = 0;
+    let match;
+    while ((match = re.exec(text)) !== null) {
+      result += escapeHtml(text.slice(lastIndex, match.index));
+      result += `<a class="link link-primary" href="${escapeHtml(match[2])}" target="_blank" rel="noopener">${escapeHtml(match[1])}</a>`;
+      lastIndex = re.lastIndex;
+    }
+    result += escapeHtml(text.slice(lastIndex));
+    return result;
   }
 
   function escapeHtml(str) {

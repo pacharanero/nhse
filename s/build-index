@@ -31,6 +31,8 @@ VALID_PRECISION = {"day", "month", "quarter"}
 VALID_VERIFICATION = {"audio", "document", "secondary"}
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 TAG_SLUG = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+# Inline markdown links in `summary` - see "Inline source links" in CONTRIBUTING.md.
+MD_LINK = re.compile(r"\[([^\]]+)\]\(([^)]*)\)")
 
 
 def main():
@@ -76,6 +78,12 @@ def main():
                         errors.append(f"{path.name}: tag '{t}' is not a lowercase-hyphenated slug")
                 if len(set(tags)) != len(tags):
                     errors.append(f"{path.name}: duplicate tag in {tags}")
+
+        summary = data.get("summary")
+        if summary:
+            for text, url in MD_LINK.findall(summary):
+                if not url.startswith(("http://", "https://")):
+                    errors.append(f"{path.name}: inline link '[{text}]({url})' in summary must be an http(s) URL")
 
         if data.get("quote") and not data.get("quote_verified"):
             errors.append(f"{path.name}: has 'quote' but no 'quote_verified'")
