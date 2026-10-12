@@ -607,6 +607,18 @@
     "file": "entries/2026-10-01-palantir-protests-45108-objections.yaml"
   },
   {
+    "id": "2026-10-10-tom-watson-defends-palantir-mob-rule",
+    "date": "2026-10-10",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "bbc"
+    ],
+    "title": "Tom Watson defends Palantir against \"mob rule\" criticism on BBC Radio 4",
+    "file": "entries/2026-10-10-tom-watson-defends-palantir-mob-rule.yaml"
+  },
+  {
     "id": "2027-02-15-fdp-break-clause-deadline",
     "date": "2027-02-15",
     "date_precision": "day",
