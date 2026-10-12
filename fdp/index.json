@@ -184,6 +184,18 @@
     "file": "entries/2022-04-13-fdp-supplier-briefing.yaml"
   },
   {
+    "id": "2022-11-17-ndg-blog-pursuit-of-balance-public-trust",
+    "date": "2022-11-17",
+    "date_precision": "day",
+    "tags": [
+      "legal",
+      "nhse",
+      "ndg"
+    ],
+    "title": "National Data Guardian sets out early advice on public trust ahead of FDP procurement",
+    "file": "entries/2022-11-17-ndg-blog-pursuit-of-balance-public-trust.yaml"
+  },
+  {
     "id": "2023-01-10-fdp-contract-notice-published",
     "date": "2023-01-10",
     "date_precision": "day",
@@ -260,6 +272,19 @@
     ],
     "title": "Foxglove launches \"Email your MP\" campaign against FDP procurement",
     "file": "entries/2023-08-02-foxglove-launches-fdp-campaign.yaml"
+  },
+  {
+    "id": "2023-08-24-ndg-blog-building-bridges-palantir-public-trust",
+    "date": "2023-08-24",
+    "date_precision": "day",
+    "tags": [
+      "legal",
+      "nhse",
+      "palantir",
+      "ndg"
+    ],
+    "title": "National Data Guardian names Palantir in further advice on FDP public trust",
+    "file": "entries/2023-08-24-ndg-blog-building-bridges-palantir-public-trust.yaml"
   },
   {
     "id": "2023-10-24-diwakar-powis-power-blog-fdp-patients",
@@ -481,6 +506,32 @@
     "file": "entries/2026-04-16-westminster-hall-debate-fdp.yaml"
   },
   {
+    "id": "2026-05-11-ft-palantir-unlimited-ndit-access-revealed",
+    "date": "2026-05-11",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "nhse",
+      "digital-health"
+    ],
+    "title": "FT reveals NHS England plan to grant Palantir contractors \"unlimited access\" to NDIT patient data",
+    "file": "entries/2026-05-11-ft-palantir-unlimited-ndit-access-revealed.yaml"
+  },
+  {
+    "id": "2026-06-03-ndg-statement-ndit-access-clarification",
+    "date": "2026-06-03",
+    "date_precision": "day",
+    "tags": [
+      "legal",
+      "nhse",
+      "palantir",
+      "ndg"
+    ],
+    "title": "National Data Guardian seeks clarification after NDIT contractor-access report, NHS England later admits DPIA was wrong",
+    "file": "entries/2026-06-03-ndg-statement-ndit-access-clarification.yaml"
+  },
+  {
     "id": "2026-06-03-science-committee-report-break-clause",
     "date": "2026-06-03",
     "date_precision": "day",
@@ -534,6 +585,31 @@
     ],
     "title": "Health and Social Care Committee tells minister to drop Palantir and find an alternative",
     "file": "entries/2026-07-09-health-social-care-committee-letter-break-clause.yaml"
+  },
+  {
+    "id": "2026-07-12-nhs-analysts-together-palantir-letter",
+    "date": "2026-07-12",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse"
+    ],
+    "title": "Over 100 NHS data and digital staff sign open letter calling to end Palantir partnership",
+    "file": "entries/2026-07-12-nhs-analysts-together-palantir-letter.yaml"
+  },
+  {
+    "id": "2026-07-13-eko-yougov-poll-us-tech-unacceptable",
+    "date": "2026-07-13",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse",
+      "statistics"
+    ],
+    "title": "YouGov poll for Eko finds 76% consider it unacceptable for US tech firms to handle NHS patient data",
+    "file": "entries/2026-07-13-eko-yougov-poll-us-tech-unacceptable.yaml"
   },
   {
     "id": "2026-07-14-democracy-for-sale-project-onion-investigation",
@@ -617,6 +693,21 @@
     ],
     "title": "Tom Watson defends Palantir against \"mob rule\" criticism on BBC Radio 4",
     "file": "entries/2026-10-10-tom-watson-defends-palantir-mob-rule.yaml"
+  },
+  {
+    "id": "2026-10-12-ndg-advises-minister-trust",
+    "date": "2026-10-12",
+    "date_precision": "day",
+    "tags": [
+      "legal",
+      "nhse",
+      "palantir",
+      "ndg",
+      "opt-out",
+      "statistics"
+    ],
+    "title": "National Data Guardian advises minister that trust should carry substantial weight in FDP decision",
+    "file": "entries/2026-10-12-ndg-advises-minister-trust.yaml"
   },
   {
     "id": "2027-02-15-fdp-break-clause-deadline",

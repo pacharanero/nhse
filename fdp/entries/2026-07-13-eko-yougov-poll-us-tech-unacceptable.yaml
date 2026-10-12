@@ -1,0 +1,28 @@
+id: 2026-07-13-eko-yougov-poll-us-tech-unacceptable
+date: 2026-07-13
+date_precision: day
+tags:
+  - civil
+  - palantir
+  - nhse
+  - statistics
+title: YouGov poll for Eko finds 76% consider it unacceptable for US tech firms to handle NHS patient data
+summary: >-
+  A YouGov poll of 2,097 UK adults, fieldwork 6-7 July 2026 and commissioned
+  by corporate-accountability campaign group Eko, found 76% considered it
+  unacceptable for government agencies to contract US technology firms to
+  handle patient medical data on behalf of the NHS (12% acceptable); 69%
+  said it would make them feel more negative towards a political party
+  doing so. Separately, 65% said Palantir's NHS contract specifically
+  should not continue. Eko's
+  [press release](https://eko.org/en/media/three-quarters-of-labour-voters-oppose-palantir-contract-with-nhs-new-poll-finds)
+  framed the results around the government's then-ongoing review of
+  whether to exercise the FDP's break clause.
+quote: "Do you think it is acceptable or unacceptable for government agencies and departments in the UK to contract US technology firms for the following purposes? Handling patient medical data on behalf of the NHS. Unacceptable: 76%."
+quote_verified: document
+source_url: https://d3nkl3psvxxpe9.cloudfront.net/documents/Eko_Results_260707_w.pdf
+source_title: "YouGov / Eko survey results (full tables), fieldwork 6-7 July 2026"
+archive_url: https://web.archive.org/web/20261012143536/https://d3nkl3psvxxpe9.cloudfront.net/documents/Eko_Results_260707_w.pdf
+related:
+  - 2026-06-03-science-committee-report-break-clause
+  - 2026-10-12-ndg-advises-minister-trust

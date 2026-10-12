@@ -1,0 +1,43 @@
+id: 2026-10-12-ndg-advises-minister-trust
+date: 2026-10-12
+date_precision: day
+tags:
+  - legal
+  - nhse
+  - palantir
+  - ndg
+  - opt-out
+  - statistics
+title: National Data Guardian advises minister that trust should carry substantial weight in FDP decision
+summary: >-
+  In a letter dated 9 October 2026 and published 12 October, National Data
+  Guardian Dr Nicola Byrne advised the Minister for Health Innovation,
+  James Frith, that "the 'trust factor'" should be given substantial
+  weight in decisions about the FDP's future, including how it is
+  delivered and how its benefits are evidenced and communicated. Her
+  advice does not recommend a particular contractual outcome. She set out
+  three recommendations: give public and professional trust substantial
+  weight when evaluating any supplier of a system involving health and
+  care data; ensure decisions are supported by clear, objective evidence
+  of benefits and limitations, communicated transparently, within a
+  culture open to challenge; and address concerns about interoperability,
+  vendor lock-in and data sovereignty, including considering open
+  standards and open-source technology. The accompanying annex cites a
+  recent National Data Opt-Out rise coinciding with media coverage of the
+  FDP and its supplier, and
+  [research for Understanding Patient Data](https://www.understandingpatientdata.org.uk/sites/default/files/2026-07/Health%20data%20in%20the%20headlines%20-%20Changing%20media%20landscape.pdf)
+  finding 84% of 243 Palantir/FDP-related articles (of 1,329 health-data
+  articles analysed, March 2025-June 2026) were negative in tone.
+quote: "Whatever decision is taken about the current supplier, the FDP programme must command sufficient public and professional trust. This is important not only to the future of the FDP, but to wider trust in how the NHS uses people's data."
+quote_verified: document
+source_url: https://www.gov.uk/government/publications/ndg-advises-minister-on-public-and-professional-trust-in-the-fdp
+source_title: "National Data Guardian: NDG advises minister on public and professional trust in the FDP (GOV.UK, 12 October 2026)"
+archive_url: https://web.archive.org/web/20261012143548/https://www.gov.uk/government/publications/ndg-advises-minister-on-public-and-professional-trust-in-the-fdp
+related:
+  - 2022-11-17-ndg-blog-pursuit-of-balance-public-trust
+  - 2023-08-24-ndg-blog-building-bridges-palantir-public-trust
+  - 2026-06-03-ndg-statement-ndit-access-clarification
+  - 2026-07-12-nhs-analysts-together-palantir-letter
+  - 2026-07-13-eko-yougov-poll-us-tech-unacceptable
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp

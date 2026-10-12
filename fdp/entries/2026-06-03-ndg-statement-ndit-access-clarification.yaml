@@ -1,0 +1,38 @@
+id: 2026-06-03-ndg-statement-ndit-access-clarification
+date: 2026-06-03
+date_precision: day
+tags:
+  - legal
+  - nhse
+  - palantir
+  - ndg
+title: National Data Guardian seeks clarification after NDIT contractor-access report, NHS England later admits DPIA was wrong
+summary: >-
+  Responding to correspondence via the public "Not With My NHS Data"
+  campaign about the FT's reporting on contractor access, National Data
+  Guardian Dr Nicola Byrne published a statement saying the FDP's Data
+  Protection Impact Assessment (DPIA) she and the Information
+  Commissioner's Office had reviewed stated access to identifiable
+  patient data would be limited to NHS staff with a legitimate need - but
+  that media reporting, and subsequent confirmation from the programme
+  team, showed external contractor staff also had access within the
+  NDIT. She wrote to NHS England seeking clarification of the
+  inconsistency. NHS England
+  [responded on 19 June](https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/security-privacy/response-to-the-national-data-guardians-request/),
+  confirming some external supplier staff can access identifiable patient
+  information for specific technical purposes "under its direction," and
+  calling the access "technically necessary" - a characterisation Byrne
+  said she was "not in a position to independently verify." In a 28 July
+  update to the same statement, NHS England acknowledged the DPIA "did
+  not accurately reflect the operational arrangements in place," called
+  it an error, apologised, and committed to correcting it -
+  [reported separately](https://www.theregister.com/public-sector/2026/07/29/nhs-england-rapped-over-inaccurate-palantir-patient-data-disclosure/5280233)
+  as NHS England being "rapped" over the inaccurate disclosure.
+quote: "NHS England states that this access is technically necessary. As an independent body not involved in the platform's operation we are not in a position to independently verify that assessment."
+quote_verified: document
+source_url: https://www.gov.uk/government/news/national-data-guardian-statement-on-nhs-federated-data-platform-data-access-in-response-to-the-not-with-my-nhs-data-campaign
+source_title: "National Data Guardian statement on NHS Federated Data Platform data access, in response to the Not With My NHS Data campaign (GOV.UK, published 3 June 2026, last updated 28 July 2026)"
+archive_url: https://web.archive.org/web/20261012143134/https://www.gov.uk/government/news/national-data-guardian-statement-on-nhs-federated-data-platform-data-access-in-response-to-the-not-with-my-nhs-data-campaign
+related:
+  - 2026-05-11-ft-palantir-unlimited-ndit-access-revealed
+  - 2026-10-12-ndg-advises-minister-trust

@@ -1,0 +1,30 @@
+id: 2026-05-11-ft-palantir-unlimited-ndit-access-revealed
+date: 2026-05-11
+date_precision: day
+tags:
+  - media
+  - palantir
+  - nhse
+  - digital-health
+title: FT reveals NHS England plan to grant Palantir contractors "unlimited access" to NDIT patient data
+summary: >-
+  The Financial Times reported that NHS England planned to create an
+  "admin" role granting external staff, including Palantir's, "unlimited
+  access" to identifiable patient data within the Federated Data
+  Platform's National Data Integration Tenant (NDIT) - a shift from the
+  existing practice of case-by-case Controlled Data Access requests. An
+  internal briefing note, written by a senior NHS data official in April
+  2026 and seen by the FT, acknowledged a "risk of loss of public
+  confidence" and said external workers had requested blanket access
+  because applying for individual approvals was "too inconvenient." NHS
+  England told Digital Health News it had "strict policies" and audits in
+  place; Palantir said it could only process data as instructed by NHS
+  England as data controller.
+quote: "This is not only about Palantir, hence we have referred to non-NHSE staff, but there is currently considerable public interest and concern about how much access to patient data Palantir/Palantir staff have."
+quote_verified: document
+source_url: https://www.digitalhealth.net/2026/05/palantir-to-be-granted-unlimited-access-to-nhs-patient-data/
+source_title: "Digital Health News (citing the Financial Times): Palantir to be granted 'unlimited access' to NHS patient data"
+archive_url: https://web.archive.org/web/20260511134517/https://www.digitalhealth.net/2026/05/palantir-to-be-granted-unlimited-access-to-nhs-patient-data/
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2026-06-03-ndg-statement-ndit-access-clarification
