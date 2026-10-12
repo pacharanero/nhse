@@ -16,9 +16,12 @@ summary: >-
   trusts to the Health and Social Care Committee and elsewhere as
   evidence of the platform's popularity and success. The underlying FOI
   request and response, including the raw weekly trust-level usage data
-  by product, are published on WhatDoTheyKnow as a request to NHS
-  England (a near-identical request to DHSC drew a response that DHSC
-  does not hold this data).
+  by product, are
+  [published on WhatDoTheyKnow](https://www.whatdotheyknow.com/request/national_usage_statistics_for_fe_2)
+  as a request to NHS England (a near-identical request to DHSC drew a
+  response that DHSC does not hold this data) - see
+  2026-06-11-foi-fdp-weekly-usage-data-cost-per-login for the full
+  dataset and this repo's own cost-per-login calculation from it.
 quote: "Rob Thompson, for example, chief digital, data, and technology officer across the Department of Health and Social Care and NHS England, told the Commons' Health and Social Care Committee last month that this metric indicated the FDP's popularity among trusts."
 quote_verified: secondary
 paywalled: true
@@ -27,6 +30,7 @@ source_title: "The BMJ: Third of NHS hospitals signed up to Palantir software se
 archive_url: https://web.archive.org/web/20260828031631/https://www.bmj.com/content/394/bmj-2026-100294
 related:
   - 2026-06-03-science-committee-report-break-clause
+  - 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
   - 2026-07-09-health-social-care-committee-letter-break-clause
   - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
 contested: >-
