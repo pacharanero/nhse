@@ -1,0 +1,26 @@
+# Tom Watson (Lord Watson of Wyre Forest, Palantir SVP) cumulative
+# public-appearance tracker, media only, from his 18 September 2026
+# Palantir appointment onward. Sibling to fdp/bartlett-appearances.yaml -
+# see CONTRIBUTING.md "Appearance trackers" for the schema and the
+# self-published vs third-party press/media distinction.
+
+- date: 2026-09-18
+  outlet: The Guardian
+  self: false
+  title: Former Labour deputy leader Tom Watson joins Palantir
+  url: https://www.theguardian.com/politics/2026/sep/18/former-labour-deputy-leader-tom-watson-joins-palantir
+- date: 2026-09-22
+  outlet: Palantir (LinkedIn)
+  self: true
+  title: "\"Today Tom Watson joins Palantir\" - company announcement"
+  url: https://www.linkedin.com/posts/palantir-technologies_today-tom-watson-joins-palantir-tom-has-activity-7506618743603679232-x7cw
+- date: 2026-10-09
+  outlet: The Guardian
+  self: false
+  title: "Palantir's Tom Watson says 'mob rule' must not dictate awarding of government contracts"
+  url: https://www.theguardian.com/technology/2026/oct/09/palantir-tom-watson-mob-rule-government-contracts
+- date: 2026-10-10
+  outlet: BBC Radio 4
+  self: false
+  title: "Political Thinking with Nick Robinson: Don't bow to 'mob rule' on Palantir"
+  url: https://www.bbc.co.uk/sounds/play/m0032qly

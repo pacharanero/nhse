@@ -7,8 +7,13 @@
 #
 # Fields: date (YYYY-MM-DD), title, url, outlet (shown as the dot's
 # label prefix), self (true = a channel he fully controls - his own
-# blog, his own LinkedIn; false = earned third-party media).
+# blog, his own LinkedIn; false = third-party press/media coverage).
 
+- date: 2026-01-27
+  outlet: Companies House
+  self: true
+  title: Bartlett Data Ltd incorporated (company no. 16992631)
+  url: https://web.archive.org/web/20261013074837/https://find-and-update.company-information.service.gov.uk/company/16992631
 - date: 2026-04-13
   outlet: LinkedIn
   self: true

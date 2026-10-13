@@ -52,13 +52,22 @@
   let index = [];
   let sortOrder = "desc"; // "desc" = newest first (default), "asc" = oldest first
 
-  // Tom Bartlett cumulative-appearance tracker - see fdp/bartlett-appearances.yaml
-  // and "Appearance trackers" in CONTRIBUTING.md. A lightweight dot on the
-  // timeline, not a full entry: no tags, no filtering, no modal - just a
-  // numbered link out to the source.
-  const bartlettToggleEl = document.getElementById("bartlett-toggle");
-  let bartlett = [];
-  let showBartlett = true;
+  // Cumulative-appearance trackers - see fdp/bartlett-appearances.yaml,
+  // fdp/watson-appearances.yaml, and "Appearance trackers" in
+  // CONTRIBUTING.md. Lightweight dots on the timeline, not full entries:
+  // no tags, no filtering, no modal - just a numbered link out to the
+  // source. Add a new { key, prefix, file, toggleId } here (plus the
+  // matching YAML, build script, and toggle button in fdp/index.html) to
+  // track another frequent voice the same way.
+  const TRACKERS = [
+    { key: "bartlett", prefix: "TB", label: "Tom Bartlett", file: "bartlett-appearances.json", toggleId: "bartlett-toggle" },
+    { key: "watson", prefix: "TW", label: "Tom Watson", file: "watson-appearances.json", toggleId: "watson-toggle" },
+  ];
+  TRACKERS.forEach((t) => {
+    t.el = document.getElementById(t.toggleId);
+    t.items = [];
+    t.shown = true;
+  });
 
   // --- URL querystring state -------------------------------------------
   // Convention, meant to generalise to any topic site in this repo:
@@ -76,7 +85,7 @@
     if (q) searchEl.value = q;
     const sort = params.get("sort");
     if (sort === "asc" || sort === "desc") sortOrder = sort;
-    if (params.get("bartlett") === "0") showBartlett = false;
+    TRACKERS.forEach((t) => { if (params.get(t.key) === "0") t.shown = false; });
   }
 
   function writeStateToURL() {
@@ -84,7 +93,7 @@
     if (activeTags.size) params.set("tags", Array.from(activeTags).join(","));
     if (searchEl.value.trim()) params.set("q", searchEl.value.trim());
     if (sortOrder !== "desc") params.set("sort", sortOrder);
-    if (!showBartlett) params.set("bartlett", "0");
+    TRACKERS.forEach((t) => { if (!t.shown) params.set(t.key, "0"); });
     const qs = params.toString();
     window.history.replaceState(null, "", window.location.pathname + (qs ? `?${qs}` : ""));
   }
@@ -166,12 +175,12 @@
   }
 
   // `self: true` = a channel the subject fully controls (own blog, own
-  // LinkedIn) - no gatekeeping involved. `self: false` = earned
-  // third-party media (a trade press column, a quote in a national
+  // LinkedIn) - no gatekeeping involved. `self: false` = third-party
+  // press/media coverage (a trade press column, a quote in a national
   // newspaper) - the kind of access that's harder to get from a standing
   // start without some help. Styled differently so the pattern is
   // visible at a glance, not just in the data.
-  function bartlettLi(appearance) {
+  function trackerLi(appearance, prefix) {
     const li = document.createElement("li");
     const dotClass = appearance.self ? "bg-base-content/30" : "bg-secondary";
     const badgeClass = appearance.self
@@ -184,7 +193,7 @@
       </div>
       <div class="timeline-end">
         <a class="badge badge-xs gap-1 ${badgeClass}" href="${appearance.url}" target="_blank" rel="noopener" title="${escapeHtml(appearance.outlet)}: ${escapeHtml(appearance.title)}">
-          <span class="font-semibold">TB#${appearance.n}</span>
+          <span class="font-semibold">${prefix}#${appearance.n}</span>
           <span class="max-w-[16rem] truncate">${escapeHtml(appearance.outlet)}: ${escapeHtml(appearance.title)}</span>
         </a>
       </div>
@@ -193,15 +202,18 @@
     return li;
   }
 
-  // Merges the main (filtered, sorted) entries with the Bartlett
-  // appearance dots into one date-ordered sequence, so markers interleave
-  // correctly regardless of sort order. Bartlett items are never filtered
-  // by tag/search - the toggle is the only way to hide them.
+  // Merges the main (filtered, sorted) entries with every enabled
+  // tracker's appearance dots into one date-ordered sequence, so markers
+  // interleave correctly regardless of sort order. Tracker items are
+  // never filtered by tag/search - each toggle is the only way to hide
+  // its dots.
   function mergedTimelineItems() {
     const entries = sortedVisible().map((e) => ({ kind: "entry", date: e.date, id: e.id, data: e }));
-    const dots = showBartlett
-      ? bartlett.map((b) => ({ kind: "bartlett", date: b.date, id: `bartlett-${b.n}`, data: b }))
-      : [];
+    const dots = [];
+    TRACKERS.forEach((t) => {
+      if (!t.shown) return;
+      t.items.forEach((item) => dots.push({ kind: "tracker", prefix: t.prefix, date: item.date, id: `${t.key}-${item.n}`, data: item }));
+    });
     const merged = entries.concat(dots);
     const dir = sortOrder === "asc" ? 1 : -1;
     merged.sort((a, b) => dir * (a.date < b.date ? -1 : a.date > b.date ? 1 : a.id < b.id ? -1 : 1));
@@ -228,8 +240,8 @@
         lastYear = year;
       }
 
-      if (item.kind === "bartlett") {
-        timelineEl.appendChild(bartlettLi(item.data));
+      if (item.kind === "tracker") {
+        timelineEl.appendChild(trackerLi(item.data, item.prefix));
         return;
       }
 
@@ -242,8 +254,10 @@
       const li = document.createElement("li");
       const content = `
         <div class="timeline-box bg-base-100 border border-base-300 cursor-pointer hover:border-${color}" data-entry-id="${entry.id}">
-          <div class="text-xs text-base-content/60">${fmtDate(entry)}</div>
-          <div class="badge badge-${color} badge-xs mt-1">${kind ? KIND_LABELS[kind] : "Uncategorised"}</div>
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-xs text-base-content/60">${fmtDate(entry)}</span>
+            <span class="badge badge-${color} badge-xs">${kind ? KIND_LABELS[kind] : "Uncategorised"}</span>
+          </div>
           <div class="font-semibold text-sm mt-1">${escapeHtml(entry.title)}</div>
           ${extraTags.length ? `<div class="text-xs text-base-content/50 mt-1">${extraTags.map((t) => `#${t}`).join(" ")}</div>` : ""}
         </div>
@@ -267,9 +281,11 @@
     }
 
     const visibleCount = items.filter((i) => i.kind === "entry").length;
-    const bartlettCount = showBartlett ? bartlett.length : 0;
+    const trackerCounts = TRACKERS
+      .filter((t) => t.shown && t.items.length)
+      .map((t) => `${t.items.length} ${t.label} appearances`);
     countEl.textContent = `${visibleCount} of ${index.length} entries`
-      + (bartlettCount ? ` · ${bartlettCount} Tom Bartlett appearances` : "");
+      + (trackerCounts.length ? ` · ${trackerCounts.join(" · ")}` : "");
   }
 
   async function loadEntry(id, file) {
@@ -343,11 +359,11 @@
     sortBtns.forEach((b) => b.classList.toggle("btn-active", b.dataset.sort === order));
   }
 
-  function setBartlettToggle(shown) {
-    showBartlett = shown;
-    if (bartlettToggleEl) {
-      bartlettToggleEl.classList.toggle("btn-active", shown);
-      bartlettToggleEl.setAttribute("aria-pressed", String(shown));
+  function setTrackerToggle(t, shown) {
+    t.shown = shown;
+    if (t.el) {
+      t.el.classList.toggle("btn-active", shown);
+      t.el.setAttribute("aria-pressed", String(shown));
     }
   }
 
@@ -357,8 +373,10 @@
     const res = await fetch("index.json");
     index = await res.json();
 
-    const bartlettRes = await fetch("bartlett-appearances.json");
-    bartlett = await bartlettRes.json();
+    await Promise.all(TRACKERS.map(async (t) => {
+      const r = await fetch(t.file);
+      t.items = await r.json();
+    }));
 
     const otherTags = new Set();
     index.forEach((e) => e.tags.forEach((t) => { if (!KIND_LABELS[t]) otherTags.add(t); }));
@@ -366,13 +384,13 @@
 
     buildFilters();
     setSortOrder(sortOrder);
-    setBartlettToggle(showBartlett);
+    TRACKERS.forEach((t) => setTrackerToggle(t, t.shown));
 
     sortBtns.forEach((btn) => btn.addEventListener("click", () => { setSortOrder(btn.dataset.sort); render(); writeStateToURL(); }));
     searchEl.addEventListener("input", () => { render(); writeStateToURL(); });
-    if (bartlettToggleEl) {
-      bartlettToggleEl.addEventListener("click", () => { setBartlettToggle(!showBartlett); render(); writeStateToURL(); });
-    }
+    TRACKERS.forEach((t) => {
+      if (t.el) t.el.addEventListener("click", () => { setTrackerToggle(t, !t.shown); render(); writeStateToURL(); });
+    });
 
     render();
 

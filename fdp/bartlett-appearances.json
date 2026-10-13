@@ -1,11 +1,19 @@
 [
   {
+    "date": "2026-01-27",
+    "outlet": "Companies House",
+    "self": true,
+    "title": "Bartlett Data Ltd incorporated (company no. 16992631)",
+    "url": "https://web.archive.org/web/20261013074837/https://find-and-update.company-information.service.gov.uk/company/16992631",
+    "n": 1
+  },
+  {
     "date": "2026-04-13",
     "outlet": "LinkedIn",
     "self": true,
     "title": "Debut post as an independent FDP commentator",
     "url": "https://www.linkedin.com/posts/tom-l-bartlett_i-spent-22-years-building-data-systems-inside-activity-7449448940178935808-l239",
-    "n": 1
+    "n": 2
   },
   {
     "date": "2026-04-16",
@@ -13,7 +21,7 @@
     "self": false,
     "title": "Replacing Palantir would be 'monumental task', says former NHSE director (paywalled)",
     "url": "https://www.hsj.co.uk/technology-and-innovation/replacing-palantir-would-be-monumental-task-says-former-nhse-director/7041502.article",
-    "n": 2
+    "n": 3
   },
   {
     "date": "2026-04-30",
@@ -21,7 +29,7 @@
     "self": false,
     "title": "Inside FDP - part 1: Understanding the problems facing NHS data",
     "url": "https://www.computerweekly.com/opinion/Inside-FDP-part-1-Understanding-the-problems-facing-NHS-data",
-    "n": 3
+    "n": 4
   },
   {
     "date": "2026-05-07",
@@ -29,7 +37,7 @@
     "self": false,
     "title": "Inside FDP - part 2: Delivering on the NHS vision for data",
     "url": "https://www.computerweekly.com/opinion/Inside-FDP-part-2-Delivering-on-the-NHS-vision-for-data",
-    "n": 4
+    "n": 5
   },
   {
     "date": "2026-05-14",
@@ -37,7 +45,7 @@
     "self": false,
     "title": "Inside FDP - part 3: The data architecture that makes it work",
     "url": "https://www.computerweekly.com/opinion/Inside-FDP-part-3-The-data-architecture-that-makes-it-work",
-    "n": 5
+    "n": 6
   },
   {
     "date": "2026-05-21",
@@ -45,7 +53,7 @@
     "self": false,
     "title": "Inside FDP - part 4: The NHS data model",
     "url": "https://www.computerweekly.com/opinion/Inside-FDP-part-4-The-NHS-data-model",
-    "n": 6
+    "n": 7
   },
   {
     "date": "2026-05-28",
@@ -53,7 +61,7 @@
     "self": false,
     "title": "Inside FDP - part 5: Addressing the objections",
     "url": "https://www.computerweekly.com/opinion/Inside-FDP-part-5-Addressing-the-objections",
-    "n": 7
+    "n": 8
   },
   {
     "date": "2026-05-29",
@@ -61,7 +69,7 @@
     "self": false,
     "title": "The truth behind the 'Darth Vader' data firm Palantir (quoted defending Palantir; describes him as 'until last month was a consultant on the project')",
     "url": "https://www.dailymail.com/news/article-15859557/Darth-Vader-Palantir-Sadiq-Khan-Met-Police-contract-NHS.html",
-    "n": 8
+    "n": 9
   },
   {
     "date": "2026-07-07",
@@ -69,7 +77,7 @@
     "self": true,
     "title": "Parliament knows. The regulators know. The professional bodies know. No Trust board has acted.",
     "url": "https://www.bartlettdata.co.uk/post/parliament-knows-regulators-know-no-trust-board-has-acted",
-    "n": 9
+    "n": 10
   },
   {
     "date": "2026-07-09",
@@ -77,7 +85,7 @@
     "self": false,
     "title": "The FDP debate is looking in the rear-view mirror - what's around the next bend?",
     "url": "https://www.computerweekly.com/news/366645657/The-FDP-debate-is-looking-in-the-rear-view-mirror-whats-around-the-next-bend",
-    "n": 10
+    "n": 11
   },
   {
     "date": "2026-07-14",
@@ -85,7 +93,7 @@
     "self": false,
     "title": "MPs heard Manchester is better than FDP. It seems they were misled",
     "url": "https://www.computerweekly.com/opinion/MPs-heard-Manchester-is-better-than-FDP-It-seems-they-were-misled",
-    "n": 11
+    "n": 12
   },
   {
     "date": "2026-07-16",
@@ -93,7 +101,7 @@
     "self": true,
     "title": "Wrigley Is Leading Burnham Down an FDP Off-Ramp to Nowhere",
     "url": "https://www.bartlettdata.co.uk/post/wrigley-fdp-off-ramp-burnham",
-    "n": 12
+    "n": 13
   },
   {
     "date": "2026-08-09",
@@ -101,7 +109,7 @@
     "self": true,
     "title": "The rise of Shadow AI: A new mental health crisis for the NHS",
     "url": "https://www.bartlettdata.co.uk/post/shadow-ai-nhs-mental-health",
-    "n": 13
+    "n": 14
   },
   {
     "date": "2026-08-12",
@@ -109,7 +117,7 @@
     "self": false,
     "title": "NHS data casts fresh light on Palantir row (quoted on OSR/Health Foundation methodology dispute)",
     "url": "https://www.pressreader.com/uk/city-am/20260812/281517937943941",
-    "n": 14
+    "n": 15
   },
   {
     "date": "2026-08-13",
@@ -117,7 +125,7 @@
     "self": true,
     "title": "The NHS has invested over a billion in software it has no power to deploy",
     "url": "https://www.bartlettdata.co.uk/post/nhs-software-no-power-to-deploy",
-    "n": 15
+    "n": 16
   },
   {
     "date": "2026-08-18",
@@ -125,7 +133,7 @@
     "self": false,
     "title": "NHS halts Palantir training amid pressure from Labour MPs and pro-Palestine lobby to scrap \u00a3330m contract",
     "url": "https://www.dailymail.com/news/article-16060931/NHS-halts-Palantir-training-amid-pressure-Labour-MPs-pro-Palestine-lobby-scrap-330m-contract.html",
-    "n": 16
+    "n": 17
   },
   {
     "date": "2026-08-18",
@@ -133,7 +141,7 @@
     "self": false,
     "title": "NHS halts all Palantir software training (same story, same day, syndicated via PressReader)",
     "url": "https://www.pressreader.com/uk/the-daily-telegraph/20260818/281548002726024",
-    "n": 17
+    "n": 18
   },
   {
     "date": "2026-09-03",
@@ -141,7 +149,7 @@
     "self": true,
     "title": "Is your data team solving the wrong problem?",
     "url": "https://www.bartlettdata.co.uk/post/is-your-data-team-solving-the-wrong-problem",
-    "n": 18
+    "n": 19
   },
   {
     "date": "2026-09-10",
@@ -149,7 +157,7 @@
     "self": true,
     "title": "New Minister Comes Out Fighting on Federated Data Platform",
     "url": "https://www.bartlettdata.co.uk/post/new-minister-comes-out-fighting-on-fdp",
-    "n": 19
+    "n": 20
   },
   {
     "date": "2026-10-02",
@@ -157,6 +165,6 @@
     "self": false,
     "title": "The NHS accidentally bought the most valuable AI capability in enterprise software",
     "url": "https://www.computerweekly.com/opinion/The-NHS-accidentally-bought-the-most-valuable-AI-capability-in-enterprise-software",
-    "n": 20
+    "n": 21
   }
 ]

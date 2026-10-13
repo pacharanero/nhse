@@ -708,6 +708,18 @@
     "file": "entries/2026-09-01-back-the-break-clause-campaign-launched.yaml"
   },
   {
+    "id": "2026-09-18-tom-watson-palantir-senior-vice-president",
+    "date": "2026-09-18",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "tom-watson"
+    ],
+    "title": "Tom Watson joins Palantir as UK senior vice-president, having advised the company since 2024",
+    "file": "entries/2026-09-18-tom-watson-palantir-senior-vice-president.yaml"
+  },
+  {
     "id": "2026-10-01-palantir-protests-45108-objections",
     "date": "2026-10-01",
     "date_precision": "day",
@@ -730,7 +742,8 @@
     "tags": [
       "media",
       "palantir",
-      "bbc"
+      "bbc",
+      "tom-watson"
     ],
     "title": "Tom Watson defends Palantir against \"mob rule\" criticism on BBC Radio 4",
     "file": "entries/2026-10-10-tom-watson-defends-palantir-mob-rule.yaml"
