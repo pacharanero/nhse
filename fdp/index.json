@@ -475,6 +475,19 @@
     "file": "entries/2025-02-03-karp-kill-enemies-earnings-call.yaml"
   },
   {
+    "id": "2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice",
+    "date": "2026-04-13",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "palantir",
+      "tom-bartlett"
+    ],
+    "title": "Tom Bartlett leaves NHS England FDP role, launches as independent FDP commentator",
+    "file": "entries/2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice.yaml"
+  },
+  {
     "id": "2026-04-16-unpublished-s254-direction-opt-out",
     "date": "2026-04-16",
     "date_precision": "day",
@@ -504,6 +517,20 @@
     ],
     "title": "Westminster Hall debates the FDP, MPs press for the break clause",
     "file": "entries/2026-04-16-westminster-hall-debate-fdp.yaml"
+  },
+  {
+    "id": "2026-04-30-computer-weekly-inside-fdp-column-bartlett",
+    "date": "2026-04-30",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "palantir",
+      "tom-bartlett",
+      "computer-weekly"
+    ],
+    "title": "Computer Weekly begins Tom Bartlett's \"Inside FDP\" column series",
+    "file": "entries/2026-04-30-computer-weekly-inside-fdp-column-bartlett.yaml"
   },
   {
     "id": "2026-05-11-ft-palantir-unlimited-ndit-access-revealed",

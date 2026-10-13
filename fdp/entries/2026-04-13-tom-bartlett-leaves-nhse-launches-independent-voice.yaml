@@ -1,0 +1,47 @@
+id: 2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice
+date: 2026-04-13
+date_precision: day
+tags:
+  - media
+  - nhse
+  - palantir
+  - tom-bartlett
+title: Tom Bartlett leaves NHS England FDP role, launches as independent FDP commentator
+summary: >-
+  Tom Bartlett, who led the roughly 150-person team that built the FDP's
+  data engineering layer as NHS England's deputy director of data
+  engineering, announced on LinkedIn that he had left the organisation
+  "last month" and was publishing his first piece "as an independent
+  voice" defending the platform against what he called a mischaracterised
+  public debate. His company,
+  [Bartlett Data Ltd](https://web.archive.org/web/20261013074837/https://find-and-update.company-information.service.gov.uk/company/16992631),
+  had been incorporated on 27 January 2026 - roughly ten weeks before this
+  public departure announcement, and while he was, on his own account,
+  still at NHS England. A commenter asked directly under the post whether
+  it had been "written with support from sales/marketing at Palantir."
+quote: "I spent 22 years building data systems inside the NHS. The last three and a half of those leading the team that built the Federated Data Platform at NHS England. I left last month. I've been watching the public debate about FDP since and I don't recognise the platform being described. I've written my first piece as an independent voice."
+quote_verified: document
+source_url: https://www.linkedin.com/posts/tom-l-bartlett_i-spent-22-years-building-data-systems-inside-activity-7449448940178935808-l239
+source_title: "Tom Bartlett on LinkedIn: debut post as an independent FDP commentator"
+archive_url: https://github.com/pacharanero/nhse/blob/main/fdp/sources/2026-04-13-tom-bartlett-linkedin-debut-post.md
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2026-04-30-computer-weekly-inside-fdp-column-bartlett
+contested: >-
+  LinkedIn posts are not reliably archivable by archive.org or
+  archive.today (login-walled, JavaScript-rendered) - no existing
+  capture was found on either, and a fresh archive.org save attempt
+  failed (HTTP 523). The post's full text, including the comment below,
+  is retained at fdp/sources/2026-04-13-tom-bartlett-linkedin-debut-post.md
+  as the archive record instead. Asked directly in the comments under
+  this post whether it had been "written with support from
+  sales/marketing at Palantir," Bartlett did not reply in the visible
+  comment thread. His formal published bio, distributed via Computer
+  Weekly's parent TechTarget, states: "As an independent consultant, Tom
+  has no relationship or association with NHS England or Palantir, the
+  supplier of the software that underpins FDP." No evidence of paid or
+  coordinated support from either organisation has been found; the
+  ten-week gap between incorporating Bartlett Data and announcing his
+  departure from NHS England, and the rapid subsequent media uptake (see
+  related entries), are recorded here as factual context, not as
+  evidence of coordination.
