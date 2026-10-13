@@ -165,17 +165,27 @@
     return li;
   }
 
+  // `self: true` = a channel the subject fully controls (own blog, own
+  // LinkedIn) - no gatekeeping involved. `self: false` = earned
+  // third-party media (a trade press column, a quote in a national
+  // newspaper) - the kind of access that's harder to get from a standing
+  // start without some help. Styled differently so the pattern is
+  // visible at a glance, not just in the data.
   function bartlettLi(appearance) {
     const li = document.createElement("li");
+    const dotClass = appearance.self ? "bg-base-content/30" : "bg-secondary";
+    const badgeClass = appearance.self
+      ? "badge-ghost hover:badge-outline"
+      : "badge-secondary badge-outline hover:badge-secondary";
     li.innerHTML = `
       <hr>
       <div class="timeline-middle">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-base-content/40"></span>
+        <span class="inline-block w-1.5 h-1.5 rounded-full ${dotClass}"></span>
       </div>
       <div class="timeline-end">
-        <a class="badge badge-ghost badge-xs gap-1 hover:badge-outline" href="${appearance.url}" target="_blank" rel="noopener" title="${escapeHtml(appearance.title)}">
+        <a class="badge badge-xs gap-1 ${badgeClass}" href="${appearance.url}" target="_blank" rel="noopener" title="${escapeHtml(appearance.outlet)}: ${escapeHtml(appearance.title)}">
           <span class="font-semibold">TB#${appearance.n}</span>
-          <span class="max-w-[14rem] truncate">${escapeHtml(appearance.title)}</span>
+          <span class="max-w-[16rem] truncate">${escapeHtml(appearance.outlet)}: ${escapeHtml(appearance.title)}</span>
         </a>
       </div>
       <hr>

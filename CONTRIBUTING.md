@@ -137,13 +137,13 @@ This regenerates `fdp/index.json` from everything in `fdp/entries/` and checks r
 
 ## Appearance trackers
 
-Not everything worth charting is worth a full entry. `fdp/bartlett-appearances.yaml` is a lightweight, hand-maintained list - date, title, url, nothing else required - for tracking the pace of one person's or organisation's public output (Tom Bartlett's blog posts and Computer Weekly columns, so far) as small numbered dots on the timeline, rather than as full cards with quotes and archive copies.
+Not everything worth charting is worth a full entry. `fdp/bartlett-appearances.yaml` is a lightweight, hand-maintained list for tracking the pace of one person's or organisation's public output (Tom Bartlett's blog posts, Computer Weekly columns, and media quotes, so far) as small numbered dots on the timeline, rather than as full cards with quotes and archive copies. Each item needs `date`, `title`, `url`, `outlet` (shown as the dot's label prefix, e.g. "Computer Weekly" or "Bartlett Data Blog"), and `self` - a boolean distinguishing a channel the subject fully controls (their own blog, their own LinkedIn - `self: true`) from earned third-party media (a trade press column, a newspaper quote - `self: false`). The distinction matters for exactly the question this tracker exists to help answer: how much of someone's apparent prominence is self-published versus access they'd need some kind of help to get. Dots are colour-coded accordingly, with a legend under the controls bar.
 
 ```sh
 s/build-bartlett-index
 ```
 
-regenerates `fdp/bartlett-appearances.json` from the YAML, sorts by date, and assigns each item a cumulative `n` - that's the "TB#7" label the dot shows. The dots aren't tag-filtered or searched like entries; a single toggle button (`Bartlett dots` in the controls bar, `?bartlett=0` in the URL) is the only way to hide them. `js/app.js`'s `mergedTimelineItems` is where they're interleaved into the main entry sequence.
+regenerates `fdp/bartlett-appearances.json` from the YAML, sorts by date, and assigns each item a cumulative `n` - that's the "TB#7" in the dot's label. The dots aren't tag-filtered or searched like entries; a single toggle button (`Bartlett dots` in the controls bar, `?bartlett=0` in the URL) is the only way to hide them. `js/app.js`'s `mergedTimelineItems` is where they're interleaved into the main entry sequence.
 
 If a similar pattern becomes worth tracking for someone else - another frequent commentator, another vendor's PR output - add a sibling `fdp/<name>-appearances.yaml` and a matching `s/build-<name>-index`, following the same two-field-minimum shape, rather than bending this one to cover both.
 

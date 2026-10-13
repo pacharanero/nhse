@@ -546,6 +546,20 @@
     "file": "entries/2026-05-11-ft-palantir-unlimited-ndit-access-revealed.yaml"
   },
   {
+    "id": "2026-05-29-daily-mail-darth-vader-palantir-bartlett-quoted",
+    "date": "2026-05-29",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "nhse",
+      "tom-bartlett",
+      "daily-mail"
+    ],
+    "title": "Daily Mail profile defending Palantir describes Tom Bartlett as a recent FDP consultant, not just a former NHS England employee",
+    "file": "entries/2026-05-29-daily-mail-darth-vader-palantir-bartlett-quoted.yaml"
+  },
+  {
     "id": "2026-06-03-ndg-statement-ndit-access-clarification",
     "date": "2026-06-03",
     "date_precision": "day",

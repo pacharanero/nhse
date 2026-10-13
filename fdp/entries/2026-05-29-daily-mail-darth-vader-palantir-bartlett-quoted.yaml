@@ -1,0 +1,45 @@
+id: 2026-05-29-daily-mail-darth-vader-palantir-bartlett-quoted
+date: 2026-05-29
+date_precision: day
+tags:
+  - media
+  - palantir
+  - nhse
+  - tom-bartlett
+  - daily-mail
+title: "Daily Mail profile defending Palantir describes Tom Bartlett as a recent FDP consultant, not just a former NHS England employee"
+summary: >-
+  A long Daily Mail feature defending Palantir's NHS role, by deputy
+  investigations editor Miles Dilworth, quoted Tom Bartlett extensively
+  as an independent, unpaid-by-Palantir voice rebutting claims the
+  company could access patient data - but described him in its own
+  words as someone "who until last month was a consultant on the
+  project," not simply a former NHS England employee speaking six weeks
+  after leaving. Bartlett told the paper the FDP data is owned by the
+  NHS, that there was never pressure from Palantir to access it during
+  his time on the project, and that Palantir "doesn't make it any
+  easier or more difficult" for government to use the platform for
+  immigration enforcement. He also criticised Green Party leader Zack
+  Polanski's viral anti-Palantir video as "seems designed to scare
+  people," and the Good Law Project's opt-out advice as "directed
+  people toward a mechanism that harms research while achieving
+  nothing."
+quote: "Bartlett, who is independent and has not been paid by Palantir, told the Daily Mail the data is owned by the NHS and during his time working on the FDP there was never pressure from Palantir to access it."
+quote_verified: document
+source_url: https://www.dailymail.com/news/article-15859557/Darth-Vader-Palantir-Sadiq-Khan-Met-Police-contract-NHS.html
+source_title: "Daily Mail: The truth behind the 'Darth Vader' data firm Palantir (Miles Dilworth)"
+archive_url: https://archive.ph/20260530092649/https://www.dailymail.com/news/article-15859557/Darth-Vader-Palantir-Sadiq-Khan-Met-Police-contract-NHS.html
+related:
+  - 2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice
+contested: >-
+  The article calls Bartlett "independent" throughout and quotes him
+  rebutting Palantir's critics at length, while also stating in passing
+  that he was "until last month" - i.e. until approximately April 2026,
+  around the same time as his debut LinkedIn post as "an independent
+  voice" (see 2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice)
+  - "a consultant on the project." Those two framings sit uneasily
+  together: the piece does not say who paid for that consultancy work,
+  only that he "has not been paid by Palantir" specifically, and does
+  not explore whether his advocacy began before or after that
+  consultancy ended. This repo has not independently established the
+  payer, dates, or terms of the consultancy referenced.

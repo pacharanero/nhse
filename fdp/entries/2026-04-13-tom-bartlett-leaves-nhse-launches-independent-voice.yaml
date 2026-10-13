@@ -27,6 +27,7 @@ archive_url: https://github.com/pacharanero/nhse/blob/main/fdp/sources/2026-04-1
 related:
   - 2023-11-21-fdp-contract-awarded
   - 2026-04-30-computer-weekly-inside-fdp-column-bartlett
+  - 2026-05-29-daily-mail-darth-vader-palantir-bartlett-quoted
 contested: >-
   LinkedIn posts are not reliably archivable by archive.org or
   archive.today (login-walled, JavaScript-rendered) - no existing
@@ -39,9 +40,21 @@ contested: >-
   comment thread. His formal published bio, distributed via Computer
   Weekly's parent TechTarget, states: "As an independent consultant, Tom
   has no relationship or association with NHS England or Palantir, the
-  supplier of the software that underpins FDP." No evidence of paid or
-  coordinated support from either organisation has been found; the
-  ten-week gap between incorporating Bartlett Data and announcing his
-  departure from NHS England, and the rapid subsequent media uptake (see
-  related entries), are recorded here as factual context, not as
-  evidence of coordination.
+  supplier of the software that underpins FDP."
+
+  This framing is harder to reconcile with the Daily Mail's own
+  description of him, in a piece published six weeks later (29 May
+  2026), as someone "who until last month was a consultant on the
+  project" -
+  [archived](https://archive.ph/20260530092649/https://www.dailymail.com/news/article-15859557/Darth-Vader-Palantir-Sadiq-Khan-Met-Police-contract-NHS.html).
+  "Until last month" places the end of that consultancy at
+  approximately the same time as this debut post (13 April 2026) and
+  roughly eleven weeks after Bartlett Data's 27 January 2026
+  incorporation - meaning he may still have been a paid consultant on
+  the FDP programme at the point he began publishing "as an independent
+  voice," not merely a recent leaver. The Mail piece itself states he
+  "has not been paid by Palantir" specifically, without clarifying who
+  paid him as "a consultant on the project" up to that point, or
+  whether NHS England, a contractor, or Palantir itself held that
+  consultancy. See 2026-05-29-daily-mail-darth-vader-palantir-bartlett-quoted
+  for the full context of that piece.

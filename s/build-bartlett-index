@@ -5,8 +5,10 @@
 #
 # Regenerate fdp/bartlett-appearances.json from fdp/bartlett-appearances.yaml:
 # sort by date, assign a cumulative appearance number, and do a minimal
-# schema check (date is ISO, title and url present). This is the
-# lightweight sibling to s/build-index - see "Appearance trackers" in
+# schema check (date is ISO; title, url, outlet present; self is a
+# boolean - true for channels the subject fully controls like their own
+# blog, false for earned third-party media). This is the lightweight
+# sibling to s/build-index - see "Appearance trackers" in
 # CONTRIBUTING.md for what it's for and why it's a separate file rather
 # than full fdp/entries/*.yaml entries.
 #
@@ -24,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE_PATH = ROOT / "fdp" / "bartlett-appearances.yaml"
 INDEX_PATH = ROOT / "fdp" / "bartlett-appearances.json"
 
-REQUIRED = ["date", "title", "url"]
+REQUIRED = ["date", "title", "url", "outlet"]
 ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
@@ -48,6 +50,9 @@ def main():
         url = item.get("url")
         if url and not str(url).startswith(("http://", "https://")):
             errors.append(f"item {i}: url '{url}' must be an http(s) URL")
+
+        if "self" not in item or not isinstance(item.get("self"), bool):
+            errors.append(f"item {i}: 'self' must be present and a boolean (true = self-published, false = earned media)")
 
     if errors:
         print("s/build-bartlett-index: validation failed", file=sys.stderr)
