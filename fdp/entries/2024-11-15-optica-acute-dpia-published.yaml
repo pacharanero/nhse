@@ -1,0 +1,101 @@
+id: 2024-11-15-optica-acute-dpia-published
+date: 2024-11-15
+date_precision: day
+tags:
+  - scope
+  - optica
+  - nhse
+  - palantir
+  - dpia
+  - ig
+  - legal-basis-direct-care
+  - opt-out
+title: OPTICA DPIA published as "Final Approved" with IAO signature and DPO sections blank
+summary: >-
+  OPTICA (Optimised Patient Tracking and Intelligent Choices Application) is
+  an FDP product that tracks admitted patients' discharge tasks and
+  blockages in real time, so hospital and social care teams can discharge
+  patients who no longer need to be in hospital sooner. It was developed by
+  NECS (North of England Commissioning Support Unit) with [North Tees and
+  Hartlepool NHS Foundation
+  Trust](https://web.archive.org/web/20261013190441/https://www.england.nhs.uk/long-read/new-data-led-solution-reduces-delays-to-patient-discharges/),
+  which publicised a 36% reduction in long stays (21+ days) in August 2023;
+  NHS England then funded adoption at "an additional 15 Trusts by the end
+  of" 2023. OPTICA's DPIA wasn't drafted until three months later - first
+  draft 18 February 2024 - reaching "Version 2.0 Final Approved" on 15
+  November 2024, over a year after the publicised pilot result and the
+  funded 15-trust expansion that followed it. The [current product
+  catalogue
+  entry](https://web.archive.org/web/20261013190009/https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/solution-exchange-product-catalogue/discharge-planning-optica/)
+  states a different, platform-wide figure: a "14.9% decrease in average
+  number of delay days for patients staying in hospital for more than 7
+  days after rolling out OPTICA" - see
+  2026-07-26-health-foundation-optica-no-improvement-found for an
+  independent analysis disputing this.
+
+  The same governance pattern already found in Cancer 360's DPIA
+  (2025-07-23-cancer-360-dpia-published) recurs here. The
+  [DPIA](https://web.archive.org/web/20261013190514/https://www.england.nhs.uk/wp-content/uploads/2025/06/fdp-dia-optica-acute.pdf)
+  carries the same "template for Local NHS Organisations" boilerplate, and
+  its legal basis section is again left as "suggested legal basis below"
+  rather than confirmed controller text - substantively the same basis as
+  Cancer 360 (Article 6(1)(e) public task, Article 9(2)(h) health care,
+  implied consent for direct care), matching the
+  [OPTICA Acute privacy
+  notice](https://web.archive.org/web/20261013185838/https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/security-privacy/nhs-fdp-information-governance-framework/local-fdp-products/optica-acute-fdp-product-privacy-notice/),
+  which names Palantir as processor and NECS as a sub-processor "to enable
+  the smooth running of the platform" - and itself still carries an
+  unfilled, trust-to-complete placeholder ("other organisations such as
+  [Trust to add other organisations with access]"), last updated 15
+  November 2024, the same day as the DPIA's approval. Both the National Data
+  Opt-Out and Type 1 opt-outs are stated as inapplicable. A separate
+  "OPTICA community" privacy notice and DPIA exist for a distinct
+  non-acute variant of the product, not examined here.
+
+  Unlike Cancer 360's Information Asset Owner field, OPTICA's names a real
+  person, but the redaction covering it visibly fails: a genuine black box
+  covers the name on the page, but, as with Cancer 360, the underlying PDF
+  text layer does not - the name is fully recoverable from the document
+  despite a stated Section 40(2) FOIA redaction rationale. Not reproduced
+  here; this is a distinct, genuine process failure, unlike the blank
+  signature sections below. As with Cancer 360, NHS England's "Final
+  Approved" stamp applies to the template text, not a specific trust's
+  completed copy: consistent with that, the Information Asset Owner
+  Signature and Date block is blank, the "FOR [DATA PROTECTION OFFICER]
+  USE ONLY" advice section is blank, and the ICO consultation outcome
+  section is blank - identical to Cancer 360, and, as there, it isn't
+  established from this central publication whether any adopting trust
+  has completed and locally approved its own copy. No DCB0129/DCB0160 clinical
+  safety case, Senior Responsible Owner, or Clinical Safety Officer is
+  named anywhere in the DPIA. OPTICA is named in FDP Check and Challenge
+  Group minutes as one of the platform's established, mature products as
+  early as 18 October 2024 - before its own DPIA was "Final Approved" -
+  and again in the 15 May 2026 minutes' Q3 benefits discussion alongside
+  Cancer 360, but neither mention names a product-specific SRO or CSO,
+  only generic FDP-programme roles.
+quote: "There are highlighted sections throughout the document which require specific information to be completed by the Local NHS Organisation."
+quote_verified: document
+source_url: https://www.england.nhs.uk/publication/nhs-fdp-product-data-protection-impact-assessment-optica-acute/
+source_title: "NHS England: NHS FDP product data protection impact assessment - OPTICA Acute"
+archive_url: https://web.archive.org/web/20261013185838/https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/security-privacy/nhs-fdp-information-governance-framework/local-fdp-products/optica-acute-fdp-product-privacy-notice/
+related:
+  - 2025-07-23-cancer-360-dpia-published
+  - 2026-07-26-health-foundation-optica-no-improvement-found
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+  - 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
+  - 2023-12-07-board-opt-out-levels-not-materialised
+contested: >-
+  The `source_url`/`archive_url` point at the DPIA's publication page,
+  which returned a JavaScript-interstitial page on direct fetch rather
+  than readable content; the PDF itself
+  (https://web.archive.org/web/20261013190514/https://www.england.nhs.uk/wp-content/uploads/2025/06/fdp-dia-optica-acute.pdf)
+  is the actual source for the claims in this entry. The absence of a
+  named SRO, CSO, or clinical safety case is based on the DPIA plus the
+  sampled Check and Challenge Group minutes and the product and privacy
+  notice pages - not an exhaustive search of North Tees and Hartlepool's
+  own board papers and IG registers. The Information Asset/Product Owner
+  name and a second author name are visibly redacted (black box) on the
+  document's first page, but both remain present in the PDF's text layer;
+  neither is reproduced here, consistent with the equivalent finding in
+  the Cancer 360 entry.

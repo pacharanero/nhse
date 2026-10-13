@@ -34,13 +34,19 @@ summary: >-
   Protection Impact Assessment," with "highlighted sections throughout
   the document which require specific information to be completed by
   the Local NHS Organisation" - the adopting trusts, not NHS England,
-  are the data controllers. Despite the "Final Approved" stamp, the
+  are the data controllers, and NHS England's "Version 3.0 Final
+  Approved" stamp applies to the template text itself, not to any
+  individual trust's completed copy. Consistent with that, the
   Information Asset Owner name/signature/date block is blank, the "FOR
   DATA PROTECTION OFFICER USE ONLY" advice section is blank, the ICO
   consultation outcome section is blank, and five of the document's own
   action-plan items - including patient engagement, nominally due
   "within 6 months of adopting this Product" - still read "[Insert name
-  of IAO/Product owner]" / "[Insert date]". The Author(s) field carries
+  of IAO/Product owner]" / "[Insert date]". What isn't established from
+  this central publication is whether, or how many, individual adopting
+  trusts have gone on to complete and locally approve their own
+  trust-specific copy - NHS England does not appear to publish those
+  centrally. The Author(s) field carries
   a Section 40(2) FOIA redaction rationale for personal information,
   but the underlying PDF text layer still contains both redacted names
   and job titles (not reproduced here; both are delivery-level roles - a
@@ -95,6 +101,7 @@ source_url: https://www.england.nhs.uk/publication/nhs-fdp-product-data-protecti
 source_title: "NHS England: NHS FDP product data protection impact assessment - Cancer 360"
 archive_url: https://web.archive.org/web/20261013160517/https://www.england.nhs.uk/publication/nhs-fdp-product-data-protection-impact-assessment-cancer-360/
 related:
+  - 2024-11-15-optica-acute-dpia-published
   - 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
   - 2026-07-15-bmj-third-trusts-not-using-fdp-apps
   - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat

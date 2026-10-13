@@ -1,0 +1,72 @@
+id: 2026-07-26-health-foundation-optica-no-improvement-found
+date: 2026-07-26
+date_precision: day
+tags:
+  - media
+  - nhse
+  - palantir
+  - optica
+  - statistics
+  - osr
+title: Health Foundation analysis finds "no notable improvement" in OPTICA discharge delays
+summary: >-
+  The Health Foundation, an independent health policy charity, published a
+  descriptive analysis (retained at
+  fdp/sources/2026-07-26-health-foundation-optica-analysis-landing-page.md,
+  see `contested`) of the relationship between NHS trusts adopting OPTICA
+  (the FDP's discharge-planning product) and their delayed-discharge figures,
+  alongside a letter to the Office for Statistics Regulation's Director
+  General, dated 22 July 2026 - the same date as the OSR casework findings
+  already in this repo
+  (2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat), though it
+  isn't established here whether the letter preceded, accompanied, or
+  responded to that casework. Trusts using OPTICA saw "no notable
+  improvement" in cutting delays, contradicting NHS England's own
+  platform-wide claim - stated on the current product catalogue page as a
+  "14.9% decrease in average number of delay days for patients staying in
+  hospital for more than 7 days after rolling out OPTICA" (see
+  2024-11-15-optica-acute-dpia-published) - and distinct from the 36%
+  figure publicised from the original North Tees and Hartlepool pilot in
+  August 2023, which concerned long-stay (21+ day) admissions specifically
+  at that one trust.
+quote: "no notable improvement"
+quote_verified: secondary
+paywalled: false
+source_url: https://novaramedia.com/2026/07/28/hospitals-see-no-notable-improvement-after-using-palantir-tool/
+source_title: "Novara Media: Hospitals See 'No Notable Improvement' After Using Palantir Tool (Simon Childs)"
+archive_url: https://web.archive.org/web/20261013190613/https://novaramedia.com/2026/07/28/hospitals-see-no-notable-improvement-after-using-palantir-tool/
+related:
+  - 2024-11-15-optica-acute-dpia-published
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+  - 2026-07-15-bmj-third-trusts-not-using-fdp-apps
+  - 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
+contested: >-
+  Palantir said the Health Foundation's report "appears to misunderstand
+  what the tool does." Separately, and in the other direction, critics -
+  including Steve Black, a healthcare consultant and former NHS data
+  scientist - told the Financial Times that NHS England's own claimed
+  reduction was itself a selective analysis, since the underlying figure
+  NHS England gave the FT was restricted to long-stay discharges only (the
+  tool being "mainly designed to support the management of complex
+  patients") rather than discharge delays overall: "It is dangerous to
+  selectively quote evidence like that because its success should be
+  judged against fixing the underlying problem, which is how do we better
+  manage all discharges to free up more beds." NHS England said it had
+  "engaged with the Health Foundation on its analysis of the OPTICA
+  discharge tool, providing data and discussing the different approaches
+  and methods used to assess impact," and had commissioned an independent
+  evaluation - very likely the same Imperial College evaluation already
+  noted in the OSR entry as one of OSR's required remedies, though that
+  identity isn't independently confirmed here. The primary Health
+  Foundation PDF and its letter to OSR could not be retrieved directly:
+  both health.org.uk URLs return an Akamai bot-protection block
+  (`errors.edgesuite.net`) on direct fetch, and archive.org's `/save/`
+  returned HTTP 520 against the Health Foundation landing page on two
+  attempts - the same pattern as the WhatDoTheyKnow block already
+  documented elsewhere in this repo. The landing page text, retrieved via
+  a different fetch path, is retained at
+  fdp/sources/2026-07-26-health-foundation-optica-analysis-landing-page.md
+  per the established fallback convention. The BMJ's own report on this
+  finding (bmj-2026-100485) is paywalled and not used as a source here;
+  Novara Media's account is used instead, per the paywalled-source
+  handling policy in spec/fdp-timeline.md.

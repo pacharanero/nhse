@@ -463,6 +463,23 @@
     "file": "entries/2024-04-03-picket-nhs-england-hq-palantir-gaza.yaml"
   },
   {
+    "id": "2024-11-15-optica-acute-dpia-published",
+    "date": "2024-11-15",
+    "date_precision": "day",
+    "tags": [
+      "scope",
+      "optica",
+      "nhse",
+      "palantir",
+      "dpia",
+      "ig",
+      "legal-basis-direct-care",
+      "opt-out"
+    ],
+    "title": "OPTICA DPIA published as \"Final Approved\" with IAO signature and DPO sections blank",
+    "file": "entries/2024-11-15-optica-acute-dpia-published.yaml"
+  },
+  {
     "id": "2025-02-03-karp-kill-enemies-earnings-call",
     "date": "2025-02-03",
     "date_precision": "day",
@@ -708,6 +725,21 @@
     ],
     "title": "Statistics regulator concludes NHS England's FDP benefit claims needed a causality caveat",
     "file": "entries/2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat.yaml"
+  },
+  {
+    "id": "2026-07-26-health-foundation-optica-no-improvement-found",
+    "date": "2026-07-26",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "palantir",
+      "optica",
+      "statistics",
+      "osr"
+    ],
+    "title": "Health Foundation analysis finds \"no notable improvement\" in OPTICA discharge delays",
+    "file": "entries/2026-07-26-health-foundation-optica-no-improvement-found.yaml"
   },
   {
     "id": "2026-09-01-back-the-break-clause-campaign-launched",
