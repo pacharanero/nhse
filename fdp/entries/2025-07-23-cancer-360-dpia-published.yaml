@@ -1,0 +1,116 @@
+id: 2025-07-23-cancer-360-dpia-published
+date: 2025-07-23
+date_precision: day
+tags:
+  - scope
+  - cancer-360
+  - nhse
+  - palantir
+  - dpia
+  - ig
+  - legal-basis-direct-care
+  - opt-out
+title: Cancer 360 DPIA published as "Final Approved" with IAO signature and DPO sections blank
+summary: >-
+  Cancer 360 is an FDP product that, per its [product catalogue
+  entry](https://web.archive.org/web/20261013160311/https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/solution-exchange-product-catalogue/cancer-360/),
+  pulls cancer-pathway data (cancer registry, EPR, radiology, histology,
+  pathology, endoscopy, oncology and patient-communication systems) into
+  a single tracking list so hospital cancer teams can manage
+  referral-to-treatment pathways and escalate delays; a secondary
+  "Cancer Operations Centre" view gives trust management aggregated
+  team-performance data. It began as an Incubator Product at Chelsea and
+  Westminster Hospital NHS Foundation Trust in August 2022, originally
+  built in Palantir Foundry, and has processed identifiable patient data
+  operationally since December 2022. NHS England's own
+  [DPIA](https://web.archive.org/web/20261013160852/https://www.england.nhs.uk/wp-content/uploads/2025/07/redacted-cancer-360-fdp-local-dpia-v1.0.pdf)
+  records drafting only starting on 16 July 2024 - about 19 months after
+  that go-live - reaching a first complete version on 13 August 2024,
+  "Version 3.0 Final Approved" on 13 May 2025, and publication on the
+  NHS England website on 23 July 2025.
+
+  The published document is, by its own first page, "a template for
+  Local NHS Organisations to utilise when completing their own Data
+  Protection Impact Assessment," with "highlighted sections throughout
+  the document which require specific information to be completed by
+  the Local NHS Organisation" - the adopting trusts, not NHS England,
+  are the data controllers. Despite the "Final Approved" stamp, the
+  Information Asset Owner name/signature/date block is blank, the "FOR
+  DATA PROTECTION OFFICER USE ONLY" advice section is blank, the ICO
+  consultation outcome section is blank, and five of the document's own
+  action-plan items - including patient engagement, nominally due
+  "within 6 months of adopting this Product" - still read "[Insert name
+  of IAO/Product owner]" / "[Insert date]". The Author(s) field carries
+  a Section 40(2) FOIA redaction rationale for personal information,
+  but the underlying PDF text layer still contains both redacted names
+  and job titles (not reproduced here; both are delivery-level roles - a
+  NECS senior consultant and a product manager - distinct from the Head
+  of Information Governance and Deputy Director names left unredacted
+  elsewhere in the same tables). No DCB0129/DCB0160 clinical safety
+  case, Senior Responsible Owner, or Clinical Safety Officer is named
+  anywhere in the DPIA, nor in the three FDP Check and Challenge Group
+  minutes sampled for this entry ([October
+  2024](https://web.archive.org/web/20261013165038/https://www.england.nhs.uk/long-read/federated-data-platform-check-and-challenge-group-minutes-and-action-notes-18-october-2024/),
+  [September
+  2025](https://web.archive.org/web/20261013165020/https://www.england.nhs.uk/long-read/federated-data-platform-check-and-challenge-group-minutes-and-action-notes-19-september-2025/),
+  May 2026), which name only generic FDP-programme roles.
+
+  The stated legal basis - Article 6(1)(e) UK GDPR "public task," Article
+  9(2)(h) "health care," and implied consent for direct care, with the
+  National Data Opt-Out and Type 1 opt-outs both explicitly inapplicable
+  - matches the [Cancer 360 product privacy
+  notice](https://web.archive.org/web/20261013161412/https://www.england.nhs.uk/digitaltechnology/nhs-federated-data-platform/security-privacy/nhs-fdp-information-governance-framework/local-fdp-products/cancer-360-fdp-product-privacy-notice/),
+  in force with identical wording since at least 12 August 2024. Rollout
+  was still single-site as late as the Check and Challenge Group's 18
+  October 2024 meeting (above), which listed Cancer 360 among products
+  "being scoped and explored in one site" rather than standardised for
+  wider adoption. NHS England's own (trust-authored, not independently
+  verified by NHS England) [case
+  study](https://web.archive.org/web/20261013160907/https://www.england.nhs.uk/long-read/cancer-360-streamlines-patient-pathways-across-nhs-trusts/)
+  reports the Chelsea and Westminster pilot reaching 84.7% of patients
+  diagnosed within 28 days by November 2024, up from 71.5%, and states
+  "ten more NHS trusts are set to adopt Cancer 360 from June" 2025 -
+  matching the DPIA's own finalisation that May and publication that
+  July. By September 2025 the Check and Challenge Group recorded
+  "strong demand" for the product (above); [Salisbury NHS Foundation
+  Trust's own November 2025 board
+  papers](https://web.archive.org/web/20261013165137/https://www.salisbury.nhs.uk/media/jyvnmzt5/6th-november-2025-public-agenda-bundle-v2-reduced.pdf)
+  describe rolling out a "Cancer 360 FDP PTL management tool" that
+  month, in conjunction with the Bath, Swindon and Wiltshire ICB -
+  nearly three years after the original go-live. In the FOI-disclosed
+  weekly-login dataset behind
+  2026-06-11-foi-fdp-weekly-usage-data-cost-per-login, Cancer 360 shows
+  measurable logins at only a handful of the 85 listed trusts, a
+  markedly sparser profile than higher-adoption products in the same
+  table - consistent with the still-early rollout. The pilot's own
+  self-reported before/after diagnosis-time statistic is also exactly
+  the kind of unverified, causal-sounding claim the Office for
+  Statistics Regulation's casework
+  (2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat) found
+  needed a caveat, albeit that OSR's own independent evaluation
+  prioritised Inpatients and OPTICA rather than Cancer 360 specifically.
+quote: "There are highlighted sections throughout the document which require specific information to be completed by the Local NHS Organisation."
+quote_verified: document
+source_url: https://www.england.nhs.uk/publication/nhs-fdp-product-data-protection-impact-assessment-cancer-360/
+source_title: "NHS England: NHS FDP product data protection impact assessment - Cancer 360"
+archive_url: https://web.archive.org/web/20261013160517/https://www.england.nhs.uk/publication/nhs-fdp-product-data-protection-impact-assessment-cancer-360/
+related:
+  - 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
+  - 2026-07-15-bmj-third-trusts-not-using-fdp-apps
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
+  - 2023-12-07-board-opt-out-levels-not-materialised
+contested: >-
+  The absence of a named SRO, CSO, or clinical safety case is based on
+  the DPIA itself plus three sampled Check and Challenge Group minutes,
+  the product catalogue, the privacy notice, and the NHS England case
+  study - not an exhaustive search of Chelsea and Westminster's or
+  Salisbury's own board papers and IG registers, where a locally
+  completed, trust-specific copy of this DPIA or a separate safety case
+  might exist but wasn't found in what was checked here. Separately, a
+  near-duplicate privacy notice page exists at a "-2" suffixed URL
+  (last updated 12 August 2024, versus 16 July 2025 on the canonical
+  page) with otherwise identical wording; most likely a CMS artefact
+  rather than evidence of a materially different earlier version - no
+  Wayback capture of either page predates May 2025, so this doesn't
+  reach back to December 2023.

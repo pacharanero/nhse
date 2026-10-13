@@ -475,6 +475,23 @@
     "file": "entries/2025-02-03-karp-kill-enemies-earnings-call.yaml"
   },
   {
+    "id": "2025-07-23-cancer-360-dpia-published",
+    "date": "2025-07-23",
+    "date_precision": "day",
+    "tags": [
+      "scope",
+      "cancer-360",
+      "nhse",
+      "palantir",
+      "dpia",
+      "ig",
+      "legal-basis-direct-care",
+      "opt-out"
+    ],
+    "title": "Cancer 360 DPIA published as \"Final Approved\" with IAO signature and DPO sections blank",
+    "file": "entries/2025-07-23-cancer-360-dpia-published.yaml"
+  },
+  {
     "id": "2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice",
     "date": "2026-04-13",
     "date_precision": "day",
