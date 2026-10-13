@@ -34,12 +34,32 @@
     official: "success",
     media: "warning",
     board: "info",
-    legal: "neutral",
+    legal: "primary",
     civil: "accent",
   };
 
+  // Unused at runtime. Tailwind's build-time scanner only generates CSS
+  // for class names that appear as complete literal text somewhere in a
+  // scanned file - it cannot see the `btn-${color}` etc. template
+  // literals below, which silently produce no rule at all (confirmed:
+  // none of KIND_COLOR's colours rendered before this array existed).
+  // Every class built that way is spelled out here so the build picks
+  // it up. Keep in sync with KIND_COLOR's values. `neutral` is kept for
+  // the hardcoded year/today markers even though no KIND_COLOR uses it
+  // (its near-black value reads poorly as the text/border colour of an
+  // outlined button against the dark theme's sidebar background).
+  const TAILWIND_DYNAMIC_CLASS_SAFELIST = [
+    "btn-primary", "btn-secondary", "btn-error", "btn-success", "btn-warning", "btn-info", "btn-neutral", "btn-accent",
+    "btn-outline",
+    "badge-primary", "badge-secondary", "badge-error", "badge-success", "badge-warning", "badge-info", "badge-neutral", "badge-accent",
+    "bg-primary", "bg-secondary", "bg-error", "bg-success", "bg-warning", "bg-info", "bg-neutral", "bg-accent",
+    "border-l-primary", "border-l-secondary", "border-l-error", "border-l-success", "border-l-warning", "border-l-info", "border-l-neutral", "border-l-accent",
+  ];
+
   const timelineEl = document.getElementById("timeline");
   const filtersEl = document.getElementById("tag-filters");
+  const freeTagsEl = document.getElementById("tag-filters-free");
+  const tagsDetailsEl = document.getElementById("tags-details");
   const searchEl = document.getElementById("search-box");
   const countEl = document.getElementById("result-count");
   const modalEl = document.getElementById("entry-modal");
@@ -115,30 +135,29 @@
 
   function buildFilters() {
     filtersEl.innerHTML = "";
+    freeTagsEl.innerHTML = "";
 
     Object.entries(KIND_LABELS).forEach(([key, label]) => {
       const color = KIND_COLOR[key];
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = `btn btn-xs ${activeTags.has(key) ? `btn-${color}` : `btn-outline btn-${color}`}`;
-      btn.textContent = label;
+      btn.className = `btn btn-sm btn-block justify-start gap-2 ${activeTags.has(key) ? `btn-${color}` : `btn-outline btn-${color}`}`;
+      btn.innerHTML = `<span class="inline-block w-2 h-2 rounded-full bg-${color}"></span>${escapeHtml(label)}`;
       btn.addEventListener("click", () => toggleTag(key));
       filtersEl.appendChild(btn);
     });
 
-    if (allOtherTags.length) {
-      const sep = document.createElement("span");
-      sep.className = "divider divider-horizontal mx-0";
-      filtersEl.appendChild(sep);
+    allOtherTags.forEach((tag) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `badge badge-sm cursor-pointer ${activeTags.has(tag) ? "badge-primary" : "badge-outline"}`;
+      btn.textContent = `#${tag}`;
+      btn.addEventListener("click", () => toggleTag(tag));
+      freeTagsEl.appendChild(btn);
+    });
 
-      allOtherTags.forEach((tag) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = `badge badge-sm cursor-pointer ${activeTags.has(tag) ? "badge-primary" : "badge-outline"}`;
-        btn.textContent = `#${tag}`;
-        btn.addEventListener("click", () => toggleTag(tag));
-        filtersEl.appendChild(btn);
-      });
+    if (tagsDetailsEl && Array.from(activeTags).some((t) => !KIND_LABELS[t])) {
+      tagsDetailsEl.open = true;
     }
   }
 
@@ -171,6 +190,26 @@
   function markerLi(label, badgeClass) {
     const li = document.createElement("li");
     li.innerHTML = `<hr><div class="timeline-middle"></div><div class="timeline-end badge ${badgeClass} badge-sm">${label}</div><hr>`;
+    return li;
+  }
+
+  // The "today" marker is a thin rule across the content column, not a
+  // badge - distinct from year markers above, since it marks a single
+  // instant rather than a span.
+  function todayMarkerLi(label) {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <hr>
+      <div class="timeline-middle">
+        <span class="inline-block w-2 h-2 rounded-full bg-error"></span>
+      </div>
+      <div class="timeline-end flex items-center gap-2 text-error min-w-[14rem]">
+        <span class="h-px flex-1 bg-error/40"></span>
+        <span class="text-[10px] uppercase tracking-wider font-semibold whitespace-nowrap">${escapeHtml(label)}</span>
+        <span class="h-px flex-1 bg-error/40"></span>
+      </div>
+      <hr>
+    `;
     return li;
   }
 
@@ -230,7 +269,7 @@
     items.forEach((item) => {
       const crossedToday = sortOrder === "asc" ? item.date > todayStr : item.date < todayStr;
       if (!todayInserted && crossedToday) {
-        timelineEl.appendChild(markerLi(`Today — ${todayStr}`, "badge-error"));
+        timelineEl.appendChild(todayMarkerLi(`Today — ${todayStr}`));
         todayInserted = true;
       }
 
@@ -253,10 +292,10 @@
 
       const li = document.createElement("li");
       const content = `
-        <div class="timeline-box bg-base-100 border border-base-300 cursor-pointer hover:border-${color}" data-entry-id="${entry.id}">
-          <div class="flex items-center justify-between gap-2">
+        <div class="timeline-box bg-base-100 border border-base-300 border-l-4 border-l-${color} cursor-pointer hover:shadow-md transition-shadow" data-entry-id="${entry.id}">
+          <div class="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
             <span class="text-xs text-base-content/60">${fmtDate(entry)}</span>
-            <span class="badge badge-${color} badge-xs">${kind ? KIND_LABELS[kind] : "Uncategorised"}</span>
+            <span class="badge badge-${color} badge-sm whitespace-nowrap">${kind ? KIND_LABELS[kind] : "Uncategorised"}</span>
           </div>
           <div class="font-semibold text-sm mt-1">${escapeHtml(entry.title)}</div>
           ${extraTags.length ? `<div class="text-xs text-base-content/50 mt-1">${extraTags.map((t) => `#${t}`).join(" ")}</div>` : ""}
@@ -277,7 +316,7 @@
     });
 
     if (!todayInserted) {
-      timelineEl.appendChild(markerLi(`Today — ${todayStr}`, "badge-error"));
+      timelineEl.appendChild(todayMarkerLi(`Today — ${todayStr}`));
     }
 
     const visibleCount = items.filter((i) => i.kind === "entry").length;
@@ -391,6 +430,17 @@
     TRACKERS.forEach((t) => {
       if (t.el) t.el.addEventListener("click", () => { setTrackerToggle(t, !t.shown); render(); writeStateToURL(); });
     });
+
+    // Mobile sidebar toggle - desktop always shows the sidebar via
+    // layout.css and hides this button, see "Mobile:" comment there.
+    const sidebarToggleBtn = document.getElementById("sidebar-toggle");
+    const sidebarEl = document.getElementById("fdp-sidebar");
+    if (sidebarToggleBtn && sidebarEl) {
+      sidebarToggleBtn.addEventListener("click", () => {
+        const open = sidebarEl.classList.toggle("is-open");
+        sidebarToggleBtn.setAttribute("aria-expanded", String(open));
+      });
+    }
 
     render();
 

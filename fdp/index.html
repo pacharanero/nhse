@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FDP Timeline — nhse</title>
 <link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../css/layout.css">
 <script>
   (function () {
     var t = localStorage.getItem("nhse-theme");
@@ -15,7 +16,7 @@
 </head>
 <body class="bg-base-100">
 
-<div class="navbar bg-base-100 border-b border-base-200 max-w-4xl mx-auto px-4">
+<div class="navbar bg-base-100 border-b border-base-200 px-4">
   <div class="flex-1 text-sm">
     <a href="../" class="link link-hover">NHSE database</a>
     <span class="opacity-60">/ FDP timeline</span>
@@ -23,50 +24,83 @@
   <button type="button" class="btn btn-sm btn-ghost" data-theme-toggle aria-pressed="false">🌙 Dark</button>
 </div>
 
-<header class="max-w-4xl mx-auto px-4 pt-6 pb-2">
-  <h1 class="text-xl font-bold mb-2">NHS Federated Data Platform: timeline</h1>
-  <p class="text-sm text-base-content/70 max-w-prose">
-    A filterable, source-linked timeline of the FDP, from the COVID-19
-    datastore contract to the 2027 break clause. Every entry links to a
-    primary source and an archived copy. See
-    <a class="link" href="../spec/fdp-timeline.md">the spec</a>
-    for editorial policy.
-  </p>
-</header>
+<div class="fdp-layout max-w-6xl mx-auto">
 
-<main class="max-w-4xl mx-auto px-4 pb-16">
+  <button type="button" id="sidebar-toggle" class="fdp-sidebar-toggle-btn btn btn-sm btn-outline m-4 mb-0" aria-expanded="false" aria-controls="fdp-sidebar">☰ Filters & search</button>
 
-  <div class="sticky top-0 bg-base-100/95 backdrop-blur border-b border-base-200 py-3 z-10">
-    <div id="tag-filters" class="flex flex-wrap gap-1 items-center" role="group" aria-label="Filter by tag"></div>
-    <div class="flex flex-wrap gap-2 items-center mt-2">
+  <aside id="fdp-sidebar" class="fdp-sidebar bg-base-200 w-auto m-4 p-4 rounded-box flex-col gap-5 text-sm">
+
+    <div>
+      <h2 class="font-semibold text-xs uppercase tracking-wide text-base-content/50 mb-2">Search</h2>
       <input type="search" id="search-box" placeholder="Search titles and summaries…" aria-label="Search entries"
-             class="input input-sm input-bordered flex-1 min-w-[160px]">
-      <div class="join" role="group" aria-label="Sort order">
-        <button type="button" class="btn btn-sm join-item sort-btn" data-sort="desc">Newest first</button>
-        <button type="button" class="btn btn-sm join-item sort-btn" data-sort="asc">Oldest first</button>
-      </div>
-      <button type="button" id="bartlett-toggle" class="btn btn-sm btn-outline" aria-pressed="true"
-              title="Show/hide Tom Bartlett's cumulative appearance dots">Bartlett</button>
-      <button type="button" id="watson-toggle" class="btn btn-sm btn-outline" aria-pressed="true"
-              title="Show/hide Tom Watson's cumulative appearance dots">Watson</button>
-      <span class="text-xs text-base-content/60 whitespace-nowrap ml-auto" id="result-count"></span>
+             class="input input-sm input-bordered w-full">
     </div>
-    <div class="flex items-center gap-3 mt-1 text-xs text-base-content/50">
-      <span class="flex items-center gap-1"><span class="inline-block w-1.5 h-1.5 rounded-full bg-base-content/30"></span>self-published (own blog/LinkedIn)</span>
-      <span class="flex items-center gap-1"><span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>third-party press/media</span>
+
+    <div>
+      <h2 class="font-semibold text-xs uppercase tracking-wide text-base-content/50 mb-2">Sort</h2>
+      <div class="join w-full" role="group" aria-label="Sort order">
+        <button type="button" class="btn btn-sm join-item flex-1 sort-btn" data-sort="desc">Newest</button>
+        <button type="button" class="btn btn-sm join-item flex-1 sort-btn" data-sort="asc">Oldest</button>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="font-semibold text-xs uppercase tracking-wide text-base-content/50 mb-2">Category</h2>
+      <div id="tag-filters" class="flex flex-col gap-1" role="group" aria-label="Filter by category"></div>
+    </div>
+
+    <details id="tags-details">
+      <summary class="font-semibold text-xs uppercase tracking-wide text-base-content/50 cursor-pointer select-none">Tags</summary>
+      <div id="tag-filters-free" class="flex flex-wrap gap-1 mt-2" role="group" aria-label="Filter by tag"></div>
+    </details>
+
+    <div>
+      <h2 class="font-semibold text-xs uppercase tracking-wide text-base-content/50 mb-2">Appearance trackers</h2>
+      <div class="flex gap-2">
+        <button type="button" id="bartlett-toggle" class="btn btn-sm btn-outline flex-1" aria-pressed="true"
+                title="Show/hide Tom Bartlett's cumulative appearance dots">Bartlett</button>
+        <button type="button" id="watson-toggle" class="btn btn-sm btn-outline flex-1" aria-pressed="true"
+                title="Show/hide Tom Watson's cumulative appearance dots">Watson</button>
+      </div>
+      <div class="flex flex-col gap-1 mt-2 text-xs text-base-content/50">
+        <span class="flex items-center gap-1"><span class="inline-block w-1.5 h-1.5 rounded-full bg-base-content/30"></span>self-published (own blog/LinkedIn)</span>
+        <span class="flex items-center gap-1"><span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>third-party press/media</span>
+      </div>
+    </div>
+
+    <div class="fdp-sidebar-footer text-xs text-base-content/60" id="result-count"></div>
+
+  </aside>
+
+  <div class="flex-1 min-w-0">
+    <div class="max-w-3xl px-4">
+
+      <header class="pt-6 pb-2">
+        <h1 class="text-xl font-bold mb-2">NHS Federated Data Platform: timeline</h1>
+        <p class="text-sm text-base-content/70 max-w-prose">
+          A filterable, source-linked timeline of the FDP, from the COVID-19
+          datastore contract to the 2027 break clause. Every entry links to a
+          primary source and an archived copy. See
+          <a class="link" href="../spec/fdp-timeline.md">the spec</a>
+          for editorial policy.
+        </p>
+      </header>
+
+      <main class="pb-16">
+        <ul class="timeline timeline-vertical mt-4" id="timeline"></ul>
+      </main>
+
     </div>
   </div>
 
-  <ul class="timeline timeline-vertical mt-4" id="timeline"></ul>
-
-</main>
+</div>
 
 <dialog id="entry-modal" class="modal">
   <div class="modal-box" id="entry-modal-body"></div>
   <form method="dialog" class="modal-backdrop"><button>close</button></form>
 </dialog>
 
-<footer class="max-w-4xl mx-auto px-4 py-4 border-t border-base-200 text-sm text-base-content/60">
+<footer class="fdp-footer max-w-3xl px-4 py-4 border-t border-base-200 text-sm text-base-content/60">
   <p>
     Data: <a class="link" href="entries/">entries/</a> ·
     <a class="link" href="https://github.com/pacharanero/nhse/issues/new?template=new-entry.yml">Propose an entry</a> ·

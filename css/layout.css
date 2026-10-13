@@ -1,0 +1,55 @@
+/* Hand-written, deliberately NOT run through the Tailwind CLI.
+   The sidebar/responsive rules below were originally authored as
+   Tailwind `lg:` utilities (and, when that failed, as plain CSS
+   inside css/tailwind.css). Both were silently dropped in the
+   browser: present correctly in the compiled css/app.css text, but
+   missing from the parsed CSSOM, specifically for rules folded into
+   daisyUI's layered output by this project's Tailwind v4 + daisyUI 5
+   build. A rule block injected directly via a fresh <style> tag
+   parsed and applied fine, isolating the fault to the build step,
+   not the rules themselves. Loading this as a second, unprocessed
+   stylesheet sidesteps that pipeline entirely. Keep any future
+   layout-critical CSS that misbehaves the same way in this file
+   rather than css/tailwind.css. */
+
+.fdp-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile: sidebar is collapsed by default, shown via the
+   #sidebar-toggle button toggling .is-open (see js/app.js). */
+.fdp-sidebar {
+  display: none;
+}
+.fdp-sidebar.is-open {
+  display: flex;
+}
+
+@media (min-width: 64rem) {
+  .fdp-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .fdp-sidebar-toggle-btn {
+    display: none;
+  }
+  .fdp-sidebar {
+    display: flex !important;
+    width: 18rem;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    margin: 0;
+    border-radius: 0;
+    border-right: 1px solid var(--color-base-200);
+  }
+  .fdp-sidebar-footer {
+    margin-top: auto;
+  }
+  .fdp-footer {
+    margin-left: 18rem;
+  }
+}
