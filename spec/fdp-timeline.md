@@ -201,6 +201,12 @@ The task: build a chronological cross-reference of every public statement that a
 
 Output of this thread is not necessarily new entries on its own - it's corrections and enrichments to existing and new `scope`/`official`/`board` entries (adding the legal-basis tag and a sentence to the summary), plus, if the smoking-gun pattern above is actually confirmed, a dedicated new entry stating the finding with both sources dated and quoted side by side.
 
+## Leads to follow up
+
+Specific facts noticed while working a different part of the timeline - not yet investigated, not yet entries. Unlike "Sources to work through" above, which is a systematic source-by-source research plan, this is a dated, append-only queue of things stumbled on in passing. When picked up: fold into an existing or new entry and delete the line, or promote to its own roadmap item if it turns out to be bigger than one entry.
+
+- **NDIT supplier-access DPIA error raised internally before the public admission (flagged 13 October 2026, while researching the Cancer 360 R19 entry).** The FDP Check and Challenge Group's 15 May 2026 minutes record NHS England's director of data management and transformation telling the group an "error" had been identified in the *overarching* FDP DPIA's description of supplier (including Palantir) administrative access to the NDIT, with a review and update of the DPIA agreed as an action - about two and a half months before NHS England's public 28 July 2026 admission of what looks like the same error, already captured in `2026-06-03-ndg-statement-ndit-access-clarification`. Not yet checked: the exact wording of the May 2026 admission, whether it's substantively the same error, and whether the internal-to-public gap is worth a line in that entry. Source (not yet archived): <https://www.england.nhs.uk/long-read/data-transformation-check-and-challenge-group-meeting-minutes-15-may-2026/>.
+
 ## Open questions
 
 These need decisions, not guesses.

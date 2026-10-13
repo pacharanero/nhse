@@ -20,6 +20,7 @@ It is not a campaign site, not a Palantir dossier, and not a news aggregator.
 - **No speculation.** Documented facts, reported claims, and open questions are distinct. Do not assert motive, or anyone's future employment, however plausible.
 - **No paywall circumvention.** Do not add scrapers or techniques for bypassing paywalls. Use the routes in the spec: own subscription, brief attributed quotation, metadata-only entries, institutional access, or - best - obtaining the underlying primary document.
 - **Do not hand-edit generated files.** `nhs-board-transcripts/manifest.tsv` and the `.vtt` files are produced by `s/fetch-transcripts`.
+- **Log incidental leads before moving on.** Noticed a fact, contradiction, or source worth chasing while working on something else, but it's out of scope for the current task? Add a dated line to the "Leads to follow up" section of [spec/fdp-timeline.md](spec/fdp-timeline.md) before finishing the turn. A lead mentioned only in a chat reply gets lost; one in the spec survives to the next session.
 
 ## Local workflow
 
