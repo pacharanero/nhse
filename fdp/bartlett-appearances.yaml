@@ -1,0 +1,69 @@
+# Tom Bartlett (Bartlett Data Ltd) cumulative public-appearance tracker.
+#
+# Lightweight sibling to fdp/entries/*.yaml - not full timeline entries,
+# just a dated log of blog posts, columns, and similar public output, for
+# charting the pace of his media presence as a small dot on the timeline
+# rather than a full card. See CONTRIBUTING.md "Appearance trackers".
+#
+# Fields: date (YYYY-MM-DD), title, url. Kind is informational only.
+
+- date: 2026-04-13
+  kind: linkedin
+  title: Debut LinkedIn post as an independent FDP commentator
+  url: https://www.linkedin.com/posts/tom-l-bartlett_i-spent-22-years-building-data-systems-inside-activity-7449448940178935808-l239
+- date: 2026-04-30
+  kind: column
+  title: "Inside FDP - part 1: Understanding the problems facing NHS data"
+  url: https://www.computerweekly.com/opinion/Inside-FDP-part-1-Understanding-the-problems-facing-NHS-data
+- date: 2026-05-07
+  kind: column
+  title: "Inside FDP - part 2: Delivering on the NHS vision for data"
+  url: https://www.computerweekly.com/opinion/Inside-FDP-part-2-Delivering-on-the-NHS-vision-for-data
+- date: 2026-05-14
+  kind: column
+  title: "Inside FDP - part 3: The data architecture that makes it work"
+  url: https://www.computerweekly.com/opinion/Inside-FDP-part-3-The-data-architecture-that-makes-it-work
+- date: 2026-05-21
+  kind: column
+  title: "Inside FDP - part 4: The NHS data model"
+  url: https://www.computerweekly.com/opinion/Inside-FDP-part-4-The-NHS-data-model
+- date: 2026-05-28
+  kind: column
+  title: "Inside FDP - part 5: Addressing the objections"
+  url: https://www.computerweekly.com/opinion/Inside-FDP-part-5-Addressing-the-objections
+- date: 2026-07-07
+  kind: blog
+  title: Parliament knows. The regulators know. The professional bodies know. No Trust board has acted.
+  url: https://www.bartlettdata.co.uk/post/parliament-knows-regulators-know-no-trust-board-has-acted
+- date: 2026-07-09
+  kind: column
+  title: The FDP debate is looking in the rear-view mirror - what's around the next bend?
+  url: https://www.computerweekly.com/news/366645657/The-FDP-debate-is-looking-in-the-rear-view-mirror-whats-around-the-next-bend
+- date: 2026-07-14
+  kind: column
+  title: MPs heard Manchester is better than FDP. It seems they were misled
+  url: https://www.computerweekly.com/opinion/MPs-heard-Manchester-is-better-than-FDP-It-seems-they-were-misled
+- date: 2026-07-16
+  kind: blog
+  title: Wrigley Is Leading Burnham Down an FDP Off-Ramp to Nowhere
+  url: https://www.bartlettdata.co.uk/post/wrigley-fdp-off-ramp-burnham
+- date: 2026-08-09
+  kind: blog
+  title: "The rise of Shadow AI: A new mental health crisis for the NHS"
+  url: https://www.bartlettdata.co.uk/post/shadow-ai-nhs-mental-health
+- date: 2026-08-13
+  kind: blog
+  title: The NHS has invested over a billion in software it has no power to deploy
+  url: https://www.bartlettdata.co.uk/post/nhs-software-no-power-to-deploy
+- date: 2026-09-03
+  kind: blog
+  title: Is your data team solving the wrong problem?
+  url: https://www.bartlettdata.co.uk/post/is-your-data-team-solving-the-wrong-problem
+- date: 2026-09-10
+  kind: blog
+  title: New Minister Comes Out Fighting on Federated Data Platform
+  url: https://www.bartlettdata.co.uk/post/new-minister-comes-out-fighting-on-fdp
+- date: 2026-10-02
+  kind: column
+  title: The NHS accidentally bought the most valuable AI capability in enterprise software
+  url: https://www.computerweekly.com/opinion/The-NHS-accidentally-bought-the-most-valuable-AI-capability-in-enterprise-software

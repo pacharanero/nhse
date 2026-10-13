@@ -52,6 +52,14 @@
   let index = [];
   let sortOrder = "desc"; // "desc" = newest first (default), "asc" = oldest first
 
+  // Tom Bartlett cumulative-appearance tracker - see fdp/bartlett-appearances.yaml
+  // and "Appearance trackers" in CONTRIBUTING.md. A lightweight dot on the
+  // timeline, not a full entry: no tags, no filtering, no modal - just a
+  // numbered link out to the source.
+  const bartlettToggleEl = document.getElementById("bartlett-toggle");
+  let bartlett = [];
+  let showBartlett = true;
+
   // --- URL querystring state -------------------------------------------
   // Convention, meant to generalise to any topic site in this repo:
   //   ?tags=a,b,c   comma-separated, ANDed together
@@ -68,6 +76,7 @@
     if (q) searchEl.value = q;
     const sort = params.get("sort");
     if (sort === "asc" || sort === "desc") sortOrder = sort;
+    if (params.get("bartlett") === "0") showBartlett = false;
   }
 
   function writeStateToURL() {
@@ -75,6 +84,7 @@
     if (activeTags.size) params.set("tags", Array.from(activeTags).join(","));
     if (searchEl.value.trim()) params.set("q", searchEl.value.trim());
     if (sortOrder !== "desc") params.set("sort", sortOrder);
+    if (!showBartlett) params.set("bartlett", "0");
     const qs = params.toString();
     window.history.replaceState(null, "", window.location.pathname + (qs ? `?${qs}` : ""));
   }
@@ -155,26 +165,65 @@
     return li;
   }
 
+  function bartlettLi(appearance) {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <hr>
+      <div class="timeline-middle">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-base-content/40"></span>
+      </div>
+      <div class="timeline-end">
+        <a class="badge badge-ghost badge-xs gap-1 hover:badge-outline" href="${appearance.url}" target="_blank" rel="noopener" title="${escapeHtml(appearance.title)}">
+          <span class="font-semibold">TB#${appearance.n}</span>
+          <span class="max-w-[14rem] truncate">${escapeHtml(appearance.title)}</span>
+        </a>
+      </div>
+      <hr>
+    `;
+    return li;
+  }
+
+  // Merges the main (filtered, sorted) entries with the Bartlett
+  // appearance dots into one date-ordered sequence, so markers interleave
+  // correctly regardless of sort order. Bartlett items are never filtered
+  // by tag/search - the toggle is the only way to hide them.
+  function mergedTimelineItems() {
+    const entries = sortedVisible().map((e) => ({ kind: "entry", date: e.date, id: e.id, data: e }));
+    const dots = showBartlett
+      ? bartlett.map((b) => ({ kind: "bartlett", date: b.date, id: `bartlett-${b.n}`, data: b }))
+      : [];
+    const merged = entries.concat(dots);
+    const dir = sortOrder === "asc" ? 1 : -1;
+    merged.sort((a, b) => dir * (a.date < b.date ? -1 : a.date > b.date ? 1 : a.id < b.id ? -1 : 1));
+    return merged;
+  }
+
   function render() {
-    const visible = sortedVisible();
+    const items = mergedTimelineItems();
     const todayStr = new Date().toISOString().slice(0, 10);
     timelineEl.innerHTML = "";
     let lastYear = null;
     let todayInserted = false;
 
-    visible.forEach((entry) => {
-      const crossedToday = sortOrder === "asc" ? entry.date > todayStr : entry.date < todayStr;
+    items.forEach((item) => {
+      const crossedToday = sortOrder === "asc" ? item.date > todayStr : item.date < todayStr;
       if (!todayInserted && crossedToday) {
         timelineEl.appendChild(markerLi(`Today — ${todayStr}`, "badge-error"));
         todayInserted = true;
       }
 
-      const year = entry.date.slice(0, 4);
+      const year = item.date.slice(0, 4);
       if (year !== lastYear) {
         timelineEl.appendChild(markerLi(year, "badge-neutral"));
         lastYear = year;
       }
 
+      if (item.kind === "bartlett") {
+        timelineEl.appendChild(bartlettLi(item.data));
+        return;
+      }
+
+      const entry = item.data;
       const kind = primaryKind(entry.tags);
       const side = kind ? KIND_SIDE[kind] : "end";
       const color = kind ? KIND_COLOR[kind] : "neutral";
@@ -207,7 +256,10 @@
       timelineEl.appendChild(markerLi(`Today — ${todayStr}`, "badge-error"));
     }
 
-    countEl.textContent = `${visible.length} of ${index.length} entries`;
+    const visibleCount = items.filter((i) => i.kind === "entry").length;
+    const bartlettCount = showBartlett ? bartlett.length : 0;
+    countEl.textContent = `${visibleCount} of ${index.length} entries`
+      + (bartlettCount ? ` · ${bartlettCount} Tom Bartlett appearances` : "");
   }
 
   async function loadEntry(id, file) {
@@ -281,11 +333,22 @@
     sortBtns.forEach((b) => b.classList.toggle("btn-active", b.dataset.sort === order));
   }
 
+  function setBartlettToggle(shown) {
+    showBartlett = shown;
+    if (bartlettToggleEl) {
+      bartlettToggleEl.classList.toggle("btn-active", shown);
+      bartlettToggleEl.setAttribute("aria-pressed", String(shown));
+    }
+  }
+
   async function init() {
     readStateFromURL();
 
     const res = await fetch("index.json");
     index = await res.json();
+
+    const bartlettRes = await fetch("bartlett-appearances.json");
+    bartlett = await bartlettRes.json();
 
     const otherTags = new Set();
     index.forEach((e) => e.tags.forEach((t) => { if (!KIND_LABELS[t]) otherTags.add(t); }));
@@ -293,9 +356,13 @@
 
     buildFilters();
     setSortOrder(sortOrder);
+    setBartlettToggle(showBartlett);
 
     sortBtns.forEach((btn) => btn.addEventListener("click", () => { setSortOrder(btn.dataset.sort); render(); writeStateToURL(); }));
     searchEl.addEventListener("input", () => { render(); writeStateToURL(); });
+    if (bartlettToggleEl) {
+      bartlettToggleEl.addEventListener("click", () => { setBartlettToggle(!showBartlett); render(); writeStateToURL(); });
+    }
 
     render();
 

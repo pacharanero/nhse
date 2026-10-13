@@ -135,6 +135,20 @@ s/build-index
 
 This regenerates `fdp/index.json` from everything in `fdp/entries/` and checks required fields, unique ids, ISO dates, and that `archive_url` is present. Commit the updated `index.json` alongside your entry.
 
+## Appearance trackers
+
+Not everything worth charting is worth a full entry. `fdp/bartlett-appearances.yaml` is a lightweight, hand-maintained list - date, title, url, nothing else required - for tracking the pace of one person's or organisation's public output (Tom Bartlett's blog posts and Computer Weekly columns, so far) as small numbered dots on the timeline, rather than as full cards with quotes and archive copies.
+
+```sh
+s/build-bartlett-index
+```
+
+regenerates `fdp/bartlett-appearances.json` from the YAML, sorts by date, and assigns each item a cumulative `n` - that's the "TB#7" label the dot shows. The dots aren't tag-filtered or searched like entries; a single toggle button (`Bartlett dots` in the controls bar, `?bartlett=0` in the URL) is the only way to hide them. `js/app.js`'s `mergedTimelineItems` is where they're interleaved into the main entry sequence.
+
+If a similar pattern becomes worth tracking for someone else - another frequent commentator, another vendor's PR output - add a sibling `fdp/<name>-appearances.yaml` and a matching `s/build-<name>-index`, following the same two-field-minimum shape, rather than bending this one to cover both.
+
+A single especially significant appearance (see `2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice.yaml` and `2026-04-30-computer-weekly-inside-fdp-column-bartlett.yaml`) can be *both* a full entry *and* a line in the appearances file - the dot and the card aren't mutually exclusive, and the cumulative count should include every appearance regardless of whether it also got the full treatment.
+
 ## Styling
 
 The site uses [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisyui.com/) for layout and components (timeline, badges, modal, theme switching). This has a build step, but only for people editing styles - the committed `css/app.css` is what ships, and viewing the site needs nothing beyond a static file server (see "Local preview" below).

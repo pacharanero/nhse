@@ -11,6 +11,7 @@ Public. Live at <https://pacharanero.github.io/nhse/>, landing on a list of util
 - `spec/fdp-timeline.md` - what the FDP timeline is, the entry schema, the source list, and the roadmap. **Read this first.**
 - `spec/roadmap.md` - notes on where this repo is headed beyond the FDP timeline, including an early-stage idea for an "atlas of vendor capture" across registers of interest, meeting transparency logs, and revolving-door appointments.
 - `fdp/entries/` - FDP timeline entries, one YAML file each. `fdp/index.json` is generated from these by `s/build-index` - never hand-edited.
+- `fdp/bartlett-appearances.yaml` - lightweight cumulative-appearance tracker (date, title, url) rendered as small numbered dots on the timeline, not full entries. `fdp/bartlett-appearances.json` is generated from this by `s/build-bartlett-index`. See "Appearance trackers" in `CONTRIBUTING.md`.
 - `people/` - biographical role timelines (appointment/departure dates) for individuals who recur across topics.
 - `nhs-board-transcripts/` - YouTube caption tracks for NHS England Board meetings, 2013 onwards, plus `manifest.tsv` mapping video IDs to titles and URLs.
 - `nhs-england-blogs/` - index of every NHS England blog post found, with archive links (`manifest.tsv`, from `s/fetch-blog-index`). 1,825 posts indexed so far (2017 onwards - nothing earlier is showing up in either archive yet), each with a Wayback Machine link and a UK Government Web Archive link. Pre-2025 posts were moved to UKGWA; see the script's header comment for why its own search is effectively broken and how this works around it.
@@ -32,12 +33,13 @@ s/search 'federated data'    # search all transcripts, get timestamped YouTube l
 s/search -C 6 'opt.?out'     # wider context around each hit
 s/fetch-blog-index           # build/extend the NHS England blog post index + archive links
 s/build-index                # regenerate fdp/index.json after adding/editing an entry
+s/build-bartlett-index       # regenerate fdp/bartlett-appearances.json after editing that file
 python3 -m http.server 8000  # preview the site at localhost:8000 (FDP timeline at /fdp/)
 ```
 
 `s/fetch-transcripts` needs either `yt-dlp` on `PATH` or `uv` installed (it will run yt-dlp via `uvx`). It is idempotent - re-run it whenever a new board meeting is published and it fetches only what is missing.
 
-`s/build-index` needs `pyyaml` (`pip install pyyaml` or equivalent).
+`s/build-index` and `s/build-bartlett-index` both need `pyyaml` (`pip install pyyaml` or equivalent).
 
 Styling (`css/app.css`) is generated from `css/tailwind.css` via `npm install && npm run build:css` - only needed if you're changing markup or styles, not for viewing the site. See "Styling" in `CONTRIBUTING.md`.
 
