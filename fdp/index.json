@@ -509,6 +509,20 @@
     "file": "entries/2025-07-23-cancer-360-dpia-published.yaml"
   },
   {
+    "id": "2026-04-13-bmj-chelsea-westminster-pilot-data-questioned",
+    "date": "2026-04-13",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "palantir",
+      "bmj",
+      "statistics"
+    ],
+    "title": "BMJ questions Chelsea and Westminster's FDP pilot \"success\" data",
+    "file": "entries/2026-04-13-bmj-chelsea-westminster-pilot-data-questioned.yaml"
+  },
+  {
     "id": "2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice",
     "date": "2026-04-13",
     "date_precision": "day",

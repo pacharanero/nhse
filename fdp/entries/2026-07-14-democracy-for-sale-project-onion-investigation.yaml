@@ -9,30 +9,82 @@ tags:
   - mandelson
 title: Investigation reveals Palantir's £30k/month Mandelson lobbying operation, codenamed "Project Onion"
 summary: >-
-  Democracy for Sale (Peter Geoghegan and Lucas Amin), in an investigation
-  also published in the London Review of Books, revealed that Palantir
-  hired Peter Mandelson's lobbying firm Global Counsel in 2018 to position
-  it as "a respectable partner to the British government," on a retainer
-  worth over £30,000 a month, run under the internal code name "Project
-  Onion." The investigation reported that Global Counsel exploited gaps in
-  UK lobbying registration rules to avoid declaring Palantir as a client,
-  and that a rival bidder for the FDP contract, Shane Tickell, said Palantir
-  "had all these people to open doors and lobby and pitch long before the
-  procurement started." The same investigation found that NHS usage data
-  obtained by FOI showed 52 of 139 "live" trusts had not used a single one
-  of the FDP's eight apps in the twelve months to June 2026, and that the
-  flagship Cancer 360 tool was used by only six trusts.
+  Peter Geoghegan and Lucas Amin of Democracy for Sale, in a 7,300-word
+  investigation published in the London Review of Books (trailed four days
+  earlier on [Democracy for
+  Sale](https://democracyforsale.substack.com/p/its-just-a-waste-of-time-inside-palantir-nhs-peter-mandelson)),
+  revealed that Palantir hired Peter Mandelson's lobbying firm Global
+  Counsel in 2018 to position it as "a respectable partner to the British
+  government," on a retainer worth over £30,000 a month, run under the
+  internal code name "Project Onion." Global Counsel, the piece reported,
+  exploited gaps in UK lobbying registration rules to avoid declaring
+  Palantir as a client until 2022, and did so then only because a junior
+  employee's mistake forced disclosure. A rival bidder for the FDP
+  contract, Shane Tickell, said Palantir "had all these people to open
+  doors and lobby and pitch long before the procurement started."
+
+  The investigation also reported NHS usage data obtained by FOI showing
+  52 of 139 "live" trusts had not used a single one of the FDP's eight
+  apps in the twelve months to June 2026, and that the flagship Cancer 360
+  tool was used by only six trusts in the ten months since its September
+  2025 launch - this repo's own count of the Cancer 360 row in the FOI
+  data already retained in `fdp/sources/` independently confirms exactly
+  six non-zero entries, and the underlying table does indeed cover only
+  eight named products, resolving the discrepancy flagged in
+  `spec/fdp-timeline.md`'s R19 notes between this figure and the FDP's
+  wider 9+2 product catalogue. Separately, data obtained by Foxglove
+  showed 13 of the 41 trusts using the FDP for operation scheduling
+  carried out 9,000 fewer procedures between them in the year after
+  adopting the platform than the year before.
+
+  The piece reported that Matthew Swindells, a former Number 10 health
+  policy adviser hired by Global Counsel in 2019, was co-chair of Chelsea
+  and Westminster NHS Foundation Trust (and three others) from 2022 -
+  explicitly excluded, per the trust's own board papers, "from any
+  decision-making in relation to Palantir" - until the Financial Times
+  revealed he had privately urged colleagues to add GP patient data to
+  the FDP to demonstrate its effectiveness, after which he was "forced to
+  resign." Chelsea and Westminster, meanwhile, had received an extra £3m
+  from the Department of Health to help implement the FDP, more than any
+  other trust, and the FT separately found 84% of the 217,000 outpatients
+  removed from waiting lists across 16 FDP-using trusts were at this one
+  trust.
+
+  Separately, the piece reported that Topham Guerin, a political
+  communications agency, was hired to run an influencer campaign
+  recruiting Instagram creators to post pro-Palantir messages for payment
+  while telling them to "keep the brand confidential and not tag
+  Palantir" - exposed after Julia Patterson, who writes a popular NHS
+  Substack, forwarded the invitation to the Good Law Project, which
+  published it. NHS Greater Manchester and Leeds Teaching Hospitals are
+  both quoted declining to adopt the FDP, each saying its own existing
+  systems outperform it.
 quote: "For Palantir, the NHS was the holy grail. Years of lobbying tilted the FDP tender in Palantir's favour."
 quote_verified: document
-source_url: https://democracyforsale.substack.com/p/its-just-a-waste-of-time-inside-palantir-nhs-peter-mandelson
-source_title: "Democracy for Sale: \"It's just a waste of time\": inside Palantir's £330m NHS failure"
-archive_url: http://web.archive.org/web/20261010214012/https://democracyforsale.substack.com/p/its-just-a-waste-of-time-inside-palantir-nhs-peter-mandelson
+source_url: https://www.lrb.co.uk/the-paper/v48/n13/peter-geoghegan-and-lucas-amin/this-looks-absolutely-rubbish
+source_title: "London Review of Books: 'This looks absolutely rubbish' - Peter Geoghegan and Lucas Amin on Palantir and the NHS"
+archive_url: https://web.archive.org/web/20261013214714/https://www.lrb.co.uk/the-paper/v48/n13/peter-geoghegan-and-lucas-amin/this-looks-absolutely-rubbish
 related:
   - 2022-04-01-fdp-pin-published
   - 2023-11-21-fdp-contract-awarded
   - 2026-06-03-science-committee-report-break-clause
+  - 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
+  - 2026-07-15-bmj-third-trusts-not-using-fdp-apps
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+  - 2026-04-13-bmj-chelsea-westminster-pilot-data-questioned
+  - 2026-05-11-ft-palantir-unlimited-ndit-access-revealed
 contested: >-
-  Palantir's head of UK corporate affairs told Democracy for Sale the
-  company is merely a software provider: "How that software is used is
-  controlled by the NHS trusts who use it." The piece does not record a
-  specific company response to the lobbying/Project Onion findings.
+  Palantir's head of UK corporate affairs, Ben Mascall, told the
+  journalists the company is merely a software provider: "How that
+  software is used is controlled by the NHS trusts who use it, with data
+  - legally and contractually - only able to be processed strictly in
+  accordance with their instructions." NHS England did not answer the
+  piece's specific questions but said "NHS England has always been clear
+  that the published benefits are a comparison of performance before and
+  after the adoption of the platform." No response is recorded from
+  Matthew Swindells or Topham Guerin specifically. The exact date of
+  Swindells's resignation and of the Topham Guerin campaign are not given
+  in the piece beyond "earlier this year" (relative to 23 July 2026
+  publication) - not precise enough to date as separate entries here; if
+  a firmer date surfaces (e.g. the underlying FT report) they may warrant
+  their own entries.

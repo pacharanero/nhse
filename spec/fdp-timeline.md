@@ -179,7 +179,7 @@ System-level products:
 - System Co-ordination Centre
 - Strategic Commissioning Tool (SCT)
 
-Note: Democracy for Sale's 14 July 2026 investigation (`2026-07-14-democracy-for-sale-project-onion-investigation`) cites FOI-sourced trust usage data for "the FDP's eight apps," which doesn't cleanly match this 9+2 list - worth reconciling when that FOI data is next consulted (it may predate a product launch or use a different grouping).
+Resolved: Democracy for Sale's investigation (`2026-07-14-democracy-for-sale-project-onion-investigation`, updated 13 October 2026 to cite the fuller LRB publication) cites FOI-sourced trust usage data for "the FDP's eight apps," which looked inconsistent with this 9+2 list. Checked directly against the retained FOI table (`fdp/sources/2026-foi-nhse-weekly-trust-users-by-product.pdf`): it covers exactly eight product rows (Cancer 360, Crisis Response, Inpatient CCS, OPTICA, Outpatient CCS, Patient Led Validation, RTT Validation, Shared PTL) - missing CMRB, System Co-ordination Centre, and SCT, presumably because this particular reporting period/system doesn't centrally track weekly logins for those three. Not a discrepancy between sources after all, just a narrower scope in NHS England's own usage reporting than the full product catalogue.
 
 **Per-product entry, this is an event, not a stub.** Each gets a full `fdp/entries/*.yaml` entry (not an appearance-tracker dot - the user's instruction is explicit on this), kind-tagged `scope` (per the existing table: "what data is in and out ... direct care vs secondary use"), plus a dedicated free tag for the product (e.g. `cancer-360`, `optica`, `sptl` - lowercase-hyphenated, matching the product's own abbreviation where it has one). For each product, establish and cite:
 
