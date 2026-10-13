@@ -49,6 +49,32 @@ The transcripts are YouTube auto-captions. They are a **search index, not a sour
 
 Use `s/search` to find the moment, then open the timestamped link, listen, and transcribe by hand before quoting anything anywhere.
 
+## Acknowledgements
+
+This timeline exists because of reporting, research, FOI requests, and campaigning done by people and organisations outside NHS England. Particular thanks to:
+
+**Journalists and researchers**
+
+- Tom Bartlett - independent FDP commentator and former NHS England employee; Bartlett Data blog, and Computer Weekly's "Inside FDP" column series
+- Peter Geoghegan and Lucas Amin - Democracy for Sale and the London Review of Books, for the "Project Onion" investigation into Palantir's lobbying
+- Mary Fitzgerald and Cori Crider - openDemocracy, for the original 2020 COVID Data Store reporting
+- Adam Bychawski - openDemocracy
+- Rebecca McBride Osborne and Adrian O'Dowd - The BMJ
+- Miles Dilworth - Daily Mail
+- Simon Childs - Novara Media
+- Steve Black - healthcare consultant and former NHS data scientist, widely quoted on FDP benefit claims
+- Nye Hudson - for the FOI request (via WhatDoTheyKnow) behind the only public trust-level FDP usage data this timeline has been able to draw on
+
+**Organisations**
+
+- Foxglove, including Rosa Curling - litigation and campaigning against the COVID Data Store and FDP contracts since 2020
+- Good Law Project - legal action over Palantir's redacted FDP contract
+- The National Data Guardian's office, under Dr Nicola Byrne - sustained, named public scrutiny of FDP data access and public trust
+- The Health Foundation and the Office for Statistics Regulation - independent analysis that directly contradicted NHS England's own published benefit claims
+- DAUK (Doctors' Association UK), 38 Degrees, and NHS Analysts Together - petitions, protest organisation, and an anonymous internal staff letter calling for the Palantir partnership to end
+
+If you've written about the FDP and you're not listed here, or we've got your affiliation wrong, please open an issue (see "Propose an entry" on the [timeline itself](https://pacharanero.github.io/nhse/fdp/)) or get in touch.
+
 ## Licensing
 
 - Scripts: AGPL-3.0-or-later.
