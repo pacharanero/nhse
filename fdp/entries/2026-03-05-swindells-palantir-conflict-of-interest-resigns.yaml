@@ -1,0 +1,67 @@
+id: 2026-03-05-swindells-palantir-conflict-of-interest-resigns
+date: 2026-03-05
+date_precision: day
+tags:
+  - media
+  - nhse
+  - palantir
+  - mandelson
+  - swindells
+title: FT reveals Swindells pushed to add GP data to FDP while advising Palantir; resigns NHS trust chair role
+summary: >-
+  The Financial Times reported that Matthew Swindells, joint chair of four
+  major NHS hospital trusts in north-west London (including Chelsea and
+  Westminster Hospital NHS Foundation Trust), privately encouraged
+  colleagues in a May 2024 email to integrate GP patient data into the
+  Palantir-built FDP - despite Chelsea and Westminster's own board papers
+  stating he should be excluded from any decision-making regarding
+  Palantir, on account of his paid advisory role to the company, held
+  through Peter Mandelson's lobbying firm Global Counsel. His email
+  proposed moving aggregate metrics and, eventually, individual records
+  from local GP databases into the system, suggesting this could be done
+  via existing local data environments without renegotiating
+  data-sharing agreements - contrary to NHS England's public statements
+  that the FDP would not combine GP records nationally. Recipients of the
+  email included Penny Dash, now chair of NHS England.
+
+  Twelve days later, the FT reported that Swindells would step down from
+  all four chair roles on 31 March 2026. He denied any conflict of
+  interest, saying his term was ending with the trust group among the
+  highest-performing in England, and separately said his email proposals
+  concerned only a local version of the platform under local
+  controllership, not the national system, and were never actioned.
+quote: "Although board papers for Chelsea and Westminster Hospital NHS Foundation Trust stated Swindells should be excluded from any decision-making regarding Palantir, an email from May 2024 reveals he suggested flowing patient-level data into the FDP."
+quote_verified: secondary
+paywalled: true
+source_url: https://www.ft.com/content/6c548670-0f3e-45f1-ba08-8bb6dd152af5
+source_title: "Financial Times: NHS official pushed to add patient data to Palantir platform while also advising the company"
+archive_url: https://archive.ph/20260313045746/https://www.ft.com/content/6c548670-0f3e-45f1-ba08-8bb6dd152af5
+related:
+  - 2025-07-23-cancer-360-dpia-published
+  - 2026-04-13-bmj-chelsea-westminster-pilot-data-questioned
+  - 2026-07-14-democracy-for-sale-project-onion-investigation
+  - 2024-01-02-topham-guerin-palantir-influencer-campaign-exposed
+contested: >-
+  Swindells denies any conflict of interest and says his proposals were
+  about a local, locally-controlled version of the platform and were
+  never actioned; see summary for the fuller statement. Quote and facts
+  here are drawn from a paywalled FT original via a secondary summary
+  (quote_verified: secondary) - [Freevacy's Privacy
+  Newsfeed](https://web.archive.org/web/20261013222623/https://www.freevacy.com/news/financial-times/senior-nhs-official-lobbied-to-add-gp-data-to-fdp-while-also-advising-palantir/7180)
+  for the 5 March revelation and [its summary of the 17
+  March resignation
+  report](https://web.archive.org/web/20261013222706/https://www.freevacy.com/news/financial-times/senior-nhs-official-who-lobbied-to-add-gp-data-to-fdp-to-step-down/7228) -
+  not independently verified against the full FT text, which sits behind
+  the hard paywall captured at archive_url. The BMJ's 13 April 2026 piece
+  (2026-04-13-bmj-chelsea-westminster-pilot-data-questioned) refers to an
+  unnamed "second figure at major trust... linked to the tech giant";
+  given this resignation was already public and effective by then, this
+  is very likely the same Swindells story being recapped rather than a
+  new flag, though neither piece names the other's subject explicitly.
+  It is not established here whether "joint chair of four... trusts" and
+  the specific naming of Chelsea and Westminster in the 5 March FT
+  summary refer to the same four-trust group the Daily Mail/Cancer 360
+  material elsewhere in this repo associates with Chelsea and
+  Westminster, or a coincidental overlap - both are consistent with the
+  well-documented existence of a shared chair across a group of
+  north-west London trusts.

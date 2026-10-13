@@ -432,6 +432,20 @@
     "file": "entries/2024-01-fdp-explainer-drops-opt-out-line.yaml"
   },
   {
+    "id": "2024-01-02-topham-guerin-palantir-influencer-campaign-exposed",
+    "date": "2024-01-02",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse",
+      "good-law-project",
+      "cost"
+    ],
+    "title": "Good Law Project exposes covert Palantir-funded influencer campaign against it",
+    "file": "entries/2024-01-02-topham-guerin-palantir-influencer-campaign-exposed.yaml"
+  },
+  {
     "id": "2024-02-18-good-law-project-redacted-contract-legal-action",
     "date": "2024-02-18",
     "date_precision": "day",
@@ -507,6 +521,20 @@
     ],
     "title": "Cancer 360 DPIA published as \"Final Approved\" with IAO signature and DPO sections blank",
     "file": "entries/2025-07-23-cancer-360-dpia-published.yaml"
+  },
+  {
+    "id": "2026-03-05-swindells-palantir-conflict-of-interest-resigns",
+    "date": "2026-03-05",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "palantir",
+      "mandelson",
+      "swindells"
+    ],
+    "title": "FT reveals Swindells pushed to add GP data to FDP while advising Palantir; resigns NHS trust chair role",
+    "file": "entries/2026-03-05-swindells-palantir-conflict-of-interest-resigns.yaml"
   },
   {
     "id": "2026-04-13-bmj-chelsea-westminster-pilot-data-questioned",
