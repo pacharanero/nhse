@@ -59,7 +59,9 @@ This timeline exists because of reporting, research, FOI requests, and campaigni
 - Peter Geoghegan and Lucas Amin - Democracy for Sale and the London Review of Books, for the "Project Onion" investigation into Palantir's lobbying
 - Mary Fitzgerald and Cori Crider - openDemocracy, for the original 2020 COVID Data Store reporting
 - Adam Bychawski - openDemocracy
-- Rebecca McBride Osborne and Adrian O'Dowd - The BMJ
+- Rhiannon Osborne and Adrian O'Dowd - The BMJ
+- George Monbiot - The Guardian
+- Lindsay Clark - The Register
 - Miles Dilworth - Daily Mail
 - Simon Childs - Novara Media
 - Steve Black - healthcare consultant and former NHS data scientist, widely quoted on FDP benefit claims

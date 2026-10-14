@@ -1,0 +1,62 @@
+id: 2025-05-16-register-trusts-doubt-fdp-utility
+date: 2025-05-16
+date_precision: day
+tags:
+  - media
+  - nhse
+  - palantir
+  - cost
+title: The Register reports NHS trusts doubting the FDP's utility, a year before the LRB covered the same ground
+summary: >-
+  The Register reported that Leeds Teaching Hospitals NHS Trust - one of
+  the largest in Europe, obtained via a Corporate Watch FOI request - told
+  NHS England's interim national director of transformation, Dr Vin
+  Diwakar, and interim chief operating officer, Dame Emily Lawson, that it
+  would "lose functionality rather than gain it" by adopting the FDP's
+  Inpatient Care Coordination Solution for some use cases, since it
+  already ran its own outpatient care coordination, referral-to-treatment
+  validation and discharge planning services. NHS England's reply:
+  the FDP "is already delivering for the NHS." The piece separately cited
+  Democracy for Sale's own earlier reporting that NHS Greater Manchester's
+  health authority said there were "no products designed or produced by
+  Palantir as part of the FDP programme that exceed the NHS Greater
+  Manchester local capability," and that Berkshire Healthcare NHS
+  Foundation Trust had "no plans" to join the programme - the same two
+  trusts (one additionally, Leeds) that recur making near-identical
+  points over a year later in Geoghegan and Amin's July 2026 LRB
+  investigation (see related entry).
+
+  On adoption figures, NHS England's own framing - "more than 120 NHS
+  trusts had signed up... including 84% of hospital trusts, and 72 are
+  already live" - sat alongside The Register's own count from NHS
+  figures: fewer than a quarter (45 of 215) of England's hospital trusts
+  were actively using the FDP by the end of 2024. The piece also noted
+  the £8.8m paid to consultancy KPMG to "promote adoption of FDP" and
+  support implementation, and traced the contract's roots to the
+  original £1 COVID-19 Data Store deal, from which Palantir had by this
+  point won a cumulative £60m without ever competing against other
+  suppliers, before the competitively-tendered £330m FDP contract itself.
+quote: "We already have services within the Trust that deliver outpatient care coordination, referral-to-treatment validation and discharge planning... From the descriptions we have of these FDP products we believe we would lose functionality rather than gain it by adopting them."
+quote_verified: document
+source_url: https://www.theregister.com/software/2025/05/16/nhs-england-hospitals-cast-doubt-on-palantir-use-case/696899
+source_title: "The Register: Some English hospitals doubt Palantir's utility: We'd 'lose functionality rather than gain it' (Lindsay Clark)"
+archive_url: http://web.archive.org/web/20260909082201/https://www.theregister.com/software/2025/05/16/nhs-england-hospitals-cast-doubt-on-palantir-use-case/696899
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2020-03-palantir-covid-datastore-1-pound
+  - 2026-06-11-foi-fdp-weekly-usage-data-cost-per-login
+  - 2026-07-14-democracy-for-sale-project-onion-investigation
+contested: >-
+  Leeds Teaching Hospitals' own spokesperson response, quoted in the same
+  piece, is more measured than the leaked letter: they said they were
+  "currently working with the FDP team to implement" the RTT validation
+  product specifically, while continuing to use their existing
+  outpatient-coordination and discharge-planning services "whilst working
+  closely with the FDP team... and explore new functionality" - i.e.
+  qualified, product-by-product engagement rather than a blanket
+  rejection. The Register cites an earlier Democracy for Sale piece
+  (https://democracyforsale.substack.com/p/palantirs-nhs-data-platform-rejected-hospitals)
+  for the Greater Manchester and Berkshire Healthcare quotes, not yet
+  independently checked or added as its own entry here - it would predate
+  this repo's existing 14 July 2026 Democracy for Sale/LRB entry by well
+  over a year and may be worth its own entry if chased down.

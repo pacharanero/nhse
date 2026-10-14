@@ -506,6 +506,19 @@
     "file": "entries/2025-02-03-karp-kill-enemies-earnings-call.yaml"
   },
   {
+    "id": "2025-05-16-register-trusts-doubt-fdp-utility",
+    "date": "2025-05-16",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "palantir",
+      "cost"
+    ],
+    "title": "The Register reports NHS trusts doubting the FDP's utility, a year before the LRB covered the same ground",
+    "file": "entries/2025-05-16-register-trusts-doubt-fdp-utility.yaml"
+  },
+  {
     "id": "2025-07-23-cancer-360-dpia-published",
     "date": "2025-07-23",
     "date_precision": "day",
@@ -853,6 +866,20 @@
     ],
     "title": "National Data Guardian advises minister that trust should carry substantial weight in FDP decision",
     "file": "entries/2026-10-12-ndg-advises-minister-trust.yaml"
+  },
+  {
+    "id": "2026-10-14-monbiot-palantir-british-state-column",
+    "date": "2026-10-14",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "nhse",
+      "mandelson",
+      "tom-watson"
+    ],
+    "title": "Monbiot column surfaces two new NHS-adjacent conflicts of interest - Samantha Jones and Martha Dalton",
+    "file": "entries/2026-10-14-monbiot-palantir-british-state-column.yaml"
   },
   {
     "id": "2027-02-15-fdp-break-clause-deadline",

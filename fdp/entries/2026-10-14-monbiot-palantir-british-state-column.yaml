@@ -1,0 +1,71 @@
+id: 2026-10-14-monbiot-palantir-british-state-column
+date: 2026-10-14
+date_precision: day
+tags:
+  - media
+  - palantir
+  - nhse
+  - mandelson
+  - tom-watson
+title: Monbiot column surfaces two new NHS-adjacent conflicts of interest - Samantha Jones and Martha Dalton
+summary: >-
+  George Monbiot's Guardian column, prompted by Tom Watson's "mob rule"
+  remarks, is framed around Palantir's wider reach into the British state
+  (the Ministry of Defence, several police forces, the Financial Conduct
+  Authority, the atomic weapons establishment, and the NHS) rather than
+  the FDP specifically, drawing heavily on the Geoghegan/Amin LRB
+  investigation already in this repo. Two threads it surfaces are directly
+  FDP-relevant and not yet otherwise covered here:
+
+  Samantha Jones, first: citing [an FT
+  report](https://www.ft.com/content/747ea340-2170-4567-93a0-7fd4b32885c5),
+  Monbiot writes that Jones, then lead non-executive director on the
+  Department of Health and Social Care's board, was an adviser to one of
+  Palantir's partners at the time the company was bidding for the FDP
+  contract. She is now permanent secretary - the most senior civil
+  servant - at the same department.
+
+  Martha Dalton, second: citing [a Guardian
+  report](https://www.theguardian.com/technology/2026/oct/02/lobbyist-palantir-martha-dalton-andy-burnham)
+  (2 October 2026), Monbiot writes that Dalton, co-founder of lobbying
+  firm Lodestone (which did extensive work for Palantir), was on unpaid
+  leave from Lodestone while playing "a key player" role in Andy
+  Burnham's Makerfield byelection campaign - the campaign that put
+  Burnham on the path to becoming prime minister. Burnham's eventual
+  decision on the FDP break clause is one of this repo's live open
+  threads.
+
+  Neither thread is independently verified here beyond Monbiot's column;
+  both cite primary reporting (FT, Guardian) not yet fetched directly for
+  this repo. Monbiot also links, as further context not chased down here:
+  Palantir now employs "more than 30 former UK ministers and officials"
+  ([Guardian, 24 September
+  2026](https://www.theguardian.com/commentisfree/2026/sep/24/tom-watson-palantir-uk-politics));
+  an unrecorded 2019 Downing Street meeting between Boris Johnson,
+  Dominic Cummings and Peter Thiel; a 2025 Mandelson-brokered Starmer
+  visit to Palantir's Washington showroom; Karp's reply "Mostly
+  terrorists, that's true" to a protester accusing Palantir of killing
+  Palestinians; and the government's July 2026 ethics and integrity
+  commission recommendation for a lobbying-transparency shake-up. The
+  FCA, MoD and atomic-weapons-establishment material is outside this
+  timeline's NHS/FDP scope and not pursued further here.
+quote: "Over the past few years, this US company has been worming its way into the British state."
+quote_verified: document
+source_url: https://www.theguardian.com/commentisfree/2026/oct/14/palantir-british-state-controversial-us-company-tom-watson
+source_title: "The Guardian: Palantir is worming its way into the British state - it's time to curb this controversial US company's influence (George Monbiot)"
+archive_url: https://web.archive.org/web/20261014121415/https://www.theguardian.com/commentisfree/2026/oct/14/palantir-british-state-controversial-us-company-tom-watson
+related:
+  - 2026-07-14-democracy-for-sale-project-onion-investigation
+  - 2026-10-10-tom-watson-defends-palantir-mob-rule
+  - 2025-07-23-cancer-360-dpia-published
+  - 2026-03-05-swindells-palantir-conflict-of-interest-resigns
+  - 2026-05-11-ft-palantir-unlimited-ndit-access-revealed
+contested: >-
+  This is a Guardian opinion column, not a news report - Monbiot's own
+  framing and selection of facts throughout. Palantir is not quoted
+  responding to the specific Samantha Jones or Martha Dalton claims in
+  this piece. Both threads rely on primary reporting (FT for Jones,
+  Guardian news desk for Dalton) that this entry has not independently
+  fetched or verified - flagged here as a lead rather than confirmed
+  fact in this repo's own voice; worth their own dedicated, properly
+  sourced entries if pursued further.
