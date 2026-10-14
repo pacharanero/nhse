@@ -71,6 +71,7 @@
   let allOtherTags = []; // non-kind tags, discovered once the index loads
   let index = [];
   let sortOrder = "desc"; // "desc" = newest first (default), "asc" = oldest first
+  let currentEntryId = null; // id of the entry whose card is open, if any
 
   // Cumulative-appearance trackers - see fdp/bartlett-appearances.yaml,
   // fdp/watson-appearances.yaml, and "Appearance trackers" in
@@ -94,8 +95,9 @@
   //   ?tags=a,b,c   comma-separated, ANDed together
   //   ?q=text       free-text search
   //   ?sort=asc     only written when non-default ("desc" is default and omitted)
+  //   ?entry=id     opens that entry's card on load; present only while its modal is open
   // Read once on load; written back (via replaceState, so filtering doesn't
-  // spam browser history) whenever filters/search/sort change.
+  // spam browser history) whenever filters/search/sort/open card change.
 
   function readStateFromURL() {
     const params = new URLSearchParams(window.location.search);
@@ -106,6 +108,7 @@
     const sort = params.get("sort");
     if (sort === "asc" || sort === "desc") sortOrder = sort;
     TRACKERS.forEach((t) => { if (params.get(t.key) === "0") t.shown = false; });
+    return params.get("entry");
   }
 
   function writeStateToURL() {
@@ -114,6 +117,7 @@
     if (searchEl.value.trim()) params.set("q", searchEl.value.trim());
     if (sortOrder !== "desc") params.set("sort", sortOrder);
     TRACKERS.forEach((t) => { if (!t.shown) params.set(t.key, "0"); });
+    if (currentEntryId) params.set("entry", currentEntryId);
     const qs = params.toString();
     window.history.replaceState(null, "", window.location.pathname + (qs ? `?${qs}` : ""));
   }
@@ -349,6 +353,7 @@
         ${fmtDate(summaryEntry)} ·
         <span class="badge badge-${color} badge-xs align-middle">${kind ? KIND_LABELS[kind] : "Uncategorised"}</span>
         ${data.paywalled ? " · paywalled source" : ""}
+        · <a class="link" href="?entry=${encodeURIComponent(data.id)}" title="Direct link to this card">permalink</a>
       </div>
       <div class="flex flex-wrap gap-1 mt-2">${tagChips}</div>
       <p class="text-sm mt-3">${linkifySummary(data.summary)}</p>
@@ -359,12 +364,28 @@
         <a class="link link-primary ml-2" href="${data.source_url}" target="_blank" rel="noopener">web</a>
         <a class="link link-primary ml-1" href="${data.archive_url}" target="_blank" rel="noopener">wayback</a>
       </div>
-      ${related.length ? `<div class="text-sm mt-3"><strong>Related:</strong> ${related.map((r) => escapeHtml(r.title)).join("; ")}</div>` : ""}
+      ${related.length ? `<div class="text-sm mt-3"><strong>Related:</strong> ${related.map((r) => `<a class="link link-primary" href="?entry=${encodeURIComponent(r.id)}" data-related-id="${escapeHtml(r.id)}">${escapeHtml(r.title)}</a>`).join("; ")}</div>` : ""}
       <div class="modal-action">
         <form method="dialog"><button class="btn btn-sm">Close</button></form>
       </div>
     `;
-    modalEl.showModal();
+
+    // Plain navigable links (middle-click/ctrl-click to open in a new tab
+    // still works) that also resolve instantly in-page on a normal click,
+    // rather than forcing a full reload to jump between related cards.
+    modalBodyEl.querySelectorAll("[data-related-id]").forEach((a) => {
+      a.addEventListener("click", (ev) => {
+        if (ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+        const target = index.find((e) => e.id === a.dataset.relatedId);
+        if (!target) return;
+        ev.preventDefault();
+        showEntry(target);
+      });
+    });
+
+    currentEntryId = data.id;
+    writeStateToURL();
+    if (!modalEl.open) modalEl.showModal();
   }
 
   // Renders `summary`'s inline markdown links - see "Inline source links"
@@ -407,7 +428,7 @@
   }
 
   async function init() {
-    readStateFromURL();
+    const requestedEntryId = readStateFromURL();
 
     const res = await fetch("index.json");
     index = await res.json();
@@ -430,6 +451,7 @@
     TRACKERS.forEach((t) => {
       if (t.el) t.el.addEventListener("click", () => { setTrackerToggle(t, !t.shown); render(); writeStateToURL(); });
     });
+    modalEl.addEventListener("close", () => { currentEntryId = null; writeStateToURL(); });
 
     // Mobile sidebar toggle - desktop always shows the sidebar via
     // layout.css and hides this button, see "Mobile:" comment there.
@@ -443,6 +465,9 @@
     }
 
     render();
+
+    const requestedEntry = requestedEntryId && index.find((e) => e.id === requestedEntryId);
+    if (requestedEntry) showEntry(requestedEntry);
 
     // Pull summaries in for search once loaded, then re-render so search
     // covers summary text too.

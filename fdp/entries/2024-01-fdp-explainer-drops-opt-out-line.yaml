@@ -12,9 +12,12 @@ summary: >-
   carried an explicit line telling readers they could opt out of their
   data being used beyond individual care, via the national data opt-out.
   That sentence was removed at some point between the last capture that
-  contains it (7 December 2023) and the first capture that does not
-  (7 April 2024); exact edit date is not established closer than that
-  four-month window. The replacement text points readers to a general
+  contains it, [7 December
+  2023](https://web.archive.org/web/20231207110704/https://www.england.nhs.uk/digitaltechnology/digitising-connecting-and-transforming-health-and-care/what-this-means-for-people-patients-and-service-users/),
+  and the first capture that does not, [7 April
+  2024](https://web.archive.org/web/20240407075854/https://www.england.nhs.uk/digitaltechnology/digitising-connecting-and-transforming-health-and-care/what-this-means-for-people-patients-and-service-users/);
+  exact edit date is not established closer than that four-month window.
+  The replacement text points readers to a general
   "privacy and confidentiality" page instead of naming the opt-out
   mechanism. The page's worked patient example about being kept in
   hospital awaiting a care-home bed and being "discharged" via the
@@ -34,6 +37,7 @@ source_title: "NHS England: What this means for people, patients and service use
 archive_url: https://web.archive.org/web/20231207110704/https://www.england.nhs.uk/digitaltechnology/digitising-connecting-and-transforming-health-and-care/what-this-means-for-people-patients-and-service-users/
 related:
   - 2023-11-21-fdp-contract-awarded
+  - 2023-11-21-fdp-scope-use-cases-gp-data-excluded
 contested: >-
   Not put to NHS England. This entry records a diff between two archived
   captures of the same NHS England URL; no allegation of intent is made

@@ -180,15 +180,18 @@ Then open `http://localhost:8000/fdp/` (or `http://localhost:8000/` for the land
 
 ## URL querystring convention
 
-The FDP site's filters, search, and sort order all round-trip through the URL, so a filtered view is a shareable link. Any future topic site in this repo should use the same three parameters, so links behave consistently across the whole project:
+The FDP site's filters, search, sort order, and currently open card all round-trip through the URL, so a filtered view - or a single card - is a shareable link. Any future topic site in this repo should use the same four parameters, so links behave consistently across the whole project:
 
 | Param | Example | Notes |
 |---|---|---|
 | `tags` | `?tags=nhse,parliament` | Comma-separated, ANDed together (all must match, not any). Omit entirely when no filter is active. |
 | `q` | `?q=opt-out` | Free-text search string. Omit when empty. |
 | `sort` | `?sort=asc` | Only written when it differs from the site's default (`desc`, newest-first, on the FDP site) - keeps default-state URLs clean. |
+| `entry` | `?entry=2023-11-21-fdp-contract-awarded` | An entry `id`. Opens that card's modal on load. Written while the card is open, removed when it's closed. Every open card shows its own "permalink" link pre-filled with this. |
 
-Read once on load, written back with `history.replaceState` (not `pushState`) on every change, so adjusting filters doesn't spam the browser's back button. See `js/app.js`'s `readStateFromURL` / `writeStateToURL` for the reference implementation.
+Read once on load, written back with `history.replaceState` (not `pushState`) on every change, so adjusting filters - or opening/closing a card - doesn't spam the browser's back button. See `js/app.js`'s `readStateFromURL` / `writeStateToURL` for the reference implementation.
+
+A card's `related` list (see the entry schema above) is rendered as clickable links to the other cards, using this same mechanism - so related entries are mutually navigable, not just mutually mentioned.
 
 ## Style
 
