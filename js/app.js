@@ -204,7 +204,7 @@
     const li = document.createElement("li");
     li.innerHTML = `
       <hr>
-      <div class="timeline-start flex items-center">
+      <div class="timeline-start flex items-center w-full">
         <span class="h-px flex-1 bg-error/40"></span>
       </div>
       <div class="timeline-middle">
