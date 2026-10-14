@@ -1,0 +1,46 @@
+# Everything Digital Health (Marcus Baw's podcast/YouTube channel)
+# FDP-relevant episode tracker.
+#
+# Lightweight sibling to fdp/entries/*.yaml - not full timeline entries,
+# just a dated log of episodes that touch on the FDP or Palantir's wider
+# NHS role, for charting them as a small dot on the timeline rather than
+# a full card. See CONTRIBUTING.md "Appearance trackers". Every episode
+# here is self-published (the show's own channel), so self is always
+# true - this tracker isn't distinguishing self vs earned media the way
+# the Bartlett/Watson ones do, it exists to separate "an episode exists"
+# from "worth a full entry".
+#
+# Fields: date (YYYY-MM-DD, YouTube upload date where known, else the
+# show's own episode date), title, url, outlet (always "Everything
+# Digital Health" here), self (always true).
+
+- date: 2025-05-23
+  outlet: Everything Digital Health
+  self: true
+  title: "The NHS Federated Data Platform - Part 1: What Is It? with Sam Smith of MedConfidential"
+  url: https://www.youtube.com/watch?v=Rs4B53anJFw
+- date: 2025-05-23
+  outlet: Everything Digital Health
+  self: true
+  title: "FDP does absolutely nothing to help with that - with Sam Smith of MedConfidential"
+  url: https://www.youtube.com/watch?v=XLdBSxwKeTI
+- date: 2025-07-25
+  outlet: Everything Digital Health
+  self: true
+  title: The NHS Single Patient Record - with Sam Smith of MedConfidential
+  url: https://www.youtube.com/watch?v=Knp8bQJ47xg
+- date: 2026-03-12
+  outlet: Everything Digital Health
+  self: true
+  title: "FDP and Palantir - The Fall? - with Anne-Marie Cunningham"
+  url: https://www.youtube.com/watch?v=ovdBfYtcPgI
+- date: 2026-04-09
+  outlet: Everything Digital Health
+  self: true
+  title: ID cards, Healthcare and Privacy - with NO2ID's Phil Booth
+  url: https://www.youtube.com/watch?v=2eXQhJKTsl4
+- date: 2026-04-16
+  outlet: Everything Digital Health
+  self: true
+  title: Parliament vs Palantir FDP
+  url: https://www.youtube.com/watch?v=yMoDU59zxBE

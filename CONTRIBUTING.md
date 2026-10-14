@@ -70,7 +70,7 @@ Copy an existing entry as a starting point (any file in `fdp/entries/` will do) 
 | `video_id` | board entries only | YouTube video ID. |
 | `t` | board entries only | Start time in seconds. |
 | `related` | no | List of other entry `id`s. |
-| `contested` | no | Free text: who disputes this, and what they say. Denials live in the same entry as the claim they deny - never a separate one. Supports the same inline markdown links as `summary`. |
+| `contested` | no | Free text, rendered as "Caveats": limitations, sourcing caveats, what's unverified, or - when it genuinely applies - who disputes the claim and what they say. Denials live in the same entry as the claim they deny - never a separate one. Supports the same inline markdown links as `summary`. |
 
 ### Getting the archive_url
 
@@ -107,9 +107,9 @@ The site's tag filter ANDs whatever you select - picking `nhse` and `parliament`
 
 Don't quote from `nhs-board-transcripts/*.vtt` directly. Those are YouTube auto-captions: a search index, not a transcription. Use `s/search` to find the moment, open the timestamped link, listen, and transcribe by hand. Anything taken from a caption without listening to the audio is `quote_verified: secondary` at best, and should be phrased as "NHS England's auto-generated captions record [name] as saying..." rather than presented as verbatim.
 
-### Contested claims
+### Caveats and disputes
 
-If a party denies or disputes something in the entry, add it to the same entry's `contested` field. Don't create a second entry for the denial and don't omit it.
+The `contested` field renders in the site as "Caveats," not "Contested" - most of what lives there isn't anyone disputing anything, it's an honest limitation: what wasn't independently verified, why a source is archived the way it is, what's still unknown. Reserve the word "contested" itself, in prose, for cases where a party has actually denied or disputed the claim with a specific, citable counter-statement. If a party does deny or dispute something in the entry, add it to the same entry's `contested` field - don't create a second entry for the denial and don't omit it.
 
 ### Inline source links
 
@@ -145,7 +145,7 @@ s/build-bartlett-index
 
 regenerates `fdp/bartlett-appearances.json` from the YAML, sorts by date, and assigns each item a cumulative `n` - that's the "TB#7" in the dot's label. The dots aren't tag-filtered or searched like entries; a single toggle button (`Bartlett` in the controls bar, `?bartlett=0` in the URL) is the only way to hide them. `js/app.js`'s `mergedTimelineItems` is where they're interleaved into the main entry sequence.
 
-There's a second one, `fdp/watson-appearances.yaml` / `s/build-watson-index`, tracking Tom Watson's media appearances since his September 2026 Palantir appointment. Both are driven by the same `TRACKERS` array at the top of `js/app.js` - to track a third frequent voice, add a `{ key, prefix, label, file, toggleId }` entry there, a matching `fdp/<name>-appearances.yaml`, an `s/build-<name>-index` script (copy `s/build-watson-index`), and a toggle button in `fdp/index.html`, rather than bending an existing tracker to cover two people at once.
+There's a second one, `fdp/watson-appearances.yaml` / `s/build-watson-index`, tracking Tom Watson's media appearances since his September 2026 Palantir appointment, and a third, `fdp/edh-appearances.yaml` / `s/build-edh-index`, tracking FDP-relevant episodes of Marcus Baw's own *Everything Digital Health* YouTube channel/podcast - every item there is `self: true` (it's the author's own channel), so that tracker isn't using the self/third-party distinction to mean anything, it exists purely to chart episode frequency without promoting every episode to a full entry. All three are driven by the same `TRACKERS` array at the top of `js/app.js` - to track a fourth frequent voice (or recurring show), add a `{ key, prefix, label, file, toggleId }` entry there, a matching `fdp/<name>-appearances.yaml`, an `s/build-<name>-index` script (copy `s/build-watson-index` or `s/build-edh-index`), and a toggle button in `fdp/index.html`, rather than bending an existing tracker to cover two subjects at once.
 
 A single especially significant appearance (see `2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice.yaml` and `2026-04-30-computer-weekly-inside-fdp-column-bartlett.yaml`) can be *both* a full entry *and* a line in the appearances file - the dot and the card aren't mutually exclusive, and the cumulative count should include every appearance regardless of whether it also got the full treatment.
 

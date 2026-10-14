@@ -83,6 +83,7 @@
   const TRACKERS = [
     { key: "bartlett", prefix: "TB", label: "Tom Bartlett", file: "bartlett-appearances.json", toggleId: "bartlett-toggle" },
     { key: "watson", prefix: "TW", label: "Tom Watson", file: "watson-appearances.json", toggleId: "watson-toggle" },
+    { key: "edh", prefix: "EDH", label: "Everything Digital Health", file: "edh-appearances.json", toggleId: "edh-toggle" },
   ];
   TRACKERS.forEach((t) => {
     t.el = document.getElementById(t.toggleId);
@@ -365,7 +366,7 @@
       <div class="flex flex-wrap gap-1 mt-2">${tagChips}</div>
       <p class="text-sm mt-3">${linkifySummary(data.summary)}</p>
       ${data.quote ? `<blockquote class="border-l-4 border-base-300 pl-3 italic text-sm mt-3">${escapeHtml(data.quote)}<br><small class="text-base-content/60">verification: ${escapeHtml(data.quote_verified || "unverified")}</small></blockquote>` : ""}
-      ${data.contested ? `<div class="alert alert-warning alert-soft mt-3 text-sm"><span><strong>Contested:</strong> ${linkifySummary(data.contested)}</span></div>` : ""}
+      ${data.contested ? `<div class="alert alert-warning alert-soft mt-3 text-sm"><span><strong>Caveats:</strong> ${linkifySummary(data.contested)}</span></div>` : ""}
       <div class="text-sm mt-3">
         <span>${escapeHtml(data.source_title)}</span>
         <a class="link link-primary ml-2" href="${data.source_url}" target="_blank" rel="noopener">web</a>

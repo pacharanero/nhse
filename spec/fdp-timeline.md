@@ -62,7 +62,7 @@ One record per event, stored as YAML under `fdp/entries/` (decided by R3 below).
 | `paywalled` | no | Boolean. Drives the reader-facing note. |
 | `video_id` / `t` | no | For `board` entries: YouTube ID and start seconds. |
 | `related` | no | List of other entry `id`s. |
-| `contested` | no | Free text noting a denial or dispute, so the entry carries it inline. |
+| `contested` | no | Free text, rendered as "Caveats": limitations, sourcing notes, what's unverified, or - where one genuinely exists - a denial or dispute, carried inline. |
 
 ### Date precision
 
@@ -78,9 +78,9 @@ Board meeting entries have two dates: the meeting date (use this) and the YouTub
 
 Auto-generated YouTube captions are **not** a verification level. They are a search index. The known failure modes are mistranscribed names, dropped words, and garbled acronyms - the 7 December 2023 meeting renders "opt-outs" as "ops out". Every caption-derived quote starts at `secondary` and is promoted to `audio` only after someone plays the video.
 
-### Contested claims
+### Caveats and disputes
 
-Where a party denies something, the denial goes in the same entry, not a separate one. Microsoft's denial belongs next to the ICC email story; Epic's denial belongs next to the FTC report; NHS England's "no expectation that changes would be made" belongs next to the national data guardian FOI emails. An entry that reports an allegation without its denial is a defect, not an editorial choice.
+The `contested` field is rendered as "Caveats" on the site, not "Contested" - most entries that use it aren't recording an actual dispute, just an honest limitation (what wasn't independently verified, why a source is archived the way it is, what's still unknown). Reserve the word "contested" in prose for cases where a party has genuinely denied or disputed the claim with a specific, citable counter-statement. Where a party does deny something, the denial goes in the same entry, not a separate one. Microsoft's denial belongs next to the ICC email story; Epic's denial belongs next to the FTC report; NHS England's "no expectation that changes would be made" belongs next to the national data guardian FOI emails. An entry that reports an allegation without its denial is a defect, not an editorial choice.
 
 ## Sources to work through
 

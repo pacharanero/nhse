@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+#
+# SPDX-FileCopyrightText: 2026 Marcus Baw
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Regenerate fdp/edh-appearances.json from fdp/edh-appearances.yaml.
+# Sibling to s/build-bartlett-index - see "Appearance trackers" in
+# CONTRIBUTING.md. Same schema: date, title, url, outlet, self.
+#
+# Run after adding or editing fdp/edh-appearances.yaml:
+#   s/build-edh-index
+
+import json
+import re
+import sys
+from pathlib import Path
+
+import yaml
+
+ROOT = Path(__file__).resolve().parent.parent
+SOURCE_PATH = ROOT / "fdp" / "edh-appearances.yaml"
+INDEX_PATH = ROOT / "fdp" / "edh-appearances.json"
+
+REQUIRED = ["date", "title", "url", "outlet"]
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def main():
+    errors = []
+
+    items = yaml.safe_load(SOURCE_PATH.read_text()) or []
+    if not isinstance(items, list) or not items:
+        print(f"error: {SOURCE_PATH} must be a non-empty list", file=sys.stderr)
+        sys.exit(1)
+
+    for i, item in enumerate(items):
+        for field in REQUIRED:
+            if not item.get(field):
+                errors.append(f"item {i}: missing required field '{field}'")
+
+        date = item.get("date")
+        if date and not ISO_DATE.match(str(date)):
+            errors.append(f"item {i}: date '{date}' is not ISO YYYY-MM-DD")
+
+        url = item.get("url")
+        if url and not str(url).startswith(("http://", "https://")):
+            errors.append(f"item {i}: url '{url}' must be an http(s) URL")
+
+        if "self" not in item or not isinstance(item.get("self"), bool):
+            errors.append(f"item {i}: 'self' must be present and a boolean (true = self-published, false = earned media)")
+
+    if errors:
+        print("s/build-edh-index: validation failed", file=sys.stderr)
+        for e in errors:
+            print(f"  {e}", file=sys.stderr)
+        sys.exit(1)
+
+    for item in items:
+        item["date"] = str(item["date"])  # PyYAML parses YYYY-MM-DD as a date object
+
+    items.sort(key=lambda e: (e["date"], e["title"]))
+    for n, item in enumerate(items, start=1):
+        item["n"] = n
+
+    INDEX_PATH.write_text(json.dumps(items, indent=2) + "\n")
+    print(f"==> wrote {INDEX_PATH.relative_to(ROOT)} with {len(items)} appearances", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()
