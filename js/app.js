@@ -204,6 +204,9 @@
     const li = document.createElement("li");
     li.innerHTML = `
       <hr>
+      <div class="timeline-start flex items-center">
+        <span class="h-px flex-1 bg-error/40"></span>
+      </div>
       <div class="timeline-middle">
         <span class="inline-block w-2 h-2 rounded-full bg-error"></span>
       </div>
@@ -271,7 +274,11 @@
     let todayInserted = false;
 
     items.forEach((item) => {
-      const crossedToday = sortOrder === "asc" ? item.date > todayStr : item.date < todayStr;
+      // In "desc" (newest-first) order, an item dated today must sit
+      // below this marker, not above it alongside future-dated items -
+      // hence `<=` here but strict `>` for "asc", where today-dated
+      // items correctly stay above (i.e. earlier than) the marker.
+      const crossedToday = sortOrder === "asc" ? item.date > todayStr : item.date <= todayStr;
       if (!todayInserted && crossedToday) {
         timelineEl.appendChild(todayMarkerLi(`Today — ${todayStr}`));
         todayInserted = true;
