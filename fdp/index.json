@@ -90,6 +90,19 @@
     "file": "entries/2020-03-palantir-covid-datastore-1-pound.yaml"
   },
   {
+    "id": "2020-05-06-privacy-groups-question-palantir-nhs-data",
+    "date": "2020-05-06",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "thiel",
+      "nhse"
+    ],
+    "title": "Privacy groups' questions to Palantir expose gap between \"aggregate\" claims and reported datastore contents",
+    "file": "entries/2020-05-06-privacy-groups-question-palantir-nhs-data.yaml"
+  },
+  {
     "id": "2020-06-05-covid-datastore-contracts-published",
     "date": "2020-06-05",
     "date_precision": "day",
@@ -184,6 +197,19 @@
     ],
     "title": "DHSC ends separate Palantir deal covering adult social care data",
     "file": "entries/2021-09-11-dhsc-ends-palantir-adult-social-care-deal.yaml"
+  },
+  {
+    "id": "2021-11-25-covid-datastore-dpia-not-direct-care",
+    "date": "2021-11-25",
+    "date_precision": "day",
+    "tags": [
+      "scope",
+      "palantir",
+      "nhse",
+      "legal-basis-copi-notice"
+    ],
+    "title": "NHS England's COVID-19 Data Store DPIA states its purpose is \"other than direct care\"",
+    "file": "entries/2021-11-25-covid-datastore-dpia-not-direct-care.yaml"
   },
   {
     "id": "2022-04-01-fdp-pin-published",
@@ -284,6 +310,18 @@
     "file": "entries/2023-02-09-fdp-tender-deadline.yaml"
   },
   {
+    "id": "2023-04-14-opendemocracy-300-processing-purposes",
+    "date": "2023-04-14",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "nhse"
+    ],
+    "title": "openDemocracy reports NHS England created over 300 processing purposes in the COVID-19 Data Store",
+    "file": "entries/2023-04-14-opendemocracy-300-processing-purposes.yaml"
+  },
+  {
     "id": "2023-05-11-fdp-prospectus-published",
     "date": "2023-05-11",
     "date_precision": "day",
@@ -336,6 +374,19 @@
     ],
     "title": "NHS England publishes patient-facing case for the FDP ahead of the award",
     "file": "entries/2023-10-24-diwakar-powis-power-blog-fdp-patients.yaml"
+  },
+  {
+    "id": "2023-11-11-dauk-open-letter-pause-fdp",
+    "date": "2023-11-11",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse",
+      "opt-out"
+    ],
+    "title": "Doctors' Association UK's open letter asks ministers to pause the FDP deal",
+    "file": "entries/2023-11-11-dauk-open-letter-pause-fdp.yaml"
   },
   {
     "id": "2023-11-14-fdp-easy-read-claims-efficacy-no-caveat",
@@ -485,6 +536,18 @@
     "file": "entries/2024-01-02-topham-guerin-palantir-influencer-campaign-exposed.yaml"
   },
   {
+    "id": "2024-01-11-foxglove-topham-guerin-contacts-dauk",
+    "date": "2024-01-11",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse"
+    ],
+    "title": "Palantir's influencer campaign contacts the doctors' group suing over the FDP's legal basis",
+    "file": "entries/2024-01-11-foxglove-topham-guerin-contacts-dauk.yaml"
+  },
+  {
     "id": "2024-02-18-good-law-project-redacted-contract-legal-action",
     "date": "2024-02-18",
     "date_precision": "day",
@@ -514,6 +577,20 @@
     ],
     "title": "Pro-Palestinian medical activists picket NHS England HQ over Palantir's Israel ties",
     "file": "entries/2024-04-03-picket-nhs-england-hq-palantir-gaza.yaml"
+  },
+  {
+    "id": "2024-09-05-register-lawyers-fdp-lacks-legal-basis",
+    "date": "2024-09-05",
+    "date_precision": "day",
+    "tags": [
+      "legal",
+      "palantir",
+      "nhse",
+      "opt-out",
+      "legal-basis-s251"
+    ],
+    "title": "Register reveals NHS England's own lawyers found the FDP's privacy tech lacks a legal basis",
+    "file": "entries/2024-09-05-register-lawyers-fdp-lacks-legal-basis.yaml"
   },
   {
     "id": "2024-11-15-optica-acute-dpia-published",

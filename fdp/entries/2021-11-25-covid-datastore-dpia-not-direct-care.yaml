@@ -1,0 +1,39 @@
+id: 2021-11-25-covid-datastore-dpia-not-direct-care
+date: 2021-11-25
+date_precision: day
+tags:
+  - scope
+  - palantir
+  - nhse
+  - legal-basis-copi-notice
+title: NHS England's COVID-19 Data Store DPIA states its purpose is "other than direct care"
+summary: >-
+  NHS England's Data Protection Impact Assessment for the COVID-19 Data
+  Store - reviewed and signed off again on 25 November 2021, with the
+  same answer already present in [an earlier version dated April
+  2020](http://web.archive.org/web/20260214202707/http://notechfortyrants.org/wp-content/uploads/2020/06/202004-DPIA-NHS-COVID19-data-store-v1.3-1.pdf)
+  - ticks "Yes" to the explicit question "If the processing is of data
+  concerning health or social care, is it for a purpose other than direct
+  care?" The DPIA's own "Purpose" section describes the processing as
+  bringing together data "to provide analysts, the government and
+  researchers with the most comprehensive datasets related to COVID-19"
+  and to "facilitate... national population-level insights" - not
+  individual clinical decision-making. Its stated legal basis is GDPR
+  Article 6(1)(e) (public task) and 6(1)(c) (legal obligation, via a
+  Secretary of State notice under the Control of Patient Information
+  Regulations 2002), not implied consent for direct care. The same
+  document lists several of its "data marts" as explicitly "Record
+  level" or "Patient-Level" (Secondary Uses Service extracts, and a
+  Patient-Level Information and Costing Systems mart), alongside
+  genuinely aggregated datasets such as 111 and 999 call volumes.
+quote: "If the processing is of data concerning health or social care, is it for a purpose other than direct care? Y"
+quote_verified: document
+source_url: https://www.england.nhs.uk/wp-content/uploads/2022/02/data-protection-impact-assessment-nhs-covid-datastore.pdf
+source_title: "NHS England: Data Protection Impact Assessment - NHS COVID-19 Data Store"
+archive_url: http://web.archive.org/web/20260311121947/https://www.england.nhs.uk/wp-content/uploads/2022/02/data-protection-impact-assessment-nhs-covid-datastore.pdf
+related:
+  - 2020-03-nhsx-assembles-covid-datastore-partners
+  - 2023-11-21-fdp-scope-use-cases-gp-data-excluded
+  - 2025-07-23-cancer-360-dpia-published
+  - 2024-11-15-optica-acute-dpia-published
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp

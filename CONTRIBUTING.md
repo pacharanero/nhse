@@ -70,7 +70,7 @@ Copy an existing entry as a starting point (any file in `fdp/entries/` will do) 
 | `video_id` | board entries only | YouTube video ID. |
 | `t` | board entries only | Start time in seconds. |
 | `related` | no | List of other entry `id`s. |
-| `contested` | no | Free text: who disputes this, and what they say. Denials live in the same entry as the claim they deny - never a separate one. |
+| `contested` | no | Free text: who disputes this, and what they say. Denials live in the same entry as the claim they deny - never a separate one. Supports the same inline markdown links as `summary`. |
 
 ### Getting the archive_url
 
@@ -118,7 +118,7 @@ The goal is for this to be the densest, most easily-navigable resource on the FD
 ```yaml
 summary: >-
   ... peer Tom Watson publicly defended the company, accusing critics of
-  [\"mob rule\"](https://www.bbc.co.uk/sounds/play/m0032qly).
+  ["mob rule"](https://www.bbc.co.uk/sounds/play/m0032qly).
 ```
 
 Plain markdown link syntax, `[text](https://...)` - only `http(s)://` URLs are linkified; anything else is left as literal text, and `s/build-index` rejects a malformed one rather than silently dropping it. Prefer the same archived-copy discipline as `archive_url` where practical, but a live link is better than no link - a streaming-audio source like BBC Sounds often can't be archived at all (see `contested` for recording why, same pattern as the `fdp/sources/` fallback above).

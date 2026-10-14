@@ -1,0 +1,42 @@
+id: 2020-05-06-privacy-groups-question-palantir-nhs-data
+date: 2020-05-06
+date_precision: day
+tags:
+  - civil
+  - palantir
+  - thiel
+  - nhse
+title: Privacy groups' questions to Palantir expose gap between "aggregate" claims and reported datastore contents
+summary: >-
+  Privacy International, Big Brother Watch, medConfidential, Foxglove and
+  Open Rights Group sent Palantir ten questions about its role in the NHS
+  COVID-19 Data Store, after the Guardian reported on 12 April 2020 that
+  the project included "large volumes of data pertaining to individuals,
+  including protected health information, Covid-19 test results, the
+  contents of people's calls to the NHS health advice line 111 and
+  clinical information about those in intensive care." Palantir's written
+  response (29 April 2020) described itself only as a data processor
+  acting on NHS instructions, declined to clarify whether it would access
+  identifiable patient records, and pointed questions about scope back to
+  the NHS. The coalition noted that while the NHS COVID-19 Data Store's
+  own public reference library described 111 and 999 call data as
+  "aggregate," the Guardian's reporting said confidential 111 call
+  information could include gender, postcode, symptoms and the precise
+  time a call ended, cross-matched via a "pseudo NHS number" against a
+  national master patient index.
+quote: "any access to customer data under any circumstances would be strictly at the direction of customers, in support of legitimate purposes, and in adherence with all applicable rules and regulations"
+quote_verified: document
+source_url: https://privacyinternational.org/long-read/3751/sort-trust-verify-palantir-responds-questions-about-its-work-nhs
+source_title: "Privacy International: (Sort of) Trust but Verify - Palantir Responds to Questions about its work with NHS"
+archive_url: https://web.archive.org/web/20261014175253/https://privacyinternational.org/long-read/3751/sort-trust-verify-palantir-responds-questions-about-its-work-nhs
+related:
+  - 2020-03-nhsx-assembles-covid-datastore-partners
+  - 2020-03-palantir-covid-datastore-1-pound
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+contested: >-
+  Palantir's response states it merely "serves as a technical agent to
+  its customers" and directs questions about patient-record access back
+  to the NHS; the coalition considered this response to "offer some
+  assurances" while "failing to clarify the extent of the project and
+  what protections exist." Neither the NHS nor NHSX responded to the
+  underlying scope questions within this piece.

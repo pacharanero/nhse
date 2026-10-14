@@ -1,0 +1,42 @@
+id: 2023-11-11-dauk-open-letter-pause-fdp
+date: 2023-11-11
+date_precision: day
+tags:
+  - civil
+  - palantir
+  - nhse
+  - opt-out
+title: Doctors' Association UK's open letter asks ministers to pause the FDP deal
+summary: >-
+  The Doctors' Association UK (DAUK) published an open letter to health
+  secretary Steve Barclay, signed by 149 doctors including former Royal
+  College of Physicians chair Sir Richard Thompson and BMA board member
+  Dr Helen Salisbury, asking the government to "pause" the still-unawarded
+  Federated Data Platform deal pending "proper scrutiny." DAUK spokesperson
+  Dr David Nicholl said the plan for what he called an "enforced opt-in"
+  - patients automatically included unless they actively withdraw - meant
+  "basic issues of informed consent are being ignored." Asked to respond,
+  a Department of Health and Social Care spokesperson described the FDP's
+  purpose entirely in operational terms: it "will be used to connect
+  existing data to help local health teams better prioritise waiting
+  lists, manage theatre capacity and identify their staffing needs,"
+  with no mention of direct care. Ten days later, at the 21 November
+  2023 contract award, NHS England's own framing had changed to describe
+  FDP data as being used for "direct care and planning."
+quote: "We saw during the pandemic how joined-up data can be used to improve the way the NHS provides care. That's why the NHS is currently conducting a procurement process for a supplier of the Federated Data Platform (FDP), which will be used to connect existing data to help local health teams better prioritise waiting lists, manage theatre capacity and identify their staffing needs."
+quote_verified: document
+source_url: https://www.mirror.co.uk/news/politics/doctors-urge-minister-rethink-plan-31415908
+source_title: "Daily Mirror: Doctors urge minister to rethink plan to hand £480m NHS deal to US firm Palantir"
+archive_url: http://web.archive.org/web/20261006131410/https://www.mirror.co.uk/news/politics/doctors-urge-minister-rethink-plan-31415908
+related:
+  - 2023-11-21-fdp-contract-awarded
+  - 2023-11-21-fdp-scope-use-cases-gp-data-excluded
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+  - 2023-11-30-foxglove-legal-action-fdp-award
+contested: >-
+  DAUK's letter itself (published on its own site, not independently
+  archivable here - see "Styling"/R17 pattern in CONTRIBUTING.md for why)
+  frames this as a consent and transparency concern, not a direct-care
+  classification dispute specifically; this entry draws the "operational
+  vs direct care" contrast from the dates and the DHSC quote alone, not
+  from any claim DAUK itself made about legal basis wording.

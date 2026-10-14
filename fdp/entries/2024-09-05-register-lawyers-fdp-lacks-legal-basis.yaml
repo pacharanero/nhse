@@ -1,0 +1,50 @@
+id: 2024-09-05-register-lawyers-fdp-lacks-legal-basis
+date: 2024-09-05
+date_precision: day
+tags:
+  - legal
+  - palantir
+  - nhse
+  - opt-out
+  - legal-basis-s251
+title: Register reveals NHS England's own lawyers found the FDP's privacy tech lacks a legal basis
+summary: >-
+  The Register reported that FDP board documents from March 2024 showed
+  NHS England had received advice from King's Counsel that the platform's
+  privacy-enhancing technology (PET), supplied by IQVIA to de-identify
+  personal data, "will require a separate lawful basis to process PCD
+  (personal confidential data)" - and that without a fix, NHS England
+  would have to let patients opt out under the Section 251 regime, with
+  the board documents themselves noting "there is a risk that a Section
+  251 will be required, which could result in the National Data Opt Out
+  being applicable to all flows." This directly contradicted NHS
+  England's own public position three months earlier: when Foxglove's
+  coalition first alleged in December 2023 that the FDP lacked a lawful
+  basis, an NHS spokesperson said the claim "fundamentally misunderstands
+  how the Federated Data Platform will operate and is totally incorrect
+  in both matters of law and fact." The Register also noted in passing
+  that NHS England's "earlier definition of the FDP was to bring together
+  'operational' data" - a different framing from its current position
+  that Local Instances process GP-sourced confidential patient
+  information "for the purposes of individual care" (i.e. direct care),
+  which is also what NHS England cites as the reason the National Data
+  Opt-Out does not apply to those flows.
+quote: "There is a risk that a Section 251 will be required, which could result in the National Data Opt Out being applicable to all flows."
+quote_verified: secondary
+source_url: https://www.theregister.com/2024/09/05/fdp_lacks_legal_basis/
+source_title: "The Register: Key aspects of Palantir's Federated Data Platform lack legal basis, lawyers tell NHS England"
+archive_url: http://web.archive.org/web/20260313145033/https://www.theregister.com/2024/09/05/fdp_lacks_legal_basis/
+related:
+  - 2023-11-30-foxglove-legal-action-fdp-award
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+  - 2023-11-11-dauk-open-letter-pause-fdp
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
+  - 2023-12-07-board-opt-out-levels-not-materialised
+contested: >-
+  NHS England declined to comment to the Register for this story. Its
+  December 2023 denial of Foxglove's legal-basis concerns (quoted above)
+  was not subsequently revisited in public by NHS England as far as this
+  entry's source shows - only the internal board papers described here
+  record the King's Counsel advice. Quote is from FDP board documents as
+  quoted by the Register (quote_verified: secondary), not independently
+  seen by this repo.

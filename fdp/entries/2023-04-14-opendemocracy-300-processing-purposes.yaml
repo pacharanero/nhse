@@ -1,0 +1,36 @@
+id: 2023-04-14-opendemocracy-300-processing-purposes
+date: 2023-04-14
+date_precision: day
+tags:
+  - media
+  - palantir
+  - nhse
+title: openDemocracy reports NHS England created over 300 processing purposes in the COVID-19 Data Store
+summary: >-
+  openDemocracy reported that NHS England had created more than 300
+  distinct processing "purposes" within the COVID-19 Data Store's
+  Palantir Foundry installation, each governing a different slice of
+  access via Foundry's Purpose-Based Access Control feature, with some
+  records shared with private-sector consultancies. The figure traces to
+  a written parliamentary question from Lord Hunt of Kings Heath asking
+  for "the complete list of 'Purposes' currently active," which the
+  Department of Health and Social Care answered by attaching a spreadsheet
+  too large to publish inline rather than stating a number; a follow-up
+  question asked how many users had access under each purpose. openDemocracy's
+  own count of that spreadsheet puts the total above 300; this repo has not
+  independently downloaded and re-derived that figure from the spreadsheet
+  itself.
+source_url: https://www.opendemocracy.net/en/palantir-nhs-covid-datastore-foundry-peter-thiel/
+source_title: "openDemocracy: Revealed - 300 reasons why US 'spy-tech' firm Palantir processes NHS data"
+archive_url: http://web.archive.org/web/20260811013939/https://www.opendemocracy.net/en/palantir-nhs-covid-datastore-foundry-peter-thiel/
+paywalled: true
+related:
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+  - 2020-03-nhsx-assembles-covid-datastore-partners
+contested: >-
+  openDemocracy's full analysis sits behind its paywall; this entry is
+  sourced to the free-to-read opening paragraphs plus the parliamentary
+  written question and answer they cite directly
+  ([HL1602](http://web.archive.org/web/20250809141528/https://questions-statements.parliament.uk/written-questions/detail/2022-07-08/HL1602/)),
+  which is public. The underlying DHSC spreadsheet was not independently
+  downloaded and recounted for this entry.
