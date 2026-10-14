@@ -1,0 +1,39 @@
+id: 2020-03-28-nhsx-power-of-data-pandemic-blog
+date: 2020-03-28
+date_precision: day
+tags:
+  - official
+  - palantir
+  - nhse
+  - nhsx
+title: NHSX announces the COVID-19 Data Store, promises it will be closed after the pandemic
+summary: >-
+  NHSX chief executive Matthew Gould, NHSX director of AI Indra Joshi, and
+  NHS England director of data and analytics Ming Tang announced the
+  COVID-19 Data Store in a joint GOV.UK blog post: a backend store (built
+  on Microsoft Azure) feeding a Palantir Foundry-powered front end, to
+  bring together NHS data "to understand and anticipate demand" during
+  the pandemic. The post states "all NHS data in the store will remain
+  under NHS England and NHS Improvement's control" and that "when the
+  pandemic abates and the outbreak is contained, we will close the
+  Covid-19 datastore," with data processing agreements requiring partners
+  to destroy or return data once the emergency ends. It describes
+  Palantir as "a data processor, not a data controller," unable to "pass
+  on or use the data for any wider purpose without the permission of NHS
+  England," and Google's exploratory role as limited to "aggregated
+  operational data only... It will not include any form of identifiable
+  patient data."
+quote: "When the pandemic abates and the outbreak is contained, we will close the Covid-19 datastore."
+quote_verified: document
+source_url: https://healthtech.blog.gov.uk/2020/03/28/the-power-of-data-in-a-pandemic/
+source_title: "GOV.UK (Technology in the NHS blog): The power of data in a pandemic"
+archive_url: https://web.archive.org/web/20261014214924/https://healthtech.blog.gov.uk/2020/03/28/the-power-of-data-in-a-pandemic/
+related:
+  - 2020-03-nhsx-assembles-covid-datastore-partners
+  - 2020-12-11-palantir-covid-datastore-23-5m-two-year
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+contested: >-
+  The commitment to close the datastore once the pandemic ended was not
+  kept in the form promised here - see the linked December 2020 entry,
+  where the same datastore's scope was instead widened rather than wound
+  down.

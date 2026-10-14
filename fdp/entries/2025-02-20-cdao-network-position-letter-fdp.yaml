@@ -1,0 +1,39 @@
+id: 2025-02-20-cdao-network-position-letter-fdp
+date: 2025-02-20
+date_precision: day
+tags:
+  - civil
+  - palantir
+  - nhse
+title: Chief Data and Analytical Officer Network warns FDP has drifted from data-federation into vendor adoption
+summary: >-
+  Dr Marc Farr, chair of the Chief Data and Analytical Officer Network
+  (CDAON, part of the Association of Professional Healthcare Analysts),
+  wrote to NHS England's chief data and analytics officer Ming Tang on
+  behalf of the network's members - NHS trusts' and ICBs' own senior data
+  leaders - setting out support for the FDP's underlying aim alongside
+  concern about its execution. The letter's central complaint was
+  "programme drift": the original case for FDP was data federation and
+  interoperable standards, "it should not be about imposing or advancing
+  adoption of specific software solutions," yet the rollout "appears to
+  be entirely associated with the adoption of specific tools or modules
+  on a single software platform." It raised concern that reliance on
+  "proprietary products and AI tools developed by Palantir" was
+  "contrary to the principles of the Goldacre Review," alongside eight
+  detailed technical questions covering SUS data access, workforce
+  deskilling, compatibility with existing BI tools, and the quality of
+  an early FDP product, the Health Inequalities Improvement Dashboard.
+quote: "The original business need for FDP is about creating a data connection capability - it is about federating data and interoperable standards. It should not be about imposing or advancing adoption of specific software solutions."
+quote_verified: document
+source_url: https://www.aphanalysts.org/cdao-network-news/chief-data-and-analytical-officer-network-position-on-the-federated-data-platform-fdp/
+source_title: "AphA (Association of Professional Healthcare Analysts): Chief Data and Analytical Officer Network position on the Federated Data Platform (FDP)"
+archive_url: http://web.archive.org/web/20260416023635/https://www.aphanalysts.org/cdao-network-news/chief-data-and-analytical-officer-network-position-on-the-federated-data-platform-fdp/
+related:
+  - 2022-09-15-register-fdp-procurement-delayed-swindells-global-counsel
+  - 2023-08-01-dh-briefing-paper-fdp-direct-care-first
+  - 2023-11-11-dauk-open-letter-pause-fdp
+contested: >-
+  AphA's own site indicates Ming Tang responded in writing, but the
+  linked PDF ("240320-CDAON-Letter-Response.pdf") returned a 404 when
+  checked on 14 October 2026, so its content is not verified or
+  summarised here.

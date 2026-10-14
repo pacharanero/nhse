@@ -1,0 +1,37 @@
+id: 2023-07-20-good-law-project-protect-nhs-patient-data-case
+date: 2023-07-20
+date_precision: day
+tags:
+  - civil
+  - palantir
+  - thiel
+title: Good Law Project seeks claimant for separate legal challenge over FDP patient opt-out rights
+summary: >-
+  Good Law Project launched its "Protect NHS patient data" case, seeking
+  a prospective claimant to challenge whether patients can meaningfully
+  opt out of having their records shared with Palantir under the
+  then-unawarded Federated Data Platform contract. The campaign page
+  cited a May 2022 Observer report on Virgin Care's unauthorised use of
+  NHS data as a precedent for NHS data-sharing failures, and disputed NHS
+  England's assurance that information shared under the contract would
+  be "pseudonymous": Good Law Project argued "it's not hard to piece
+  together anonymised information which could lead to patients being
+  identified." This is a separate legal thread from the broader coalition
+  - Foxglove, Just Treatment, DAUK and the National Pensioners Convention
+  - that challenged the FDP's overall legal basis after the November 2023
+  contract award.
+quote: "it's not hard to piece together anonymised information which could lead to patients being identified"
+quote_verified: document
+source_url: https://goodlawproject.org/update/should-nhs-england-hand-your-medical-records-to-a-spy-tech-firm-run-by-a-billionaire-trump-supporter/
+source_title: "Good Law Project: Should NHS England hand your medical records to a spy-tech firm run by a billionaire Trump supporter?"
+archive_url: http://web.archive.org/web/20260608011154/https://goodlawproject.org/update/should-nhs-england-hand-your-medical-records-to-a-spy-tech-firm-run-by-a-billionaire-trump-supporter/
+related:
+  - 2023-11-30-foxglove-legal-action-fdp-award
+  - 2024-01-02-topham-guerin-palantir-influencer-campaign-exposed
+  - 2020-05-06-privacy-groups-question-palantir-nhs-data
+contested: >-
+  "Pseudonymous" is reported here as NHS England's position at the time,
+  as characterised by Good Law Project; this entry does not independently
+  verify NHS England's own wording, and the dispute over whether
+  pseudonymised data can be re-identified is Good Law Project's own
+  campaigning argument, not an established fact.

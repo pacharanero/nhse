@@ -1,0 +1,54 @@
+id: 2023-08-01-dh-briefing-paper-fdp-direct-care-first
+date: 2023-08-01
+date_precision: month
+tags:
+  - scope
+  - palantir
+  - nhse
+  - legal-basis-direct-care
+  - cost
+title: DH briefing paper tells Parliament the FDP will support direct care "first and foremost"
+summary: >-
+  The Department of Health and Social Care deposited a detailed briefing
+  paper on the FDP with Parliament, written explicitly to "offer
+  reassurance" against concerns already raised by "parliamentarians and
+  other stakeholders" about procurement fairness, data use, and value for
+  money. Its "What will the data be used for?" section states "direct
+  care" first, ahead of "secondary purposes" (planning, research, quality
+  auditing): data used for direct care "will be required to be held in
+  identifiable form," accessible only to those working on direct care
+  (clinicians, bed managers, discharge coordinators), while secondary and
+  national-level use would rely on de-identification, with "only very
+  high-level, summary data, which is not identifiable" used nationally.
+  It confirms there were "no plans to include GP data in the National FDP
+  tenant" (local tenants could include it via local agreements), sets out
+  four separate procurements (the core platform; privacy-enhancing
+  technology; a product "Marketplace"; and product development/support),
+  and cites specific pilot benefit figures without a causality caveat -
+  "local trials have enabled trusts to remove up to 16% of their waiting
+  list through error identification," and one discharge pilot cutting
+  21-day-plus hospital stays from a 20% national average to 12% over
+  twelve months - of exactly the kind the Office for Statistics
+  Regulation later found needed one. It also lists eleven named trusts
+  where pilots had been paused, with reasons and status as of 1 August
+  2023.
+quote: "First and foremost, the federated data platform will support data to be used to support the direct care of patients."
+quote_verified: document
+source_url: https://data.parliament.uk/DepositedPapers/Files/DEP2023-0696/23083011.docx
+source_title: "Department of Health and Social Care: Briefing paper on the Federated Data Platform (deposited paper DEP2023-0696)"
+archive_url: https://web.archive.org/web/20261014214906/https://data.parliament.uk/DepositedPapers/Files/DEP2023-0696/23083011.docx
+related:
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+  - 2023-03-20-rewired-debate-fdp-palantir-doubts
+  - 2023-11-11-dauk-open-letter-pause-fdp
+  - 2023-11-21-fdp-scope-use-cases-gp-data-excluded
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+  - 2026-03-05-swindells-palantir-conflict-of-interest-resigns
+contested: >-
+  This is the clearest and earliest documented instance found so far of
+  "direct care" being named as the FDP's primary stated purpose - three
+  months before the November 2023 contract award, and predating the DAUK
+  entry above, whose DHSC spokesperson quote omits direct care entirely.
+  That omission looks like an incomplete soundbite rather than evidence
+  the "direct care first" position wasn't yet settled; this document
+  shows it already was, in detail, by August 2023 at the latest.

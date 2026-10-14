@@ -90,6 +90,19 @@
     "file": "entries/2020-03-palantir-covid-datastore-1-pound.yaml"
   },
   {
+    "id": "2020-03-28-nhsx-power-of-data-pandemic-blog",
+    "date": "2020-03-28",
+    "date_precision": "day",
+    "tags": [
+      "official",
+      "palantir",
+      "nhse",
+      "nhsx"
+    ],
+    "title": "NHSX announces the COVID-19 Data Store, promises it will be closed after the pandemic",
+    "file": "entries/2020-03-28-nhsx-power-of-data-pandemic-blog.yaml"
+  },
+  {
     "id": "2020-05-06-privacy-groups-question-palantir-nhs-data",
     "date": "2020-05-06",
     "date_precision": "day",
@@ -345,6 +358,32 @@
     ],
     "title": "NHS England publishes FDP-AS prospectus to the market",
     "file": "entries/2023-05-11-fdp-prospectus-published.yaml"
+  },
+  {
+    "id": "2023-07-20-good-law-project-protect-nhs-patient-data-case",
+    "date": "2023-07-20",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "thiel"
+    ],
+    "title": "Good Law Project seeks claimant for separate legal challenge over FDP patient opt-out rights",
+    "file": "entries/2023-07-20-good-law-project-protect-nhs-patient-data-case.yaml"
+  },
+  {
+    "id": "2023-08-01-dh-briefing-paper-fdp-direct-care-first",
+    "date": "2023-08-01",
+    "date_precision": "month",
+    "tags": [
+      "scope",
+      "palantir",
+      "nhse",
+      "legal-basis-direct-care",
+      "cost"
+    ],
+    "title": "DH briefing paper tells Parliament the FDP will support direct care \"first and foremost\"",
+    "file": "entries/2023-08-01-dh-briefing-paper-fdp-direct-care-first.yaml"
   },
   {
     "id": "2023-08-02-foxglove-launches-fdp-campaign",
@@ -633,6 +672,18 @@
     ],
     "title": "Palantir CEO Karp tells investors the company will \"on occasion kill\" enemies",
     "file": "entries/2025-02-03-karp-kill-enemies-earnings-call.yaml"
+  },
+  {
+    "id": "2025-02-20-cdao-network-position-letter-fdp",
+    "date": "2025-02-20",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse"
+    ],
+    "title": "Chief Data and Analytical Officer Network warns FDP has drifted from data-federation into vendor adoption",
+    "file": "entries/2025-02-20-cdao-network-position-letter-fdp.yaml"
   },
   {
     "id": "2025-05-16-register-trusts-doubt-fdp-utility",
