@@ -310,6 +310,19 @@
     "file": "entries/2023-02-09-fdp-tender-deadline.yaml"
   },
   {
+    "id": "2023-03-20-rewired-debate-fdp-palantir-doubts",
+    "date": "2023-03-20",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse",
+      "foxglove"
+    ],
+    "title": "Rewired 2023 debate speakers raise doubts about Palantir's FDP bid",
+    "file": "entries/2023-03-20-rewired-debate-fdp-palantir-doubts.yaml"
+  },
+  {
     "id": "2023-04-14-opendemocracy-300-processing-purposes",
     "date": "2023-04-14",
     "date_precision": "day",

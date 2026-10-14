@@ -1,0 +1,46 @@
+id: 2023-03-20-rewired-debate-fdp-palantir-doubts
+date: 2023-03-20
+date_precision: day
+tags:
+  - civil
+  - palantir
+  - nhse
+  - foxglove
+title: Rewired 2023 debate speakers raise doubts about Palantir's FDP bid
+summary: >-
+  A debate closing Digital Health's Rewired 2023 conference examined
+  whether NHS England's Federated Data Platform procurement, then
+  expected to be worth up to £480m, risked awarding the contract to an
+  already-favoured incumbent. Speakers Cori Crider (Foxglove co-founder)
+  and Marcus Baw (clinical informatics and GP IT consultant) argued the
+  tendering process gave Palantir a structural advantage from its
+  earlier no-cost COVID-19 work, questioned Palantir's suitability as a
+  custodian of NHS data given its intelligence and security-sector work,
+  and criticised the FDP's rationale as vague; Palantir's UK head Louis
+  Mosley had been due to speak but withdrew, represented instead by a
+  cardboard cut-out. NHS England declined to take part. Earlier the same
+  day, NHS England's director of digital transformation Tim Ferris told
+  the conference in his keynote that whichever supplier won would
+  provide software only, not data ownership. Digital Health's own report
+  characterised the FDP's purpose at this point as "primarily a data
+  analytics platform... not intended to directly support patients' care."
+  An audience vote at the debate's close found an overwhelming majority
+  unconvinced the FDP was the best route to patient benefit.
+quote: "I'm very committed to open source [data]. So, it obviously hurts me to see such a big investment in essentially a closed source platform."
+quote_verified: document
+source_url: https://www.digitalhealth.net/2023/03/speakers-raise-doubts-about-fdp-palantir-bid-in-rewired-big-debate/
+source_title: "Digital Health: Speakers raise doubts about FDP Palantir bid in Rewired Big Debate"
+archive_url: https://github.com/pacharanero/nhse/blob/main/fdp/sources/2023-03-20-digitalhealth-rewired-big-debate-fdp-palantir.md
+related:
+  - 2023-01-10-fdp-contract-notice-published
+  - 2023-08-02-foxglove-launches-fdp-campaign
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+  - 2023-11-11-dauk-open-letter-pause-fdp
+contested: >-
+  archive.org's `/save/` endpoint returned repeated HTTP 520 for this
+  specific URL and archive.today's submit endpoint returned HTTP 429 on
+  the attempts made (14 October 2026); the full article text is retained
+  at the GitHub URL above instead, per the fallback convention in
+  CONTRIBUTING.md. NHS England did not respond within this piece - it
+  had already declined to participate in the debate itself, as the
+  summary notes.
