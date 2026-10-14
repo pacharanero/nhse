@@ -371,7 +371,12 @@
         <a class="link link-primary ml-2" href="${data.source_url}" target="_blank" rel="noopener">web</a>
         <a class="link link-primary ml-1" href="${data.archive_url}" target="_blank" rel="noopener">wayback</a>
       </div>
-      ${related.length ? `<div class="text-sm mt-3"><strong>Related:</strong> ${related.map((r) => `<a class="link link-primary" href="?entry=${encodeURIComponent(r.id)}" data-related-id="${escapeHtml(r.id)}">${escapeHtml(r.title)}</a>`).join("; ")}</div>` : ""}
+      ${related.length ? `<div class="text-sm mt-3">
+        <strong>Related:</strong>
+        <ul class="list-disc list-inside mt-1 space-y-0.5">
+          ${related.map((r) => `<li><a class="link link-primary" href="?entry=${encodeURIComponent(r.id)}" data-related-id="${escapeHtml(r.id)}">${escapeHtml(r.title)}</a></li>`).join("")}
+        </ul>
+      </div>` : ""}
       <div class="modal-action">
         <form method="dialog"><button class="btn btn-sm">Close</button></form>
       </div>
