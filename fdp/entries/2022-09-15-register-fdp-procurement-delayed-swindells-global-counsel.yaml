@@ -1,0 +1,50 @@
+id: 2022-09-15-register-fdp-procurement-delayed-swindells-global-counsel
+date: 2022-09-15
+date_precision: day
+tags:
+  - media
+  - palantir
+  - nhse
+  - swindells
+  - cost
+title: Register reveals Swindells' Palantir-linked consultancy role as FDP procurement is delayed a second time
+summary: >-
+  The Register reported that NHS England's Federated Data Platform
+  procurement - by then priced at up to £360m, up from the £240m
+  estimated at its April 2022 launch - had been delayed for a second
+  time, with the contract notice missing a promised 6 September 2022
+  publication date amid the change of prime minister, and awaiting
+  sign-off from incoming health secretary Thérèse Coffey. The paper also
+  revealed that Matthew Swindells, NHS England's national director for
+  operations and information until July 2019, joined Palantir client
+  Global Counsel as a consultant that September, two months after
+  leaving - inside the six-month gap civil service rules are meant to
+  require between leaving public service and starting lobbying work,
+  which NHS England confirmed to the Register would have applied to him -
+  and that Chelsea and Westminster Hospital, where Swindells chairs the
+  board, had since minuted that he be excluded from any decision-making
+  regarding Palantir. The Register also found that a Palantir white paper
+  on a "federated" national data infrastructure, released via a December
+  2021 webinar that Global Counsel co-hosted and Swindells chaired, used
+  strikingly similar language to NHS England's own data strategy,
+  published six months later in June 2022.
+quote: "a logically federated, locally controlled cloud-based data infrastructure"
+quote_verified: document
+source_url: https://www.theregister.com/software/2022/09/15/nhs-data-platform-procurement-delayed-a-second-time/1115914
+source_title: "The Register: NHS data platform procurement delayed for a second time"
+archive_url: http://web.archive.org/web/20260909082218/https://www.theregister.com/software/2022/09/15/nhs-data-platform-procurement-delayed-a-second-time/1115914
+related:
+  - 2022-04-01-fdp-pin-published
+  - 2023-01-10-fdp-contract-notice-published
+  - 2020-12-11-palantir-covid-datastore-23-5m-two-year
+  - 2021-03-30-government-concedes-palantir-jr
+  - 2026-03-05-swindells-palantir-conflict-of-interest-resigns
+contested: >-
+  NHS England and NHS Improvement told the Register it engaged a range of
+  stakeholders including the wider health and care system, industry and
+  academics, and that the federated approach was its own recommendation,
+  not adopted from Palantir's white paper. Swindells' consultancy work is
+  not alleged here to have breached the six-month rule; the Register
+  states only that NHS England confirmed the rule would have applied to
+  him, and that questions about any contact with officials during that
+  window were awaiting an official response at publication.

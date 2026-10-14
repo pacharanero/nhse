@@ -1,0 +1,35 @@
+id: 2019-12-12-register-reveals-nhs-data-day-commercial-models
+date: 2019-12-12
+date_precision: day
+tags:
+  - media
+  - nhse
+  - cost
+title: Register reveals NHS England's invite-only Data Day discussed commercial models for patient data
+summary: >-
+  The Register revealed that NHS England chairman Lord David Prior, chief
+  executive Simon Stevens, NHSX chief executive Matthew Gould, government
+  chief scientific adviser Sir Patrick Vallance, and executives from
+  Amazon, Microsoft and AstraZeneca attended an invite-only "Health and
+  Care Data Day" on 24 October 2019 to discuss building a single,
+  standardised, event-based longitudinal patient record covering up to 65
+  million people in England. Documents seen by the paper set out nine
+  possible commercial models - from a guaranteed upfront fee to royalties
+  or co-ownership of resulting intellectual property - under which the
+  NHS could make this data available to industry and researchers,
+  alongside a consultancy estimate valuing patient data at up to £9.6bn a
+  year. Palantir was not among the event's listed attendees.
+quote: "In their rush to capitalise on one of the most valuable data assets on the planet, those in charge seem more eager to attract investment, serve industry and promote trade than to ask – or even tell – the patients whose medical histories they're looking to commercialise what it is they are planning to do."
+quote_verified: document
+source_url: https://www.theregister.com/offbeat/2019/12/12/revealed-nhs-england-bosses-meet-with-tech-and-pharmaceutical-giants-to-discuss-price-list-of-millions-of-brits-medical-data/660073
+source_title: "The Register: Revealed: NHS England bosses meet with tech and pharmaceutical giants to discuss price list of millions of Brits' medical data"
+archive_url: http://web.archive.org/web/20260513052349/https://www.theregister.com/offbeat/2019/12/12/revealed-nhs-england-bosses-meet-with-tech-and-pharmaceutical-giants-to-discuss-price-list-of-millions-of-brits-medical-data/660073
+related:
+  - 2021-02-24-tbij-palantir-wooed-nhs-before-covid-contract
+  - 2020-03-nhsx-assembles-covid-datastore-partners
+contested: >-
+  Quote is from Phil Booth of the patient-data campaign group
+  MedConfidential, commenting on the plans - not a denial from NHS
+  England. The nine commercial models and cost estimates were explicitly
+  framed in the source documents as discussion points for the day, not
+  official government policy.

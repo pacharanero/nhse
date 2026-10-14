@@ -41,6 +41,18 @@
     "file": "entries/2018-03-27-cambridge-analytica-palantir-staff-link.yaml"
   },
   {
+    "id": "2019-12-12-register-reveals-nhs-data-day-commercial-models",
+    "date": "2019-12-12",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "cost"
+    ],
+    "title": "Register reveals NHS England's invite-only Data Day discussed commercial models for patient data",
+    "file": "entries/2019-12-12-register-reveals-nhs-data-day-commercial-models.yaml"
+  },
+  {
     "id": "2020-03-faculty-covid-datastore-930k",
     "date": "2020-03-01",
     "date_precision": "month",
@@ -133,6 +145,19 @@
     "file": "entries/2021-02-foxglove-opendemocracy-jr-launched.yaml"
   },
   {
+    "id": "2021-02-24-tbij-palantir-wooed-nhs-before-covid-contract",
+    "date": "2021-02-24",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "nhse",
+      "thiel"
+    ],
+    "title": "Bureau of Investigative Journalism reveals Palantir courted NHS England for months before its emergency COVID contract",
+    "file": "entries/2021-02-24-tbij-palantir-wooed-nhs-before-covid-contract.yaml"
+  },
+  {
     "id": "2021-03-30-government-concedes-palantir-jr",
     "date": "2021-03-30",
     "date_precision": "day",
@@ -182,6 +207,20 @@
     ],
     "title": "NHS England holds supplier briefing session for FDP procurement",
     "file": "entries/2022-04-13-fdp-supplier-briefing.yaml"
+  },
+  {
+    "id": "2022-09-15-register-fdp-procurement-delayed-swindells-global-counsel",
+    "date": "2022-09-15",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "nhse",
+      "swindells",
+      "cost"
+    ],
+    "title": "Register reveals Swindells' Palantir-linked consultancy role as FDP procurement is delayed a second time",
+    "file": "entries/2022-09-15-register-fdp-procurement-delayed-swindells-global-counsel.yaml"
   },
   {
     "id": "2022-11-17-ndg-blog-pursuit-of-balance-public-trust",
@@ -534,6 +573,18 @@
     ],
     "title": "Cancer 360 DPIA published as \"Final Approved\" with IAO signature and DPO sections blank",
     "file": "entries/2025-07-23-cancer-360-dpia-published.yaml"
+  },
+  {
+    "id": "2025-09-08-guardian-reveals-johnson-cummings-thiel-meeting",
+    "date": "2025-09-08",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "thiel"
+    ],
+    "title": "Guardian reveals secret 2019 meeting between Johnson, Cummings and Palantir's Peter Thiel",
+    "file": "entries/2025-09-08-guardian-reveals-johnson-cummings-thiel-meeting.yaml"
   },
   {
     "id": "2026-03-05-swindells-palantir-conflict-of-interest-resigns",
