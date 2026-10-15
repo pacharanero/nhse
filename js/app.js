@@ -38,6 +38,42 @@
     civil: "accent",
   };
 
+  // Background tint for the "legal basis era" a row's date falls into -
+  // see the Scope & Legal Basis thread in spec/fdp-timeline.md (R19).
+  // Each zone is anchored to a specific entry that is itself evidence of
+  // that framing; the ~21 month gap between the two zones is left
+  // deliberately untinted, since only its two endpoints are confirmed -
+  // which side of the "direct care" line NHS England was actually
+  // asserting throughout the gap itself is not.
+  const LEGAL_BASIS_ERAS = [
+    {
+      start: "2020-03-28", // nhsx-power-of-data-pandemic-blog
+      end: "2021-11-25", // covid-datastore-dpia-not-direct-care
+      tint: "bg-info/10",
+    },
+    {
+      start: "2023-08-01", // dh-briefing-paper-fdp-direct-care-first
+      end: null, // open-ended: no later entry has revised this framing so far
+      tint: "bg-accent/10",
+    },
+  ];
+
+  function legalBasisTint(dateStr) {
+    const era = LEGAL_BASIS_ERAS.find((e) => dateStr >= e.start && (e.end === null || dateStr <= e.end));
+    return era ? era.tint : "";
+  }
+
+  // Labelled boundary markers for the same eras, rendered with
+  // legalEraMarkerLi() alongside the tint above. The middle marker does
+  // not start a tinted zone - it flags that the DPIA is the last
+  // confirmed "not direct care" position before an uncertain gap, not a
+  // confirmed pivot to "direct care" itself.
+  const LEGAL_BASIS_ERA_MARKERS = [
+    { date: "2020-03-28", color: "info", label: "Secondary use era" },
+    { date: "2021-11-25", color: "neutral", label: "Framing uncertain" },
+    { date: "2023-08-01", color: "accent", label: "Direct care era" },
+  ];
+
   // Unused at runtime. Tailwind's build-time scanner only generates CSS
   // for class names that appear as complete literal text somewhere in a
   // scanned file - it cannot see the `btn-${color}` etc. template
@@ -54,6 +90,8 @@
     "badge-primary", "badge-secondary", "badge-error", "badge-success", "badge-warning", "badge-info", "badge-neutral", "badge-accent",
     "bg-primary", "bg-secondary", "bg-error", "bg-success", "bg-warning", "bg-info", "bg-neutral", "bg-accent",
     "border-l-primary", "border-l-secondary", "border-l-error", "border-l-success", "border-l-warning", "border-l-info", "border-l-neutral", "border-l-accent",
+    "bg-info/40", "bg-neutral/40", "bg-accent/40",
+    "text-info", "text-neutral", "text-accent",
   ];
 
   const timelineEl = document.getElementById("timeline");
@@ -211,10 +249,35 @@
       <div class="timeline-middle">
         <span class="inline-block w-2 h-2 rounded-full bg-error"></span>
       </div>
-      <div class="timeline-end flex items-center gap-2 text-error min-w-[14rem]">
+      <div class="timeline-end flex items-center gap-2 text-error min-w-[min(14rem,100%)]">
         <span class="h-px flex-1 bg-error/40"></span>
         <span class="text-[10px] uppercase tracking-wider font-semibold whitespace-nowrap">${escapeHtml(label)}</span>
         <span class="h-px flex-1 bg-error/40"></span>
+      </div>
+      <hr>
+    `;
+    return li;
+  }
+
+  // Same two-sided divider pattern as todayMarkerLi(), parameterised by
+  // colour for the "legal basis era" boundaries above (not an alert, so
+  // not hardcoded to "error"). `.timeline-start` needs its own explicit
+  // `w-full` here too - see commit f89316b - without real card content
+  // it has no intrinsic width to size the grid column from.
+  function legalEraMarkerLi(label, color) {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <hr>
+      <div class="timeline-start flex items-center w-full">
+        <span class="h-px flex-1 bg-${color}/40"></span>
+      </div>
+      <div class="timeline-middle">
+        <span class="inline-block w-2 h-2 rounded-full bg-${color}"></span>
+      </div>
+      <div class="timeline-end flex items-center gap-2 text-${color} min-w-[min(14rem,100%)]">
+        <span class="h-px flex-1 bg-${color}/40"></span>
+        <span class="text-[10px] uppercase tracking-wider font-semibold whitespace-nowrap">${escapeHtml(label)}</span>
+        <span class="h-px flex-1 bg-${color}/40"></span>
       </div>
       <hr>
     `;
@@ -272,18 +335,33 @@
     const todayStr = new Date().toISOString().slice(0, 10);
     timelineEl.innerHTML = "";
     let lastYear = null;
-    let todayInserted = false;
+
+    // Markers that must appear once, at the point the scan crosses their
+    // date, regardless of sort order - today's line plus the three
+    // legal-basis era boundaries. Queued and consumed in date order
+    // (ascending for "asc", descending for "desc") so they interleave
+    // correctly with the entries/tracker dots below.
+    const dir = sortOrder === "asc" ? 1 : -1;
+    const markerQueue = LEGAL_BASIS_ERA_MARKERS
+      .map((m) => ({ date: m.date, build: () => legalEraMarkerLi(m.label, m.color) }))
+      .concat([{ date: todayStr, build: () => todayMarkerLi(`Today — ${todayStr}`) }])
+      .sort((a, b) => dir * (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+
+    function flushMarkersUpTo(itemDate) {
+      // In "desc" (newest-first) order, an item dated on or before a
+      // marker's date must sit below that marker, not above it - hence
+      // `<=` here but strict `>` for "asc", where same-dated items
+      // correctly stay above (i.e. earlier than) the marker. See
+      // commits e2328ee/f89316b for how this was debugged for "today".
+      while (markerQueue.length) {
+        const due = sortOrder === "asc" ? itemDate > markerQueue[0].date : itemDate <= markerQueue[0].date;
+        if (!due) break;
+        timelineEl.appendChild(markerQueue.shift().build());
+      }
+    }
 
     items.forEach((item) => {
-      // In "desc" (newest-first) order, an item dated today must sit
-      // below this marker, not above it alongside future-dated items -
-      // hence `<=` here but strict `>` for "asc", where today-dated
-      // items correctly stay above (i.e. earlier than) the marker.
-      const crossedToday = sortOrder === "asc" ? item.date > todayStr : item.date <= todayStr;
-      if (!todayInserted && crossedToday) {
-        timelineEl.appendChild(todayMarkerLi(`Today — ${todayStr}`));
-        todayInserted = true;
-      }
+      flushMarkersUpTo(item.date);
 
       const year = item.date.slice(0, 4);
       if (year !== lastYear) {
@@ -291,8 +369,12 @@
         lastYear = year;
       }
 
+      const tint = legalBasisTint(item.date);
+
       if (item.kind === "tracker") {
-        timelineEl.appendChild(trackerLi(item.data, item.prefix));
+        const trackerItemLi = trackerLi(item.data, item.prefix);
+        if (tint) trackerItemLi.classList.add(tint);
+        timelineEl.appendChild(trackerItemLi);
         return;
       }
 
@@ -303,6 +385,7 @@
       const extraTags = entry.tags.filter((t) => t !== kind && !KIND_LABELS[t]);
 
       const li = document.createElement("li");
+      if (tint) li.classList.add(tint);
       const content = `
         <div class="timeline-box bg-base-100 border border-base-300 border-l-4 border-l-${color} cursor-pointer hover:shadow-md transition-shadow" data-entry-id="${entry.id}">
           <div class="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
@@ -327,8 +410,8 @@
       li.querySelector("[data-entry-id]").addEventListener("click", () => showEntry(entry));
     });
 
-    if (!todayInserted) {
-      timelineEl.appendChild(todayMarkerLi(`Today — ${todayStr}`));
+    while (markerQueue.length) {
+      timelineEl.appendChild(markerQueue.shift().build());
     }
 
     const visibleCount = items.filter((i) => i.kind === "entry").length;

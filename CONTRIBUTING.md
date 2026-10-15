@@ -149,6 +149,17 @@ There's a second one, `fdp/watson-appearances.yaml` / `s/build-watson-index`, tr
 
 A single especially significant appearance (see `2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice.yaml` and `2026-04-30-computer-weekly-inside-fdp-column-bartlett.yaml`) can be *both* a full entry *and* a line in the appearances file - the dot and the card aren't mutually exclusive, and the cumulative count should include every appearance regardless of whether it also got the full treatment.
 
+## Legal basis era indicator
+
+The timeline carries a subtle background tint marking the date ranges during which NHS England was asserting the FDP/COVID Data Store was for "secondary use/planning" (national data opt-out applies) versus "direct care" (it doesn't) - see the "Scope & Legal Basis" thread in `spec/fdp-timeline.md`. It's driven by two small arrays at the top of `js/app.js`:
+
+- `LEGAL_BASIS_ERAS` - date ranges and a low-opacity `bg-<colour>/10` tint class applied to each entry/tracker `<li>` whose date falls inside. Each zone is anchored to a specific entry that is itself evidence of that framing, not an editorial judgement call.
+- `LEGAL_BASIS_ERA_MARKERS` - the three labelled divider rows at the zone boundaries, rendered with `legalEraMarkerLi()` (the same two-sided divider pattern as the existing `todayMarkerLi()`, parameterised by colour).
+
+The roughly 21-month gap between the two confirmed zones (25 Nov 2021, NHS England's own COVID-19 Data Store DPIA last ticking "not direct care," to 1 Aug 2023, the DH briefing paper to Parliament asserting direct care "first and foremost") is left deliberately untinted rather than guessing where the actual pivot sits - only the two endpoints are confirmed. If a future entry narrows that gap, update both arrays' dates and the `spec/fdp-timeline.md` progress notes together; don't tint the gap without a specific anchor entry to point to.
+
+Both arrays are read inside `render()`'s marker queue (see the comment there), not as a separate pass, so they interleave correctly with the existing today-marker and year-marker logic regardless of sort order. The divider markers' `.timeline-end` uses `min-w-[min(14rem,100%)]` rather than a bare `min-w-[14rem]` - the latter doesn't shrink on narrow viewports and overflows (confirmed to affect `todayMarkerLi()` too, fixed as part of this feature); keep divider labels short (under ~20 characters) regardless, since the column still sizes to its own content once the floor is removed.
+
 ## Styling
 
 The site uses [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisyui.com/) for layout and components (timeline, badges, modal, theme switching). This has a build step, but only for people editing styles - the committed `css/app.css` is what ships, and viewing the site needs nothing beyond a static file server (see "Local preview" below).
