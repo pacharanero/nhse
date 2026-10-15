@@ -551,6 +551,22 @@
     "file": "entries/2023-12-07-board-opt-out-levels-not-materialised.yaml"
   },
   {
+    "id": "2023-12-07-board-paper-fdp-update-check-and-challenge-group",
+    "date": "2023-12-07",
+    "date_precision": "day",
+    "tags": [
+      "official",
+      "palantir",
+      "nhse",
+      "iqvia",
+      "ming-tang",
+      "board-meeting",
+      "legal-basis-direct-care"
+    ],
+    "title": "Ming Tang's first written FDP board paper describes Check and Challenge Group, repeats uncaveated pilot benefits",
+    "file": "entries/2023-12-07-board-paper-fdp-update-check-and-challenge-group.yaml"
+  },
+  {
     "id": "2023-12-22-fdp-contract-award-notice-published",
     "date": "2023-12-22",
     "date_precision": "day",

@@ -1,0 +1,57 @@
+id: 2023-12-07-board-paper-fdp-update-check-and-challenge-group
+date: 2023-12-07
+date_precision: day
+tags:
+  - official
+  - palantir
+  - nhse
+  - iqvia
+  - ming-tang
+  - board-meeting
+  - legal-basis-direct-care
+title: Ming Tang's first written FDP board paper describes Check and Challenge Group, repeats uncaveated pilot benefits
+summary: >-
+  NHS England's board papers for its 7 December 2023 meeting included a
+  dedicated written report, "Federated Data Platform update" (agenda item
+  7, public session), authored by Ming Tang as Chief Data and Analytics
+  Officer - the first standalone FDP board paper found in this repo's
+  index of board publications. It states "[a]ll data within the platform
+  is under the control of the NHS and will only be used for direct care
+  and planning" and "will not be used to access data for research
+  purposes," and separately that "GP data will not feed into the national
+  version of the software platform" - independently corroborating, from
+  NHS England's own board paper rather than trade press, the scope
+  already recorded in this timeline. It describes a new "Check and
+  Challenge Group" being set up with National Voices, the Patients
+  Association, and the National Data Guardian "to advise the FDP
+  programme and to ensure engagement with patients and clinical voices" -
+  a group whose minutes this timeline already cites as a source in three
+  other entries, here documented for the first time as to its own stated
+  purpose and founding members. The paper also states FDP pilot benefits
+  were "being realised through both the Trust Care Coordination Solution
+  (CCS) and [OPTICA] pilots," linking to NHS England's own case studies,
+  with no caveat about causality or independent verification - see
+  `contested`.
+quote: "The Federated Data Platform will provide software to link these NHS trusts and regional systems and give us a consistent technical means of linking data that is already collected for patient care... GP data will not be part of the national platform. FDP does not change data controllership arrangements so if there is data sharing agreement between integrated care system (ICS) and GPs locally to share data for care co-ordination then they can use the local version of FDP for that purpose."
+quote_verified: document
+source_url: https://www.england.nhs.uk/long-read/federated-data-platform-update/
+source_title: "NHS England: Federated Data Platform update (board paper, 7 December 2023)"
+archive_url: https://web.archive.org/web/20261015133911/https://www.england.nhs.uk/long-read/federated-data-platform-update/
+related:
+  - 2023-12-07-board-announces-fdp-award
+  - 2023-12-07-board-opt-out-levels-not-materialised
+  - 2023-11-21-fdp-scope-use-cases-gp-data-excluded
+  - 2023-11-21-pet-contract-iqvia-awarded
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+  - 2024-11-15-optica-acute-dpia-published
+contested: >-
+  The CCS/OPTICA benefits claim in paragraph 13 is stated as plain fact,
+  with no causality or independent-verification caveat, two and a half
+  years before the Office for Statistics Regulation required NHS England
+  to add exactly that kind of caveat to its public benefits reporting
+  (`2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat`) - this
+  paper is an earlier, board-level instance of the same uncaveated
+  pattern the OSR later found needed fixing, not something OSR examined
+  directly (its casework concerned NHS England's public methodology page,
+  not board papers), so this is corroborating context for the pattern
+  rather than a document OSR itself ruled on.

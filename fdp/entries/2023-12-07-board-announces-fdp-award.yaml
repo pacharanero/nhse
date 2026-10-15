@@ -17,7 +17,12 @@ summary: >-
   to IQVIA. The caption renders one consortium member as "Next CSU" - almost
   certainly NECS (North of England Commissioning Support Unit), the partner
   named in NHS England's own announcement - a caption error of exactly the
-  kind flagged in this repo's caption-reliability notes.
+  kind flagged in this repo's caption-reliability notes, now independently
+  confirmed by NHS England's own written board paper for this same agenda
+  item, which names the consortium as "Palantir Technologies which include
+  Accenture, PWC, Carnall Farrar and NECS" with no "Next CSU" anywhere in
+  it - see [Item 7: Federated Data Platform update](https://web.archive.org/web/20261015133911/https://www.england.nhs.uk/long-read/federated-data-platform-update/),
+  Ming Tang's own report to this meeting, published the same day.
 quote: "So really delighted to inform the board that we've awarded the federated data platform and associated services contract to a consortium led by Palantir, including Accenture, PWC, and Next CSU, which is really important because it demonstrates the breadth that FDP and the associated services cover. It's not just a data platform but actually how we then deploy and adopt it and create new products off it."
 quote_verified: secondary
 video_id: W6ZGpIS4jlA
@@ -29,3 +34,4 @@ related:
   - 2023-11-21-fdp-contract-awarded
   - 2023-11-21-pet-contract-iqvia-awarded
   - 2023-12-22-fdp-contract-award-notice-published
+  - 2023-12-07-board-paper-fdp-update-check-and-challenge-group

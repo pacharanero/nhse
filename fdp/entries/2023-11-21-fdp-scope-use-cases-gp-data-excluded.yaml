@@ -15,7 +15,11 @@ summary: >-
   statement that no company involved can access health and care data
   without explicit NHS permission, that data within the platform is used
   only for direct care and planning rather than research, and that GP data
-  "will not feed into the national version of the software platform."
+  "will not feed into the national version of the software platform." NHS
+  England's own board repeated the same GP-data exclusion in writing two
+  weeks later, in Ming Tang's [board paper for the 7 December 2023
+  meeting](https://web.archive.org/web/20261015133911/https://www.england.nhs.uk/long-read/federated-data-platform-update/):
+  "GP data will not be part of the national platform."
 quote: "All data within the platform is under the control of the NHS and will only be used for direct care and planning. It will not be used to access data for research purposes and GP data will not feed into the national version of the software platform."
 quote_verified: document
 source_url: https://www.digitalhealth.net/2023/11/nhs-england-awards-330m-federated-data-platform-contract-to-palantir/
@@ -25,3 +29,4 @@ related:
   - 2023-11-21-fdp-contract-awarded
   - 2024-01-fdp-explainer-drops-opt-out-line
   - 2023-08-01-dh-briefing-paper-fdp-direct-care-first
+  - 2023-12-07-board-paper-fdp-update-check-and-challenge-group
