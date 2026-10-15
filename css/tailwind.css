@@ -7,6 +7,41 @@
   --font-sans: "Lato", -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
+/* WCAG AA contrast fixes for daisyUI's stock theme colours - see "WCAG AA
+   contrast" in CONTRIBUTING.md for the audit method and full reasoning.
+   Each override keeps the original hue/chroma (same colour family) and
+   only adjusts lightness, by the minimum amount needed to clear 4.5:1 with
+   a small safety margin, computed from the themes' actual compiled OKLCH
+   values and cross-checked against real sampled pixels.
+
+   corporate (light): stock primary/accent/success/info are all too light
+   to give their white badge-content text (and, identically, their own
+   link-primary text against the white page background) 4.5:1. Darkening
+   them fixes both at once - the two cases are the same two colours
+   swapped, so one ratio fix covers both. */
+[data-theme="corporate"] {
+  --color-primary: oklch(55.346% 0.158 241.966);
+  --color-accent: oklch(54.037% 0.118 184.704);
+  --color-success: oklch(53.32% 0.194 149.214);
+  --color-info: oklch(54.549% 0.126 221.723);
+}
+
+/* business (dark): stock error only just fails its own badge pairing
+   (4.47:1, needs 4.5) - a small nudge darker widens the gap. primary is
+   NOT overridden here: it already passes badge-primary comfortably
+   (6.04:1), but lightening it enough for link-primary to read against the
+   dark page background would undo that (the same variable can't
+   simultaneously be dark enough for light badge-content text and light
+   enough for itself to read as body-sized link text on a dark page) - see
+   the dedicated .link-primary override below instead. */
+[data-theme="business"] {
+  --color-error: oklch(50.933% 0.146 29.674);
+}
+
+[data-theme="business"] .link-primary {
+  color: oklch(62.595% 0.099 251.473);
+}
+
 body {
   font-family: var(--font-sans);
 }

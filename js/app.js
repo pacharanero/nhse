@@ -91,7 +91,6 @@
     "bg-primary", "bg-secondary", "bg-error", "bg-success", "bg-warning", "bg-info", "bg-neutral", "bg-accent",
     "border-l-primary", "border-l-secondary", "border-l-error", "border-l-success", "border-l-warning", "border-l-info", "border-l-neutral", "border-l-accent",
     "bg-info/40", "bg-neutral/40", "bg-accent/40",
-    "text-info", "text-neutral", "text-accent",
   ];
 
   const timelineEl = document.getElementById("timeline");
@@ -238,7 +237,12 @@
 
   // The "today" marker is a thin rule across the content column, not a
   // badge - distinct from year markers above, since it marks a single
-  // instant rather than a span.
+  // instant rather than a span. Label text is always text-base-content,
+  // not the marker's semantic colour - see "WCAG AA contrast" in
+  // CONTRIBUTING.md: several semantic colours fail 4.5:1 as small text
+  // directly on base-100 in one theme or the other, so colour stays on
+  // the dot/divider (decorative, not a text-contrast concern) and the
+  // actual readable label uses the same always-safe colour as body text.
   function todayMarkerLi(label) {
     const li = document.createElement("li");
     li.innerHTML = `
@@ -249,9 +253,9 @@
       <div class="timeline-middle">
         <span class="inline-block w-2 h-2 rounded-full bg-error"></span>
       </div>
-      <div class="timeline-end flex items-center gap-2 text-error min-w-[min(14rem,100%)]">
+      <div class="timeline-end flex items-center gap-2 min-w-[min(14rem,100%)]">
         <span class="h-px flex-1 bg-error/40"></span>
-        <span class="text-[10px] uppercase tracking-wider font-semibold whitespace-nowrap">${escapeHtml(label)}</span>
+        <span class="text-[10px] uppercase tracking-wider font-semibold whitespace-nowrap text-base-content">${escapeHtml(label)}</span>
         <span class="h-px flex-1 bg-error/40"></span>
       </div>
       <hr>
@@ -263,7 +267,8 @@
   // colour for the "legal basis era" boundaries above (not an alert, so
   // not hardcoded to "error"). `.timeline-start` needs its own explicit
   // `w-full` here too - see commit f89316b - without real card content
-  // it has no intrinsic width to size the grid column from.
+  // it has no intrinsic width to size the grid column from. Label text is
+  // text-base-content, same reasoning as todayMarkerLi() above.
   function legalEraMarkerLi(label, color) {
     const li = document.createElement("li");
     li.innerHTML = `
@@ -274,9 +279,9 @@
       <div class="timeline-middle">
         <span class="inline-block w-2 h-2 rounded-full bg-${color}"></span>
       </div>
-      <div class="timeline-end flex items-center gap-2 text-${color} min-w-[min(14rem,100%)]">
+      <div class="timeline-end flex items-center gap-2 min-w-[min(14rem,100%)]">
         <span class="h-px flex-1 bg-${color}/40"></span>
-        <span class="text-[10px] uppercase tracking-wider font-semibold whitespace-nowrap">${escapeHtml(label)}</span>
+        <span class="text-[10px] uppercase tracking-wider font-semibold whitespace-nowrap text-base-content">${escapeHtml(label)}</span>
         <span class="h-px flex-1 bg-${color}/40"></span>
       </div>
       <hr>
@@ -393,7 +398,7 @@
             <span class="badge badge-${color} badge-sm whitespace-nowrap">${kind ? KIND_LABELS[kind] : "Uncategorised"}</span>
           </div>
           <div class="font-semibold text-sm mt-1">${escapeHtml(entry.title)}</div>
-          ${extraTags.length ? `<div class="text-xs text-base-content/50 mt-1">${extraTags.map((t) => `#${t}`).join(" ")}</div>` : ""}
+          ${extraTags.length ? `<div class="text-xs text-base-content/60 mt-1">${extraTags.map((t) => `#${t}`).join(" ")}</div>` : ""}
         </div>
       `;
 
@@ -449,7 +454,7 @@
       <div class="flex flex-wrap gap-1 mt-2">${tagChips}</div>
       <p class="text-sm mt-3">${linkifySummary(data.summary)}</p>
       ${data.quote ? `<blockquote class="border-l-4 border-base-300 pl-3 italic text-sm mt-3">${escapeHtml(data.quote)}<br><small class="text-base-content/60">verification: ${escapeHtml(data.quote_verified || "unverified")}</small></blockquote>` : ""}
-      ${data.contested ? `<div class="alert alert-warning alert-soft mt-3 text-sm"><span><strong>Caveats:</strong> ${linkifySummary(data.contested)}</span></div>` : ""}
+      ${data.contested ? `<div class="rounded-lg border border-warning/40 bg-warning/10 p-3 mt-3 text-sm text-base-content"><strong>Caveats:</strong> ${linkifySummary(data.contested)}</div>` : ""}
       <div class="text-sm mt-3">
         <span>${escapeHtml(data.source_title)}</span>
         <a class="link link-primary ml-2" href="${data.source_url}" target="_blank" rel="noopener">web</a>
