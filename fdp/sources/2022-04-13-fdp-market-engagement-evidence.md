@@ -1,6 +1,6 @@
 # NHS England FDP market-engagement documents
 
-This note preserves the provenance and passages used for the 13 April 2022 FDP scope entry. NHS England's same-day Find a Tender update linked suppliers to the pre-market consultation portal, but that portal no longer provides a stable public route to the three supplied documents. The originals were supplied locally on 16 October 2026 and remain outside the repository; their hashes identify the exact files reviewed.
+This note preserves the provenance and passages used for the 13 April 2022 FDP scope entry. NHS England's same-day Find a Tender update linked suppliers to the pre-market consultation portal, but that portal no longer provides a stable public route to the three supplied documents. The originals were supplied locally on 16 October 2026 and are retained in this directory under stable names; their original filenames and hashes identify the exact files reviewed.
 
 Official notice: <https://www.find-tender.service.gov.uk/Notice/009960-2022>
 
@@ -8,11 +8,11 @@ Same-day archive: <https://web.archive.org/web/20220413220336/https://www.find-t
 
 ## Files reviewed
 
-| File | Description | Pages | SHA-256 |
-|---|---|---:|---|
-| `2022-04-13 NHSE federated data platform 1_683238.pdf` | Post-briefing Q&A | 2 | `2196ede416a0cef56b620e26126bd1112855fca2f8b3e9403008fbd53a142cad` |
-| `2022-04-13 NHSE federated data platform 2 - supplier briefing_22756.pdf` | Supplier briefing deck | 28 | `37aeade6ee6d6d08338ac129b4643151cf3929ff22022155aa51d95890476477` |
-| `2022-04-13 NHSE federated data platform 3_904948.docx` | Preliminary Market Consultation Request for Information | 10 | `4287c936be72b2f3bc25b4280b8524791d90b2d055e03a4c98ca35d8fb8f1cb9` |
+| Original file | Retained copy | Description | Pages | SHA-256 |
+|---|---|---|---:|---|
+| `2022-04-13 NHSE federated data platform 1_683238.pdf` | [`2022-04-13-fdp-post-briefing-qa.pdf`](2022-04-13-fdp-post-briefing-qa.pdf) | Post-briefing Q&A | 2 | `2196ede416a0cef56b620e26126bd1112855fca2f8b3e9403008fbd53a142cad` |
+| `2022-04-13 NHSE federated data platform 2 - supplier briefing_22756.pdf` | [`2022-04-13-fdp-supplier-briefing.pdf`](2022-04-13-fdp-supplier-briefing.pdf) | Supplier briefing deck | 28 | `37aeade6ee6d6d08338ac129b4643151cf3929ff22022155aa51d95890476477` |
+| `2022-04-13 NHSE federated data platform 3_904948.docx` | [`2022-04-13-fdp-market-consultation-rfi.docx`](2022-04-13-fdp-market-consultation-rfi.docx) | Preliminary Market Consultation Request for Information | 10 | `4287c936be72b2f3bc25b4280b8524791d90b2d055e03a4c98ca35d8fb8f1cb9` |
 
 The deck identifies itself as the supplier briefing held on Wednesday 13 April 2022 at 14:00. Its PDF metadata records creation later that day and modification on 7 May 2022. The Q&A was created on 21 April and modified on 7 May. The RFI's inherited Word metadata is not reliable evidence of its publication date.
 

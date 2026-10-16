@@ -81,4 +81,5 @@ If you've written about the FDP and you're not listed here, or we've got your af
 
 - Scripts: AGPL-3.0-or-later.
 - Prose, including the spec: CC-BY-SA-4.0.
+- Binary documents in `fdp/sources/` are third-party primary-source material retained for evidence and preservation. They are not covered by the repository's software or prose licences; copyright and other rights remain with their original owners.
 - `nhs-board-transcripts/` is third-party content derived from NHS England's YouTube uploads and is **not** covered by either. Its licensing is an open question recorded in the spec, and must be resolved before this repo is made public.

@@ -10,9 +10,9 @@ Archive: <https://web.archive.org/web/20240102142401/https://www.contractsfinder
 
 | File | Pages | Bytes | SHA-256 | Earliest verified file capture |
 |---|---:|---:|---|---|
-| `FDPAS_Contract_Redacted_1of3.pdf` | 72 | 650,777 | `87777ce8a71ab8aeba7df35afe36e605c51db7a0f8a4a1c0bed1e6c0e14a6d56` | <https://web.archive.org/web/20240102151721id_/https://www.contractsfinder.service.gov.uk/Notice/Attachment/4201589d-82a4-4375-be7c-3bd2777d3f0e> |
-| `FDPAS_Contract_Redacted_2of3.pdf` | 272 | 321,297 | `16ace431fcc8d887ef30cd5e57765bc32d8c1b89a5cf0fe17f3a59d670979ddd` | <https://web.archive.org/web/20240102151933id_/https://www.contractsfinder.service.gov.uk/Notice/Attachment/215b5e77-999c-4df4-a582-ec954d0b9d43> |
-| `FDPAS_Contract_Redacted_3of3.pdf` | 242 | 1,184,311 | `5ac842dbbe5afa155222e4b4309357a3907b286942c6a70784a6f2469f1edd43` | <https://web.archive.org/web/20240102151858id_/https://www.contractsfinder.service.gov.uk/Notice/Attachment/ecf0b22a-dd78-48d3-95a0-ec1465aaceb7> |
+| [`FDPAS_Contract_Redacted_1of3.pdf`](2023-12-22-fdp-as-contract-part-1-of-3.pdf) | 72 | 650,777 | `87777ce8a71ab8aeba7df35afe36e605c51db7a0f8a4a1c0bed1e6c0e14a6d56` | <https://web.archive.org/web/20240102151721id_/https://www.contractsfinder.service.gov.uk/Notice/Attachment/4201589d-82a4-4375-be7c-3bd2777d3f0e> |
+| [`FDPAS_Contract_Redacted_2of3.pdf`](2023-12-22-fdp-as-contract-part-2-of-3.pdf) | 272 | 321,297 | `16ace431fcc8d887ef30cd5e57765bc32d8c1b89a5cf0fe17f3a59d670979ddd` | <https://web.archive.org/web/20240102151933id_/https://www.contractsfinder.service.gov.uk/Notice/Attachment/215b5e77-999c-4df4-a582-ec954d0b9d43> |
+| [`FDPAS_Contract_Redacted_3of3.pdf`](2023-12-22-fdp-as-contract-part-3-of-3.pdf) | 242 | 1,184,311 | `5ac842dbbe5afa155222e4b4309357a3907b286942c6a70784a6f2469f1edd43` | <https://web.archive.org/web/20240102151858id_/https://www.contractsfinder.service.gov.uk/Notice/Attachment/ecf0b22a-dd78-48d3-95a0-ec1465aaceb7> |
 
 The initial set totals 586 pages. Independent vector and raster analysis found 417 fully blanked pages. Its internal titles cover the agreement, Schedules 1-3, and Schedules 5-11; Schedule 4 is absent as a publication part. Internet Archive and UK Government Web Archive copies match byte for byte.
 
