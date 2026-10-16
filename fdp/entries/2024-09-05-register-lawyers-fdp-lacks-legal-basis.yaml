@@ -8,7 +8,7 @@ tags:
   - opt-out
   - legal-basis-s251
   - digital-health
-title: Register reveals NHS England's own lawyers found the FDP's privacy tech lacks a legal basis
+title: Register reports KC said NHS-PET required a separate lawful basis
 summary: >-
   The Register reported that FDP board documents from March 2024 showed
   NHS England had received advice from King's Counsel that the platform's
@@ -18,8 +18,9 @@ summary: >-
   would have to let patients opt out under the Section 251 regime, with
   the board documents themselves noting "there is a risk that a Section
   251 will be required, which could result in the National Data Opt Out
-  being applicable to all flows." This directly contradicted NHS
-  England's own public position three months earlier: when Foxglove's
+  being applicable to all flows." The reported component-specific advice
+  qualified NHS England's broader public position three months earlier:
+  when Foxglove's
   coalition first alleged in December 2023 that the FDP lacked a lawful
   basis, an NHS spokesperson said the claim "fundamentally misunderstands
   how the Federated Data Platform will operate and is totally incorrect
@@ -42,7 +43,11 @@ related:
   - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
   - 2023-12-07-board-opt-out-levels-not-materialised
 contested: >-
-  NHS England declined to comment to the Register for this story. Its
+  The reported advice concerned IQVIA's NHS-PET processing and said a
+  separate basis "will be required"; it was not a finding that every FDP
+  product lacked a basis. The underlying advice and board documents were
+  not independently reviewed by this repo. NHS England declined to comment
+  to the Register for this story. Its
   December 2023 denial of Foxglove's legal-basis concerns (quoted above)
   was not subsequently revisited in public by NHS England as far as this
   entry's source shows - only the internal board papers described here

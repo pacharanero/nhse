@@ -7,15 +7,15 @@ tags:
   - parliament
   - opt-out
   - gdpr
-title: Government confirms the National Data Opt-Out does not apply to FDP products
+title: Government says no current FDP product requires the National Data Opt-Out
 summary: >-
   In a written parliamentary answer to Labour MP Neil Duncan-Jordan, health
   minister Preet Kaur Gill confirmed that the National Data Opt-Out - the
-  mechanism most patients understand as "the" NHS data opt-out - does not
-  currently apply to products used in the FDP, because the data is
-  classified as being used for direct care rather than the secondary uses
-  (planning, research) the opt-out covers. Patients retain a general right
-  under UK GDPR Article 21 to object to processing. Separately, in answer
+  mechanism most patients understand as "the" NHS data opt-out - did not
+  currently apply to FDP products. She said this was because data was used
+  for direct care "in most cases," and that a controller must apply the
+  opt-out if a processing purpose requires it. Patients retain a separate
+  right under UK GDPR Article 21 to object to processing. Separately, in answer
   to a written question from Labour MP Rachael Maskell the same month, Gill
   confirmed NHS trusts - as institutions, not patients - can decline to use
   the FDP and "procure locally" an alternative instead, provided it meets
@@ -32,3 +32,4 @@ related:
   - 2026-06-03-science-committee-report-break-clause
   - 2021-11-25-covid-datastore-dpia-not-direct-care
   - 2024-09-05-register-lawyers-fdp-lacks-legal-basis
+  - 2026-06-09-government-denies-direction-causes-fdp-opt-out-position

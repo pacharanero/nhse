@@ -12,13 +12,11 @@ summary: >-
   data opt-outs do not apply to the platform "due to a legal direction
   issued under section 254 of the Health and Social Care Act 2012," and
   that this direction "has not been published or named or been subject to
-  scrutiny." If accurate, this identifies the specific legal mechanism
-  behind the opt-out exemption later confirmed in general terms by
-  minister Preet Kaur Gill (see 2026-06-04 entry) - a directive power
-  rather than a published policy document. Not independently verified
-  against the direction itself, which this entry's source says has not
-  been published; worth checking against NHS England's FDP Information
-  Governance Framework and any FOI response naming the direction.
+  scrutiny." The statement attributed the claim to reports and did not
+  identify a direction. On 9 June 2026, health minister Preet Kaur Gill
+  directly rejected the claimed mechanism, saying the current FDP opt-out
+  position "is not because of a direction" but because no current FDP
+  product requires the National Data Opt-Out to be applied.
 quote: "Perhaps most concerning of all are the reports that patient data opt-outs do not apply to the federated data platform due to a legal direction issued under section 254 of the Health and Social Care Act 2012, yet that direction has not been published or named or been subject to scrutiny."
 quote_verified: document
 source_url: https://hansard.parliament.uk/commons/2026-04-16/debates/2FDCA71C-D0C1-4738-BEE8-A4BDA311DB99/NHSFederatedDataPlatform
@@ -27,3 +25,10 @@ archive_url: https://web.archive.org/web/20260512165541/https://hansard.parliame
 related:
   - 2026-04-16-westminster-hall-debate-fdp
   - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
+  - 2026-06-09-government-denies-direction-causes-fdp-opt-out-position
+contested: >-
+  This entry records an attributed parliamentary allegation, not an
+  independently verified direction. NHS England's Information Governance
+  Framework lists section 254 directions as one possible route for some
+  national processing, but that does not establish that a direction caused
+  the current FDP-wide opt-out position.

@@ -1,0 +1,45 @@
+id: 2022-04-13-fdp-direct-care-identifiable-data-scope
+date: 2022-04-13
+date_precision: day
+tags:
+  - scope
+  - nhse
+  - legal-basis-unstated
+  - cost
+title: NHS England supplier deck includes direct care and identifiable data in FDP scope
+summary: >-
+  NHS England's supplier briefing described direct care as one of four
+  proposed FDP data uses, alongside population health and proactive care,
+  planning and service improvement, and research and innovation. Direct
+  care required real-time read/write access and identifiable data; planning
+  data "must not be identifiable"; and research would normally use
+  anonymised data, with re-identifiable data contemplated for trial
+  recruitment and follow-up through links to separate Trusted Research
+  Environments. The deck said these uses were rooted in linked person-level
+  data and mapped vaccination, elective recovery and care coordination to
+  direct care. It also projected £3.6bn of benefits over ten years and
+  estimated £360m for the core platform lot plus £10m for privacy-enhancing
+  technology.
+quote: "Must be identifiable"
+quote_verified: document
+source_url: https://www.find-tender.service.gov.uk/Notice/009960-2022
+source_title: "NHS England: FDP supplier briefing deck, circulated through the pre-market consultation linked by Find a Tender notice 2022/S 000-009960"
+archive_url: https://web.archive.org/web/20220413220336/https://www.find-tender.service.gov.uk/Notice/009960-2022
+related:
+  - 2021-11-25-covid-datastore-dpia-not-direct-care
+  - 2022-04-13-fdp-supplier-briefing
+  - 2023-08-01-dh-briefing-paper-fdp-direct-care-first
+  - 2023-12-07-board-paper-fdp-update-check-and-challenge-group
+contested: >-
+  This establishes direct care as an FDP use by April 2022, not as the
+  platform's primary purpose or as a lawful basis. The market-engagement
+  documents did not identify UK GDPR conditions, a common-law
+  confidentiality route, opt-out rules, GP-data scope, or formal
+  controller/processor roles. Their requirements were explicitly
+  provisional. The related Q&A's description of FDP access as being for
+  "operational and internal analysis purposes only" is in tension with
+  the deck's direct-care read/write access unless "operational" included
+  direct care; the documents do not define it. The official notice archives
+  the consultation route rather than the attachments, so exact file hashes
+  and the passages relied on are retained in
+  `fdp/sources/2022-04-13-fdp-market-engagement-evidence.md`.

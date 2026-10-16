@@ -41,10 +41,9 @@
   // Background tint for the "legal basis era" a row's date falls into -
   // see the Scope & Legal Basis thread in spec/fdp-timeline.md (R19).
   // Each zone is anchored to a specific entry that is itself evidence of
-  // that framing; the ~21 month gap between the two zones is left
-  // deliberately untinted, since only its two endpoints are confirmed -
-  // which side of the "direct care" line NHS England was actually
-  // asserting throughout the gap itself is not.
+  // that framing. The untinted gap now contains a marker showing direct
+  // care was one proposed use by April 2022, but the evidence does not
+  // establish when it became the dominant public framing.
   const LEGAL_BASIS_ERAS = [
     {
       start: "2020-03-28", // nhsx-power-of-data-pandemic-blog
@@ -64,14 +63,14 @@
   }
 
   // Labelled boundary markers for the same eras, rendered with
-  // legalEraMarkerLi() alongside the tint above. The middle marker does
-  // not start a tinted zone - it flags that the DPIA is the last
-  // confirmed "not direct care" position before an uncertain gap, not a
-  // confirmed pivot to "direct care" itself.
+  // legalEraMarkerLi() alongside the tint above. The middle markers do not
+  // start tinted zones - they distinguish direct care entering FDP scope
+  // from the later direct-care-first framing.
   const LEGAL_BASIS_ERA_MARKERS = [
     { date: "2020-03-28", color: "info", label: "Secondary use era" },
     { date: "2021-11-25", color: "neutral", label: "Framing uncertain" },
-    { date: "2023-08-01", color: "accent", label: "Direct care era" },
+    { date: "2022-04-13", color: "secondary", label: "Direct care in scope" },
+    { date: "2023-08-01", color: "accent", label: "Direct-care-first" },
   ];
 
   // Unused at runtime. Tailwind's build-time scanner only generates CSS
@@ -90,7 +89,7 @@
     "badge-primary", "badge-secondary", "badge-error", "badge-success", "badge-warning", "badge-info", "badge-neutral", "badge-accent",
     "bg-primary", "bg-secondary", "bg-error", "bg-success", "bg-warning", "bg-info", "bg-neutral", "bg-accent",
     "border-l-primary", "border-l-secondary", "border-l-error", "border-l-success", "border-l-warning", "border-l-info", "border-l-neutral", "border-l-accent",
-    "bg-info/40", "bg-neutral/40", "bg-accent/40",
+    "bg-info/40", "bg-neutral/40", "bg-secondary/40", "bg-accent/40",
   ];
 
   const timelineEl = document.getElementById("timeline");

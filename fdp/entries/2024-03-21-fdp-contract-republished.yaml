@@ -1,0 +1,37 @@
+id: 2024-03-21-fdp-contract-republished
+date: 2024-03-21
+date_precision: day
+tags:
+  - contract
+  - nhse
+  - palantir
+  - good-law-project
+title: NHS England replaces FDP-AS contract publication with four-file version
+summary: >-
+  NHS England replaced its December 2023 Contracts Finder notice and
+  three-file, 586-page contract package with a four-file, 532-page
+  publication. The replacement added Schedule 4 as a publication part,
+  exposed Schedule 11's personal-data processing framework, labelled
+  residual redactions under FOIA sections 40 and 43, and contained only
+  one text-empty page, compared with 417 fully blanked pages in the
+  initial package. The two notices each have one public version and are
+  linked as parent and replacement records, while all seven attachments
+  have distinct identifiers and hashes.
+source_url: https://www.contractsfinder.service.gov.uk/Notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
+source_title: "Contracts Finder: Federated Data Platform and Associated Services replacement contract publication"
+archive_url: https://web.archive.org/web/20240711182222/https://www.contractsfinder.service.gov.uk/Notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
+related:
+  - 2023-12-22-fdp-contract-award-notice-published
+  - 2024-02-18-good-law-project-redacted-contract-legal-action
+contested: >-
+  The replacement was materially less blanked but was not a uniformly
+  less-redacted overlay: some wording visible in the initial agreement,
+  including clause 25.3, was redacted in the replacement. The initial
+  agreement displays 21 November 2023 as its date, while the replacement
+  and official procurement metadata use 22 November. Replacement-file
+  hashes identify verified April 2025 Wayback copies because no
+  publication-day attachment captures or independent UK Government Web
+  Archive copies were found. No third publication generation or later
+  formal modification notice was located, which does not exclude
+  unpublished change control. The seven-file inventory is retained at
+  `fdp/sources/2024-03-21-fdp-as-contract-publication-versions.md`.

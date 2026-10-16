@@ -1,0 +1,31 @@
+id: 2026-06-09-government-denies-direction-causes-fdp-opt-out-position
+date: 2026-06-09
+date_precision: day
+tags:
+  - legal
+  - parliament
+  - nhse
+  - opt-out
+title: Government denies a direction causes FDP opt-out position
+summary: >-
+  Health minister Preet Kaur Gill directly rejected the claim that an
+  unpublished direction caused the National Data Opt-Out not to apply to
+  the FDP. She said no current FDP product required the opt-out to be
+  applied and that a data controller must apply it if a processing purpose
+  requires it. The answer corrected Iqbal Mohamed MP's April statement that
+  reports attributed the position to an unpublished section 254 direction.
+quote: "This is not because of a direction but because there are currently no products within the NHS FDP which are required to apply the National Data Opt-Out."
+quote_verified: document
+source_url: https://questions-statements.parliament.uk/written-questions/detail/2026-06-02/6175
+source_title: "UK Parliament: Written question UIN 6175, NHS: Databases (answered 9 June 2026)"
+archive_url: https://github.com/pacharanero/nhse/blob/main/fdp/sources/2026-06-09-parliament-fdp-opt-out-direction-answer.md
+related:
+  - 2026-04-16-unpublished-s254-direction-opt-out
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
+contested: >-
+  The answer rejects a direction as the reason for the current FDP-wide
+  opt-out position. It does not say section 254 directions can never
+  provide a route for particular national processing; NHS England's
+  Information Governance Framework lists them among possible routes. A
+  direct Wayback save returned HTTP 520 and no prior capture was found, so
+  the full answer is retained in `fdp/sources/` as the archive record.

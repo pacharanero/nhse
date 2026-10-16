@@ -237,6 +237,19 @@
     "file": "entries/2022-04-01-fdp-pin-published.yaml"
   },
   {
+    "id": "2022-04-13-fdp-direct-care-identifiable-data-scope",
+    "date": "2022-04-13",
+    "date_precision": "day",
+    "tags": [
+      "scope",
+      "nhse",
+      "legal-basis-unstated",
+      "cost"
+    ],
+    "title": "NHS England supplier deck includes direct care and identifiable data in FDP scope",
+    "file": "entries/2022-04-13-fdp-direct-care-identifiable-data-scope.yaml"
+  },
+  {
     "id": "2022-04-13-fdp-supplier-briefing",
     "date": "2022-04-13",
     "date_precision": "day",
@@ -632,6 +645,19 @@
     "file": "entries/2024-02-18-good-law-project-redacted-contract-legal-action.yaml"
   },
   {
+    "id": "2024-03-21-fdp-contract-republished",
+    "date": "2024-03-21",
+    "date_precision": "day",
+    "tags": [
+      "contract",
+      "nhse",
+      "palantir",
+      "good-law-project"
+    ],
+    "title": "NHS England replaces FDP-AS contract publication with four-file version",
+    "file": "entries/2024-03-21-fdp-contract-republished.yaml"
+  },
+  {
     "id": "2024-04-03-picket-nhs-england-hq-palantir-gaza",
     "date": "2024-04-03",
     "date_precision": "day",
@@ -660,7 +686,7 @@
       "legal-basis-s251",
       "digital-health"
     ],
-    "title": "Register reveals NHS England's own lawyers found the FDP's privacy tech lacks a legal basis",
+    "title": "Register reports KC said NHS-PET required a separate lawful basis",
     "file": "entries/2024-09-05-register-lawyers-fdp-lacks-legal-basis.yaml"
   },
   {
@@ -927,8 +953,21 @@
       "opt-out",
       "gdpr"
     ],
-    "title": "Government confirms the National Data Opt-Out does not apply to FDP products",
+    "title": "Government says no current FDP product requires the National Data Opt-Out",
     "file": "entries/2026-06-04-national-data-opt-out-does-not-apply-to-fdp.yaml"
+  },
+  {
+    "id": "2026-06-09-government-denies-direction-causes-fdp-opt-out-position",
+    "date": "2026-06-09",
+    "date_precision": "day",
+    "tags": [
+      "legal",
+      "parliament",
+      "nhse",
+      "opt-out"
+    ],
+    "title": "Government denies a direction causes FDP opt-out position",
+    "file": "entries/2026-06-09-government-denies-direction-causes-fdp-opt-out-position.yaml"
   },
   {
     "id": "2026-06-11-foi-fdp-weekly-usage-data-cost-per-login",

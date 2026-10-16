@@ -10,9 +10,9 @@ tags:
 title: Register reveals Swindells' Palantir-linked consultancy role as FDP procurement is delayed a second time
 summary: >-
   The Register reported that NHS England's Federated Data Platform
-  procurement - by then priced at up to £360m, up from the £240m
-  estimated at its April 2022 launch - had been delayed for a second
-  time, with the contract notice missing a promised 6 September 2022
+  procurement - reported at up to £360m after a £240m estimate in the
+  April Prior Information Notice - had been delayed for a second time,
+  with the contract notice missing a promised 6 September 2022
   publication date amid the change of prime minister, and awaiting
   sign-off from incoming health secretary Thérèse Coffey. The paper also
   revealed that Matthew Swindells, NHS England's national director for
@@ -35,11 +35,17 @@ source_title: "The Register: NHS data platform procurement delayed for a second 
 archive_url: http://web.archive.org/web/20260909082218/https://www.theregister.com/software/2022/09/15/nhs-data-platform-procurement-delayed-a-second-time/1115914
 related:
   - 2022-04-01-fdp-pin-published
+  - 2022-04-13-fdp-direct-care-identifiable-data-scope
   - 2023-01-10-fdp-contract-notice-published
   - 2020-12-11-palantir-covid-datastore-23-5m-two-year
   - 2021-03-30-government-concedes-palantir-jr
   - 2026-03-05-swindells-palantir-conflict-of-interest-resigns
 contested: >-
+  NHS England's 13 April supplier deck had already estimated £360m for
+  Procurement 1 Lot A, plus £10m for privacy-enhancing technology. The
+  £240m PIN estimate and £360m Lot A estimate may cover different
+  components, so this entry preserves the Register's reported comparison
+  without treating the figures as a proven like-for-like increase.
   NHS England and NHS Improvement told the Register it engaged a range of
   stakeholders including the wider health and care system, industry and
   academics, and that the federated approach was its own recommendation,

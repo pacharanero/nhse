@@ -33,7 +33,7 @@ Both scripts are bash, `set -euo pipefail`, and cd to the repo root. Check synta
 
 ## Before every commit
 
-- `bash -n s/*` passes.
+- `bash -n s/fetch-transcripts s/search s/up` passes.
 - New prose is not hard-wrapped; hyphens not emdashes; filenames slug-case-with-hyphens.
 - No paywalled article bodies committed, and no credentials.
 

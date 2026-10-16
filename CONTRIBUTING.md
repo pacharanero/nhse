@@ -151,12 +151,12 @@ A single especially significant appearance (see `2026-04-13-tom-bartlett-leaves-
 
 ## Legal basis era indicator
 
-The timeline carries a subtle background tint marking the date ranges during which NHS England was asserting the FDP/COVID Data Store was for "secondary use/planning" (national data opt-out applies) versus "direct care" (it doesn't) - see the "Scope & Legal Basis" thread in `spec/fdp-timeline.md`. It's driven by two small arrays at the top of `js/app.js`:
+The timeline carries a subtle background tint marking the date ranges during which NHS England framed the FDP/COVID Data Store around "secondary use/planning" versus "direct care" - see the "Scope & Legal Basis" thread in `spec/fdp-timeline.md`. The National Data Opt-Out generally applies to confidential patient information used beyond individual care, while direct-care processing falls outside it; individual products and separate Article 21 objection rights still require precise treatment. The indicator charts documented framing rather than making a platform-wide legal conclusion. It's driven by two small arrays at the top of `js/app.js`:
 
 - `LEGAL_BASIS_ERAS` - date ranges and a low-opacity `bg-<colour>/10` tint class applied to each entry/tracker `<li>` whose date falls inside. Each zone is anchored to a specific entry that is itself evidence of that framing, not an editorial judgement call.
-- `LEGAL_BASIS_ERA_MARKERS` - the three labelled divider rows at the zone boundaries, rendered with `legalEraMarkerLi()` (the same two-sided divider pattern as the existing `todayMarkerLi()`, parameterised by colour).
+- `LEGAL_BASIS_ERA_MARKERS` - the four labelled divider rows marking documented changes in scope or framing, rendered with `legalEraMarkerLi()` (the same two-sided divider pattern as the existing `todayMarkerLi()`, parameterised by colour).
 
-The roughly 21-month gap between the two confirmed zones (25 Nov 2021, NHS England's own COVID-19 Data Store DPIA last ticking "not direct care," to 1 Aug 2023, the DH briefing paper to Parliament asserting direct care "first and foremost") is left deliberately untinted rather than guessing where the actual pivot sits - only the two endpoints are confirmed. If a future entry narrows that gap, update both arrays' dates and the `spec/fdp-timeline.md` progress notes together; don't tint the gap without a specific anchor entry to point to.
+The roughly 21-month gap between the two confirmed zones (25 Nov 2021, NHS England's own COVID-19 Data Store DPIA last ticking "not direct care," to 1 Aug 2023, the DH briefing paper to Parliament asserting direct care "first and foremost") is left deliberately untinted rather than guessing when direct care became the dominant framing. A 13 April 2022 marker now records that direct care had entered FDP scope as one of four proposed data uses, without starting the later tint because the supplier deck neither made direct care primary nor stated a lawful basis. If a future entry further resolves that evolution, update both arrays' dates and the `spec/fdp-timeline.md` progress notes together; don't tint the gap without a specific anchor entry to point to.
 
 Both arrays are read inside `render()`'s marker queue (see the comment there), not as a separate pass, so they interleave correctly with the existing today-marker and year-marker logic regardless of sort order. The divider markers' `.timeline-end` uses `min-w-[min(14rem,100%)]` rather than a bare `min-w-[14rem]` - the latter doesn't shrink on narrow viewports and overflows (confirmed to affect `todayMarkerLi()` too, fixed as part of this feature); keep divider labels short (under ~20 characters) regardless, since the column still sizes to its own content once the floor is removed.
 
@@ -218,7 +218,7 @@ A card's `related` list (see the entry schema above) is rendered as clickable li
 
 - No hard-wrapped prose; hyphens, not em dashes.
 - Filenames: slug-case-with-hyphens.
-- `bash -n s/*` passes before committing anything under `s/`.
+- `bash -n s/fetch-transcripts s/search s/up` passes before committing anything under those Bash scripts.
 - No paywalled article bodies committed, no credentials, ever.
 
 ## What not to do
