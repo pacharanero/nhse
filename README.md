@@ -4,7 +4,7 @@ Research corpus and source material on NHS England digital programmes, starting 
 
 ## Status
 
-Public. Live at <https://pacharanero.github.io/nhse/>, landing on a list of utilities - currently just the FDP timeline, at <https://pacharanero.github.io/nhse/fdp/>, with 46 sourced entries and a working static viewer. Board-meeting caption backfill (2013-2026) is ongoing.
+Public. Live at <https://pacharanero.github.io/nhse/>, landing on a list of utilities - currently just the FDP timeline, at <https://pacharanero.github.io/nhse/fdp/>, with 85 sourced entries and a working static viewer. Board-meeting caption backfill is complete through 2026.
 
 ## What is here
 

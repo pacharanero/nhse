@@ -572,10 +572,25 @@
     "date_precision": "day",
     "tags": [
       "contract",
-      "cost"
+      "cost",
+      "digital-health"
     ],
     "title": "Formal Contract Award Notice for FDP-AS published, recording \u00a3182m value",
     "file": "entries/2023-12-22-fdp-contract-award-notice-published.yaml"
+  },
+  {
+    "id": "2024-01-02-topham-guerin-palantir-influencer-campaign-exposed",
+    "date": "2023-12-22",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "palantir",
+      "nhse",
+      "good-law-project",
+      "cost"
+    ],
+    "title": "Good Law Project publishes Palantir influencer-campaign documents",
+    "file": "entries/2024-01-02-topham-guerin-palantir-influencer-campaign-exposed.yaml"
   },
   {
     "id": "2024-01-fdp-explainer-drops-opt-out-line",
@@ -588,20 +603,6 @@
     ],
     "title": "NHS England patient-facing FDP explainer quietly drops national data opt-out line",
     "file": "entries/2024-01-fdp-explainer-drops-opt-out-line.yaml"
-  },
-  {
-    "id": "2024-01-02-topham-guerin-palantir-influencer-campaign-exposed",
-    "date": "2024-01-02",
-    "date_precision": "day",
-    "tags": [
-      "civil",
-      "palantir",
-      "nhse",
-      "good-law-project",
-      "cost"
-    ],
-    "title": "Good Law Project exposes covert Palantir-funded influencer campaign against it",
-    "file": "entries/2024-01-02-topham-guerin-palantir-influencer-campaign-exposed.yaml"
   },
   {
     "id": "2024-01-11-foxglove-topham-guerin-contacts-dauk",
@@ -617,14 +618,15 @@
   },
   {
     "id": "2024-02-18-good-law-project-redacted-contract-legal-action",
-    "date": "2024-02-18",
+    "date": "2024-02-17",
     "date_precision": "day",
     "tags": [
       "legal",
       "palantir",
       "nhse",
       "good-law-project",
-      "cost"
+      "cost",
+      "digital-health"
     ],
     "title": "Good Law Project launches legal action over Palantir's heavily redacted FDP contract",
     "file": "entries/2024-02-18-good-law-project-redacted-contract-legal-action.yaml"
@@ -655,7 +657,8 @@
       "palantir",
       "nhse",
       "opt-out",
-      "legal-basis-s251"
+      "legal-basis-s251",
+      "digital-health"
     ],
     "title": "Register reveals NHS England's own lawyers found the FDP's privacy tech lacks a legal basis",
     "file": "entries/2024-09-05-register-lawyers-fdp-lacks-legal-basis.yaml"
@@ -744,6 +747,21 @@
     "file": "entries/2025-09-08-guardian-reveals-johnson-cummings-thiel-meeting.yaml"
   },
   {
+    "id": "2026-02-05-bma-guidance-limit-fdp-use",
+    "date": "2026-02-05",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "bma",
+      "palantir",
+      "nhse",
+      "digital-health",
+      "non-direct-care"
+    ],
+    "title": "BMA says it will advise doctors on limiting non-direct-care FDP use",
+    "file": "entries/2026-02-05-bma-guidance-limit-fdp-use.yaml"
+  },
+  {
     "id": "2026-03-05-swindells-palantir-conflict-of-interest-resigns",
     "date": "2026-03-05",
     "date_precision": "day",
@@ -758,6 +776,19 @@
     "file": "entries/2026-03-05-swindells-palantir-conflict-of-interest-resigns.yaml"
   },
   {
+    "id": "2026-03-24-rewired-fdp-clarity-implementation",
+    "date": "2026-03-24",
+    "date_precision": "day",
+    "tags": [
+      "civil",
+      "nhse",
+      "digital-health",
+      "rewired"
+    ],
+    "title": "Rewired panel calls for clearer FDP roadmap and local implementation support",
+    "file": "entries/2026-03-24-rewired-fdp-clarity-implementation.yaml"
+  },
+  {
     "id": "2026-04-13-bmj-chelsea-westminster-pilot-data-questioned",
     "date": "2026-04-13",
     "date_precision": "day",
@@ -766,7 +797,8 @@
       "nhse",
       "palantir",
       "bmj",
-      "statistics"
+      "statistics",
+      "digital-health"
     ],
     "title": "BMJ questions Chelsea and Westminster's FDP pilot \"success\" data",
     "file": "entries/2026-04-13-bmj-chelsea-westminster-pilot-data-questioned.yaml"
@@ -810,7 +842,8 @@
       "cost",
       "thiel",
       "karp",
-      "mandelson"
+      "mandelson",
+      "digital-health"
     ],
     "title": "Westminster Hall debates the FDP, MPs press for the break clause",
     "file": "entries/2026-04-16-westminster-hall-debate-fdp.yaml"
@@ -864,7 +897,8 @@
       "legal",
       "nhse",
       "palantir",
-      "ndg"
+      "ndg",
+      "digital-health"
     ],
     "title": "National Data Guardian seeks clarification after NDIT contractor-access report, NHS England later admits DPIA was wrong",
     "file": "entries/2026-06-03-ndg-statement-ndit-access-clarification.yaml"
@@ -911,17 +945,32 @@
     "file": "entries/2026-06-11-foi-fdp-weekly-usage-data-cost-per-login.yaml"
   },
   {
+    "id": "2026-06-23-patel-fdp-here-to-stay-contract-review",
+    "date": "2026-06-23",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "nhse",
+      "palantir",
+      "break-clause",
+      "digital-health"
+    ],
+    "title": "NHS FDP programme head says platform will continue while supplier is reviewed",
+    "file": "entries/2026-06-23-patel-fdp-here-to-stay-contract-review.yaml"
+  },
+  {
     "id": "2026-07-09-health-social-care-committee-letter-break-clause",
-    "date": "2026-07-09",
+    "date": "2026-07-08",
     "date_precision": "day",
     "tags": [
       "legal",
       "palantir",
       "nhse",
       "parliament",
-      "break-clause"
+      "break-clause",
+      "digital-health"
     ],
-    "title": "Health and Social Care Committee tells minister to drop Palantir and find an alternative",
+    "title": "Health committee urges minister not to extend Palantir's FDP contract",
     "file": "entries/2026-07-09-health-social-care-committee-letter-break-clause.yaml"
   },
   {
@@ -958,7 +1007,8 @@
       "palantir",
       "democracy-for-sale",
       "cost",
-      "mandelson"
+      "mandelson",
+      "digital-health"
     ],
     "title": "Investigation reveals Palantir's \u00a330k/month Mandelson lobbying operation, codenamed \"Project Onion\"",
     "file": "entries/2026-07-14-democracy-for-sale-project-onion-investigation.yaml"
@@ -1042,7 +1092,8 @@
       "38-degrees",
       "gdpr",
       "protest",
-      "bmj"
+      "bmj",
+      "digital-health"
     ],
     "title": "Coordinated protest day and 45,108 GDPR objections target Palantir's NHS role",
     "file": "entries/2026-10-01-palantir-protests-45108-objections.yaml"
@@ -1097,7 +1148,8 @@
       "contract",
       "parliament",
       "break-clause",
-      "cost"
+      "cost",
+      "digital-health"
     ],
     "title": "FDP contract's initial three-year commitment ends - break clause point",
     "file": "entries/2027-02-15-fdp-break-clause-deadline.yaml"

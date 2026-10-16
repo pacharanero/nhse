@@ -1,0 +1,34 @@
+id: 2026-02-05-bma-guidance-limit-fdp-use
+date: 2026-02-05
+date_precision: day
+tags:
+  - civil
+  - bma
+  - palantir
+  - nhse
+  - digital-health
+  - non-direct-care
+title: BMA says it will advise doctors on limiting non-direct-care FDP use
+summary: >-
+  The BMJ reported that the British Medical Association would issue
+  guidance to members on limiting engagement with the FDP. The pledge
+  followed a [31 January BMA
+  response](https://www.bmj.com/content/392/bmj.s168/rr-2) calling on
+  doctors to explore refusing non-direct-care use of the platform and to
+  move away from it when a suitable alternative became available.
+  Re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2026/02/bma-calls-for-nhs-doctors-to-reject-using-the-fdp/)
+  ([archive](https://web.archive.org/web/20260209144223/https://www.digitalhealth.net/2026/02/bma-calls-for-nhs-doctors-to-reject-using-the-fdp/)).
+source_url: https://www.bmj.com/content/392/bmj.s246
+source_title: "The BMJ: Palantir and NHS - BMA to tell members to limit use of tech system"
+archive_url: https://web.archive.org/web/20260205175627/https://www.bmj.com/content/392/bmj.s246
+related:
+  - 2026-06-04-national-data-opt-out-does-not-apply-to-fdp
+  - 2026-07-09-health-social-care-committee-letter-break-clause
+contested: >-
+  The BMA's primary wording was narrower than Digital Health's "reject
+  using the FDP" headline: it concerned exploring refusal of
+  non-direct-care use and moving away only when a suitable alternative
+  exists. Digital Health also recorded Palantir's response that US
+  Immigration and Customs Enforcement had used its software since 2011,
+  across the Obama, Biden and Trump administrations.

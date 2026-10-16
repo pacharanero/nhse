@@ -11,6 +11,7 @@ tags:
   - thiel
   - karp
   - mandelson
+  - digital-health
 title: Westminster Hall debates the FDP, MPs press for the break clause
 summary: >-
   Martin Wrigley MP (Newton Abbot) led a Westminster Hall debate on the
@@ -23,7 +24,11 @@ summary: >-
   "on occasion kill them" earnings-call quote. Kim Johnson MP raised
   unminuted 2019 meetings between Boris Johnson, Dominic Cummings and
   Peter Thiel, and a 2025 visit to Palantir's offices by Peter Mandelson
-  and the Prime Minister, calling for both to be made public.
+  and the Prime Minister, calling for both to be made public. Responding
+  for the government, Health Minister Zubir Ahmed said break clauses
+  enabled value-for-money review, that alternatives would need to be
+  considered if they could do the job better, and that a decision on
+  extension would be made later in 2026.
 quote: "The current contract delivers a subscription service that leaves no deliverables after the subscription - no software, no improvements and no intellectual property after spending more than £330 million. All the specially written software and intellectual property rights belong to the supplier, says the contract."
 quote_verified: document
 source_url: https://hansard.parliament.uk/commons/2026-04-16/debates/2FDCA71C-D0C1-4738-BEE8-A4BDA311DB99/NHSFederatedDataPlatform
@@ -35,8 +40,10 @@ related:
   - 2023-01-16-thiel-nhs-stockholm-syndrome
   - 2026-07-14-democracy-for-sale-project-onion-investigation
 contested: >-
-  The debate itself records no government/Palantir rebuttal of the
-  specific claims made (it is MPs speaking, not a ministerial statement) -
-  the minister's response, if recorded separately in the debate text, is
-  not captured in this entry and should be checked against the full
-  transcript before being treated as settled.
+  Ahmed also defended the FDP's governance and reported benefits, saying
+  NHS organisations remained data controllers and Palantir a processor.
+  Those statements answer the debate's wider criticism but do not settle
+  the specific vendor-lock-in and intellectual-property claims quoted
+  above. Re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2026/04/palantirs-nhs-contract-could-end-if-others-can-do-the-job-better/)
+  on 17 April 2026; no exact archive of that report was verified.

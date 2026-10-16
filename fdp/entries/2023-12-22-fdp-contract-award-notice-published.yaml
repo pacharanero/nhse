@@ -4,6 +4,7 @@ date_precision: day
 tags:
   - contract
   - cost
+  - digital-health
 title: Formal Contract Award Notice for FDP-AS published, recording £182m value
 summary: >-
   The statutory Contract Award Notice for the Federated Data Platform and
@@ -11,7 +12,13 @@ summary: >-
   recording a contract value of £182m - a lower figure than the "up to
   £330m over seven years" and "up to £480m" figures used elsewhere,
   reflecting a different valuation basis (committed spend versus ceiling
-  spend across options).
+  spend across options). The original notice published a 586-page contract
+  package; [Digital Health counted 259 of 272 pages in part two and 164 of
+  242 pages in part three as
+  redacted](https://www.digitalhealth.net/2024/01/nhse-publishes-heavily-redacted-palantir-fdp-contract/).
+  NHS England attributed the scale of redaction to the package's size and
+  complexity, commercial sensitivity and data security, and said further
+  material might follow.
 source_url: https://www.contractsfinder.service.gov.uk/notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
 source_title: "Contracts Finder: Federated Data Platform and Associated Services (Contract Award Notice)"
 archive_url: http://web.archive.org/web/20260828043237/https://www.contractsfinder.service.gov.uk/Notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
@@ -19,3 +26,13 @@ related:
   - 2023-01-10-fdp-contract-notice-published
   - 2023-11-21-fdp-contract-awarded
   - 2023-11-22-fdp-contract-executed
+contested: >-
+  The current Contracts Finder source is the replacement notice published
+  on 21 March 2024; the [original 22 December
+  notice](https://www.contractsfinder.service.gov.uk/notice/2e8c61c0-faab-4f99-ae69-b00df6bae165)
+  was replaced and has no verified archive capture. The UK Covid-19
+  Inquiry preserves [a copy of the original notice and
+  attachments](https://covid19.public-inquiry.uk/wp-content/uploads/2025/10/20102954/INQ000655845.pdf).
+  Re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2024/01/nhse-publishes-heavily-redacted-palantir-fdp-contract/)
+  on 8 January 2024; no exact archive of that report was verified.

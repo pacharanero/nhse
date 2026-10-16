@@ -7,6 +7,7 @@ tags:
   - nhse
   - opt-out
   - legal-basis-s251
+  - digital-health
 title: Register reveals NHS England's own lawyers found the FDP's privacy tech lacks a legal basis
 summary: >-
   The Register reported that FDP board documents from March 2024 showed
@@ -47,4 +48,10 @@ contested: >-
   entry's source shows - only the internal board papers described here
   record the King's Counsel advice. Quote is from FDP board documents as
   quoted by the Register (quote_verified: secondary), not independently
-  seen by this repo.
+  seen by this repo. NHS England later told Digital Health that the FDP was
+  governed by a rigorous information-governance framework and that no data
+  was processed without a lawful basis; Foxglove's Rosa Curling called for
+  the relevant advice to be published, while IQVIA did not respond before
+  publication. Re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2024/09/patients-may-be-able-to-opt-out-of-sharing-their-data-with-the-fdp/)
+  on 10 September 2024; no exact archive of that report was verified.

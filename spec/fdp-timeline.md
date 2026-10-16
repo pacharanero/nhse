@@ -17,7 +17,7 @@ The timeline is a **research and accountability artefact**, not an argument. Eac
 The timeline is live (R12/R13) at <https://pacharanero.github.io/nhse/>, built from `fdp/entries/*.yaml` via `s/build-index` (R3). Data gathering continues alongside the published site - see the roadmap below for what's worked and what's open.
 
 - NHS England board meeting captions, 2013-2026, in `nhs-board-transcripts/`. See `s/fetch-transcripts` and `s/search`.
-- 45 entries in `fdp/entries/`, spanning March 2018 to February 2027 (future-dated: the break clause deadline). Every entry is checked against its linked, archived source before being added.
+- 85 entries in `fdp/entries/`, spanning March 2018 to February 2027 (future-dated: the break clause deadline). Every entry is checked against its linked, archived source before being added.
 
 ## Tags (the colour/filter dimension)
 
@@ -219,6 +219,8 @@ Separately, `2024-09-05-register-lawyers-fdp-lacks-legal-basis` found NHS Englan
 ## Leads to follow up
 
 Specific facts noticed while working a different part of the timeline - not yet investigated, not yet entries. Unlike "Sources to work through" above, which is a systematic source-by-source research plan, this is a dated, append-only queue of things stumbled on in passing. When picked up: fold into an existing or new entry and delete the line, or promote to its own roadmap item if it turns out to be bigger than one entry.
+
+- **Labour Party Conference protest and emergency motion against Palantir (flagged 16 October 2026, while reviewing Digital Health leads).** Digital Health reported a protest outside Labour Party Conference and an emergency motion backed by more than 20,000 party members that was not selected for debate: `https://www.digitalhealth.net/2026/10/pressure-mounts-on-government-over-nhs-palantir-fdp-contract/`. The exact protest date and an archive capture were not verified, so this was not folded into the dated 1 October national protest entry.
 
 - **NDIT supplier-access DPIA error raised internally before the public admission (flagged 13 October 2026, while researching the Cancer 360 R19 entry).** The FDP Check and Challenge Group's 15 May 2026 minutes record NHS England's director of data management and transformation telling the group an "error" had been identified in the *overarching* FDP DPIA's description of supplier (including Palantir) administrative access to the NDIT, with a review and update of the DPIA agreed as an action - about two and a half months before NHS England's public 28 July 2026 admission of what looks like the same error, already captured in `2026-06-03-ndg-statement-ndit-access-clarification`. Not yet checked: the exact wording of the May 2026 admission, whether it's substantively the same error, and whether the internal-to-public gap is worth a line in that entry. Source (not yet archived): <https://www.england.nhs.uk/long-read/data-transformation-check-and-challenge-group-meeting-minutes-15-may-2026/>.
 

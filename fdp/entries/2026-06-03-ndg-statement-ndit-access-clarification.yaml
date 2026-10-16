@@ -6,6 +6,7 @@ tags:
   - nhse
   - palantir
   - ndg
+  - digital-health
 title: National Data Guardian seeks clarification after NDIT contractor-access report, NHS England later admits DPIA was wrong
 summary: >-
   Responding to correspondence via the public "Not With My NHS Data"
@@ -36,3 +37,19 @@ archive_url: https://web.archive.org/web/20261012143134/https://www.gov.uk/gover
 related:
   - 2026-05-11-ft-palantir-unlimited-ndit-access-revealed
   - 2026-10-12-ndg-advises-minister-trust
+contested: >-
+  On 16 June, Health Minister Preet Kaur Gill apologised to the Health and
+  Social Care Committee and said the error described authorised users
+  incorrectly rather than changing the controls: access required a
+  legitimate purpose and was time-limited and audited. Her statement was
+  re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2026/06/health-minister-apologises-for-nhse-error-on-fdp-data-access/)
+  ([archive](https://web.archive.org/web/20260627120941/https://www.digitalhealth.net/2026/06/health-minister-apologises-for-nhse-error-on-fdp-data-access/)).
+  A 21 August ministerial response said three Palantir engineers had
+  administrative NDIT access for support, could technically access patient
+  data for specific tasks, and did not routinely do so. That count comes
+  from the [minister's formal committee
+  response](https://committees.parliament.uk/publications/54706/documents/303864/default/),
+  analysed and re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2026/09/nhs-in-a-great-place-to-ditch-palantir-despite-health-ministers-claim/);
+  no exact archive of the latter report was verified.

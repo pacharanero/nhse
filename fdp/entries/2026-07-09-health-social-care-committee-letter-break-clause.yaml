@@ -1,5 +1,5 @@
 id: 2026-07-09-health-social-care-committee-letter-break-clause
-date: 2026-07-09
+date: 2026-07-08
 date_precision: day
 tags:
   - legal
@@ -7,16 +7,19 @@ tags:
   - nhse
   - parliament
   - break-clause
-title: Health and Social Care Committee tells minister to drop Palantir and find an alternative
+  - digital-health
+title: Health committee urges minister not to extend Palantir's FDP contract
 summary: >-
   The Health and Social Care Committee wrote to Health Innovation Minister
-  Preet Kaur Gill recommending NHS England drop the FDP when its February
-  2027 break clause comes up, citing public mistrust of Palantir, doubts
-  about the platform's effectiveness, and the existence of alternative
-  solutions. The letter noted NHS England had published claims the FDP
-  had cut waiting lists and increased procedure numbers, but had since
-  clarified it could not say the platform caused those changes, as other
-  variables were not controlled for.
+  Preet Kaur Gill recommending that the government not extend Palantir's
+  contract when its initial term ends in 2027, citing public mistrust of
+  Palantir, doubts about the platform's effectiveness, and the existence of
+  alternative solutions. The letter supported continued NHS digital
+  transformation, including through the FDP, but argued that better tools
+  should be developed and rolled out instead of extending the agreement
+  with Palantir. It also noted NHS England had clarified that it could not
+  say the FDP caused its reported waiting-list and procedure improvements
+  because other variables were not controlled for.
 quote: "Little by little, the government's arguments for sticking with the FDP has unravelled. So in the interest of public confidence in the NHS and the security of their medical information, we believe it is time to crack on with preparations to find an alternative in time for spring 2027."
 quote_verified: document
 source_url: https://committees.parliament.uk/committee/81/health-and-social-care-committee/news/214760/drop-palantirs-federated-data-platform-and-look-for-alternative-mps-tell-health-minister/
@@ -25,3 +28,19 @@ archive_url: https://web.archive.org/web/20260905211048/https://committees.parli
 related:
   - 2026-06-03-science-committee-report-break-clause
   - 2026-07-12-nhs-analysts-together-palantir-letter
+contested: >-
+  In his 21 August response, minister James Frith said commercial, legal
+  and continuity work would finish in autumn, that a successor procurement
+  was unlikely to complete by March, and that NHS England owned the
+  project-specific intellectual property, canonical data model and
+  NHS-developed products needed for replatforming. This was the
+  government's position that the NHS was not locked into Palantir; it did
+  not remove the committee's and witnesses' concerns about the practical
+  time and cost of transition. Digital Health also [reported on 14
+  July](https://www.digitalhealth.net/2026/07/pressure-mounts-from-mps-on-palantirs-role-in-the-nhs/)
+  that NHS England chief executive Jim Mackey questioned whether its
+  benefit assessments were fully objective, but the primary record for
+  that exact wording was not located. Frith's response was analysed and
+  re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2026/09/nhs-in-a-great-place-to-ditch-palantir-despite-health-ministers-claim/);
+  no exact archive of either report was verified.

@@ -7,6 +7,7 @@ tags:
   - palantir
   - bmj
   - statistics
+  - digital-health
 title: BMJ questions Chelsea and Westminster's FDP pilot "success" data
 summary: >-
   The BMJ reported that data it had seen suggested two of NHS England's
@@ -20,6 +21,11 @@ summary: >-
   a second, unnamed figure at the trust "linked to the tech giant," beyond
   the trust's role as a pilot site. The BMJ's teaser text is cut off before
   naming this figure or detailing the specific flaw in the two claims.
+  [Digital Health later reported the methodological
+  criticism](https://www.digitalhealth.net/2026/04/chelsea-and-westminster-fdp-success-flawed-says-bmj-article/):
+  the 45-week baseline ended during the Omicron disruption, nearby trusts
+  showed similar recovery patterns, and the observational study could not
+  establish direct cause and effect.
 quote: "But data seen by The BMJ suggest that two key claims regarding these pilots overstate the benefits of Palantir software."
 quote_verified: document
 paywalled: true
@@ -34,21 +40,16 @@ related:
   - 2026-04-13-tom-bartlett-leaves-nhse-launches-independent-voice
 contested: >-
   This entry is built from the BMJ's free teaser only (paywalled beyond
-  the first few paragraphs); the specific nature of the "overstate"
-  finding is not confirmed here. Chelsea and Westminster is also the
-  pilot/incubator site named in this repo's Cancer 360 entry, and recurs
-  as NHS England's most-cited FDP "success story" across multiple
-  products. The "second figure... linked to the tech giant" is very
-  likely Matthew Swindells - see
-  2026-03-05-swindells-palantir-conflict-of-interest-resigns, sourced
-  independently of this BMJ piece: the FT first reported his conflict of
-  interest on 5 March 2026 and his resignation (effective 31 March) on
-  17 March, both well before this 13 April BMJ piece, which is
-  consequently likely recapping an already-public story rather than
-  breaking a new one. Neither piece names the other's subject explicitly,
-  so this remains a strong inference from matching trust, timing and
-  subject matter rather than a direct confirmation. Separately, 13 April
-  2026 is also the date of Tom Bartlett's debut "independent commentator"
-  LinkedIn post - the two are not otherwise known to be connected, and
-  this is noted only as a dated coincidence worth being aware of, not a
-  claimed link.
+  the first few paragraphs). The study itself records possible pandemic
+  effects, partial or staggered adoption, concurrent interventions and
+  uncertainty over the mechanism producing the observed change. Palantir
+  executive Louis Mosley called the BMJ account "technically accurate,
+  engineered to mislead"; BMJ editor in chief Kamran Abbasi said the
+  limitations and inability to infer causation were clearly stated. NHS
+  England did not respond in the Digital Health report. The visible BMJ
+  standfirst describes the unnamed second figure as the pilot trust's
+  innovation adviser who worked directly for Palantir; the available
+  evidence does not support the earlier inference that this was Matthew
+  Swindells. Re-reported and methodologically expanded by
+  [digitalhealth.net](https://www.digitalhealth.net/2026/04/chelsea-and-westminster-fdp-success-flawed-says-bmj-article/)
+  on 23 April 2026; no exact archive of that report was verified.

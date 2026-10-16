@@ -1,5 +1,5 @@
 id: 2024-02-18-good-law-project-redacted-contract-legal-action
-date: 2024-02-18
+date: 2024-02-17
 date_precision: day
 tags:
   - legal
@@ -7,15 +7,13 @@ tags:
   - nhse
   - good-law-project
   - cost
+  - digital-health
 title: Good Law Project launches legal action over Palantir's heavily redacted FDP contract
 summary: >-
   Good Law Project launched legal action against NHS England after the
   published version of the £330m Palantir FDP contract turned out to have
   417 of its 586 pages completely blanked out, with no reasons given for
-  the redactions as government policy requires. A later update (19 March
-  2024) found NHS England was still negotiating contractual provisions,
-  including clauses on data protection, after the contract had already
-  been awarded and signed.
+  the redactions as government policy requires.
 quote: "Almost three quarters of the contract between the tech giant and the NHS is completely blanked out. It's time to see what it's hiding."
 quote_verified: document
 source_url: https://goodlawproject.org/case/were-taking-legal-action-to-uncover-palantirs-blanked-out-contract/
@@ -24,3 +22,23 @@ archive_url: https://web.archive.org/web/20261009213818/https://goodlawproject.o
 related:
   - 2023-12-22-fdp-contract-award-notice-published
   - 2023-11-21-fdp-contract-awarded
+contested: >-
+  The stable ID retains 18 February, but the dated Good Law Project launch
+  page displays 17 February and the entry date now follows that source.
+  The action began with a pre-action protocol letter, not a court judgment.
+  NHS England later committed to republish the contracts with fewer
+  redactions, aiming for a non-firm two-week timetable while disputing Good
+  Law Project's legal analysis and saying republication was already
+  planned. The target passed before a 21 March replacement notice and Good
+  Law Project's 28 March confirmation that less-redacted contracts had
+  appeared. Its 19 March update also alleged that contractual provisions,
+  including data protection clauses, were still being negotiated after
+  signature. These developments appear as updates on the entry's main
+  Good Law Project source page. The action was re-reported by
+  digitalhealth.net on [20
+  February](https://www.digitalhealth.net/2024/02/good-law-project-sues-nhse-over-heavily-redacted-palantir-fdp-contract/),
+  [5
+  March](https://www.digitalhealth.net/2024/03/nhse-to-republish-palantir-patient-data-contract-with-fewer-redactions/)
+  and [20
+  March](https://www.digitalhealth.net/2024/03/nhse-misses-deadline-to-upload-less-redacted-version-of-palantir-contract/)
+  2024; no exact archives of those reports were verified.

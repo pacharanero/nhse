@@ -6,6 +6,7 @@ tags:
   - parliament
   - break-clause
   - cost
+  - digital-health
 title: FDP contract's initial three-year commitment ends - break clause point
 summary: >-
   The FDP and Associated Services contract's initial three-year commitment
@@ -18,7 +19,12 @@ summary: >-
   and campaign sources through 2026 treat this as the decision point,
   though none found so far specify whether the government must act by
   15 February 2027 itself or whether the date marks contract-term expiry
-  with some decision lead time before it.
+  with some decision lead time before it. The [published
+  contract](https://www.contractsfinder.service.gov.uk/Notice/Attachment/dbd3c42f-2d7f-4419-8ec2-a5091015eadb)
+  also allows NHS England to require up to 24 months of termination
+  assistance, with a possible six-month extension, including continued
+  services, transfer support, tender due-diligence information and an
+  implementable exit plan.
 quote: "The initial three-year commitment ends on 15 February 2027."
 quote_verified: document
 source_url: https://publications.parliament.uk/pa/cm5902/cmselect/cmsctech/61/report.html
@@ -29,3 +35,9 @@ related:
   - 2026-06-03-science-committee-report-break-clause
   - 2026-07-09-health-social-care-committee-letter-break-clause
   - 2026-09-01-back-the-break-clause-campaign-launched
+contested: >-
+  The transition provisions can allow service continuity while a successor
+  is procured, but do not establish the current readiness or contents of
+  the required exit plan. Analysed and re-reported by
+  [digitalhealth.net](https://www.digitalhealth.net/2026/09/nhs-in-a-great-place-to-ditch-palantir-despite-health-ministers-claim/);
+  no exact archive of that report was verified.
