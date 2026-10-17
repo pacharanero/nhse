@@ -3,17 +3,19 @@
 # SPDX-FileCopyrightText: 2026 Marcus Baw
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
-# Regenerate fdp/index.json from fdp/entries/*.yaml and do a minimal schema
-# check: required fields present, id matches filename, ids unique, date is
-# ISO, tags present and slug-shaped, archive_url present, quote_verified
-# present when quote is.
+# Regenerate <topic>/index.json from <topic>/entries/*.yaml and do a minimal
+# schema check: required fields present, id matches filename, ids unique,
+# date is ISO, tags present and slug-shaped, archive_url present,
+# quote_verified present when quote is.
 #
-# GitHub Pages has no directory listing, so the client-side site needs an
-# index telling it which entry files exist. This script is the only thing
-# that should write fdp/index.json - never hand-edit it.
+# GitHub Pages has no directory listing, so each topic's client-side viewer
+# needs an index telling it which entry files exist. This script is the
+# only thing that should write <topic>/index.json - never hand-edit it.
 #
-# Run after adding or editing any file in fdp/entries/:
-#   s/build-index
+# Run after adding or editing any file in <topic>/entries/. Topic defaults
+# to fdp, the original and so far only topic with a viewer:
+#   s/build-index           # builds fdp/index.json
+#   s/build-index spending  # builds spending/index.json
 
 import json
 import re
@@ -23,8 +25,9 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-ENTRIES_DIR = ROOT / "fdp" / "entries"
-INDEX_PATH = ROOT / "fdp" / "index.json"
+TOPIC = sys.argv[1] if len(sys.argv) > 1 else "fdp"
+ENTRIES_DIR = ROOT / TOPIC / "entries"
+INDEX_PATH = ROOT / TOPIC / "index.json"
 
 REQUIRED = ["id", "date", "date_precision", "tags", "title", "summary", "source_url", "source_title", "archive_url"]
 VALID_PRECISION = {"day", "month", "quarter"}
@@ -39,6 +42,10 @@ def main():
     errors = []
     entries = []
     seen_ids = set()
+
+    if not ENTRIES_DIR.is_dir():
+        print(f"error: no such topic directory {ENTRIES_DIR}", file=sys.stderr)
+        sys.exit(1)
 
     files = sorted(ENTRIES_DIR.glob("*.yaml"))
     if not files:
