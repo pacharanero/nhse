@@ -1,0 +1,40 @@
+id: 2026-10-15-bartlett-says-ndg-evidence-reproduces-campaign-output
+date: 2026-10-15
+date_precision: day
+tags:
+  - media
+  - palantir
+  - ndg
+  - tom-bartlett
+  - statistics
+  - break-clause
+title: Tom Bartlett says NDG evidence reproduces campaign output
+summary: >-
+  Tom Bartlett, a former NHS England deputy director of data engineering,
+  published an article mapping the evidence annexed to the National Data
+  Guardian's FDP letter to what he called cherry-picking, advocacy polling,
+  circular evidence, repetition, false context and appeals to emotion. He
+  concluded that every category of evidence reproduced campaign output and
+  asked whether the NDG understood its alleged shortcomings. The NDG's letter
+  said she strongly supported the FDP programme, did not recommend a particular
+  contractual outcome and based her three recommendations on public and
+  professional trust, objective evidence of benefits and limitations, and
+  concerns about interoperability, vendor lock-in and data sovereignty.
+quote: "The question that would establish whether Palantir's accusations of Nicola Byrne's capture by campaign groups stand up is this: did she understand the shortcomings of the evidence she used as the basis of her recommendations to the minister?"
+quote_verified: document
+source_url: https://www.bartlettdata.co.uk/post/ndg-evidence-fdp-campaign-capture
+source_title: "Bartlett Data: Whose evidence is the National Data Guardian relying on?"
+archive_url: https://web.archive.org/web/20261017114842/https://www.bartlettdata.co.uk/post/ndg-evidence-fdp-campaign-capture
+related:
+  - 2026-10-12-ndg-advises-minister-trust
+  - 2026-10-16-watson-publishes-palantir-response-to-ndg
+  - 2026-07-12-nhs-analysts-together-palantir-letter
+  - 2026-07-13-eko-yougov-poll-us-tech-unacceptable
+  - 2026-07-22-osr-finds-nhse-fdp-causality-claims-needed-caveat
+contested: >-
+  Bartlett's classification of the NDG's evidence as manipulation is his
+  analysis, not an independently established finding. His article acknowledges
+  that the NDG strongly supported the FDP programme and did not recommend a
+  particular contractual outcome, but argues that her evidence was selective
+  and insufficient. No response from the NDG to Bartlett's article was
+  identified at the time this entry was added.

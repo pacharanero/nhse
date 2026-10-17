@@ -17,7 +17,7 @@ The timeline is a **research and accountability artefact**, not an argument. Eac
 The timeline is live (R12/R13) at <https://pacharanero.github.io/nhse/>, built from `fdp/entries/*.yaml` via `s/build-index` (R3). Data gathering continues alongside the published site - see the roadmap below for what's worked and what's open.
 
 - NHS England board meeting captions, 2013-2026, in `nhs-board-transcripts/`. See `s/fetch-transcripts` and `s/search`.
-- 88 entries in `fdp/entries/`, spanning March 2018 to February 2027 (future-dated: the break clause deadline). Every entry is checked against its linked, archived source before being added.
+- 90 entries in `fdp/entries/`, spanning March 2018 to February 2027 (future-dated: the break clause deadline). Every entry is checked against its linked, archived source before being added.
 
 ## Tags (the colour/filter dimension)
 

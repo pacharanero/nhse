@@ -1,0 +1,49 @@
+id: 2026-10-16-watson-publishes-palantir-response-to-ndg
+date: 2026-10-16
+date_precision: day
+tags:
+  - official
+  - palantir
+  - dhsc
+  - ndg
+  - tom-watson
+  - statistics
+  - break-clause
+title: Tom Watson publishes Palantir letter accusing NDG of campaign-group capture
+summary: >-
+  Palantir UK senior vice-president Tom Watson published four images of a
+  Palantir Technologies letter dated 12 October to health innovation minister
+  James Frith. The letter agreed with the National Data Guardian's three
+  recommendations but disputed her supporting evidence, alleged that she
+  appeared to have been "captured by campaign groups", challenged the weight
+  given to campaign correspondence, an Ekō-commissioned poll, opt-out rates and
+  an NHS data professionals' letter, and cited supplier uptake and benefit
+  figures in response. The NDG's letter did not recommend a particular
+  contractual outcome and described public and professional trust as relevant
+  to the FDP regardless of which supplier was chosen.
+quote: "Sadly the National Data Guardian appears to have been captured by campaign groups that have zero interest in building trust and every interest in stoking fear, and, as a result, this intervention fails to contribute to it."
+quote_verified: document
+source_url: https://x.com/tom_watson/status/2111102180082200717
+source_title: "Tom Watson on X: Palantir response to the National Data Guardian's FDP letter"
+archive_url: https://github.com/pacharanero/nhse/blob/main/fdp/sources/2026-10-16-palantir-response-to-ndg.md
+related:
+  - 2026-10-10-tom-watson-defends-palantir-mob-rule
+  - 2026-10-12-ndg-advises-minister-trust
+  - 2026-10-15-bartlett-says-ndg-evidence-reproduces-campaign-output
+  - 2026-07-12-nhs-analysts-together-palantir-letter
+  - 2026-07-13-eko-yougov-poll-us-tech-unacceptable
+  - 2026-10-01-palantir-protests-45108-objections
+contested: >-
+  The four published pages end with "Yours sincerely," but show no name or
+  signature, so this entry records Watson as the publisher rather than the
+  author. Archive.org returned HTTP 523 when asked to capture the X post; the
+  post text, complete transcription and four original images are therefore
+  retained in fdp/sources. No response from the NDG to this letter was
+  identified at the time this entry was added.
+
+  Interpretive note: read alongside Watson's 10 October "mob rule" interview
+  and Bartlett's 15 October article, the shift from defending the contract to
+  alleging institutional capture may suggest increasing desperation in the
+  public defence of the FDP. That is an interpretation of the escalating
+  public rhetoric, not evidence of either person's motive or of Palantir's
+  internal state.

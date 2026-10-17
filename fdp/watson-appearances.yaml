@@ -1,5 +1,5 @@
 # Tom Watson (Lord Watson of Wyre Forest, Palantir SVP) cumulative
-# public-appearance tracker, media only, from his 18 September 2026
+# public-appearance tracker from his 18 September 2026
 # Palantir appointment onward. Sibling to fdp/bartlett-appearances.yaml -
 # see CONTRIBUTING.md "Appearance trackers" for the schema and the
 # self-published vs third-party press/media distinction.
@@ -24,3 +24,8 @@
   self: false
   title: "Political Thinking with Nick Robinson: Don't bow to 'mob rule' on Palantir"
   url: https://www.bbc.co.uk/sounds/play/m0032qly
+- date: 2026-10-16
+  outlet: X
+  self: true
+  title: Publishes Palantir response to National Data Guardian's FDP letter
+  url: https://x.com/tom_watson/status/2111102180082200717

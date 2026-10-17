@@ -1180,6 +1180,37 @@
     "file": "entries/2026-10-14-monbiot-palantir-british-state-column.yaml"
   },
   {
+    "id": "2026-10-15-bartlett-says-ndg-evidence-reproduces-campaign-output",
+    "date": "2026-10-15",
+    "date_precision": "day",
+    "tags": [
+      "media",
+      "palantir",
+      "ndg",
+      "tom-bartlett",
+      "statistics",
+      "break-clause"
+    ],
+    "title": "Tom Bartlett says NDG evidence reproduces campaign output",
+    "file": "entries/2026-10-15-bartlett-says-ndg-evidence-reproduces-campaign-output.yaml"
+  },
+  {
+    "id": "2026-10-16-watson-publishes-palantir-response-to-ndg",
+    "date": "2026-10-16",
+    "date_precision": "day",
+    "tags": [
+      "official",
+      "palantir",
+      "dhsc",
+      "ndg",
+      "tom-watson",
+      "statistics",
+      "break-clause"
+    ],
+    "title": "Tom Watson publishes Palantir letter accusing NDG of campaign-group capture",
+    "file": "entries/2026-10-16-watson-publishes-palantir-response-to-ndg.yaml"
+  },
+  {
     "id": "2027-02-15-fdp-break-clause-deadline",
     "date": "2027-02-15",
     "date_precision": "day",
