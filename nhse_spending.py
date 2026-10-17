@@ -26,6 +26,8 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import yaml
 
+from nhse_spending_inventory import InventoryError, build_inventory
+
 
 ROOT = Path(__file__).resolve().parent
 SOURCE_REGISTRY = ROOT / "spending" / "data-sources.yaml"
@@ -35,7 +37,7 @@ DATA_DIR = ROOT / "spending" / "data"
 TOOL_VERSION = "0.1.0"
 PARQUET_ROW_GROUP_SIZE = 64_000
 
-OUTPUT_COLUMNS = [
+OUTPUT_COLUMNS_V1 = [
     "observation_id",
     "department_family",
     "entity",
@@ -54,6 +56,31 @@ OUTPUT_COLUMNS = [
     "source_sheet",
     "source_row",
 ]
+
+OUTPUT_COLUMNS_V2 = [
+    "observation_id",
+    "department_family",
+    "entity",
+    "transaction_date",
+    "expense_type",
+    "expense_area",
+    "supplier",
+    "transaction_number",
+    "purchase_invoice_number",
+    "amount_gbp",
+    "source_amount_raw",
+    "currency",
+    "vat_registration_number",
+    "redaction_status",
+    "source_id",
+    "source_period",
+    "source_sha256",
+    "source_file",
+    "source_sheet",
+    "source_row",
+]
+
+REVISION_DIFF_COLUMNS = ["change_type", "row_fingerprint", "revision_source_id", *OUTPUT_COLUMNS_V2]
 
 
 class SpendingDataError(RuntimeError):
@@ -107,15 +134,13 @@ def load_source(source_id: str) -> dict[str, Any]:
     if len(matches) != 1:
         raise SpendingDataError(f"expected exactly one source named {source_id!r}, found {len(matches)}")
     source = matches[0]
-    required = {
-        "archive_url",
-        "bytes",
+    common_required = {
         "collection_archive_url",
         "collection_url",
-        "filename",
         "id",
         "landing_page_archive_url",
         "landing_page_url",
+        "normalization_schema_version",
         "period",
         "publication_date",
         "publication_date_precision",
@@ -128,16 +153,103 @@ def load_source(source_id: str) -> dict[str, Any]:
         "rights_decision_date",
         "rights_note",
         "rights_status",
+        "title",
+        "expected",
+    }
+    missing = common_required - source.keys()
+    if missing:
+        raise SpendingDataError(f"source {source_id!r} is missing {', '.join(sorted(missing))}")
+    schema_version = int(source["normalization_schema_version"])
+    if schema_version not in {1, 2}:
+        raise SpendingDataError(f"source {source_id!r} uses unsupported normalization schema {schema_version}")
+
+    workbook_required = {
+        "archive_url",
+        "bytes",
+        "filename",
+        "id",
+        "period",
+        "publication_date",
+        "publication_date_precision",
         "sha256",
         "source_url",
         "title",
         "workbook",
         "expected",
     }
-    missing = required - source.keys()
-    if missing:
-        raise SpendingDataError(f"source {source_id!r} is missing {', '.join(sorted(missing))}")
+    workbooks = source.get("workbooks")
+    if workbooks is None:
+        missing = workbook_required - source.keys()
+        if missing:
+            raise SpendingDataError(f"source {source_id!r} is missing {', '.join(sorted(missing))}")
+    else:
+        if not isinstance(workbooks, list) or not workbooks:
+            raise SpendingDataError(f"source {source_id!r} must contain at least one workbook")
+        workbook_ids = [workbook.get("id") for workbook in workbooks]
+        if len(workbook_ids) != len(set(workbook_ids)):
+            raise SpendingDataError(f"source {source_id!r} contains duplicate workbook IDs")
+        for workbook in workbooks:
+            missing = workbook_required - workbook.keys()
+            if missing:
+                raise SpendingDataError(
+                    f"workbook {workbook.get('id', '<unknown>')!r} is missing {', '.join(sorted(missing))}"
+                )
+
+    revisions = source.get("revisions", [])
+    if not isinstance(revisions, list):
+        raise SpendingDataError(f"source {source_id!r} revisions must be a list")
+    for revision in revisions:
+        missing = workbook_required - revision.keys()
+        if missing:
+            raise SpendingDataError(
+                f"revision {revision.get('id', '<unknown>')!r} is missing {', '.join(sorted(missing))}"
+            )
+    current_ids = [workbook["id"] for workbook in _workbook_sources(source)]
+    revision_ids = [revision["id"] for revision in revisions]
+    if len(current_ids + revision_ids) != len(set(current_ids + revision_ids)):
+        raise SpendingDataError(f"source {source_id!r} contains duplicate current or revision source IDs")
+    revision_diff = source.get("revision_diff")
+    if revision_diff is not None:
+        required = {"id", "original_source_id", "corrected_source_id", "baseline_source_id"}
+        if not isinstance(revision_diff, dict) or required - revision_diff.keys():
+            raise SpendingDataError(f"source {source_id!r} has an incomplete revision_diff configuration")
+        if revision_diff["original_source_id"] not in revision_ids:
+            raise SpendingDataError(f"source {source_id!r} revision_diff refers to an unknown original source")
+        for field in ("corrected_source_id", "baseline_source_id"):
+            if revision_diff[field] not in current_ids:
+                raise SpendingDataError(f"source {source_id!r} revision_diff {field} refers to an unknown current source")
     return source
+
+
+def _output_columns(source: dict[str, Any]) -> list[str]:
+    schema_version = int(source["normalization_schema_version"])
+    return OUTPUT_COLUMNS_V1 if schema_version == 1 else OUTPUT_COLUMNS_V2
+
+
+def _workbook_sources(source: dict[str, Any], key: str = "workbooks") -> list[dict[str, Any]]:
+    workbooks = source.get(key)
+    if workbooks is None:
+        return [source] if key == "workbooks" else []
+    shared = {
+        name: source[name]
+        for name in (
+            "landing_page_url",
+            "landing_page_archive_url",
+            "collection_url",
+            "collection_archive_url",
+            "publisher",
+            "rights_status",
+            "rights_basis",
+            "rights_decision_date",
+            "rights_note",
+            "rights_evidence_url",
+            "rights_evidence_archive_url",
+            "referenced_licence_url",
+            "referenced_licence_archive_url",
+            "normalization_schema_version",
+        )
+    }
+    return [{**shared, **workbook} for workbook in workbooks]
 
 
 def source_path(source: dict[str, Any]) -> Path:
@@ -184,6 +296,27 @@ def fetch_source(source: dict[str, Any], use_archive: bool = False) -> Path:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
         raise
+
+
+def source_paths(source: dict[str, Any]) -> list[Path]:
+    return [source_path(workbook) for workbook in _workbook_sources(source)]
+
+
+def fetch_sources(source: dict[str, Any], use_archive: bool = False) -> list[Path]:
+    paths = [fetch_source(workbook, use_archive=use_archive) for workbook in _workbook_sources(source)]
+    for revision in _workbook_sources(source, "revisions"):
+        fetch_source(revision, use_archive=True)
+    return paths
+
+
+def verify_registered_sources(source: dict[str, Any]) -> list[Path]:
+    workbooks = _workbook_sources(source)
+    paths = [source_path(workbook) for workbook in workbooks]
+    for path, workbook in zip(paths, workbooks, strict=True):
+        verify_source_file(path, workbook)
+    for revision in _workbook_sources(source, "revisions"):
+        verify_source_file(source_path(revision), revision)
+    return paths
 
 
 def _required_text(value: Any, field: str, row_number: int) -> str:
@@ -276,6 +409,14 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
             transaction_number = _identifier(values[6], "Transaction number", row_number)
             amount, source_amount_raw = _money(values[7], row_number, amount_scale)
             vat_number = _identifier(values[8], "VAT registration number", row_number, nullable=True)
+            schema_version = int(source["normalization_schema_version"])
+            purchase_invoice_number = None
+            if schema_version >= 2:
+                if len(values) != 10:
+                    raise SpendingDataError(f"row {row_number}: schema v2 requires a purchase invoice number column")
+                purchase_invoice_number = _identifier(
+                    values[9], "Purchase invoice number", row_number, nullable=True
+                )
             source_values = {
                 "department_family": department_family,
                 "entity": entity,
@@ -288,30 +429,41 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
                 "source_amount_raw": source_amount_raw,
                 "vat_registration_number": vat_number,
             }
+            if schema_version >= 2:
+                source_values["purchase_invoice_number"] = purchase_invoice_number
             identity_input = {
-                "schema_version": 1,
+                "schema_version": schema_version,
                 "source_sha256": source["sha256"],
                 "source_sheet": sheet_name,
                 "source_row": row_number,
                 "values": source_values,
             }
             redacted = any(isinstance(value, str) and value.strip().casefold() == "removed" for value in values)
-            records.append(
-                {
-                    "observation_id": hashlib.sha256(_canonical_json(identity_input)).hexdigest(),
-                    **source_values,
-                    "currency": "GBP",
-                    "redaction_status": "source_removed" if redacted else "none",
-                    "source_sha256": str(source["sha256"]),
-                    "source_file": str(source["filename"]),
-                    "source_sheet": sheet_name,
-                    "source_row": row_number,
-                }
-            )
+            record = {
+                "observation_id": hashlib.sha256(_canonical_json(identity_input)).hexdigest(),
+                **source_values,
+                "currency": "GBP",
+                "redaction_status": "source_removed" if redacted else "none",
+                "source_sha256": str(source["sha256"]),
+                "source_file": str(source["filename"]),
+                "source_sheet": sheet_name,
+                "source_row": row_number,
+            }
+            if schema_version >= 2:
+                record["source_id"] = str(source["id"])
+                record["source_period"] = str(source["period"])
+            records.append(record)
     finally:
         workbook.close()
 
-    records.sort(key=lambda row: (row["source_sha256"], row["source_sheet"], row["source_row"], row["observation_id"]))
+    records.sort(
+        key=lambda row: (
+            row.get("source_period", row["source_sha256"]),
+            row["source_sheet"],
+            row["source_row"],
+            row["observation_id"],
+        )
+    )
     if len({row["observation_id"] for row in records}) != len(records):
         raise SpendingDataError("observation IDs are not unique")
 
@@ -335,6 +487,54 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
     return records, stats
 
 
+def parse_release(
+    paths: list[Path], source: dict[str, Any]
+) -> tuple[list[dict[str, Any]], dict[str, Any], dict[str, dict[str, Any]]]:
+    workbooks = _workbook_sources(source)
+    if len(paths) != len(workbooks):
+        raise SpendingDataError(f"received {len(paths)} source paths for {len(workbooks)} registered workbooks")
+
+    records: list[dict[str, Any]] = []
+    source_statistics: dict[str, dict[str, Any]] = {}
+    for path, workbook in zip(paths, workbooks, strict=True):
+        workbook_records, workbook_stats = parse_workbook(path, workbook)
+        records.extend(workbook_records)
+        source_statistics[str(workbook["id"])] = workbook_stats
+
+    records.sort(
+        key=lambda row: (
+            row.get("source_period", row["source_sha256"]),
+            row["source_sheet"],
+            row["source_row"],
+            row["observation_id"],
+        )
+    )
+    if len({row["observation_id"] for row in records}) != len(records):
+        raise SpendingDataError("observation IDs are not unique across the release")
+    stats = _record_statistics(records)
+    _validate_expected_stats(stats, source["expected"])
+    return records, stats, source_statistics
+
+
+def _record_statistics(records: list[dict[str, Any]]) -> dict[str, Any]:
+    entity_counts = Counter(row["entity"] for row in records)
+    entity_totals: Counter[str] = Counter()
+    for row in records:
+        entity_totals[row["entity"]] += row["amount_gbp"]
+    return {
+        "rows": len(records),
+        "total_gbp": sum((row["amount_gbp"] for row in records), Decimal("0.00")),
+        "nhs_england_rows": entity_counts["NHS England"],
+        "nhs_england_total_gbp": entity_totals["NHS England"],
+        "negative_rows": sum(row["amount_gbp"] < 0 for row in records),
+        "missing_vat_rows": sum(row["vat_registration_number"] is None for row in records),
+        "minimum_date": min(row["transaction_date"] for row in records),
+        "maximum_date": max(row["transaction_date"] for row in records),
+        "entity_counts": dict(sorted(entity_counts.items())),
+        "entity_totals_gbp": dict(sorted(entity_totals.items())),
+    }
+
+
 def _validate_expected_stats(stats: dict[str, Any], expected: dict[str, Any]) -> None:
     decimal_fields = {"total_gbp", "nhs_england_total_gbp"}
     for field, expected_value in expected.items():
@@ -347,37 +547,41 @@ def _validate_expected_stats(stats: dict[str, Any], expected: dict[str, Any]) ->
             raise SpendingDataError(f"{field} is {actual_value}; expected {expected_value}")
 
 
-def _arrow_schema(provenance: dict[str, Any]) -> pa.Schema:
-    fields = [
-        pa.field("observation_id", pa.string(), nullable=False),
-        pa.field("department_family", pa.string(), nullable=False),
-        pa.field("entity", pa.string(), nullable=False),
-        pa.field("transaction_date", pa.date32(), nullable=False),
-        pa.field("expense_type", pa.string(), nullable=False),
-        pa.field("expense_area", pa.string(), nullable=False),
-        pa.field("supplier", pa.string(), nullable=False),
-        pa.field("transaction_number", pa.string(), nullable=False),
-        pa.field("amount_gbp", pa.decimal128(18, 2), nullable=False),
-        pa.field("source_amount_raw", pa.string(), nullable=False),
-        pa.field("currency", pa.string(), nullable=False),
-        pa.field("vat_registration_number", pa.string(), nullable=True),
-        pa.field("redaction_status", pa.string(), nullable=False),
-        pa.field("source_sha256", pa.string(), nullable=False),
-        pa.field("source_file", pa.string(), nullable=False),
-        pa.field("source_sheet", pa.string(), nullable=False),
-        pa.field("source_row", pa.int32(), nullable=False),
-    ]
+def _arrow_schema(provenance: dict[str, Any], columns: list[str]) -> pa.Schema:
+    types: dict[str, tuple[pa.DataType, bool]] = {
+        "observation_id": (pa.string(), False),
+        "department_family": (pa.string(), False),
+        "entity": (pa.string(), False),
+        "transaction_date": (pa.date32(), False),
+        "expense_type": (pa.string(), False),
+        "expense_area": (pa.string(), False),
+        "supplier": (pa.string(), False),
+        "transaction_number": (pa.string(), False),
+        "purchase_invoice_number": (pa.string(), True),
+        "amount_gbp": (pa.decimal128(18, 2), False),
+        "source_amount_raw": (pa.string(), False),
+        "currency": (pa.string(), False),
+        "vat_registration_number": (pa.string(), True),
+        "redaction_status": (pa.string(), False),
+        "source_id": (pa.string(), False),
+        "source_period": (pa.string(), False),
+        "source_sha256": (pa.string(), False),
+        "source_file": (pa.string(), False),
+        "source_sheet": (pa.string(), False),
+        "source_row": (pa.int32(), False),
+    }
+    fields = [pa.field(column, types[column][0], nullable=types[column][1]) for column in columns]
     return pa.schema(fields, metadata={b"nhse.provenance": _canonical_json(provenance)})
 
 
-def _write_csv(path: Path, records: list[dict[str, Any]]) -> None:
+def _write_csv(path: Path, records: list[dict[str, Any]], columns: list[str]) -> None:
     with path.open("wb") as raw_output:
         with gzip.GzipFile(filename="", mode="wb", fileobj=raw_output, mtime=0, compresslevel=9) as compressed:
             with io.TextIOWrapper(compressed, encoding="utf-8", newline="") as text_output:
-                writer = csv.DictWriter(text_output, fieldnames=OUTPUT_COLUMNS, lineterminator="\n")
+                writer = csv.DictWriter(text_output, fieldnames=columns, lineterminator="\n")
                 writer.writeheader()
                 for record in records:
-                    writer.writerow({column: _jsonable(record[column]) for column in OUTPUT_COLUMNS})
+                    writer.writerow({column: _jsonable(record[column]) for column in columns})
 
 
 def _content_fingerprint(records: list[dict[str, Any]]) -> str:
@@ -388,8 +592,50 @@ def _content_fingerprint(records: list[dict[str, Any]]) -> str:
     return digest.hexdigest()
 
 
-def _resource_schema() -> dict[str, Any]:
+def _typed_csv_record(record: dict[str, str]) -> dict[str, Any]:
+    typed: dict[str, Any] = dict(record)
+    if "transaction_date" in typed:
+        typed["transaction_date"] = dt.date.fromisoformat(record["transaction_date"])
+    if "amount_gbp" in typed:
+        typed["amount_gbp"] = Decimal(record["amount_gbp"])
+    if "source_row" in typed:
+        typed["source_row"] = int(record["source_row"])
+    for field in ("purchase_invoice_number", "vat_registration_number"):
+        if field in typed:
+            typed[field] = record[field] or None
+    return typed
+
+
+def _expected_observation_id(record: dict[str, Any], schema_version: int) -> str:
+    value_fields = [
+        "department_family",
+        "entity",
+        "transaction_date",
+        "expense_type",
+        "expense_area",
+        "supplier",
+        "transaction_number",
+        "amount_gbp",
+        "source_amount_raw",
+        "vat_registration_number",
+    ]
+    if schema_version >= 2:
+        value_fields.append("purchase_invoice_number")
+    identity_input = {
+        "schema_version": schema_version,
+        "source_sha256": record["source_sha256"],
+        "source_sheet": record["source_sheet"],
+        "source_row": record["source_row"],
+        "values": {field: record[field] for field in value_fields},
+    }
+    return hashlib.sha256(_canonical_json(identity_input)).hexdigest()
+
+
+def _resource_schema(columns: list[str], primary_key: str | list[str] = "observation_id") -> dict[str, Any]:
     types = {
+        "change_type": "string",
+        "row_fingerprint": "string",
+        "revision_source_id": "string",
         "observation_id": "string",
         "department_family": "string",
         "entity": "string",
@@ -398,11 +644,14 @@ def _resource_schema() -> dict[str, Any]:
         "expense_area": "string",
         "supplier": "string",
         "transaction_number": "string",
+        "purchase_invoice_number": "string",
         "amount_gbp": "number",
         "source_amount_raw": "string",
         "currency": "string",
         "vat_registration_number": "string",
         "redaction_status": "string",
+        "source_id": "string",
+        "source_period": "string",
         "source_sha256": "string",
         "source_file": "string",
         "source_sheet": "string",
@@ -411,9 +660,9 @@ def _resource_schema() -> dict[str, Any]:
     return {
         "fields": [
             {"name": column, "type": types[column], **({"decimalChar": "."} if column == "amount_gbp" else {})}
-            for column in OUTPUT_COLUMNS
+            for column in columns
         ],
-        "primaryKey": "observation_id",
+        "primaryKey": primary_key,
     }
 
 
@@ -448,18 +697,132 @@ def _source_provenance(source: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
-    records, stats = parse_workbook(path, source)
+def _semantic_row(record: dict[str, Any], *, include_vat: bool = True) -> dict[str, Any]:
+    fields = [
+        "department_family",
+        "entity",
+        "transaction_date",
+        "expense_type",
+        "expense_area",
+        "supplier",
+        "transaction_number",
+        "purchase_invoice_number",
+        "amount_gbp",
+        "source_amount_raw",
+        "currency",
+        "redaction_status",
+    ]
+    if include_vat:
+        fields.append("vat_registration_number")
+    return {field: record[field] for field in fields}
+
+
+def _revision_diff(
+    source: dict[str, Any], corrected_records: list[dict[str, Any]], current_records: list[dict[str, Any]]
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    config = source["revision_diff"]
+    revisions = {revision["id"]: revision for revision in _workbook_sources(source, "revisions")}
+    workbooks = {workbook["id"]: workbook for workbook in _workbook_sources(source)}
+    try:
+        original = revisions[str(config["original_source_id"])]
+        corrected = workbooks[str(config["corrected_source_id"])]
+        baseline = workbooks[str(config["baseline_source_id"])]
+    except (KeyError, TypeError) as error:
+        raise SpendingDataError("revision_diff refers to an unknown or invalid source") from error
+
+    original_records, original_stats = parse_workbook(source_path(original), original)
+    corrected_rows = [row for row in corrected_records if row["source_id"] == corrected["id"]]
+    baseline_rows = [row for row in current_records if row["source_id"] == baseline["id"]]
+
+    def indexed(records: list[dict[str, Any]]) -> dict[bytes, list[dict[str, Any]]]:
+        result: dict[bytes, list[dict[str, Any]]] = {}
+        for record in records:
+            result.setdefault(_canonical_json(_semantic_row(record)), []).append(record)
+        return result
+
+    original_index = indexed(original_records)
+    corrected_index = indexed(corrected_rows)
+    semantic_keys = sorted(original_index.keys() | corrected_index.keys())
+    diff_rows: list[dict[str, Any]] = []
+    unchanged_rows = 0
+    for semantic_key in semantic_keys:
+        before = original_index.get(semantic_key, [])
+        after = corrected_index.get(semantic_key, [])
+        unchanged = min(len(before), len(after))
+        unchanged_rows += unchanged
+        for change_type, revision_source_id, records in (
+            ("removed", original["id"], before[unchanged:]),
+            ("added", corrected["id"], after[unchanged:]),
+        ):
+            for record in records:
+                diff_rows.append(
+                    {
+                        "change_type": change_type,
+                        "row_fingerprint": hashlib.sha256(semantic_key).hexdigest(),
+                        "revision_source_id": revision_source_id,
+                        **record,
+                    }
+                )
+    diff_rows.sort(
+        key=lambda row: (row["change_type"], row["row_fingerprint"], row["source_row"], row["observation_id"])
+    )
+
+    original_without_vat = [_canonical_json(_semantic_row(row, include_vat=False)) for row in original_records]
+    baseline_without_vat = [_canonical_json(_semantic_row(row, include_vat=False)) for row in baseline_rows]
+    candidate_fields = ["entity", "transaction_date", "transaction_number", "supplier", "purchase_invoice_number"]
+
+    def candidate_keys(records: list[dict[str, Any]]) -> Counter[bytes]:
+        return Counter(_canonical_json({field: row[field] for field in candidate_fields}) for row in records)
+
+    shared_candidate_keys = sum((candidate_keys(original_records) & candidate_keys(corrected_rows)).values())
+    summary = {
+        "schema_version": 1,
+        "status": "complete",
+        "revision_id": str(config["id"]),
+        "original_source": _source_provenance(original),
+        "corrected_source": _source_provenance(corrected),
+        "comparison": {
+            "method": "exact multiset comparison of normalized analytical rows",
+            "candidate_key_fields": candidate_fields,
+            "original_rows": len(original_records),
+            "corrected_rows": len(corrected_rows),
+            "unchanged_rows": unchanged_rows,
+            "removed_rows": sum(row["change_type"] == "removed" for row in diff_rows),
+            "added_rows": sum(row["change_type"] == "added" for row in diff_rows),
+            "shared_candidate_keys": shared_candidate_keys,
+        },
+        "original_statistics": _jsonable(original_stats),
+        "corrected_statistics": _jsonable(_record_statistics(corrected_rows)),
+        "diagnosis": {
+            "baseline_source_id": baseline["id"],
+            "ordered_rows_equal_to_baseline_excluding_vat": original_without_vat == baseline_without_vat,
+            "baseline_rows": len(baseline_rows),
+            "original_missing_vat_rows": original_stats["missing_vat_rows"],
+            "baseline_missing_vat_rows": _record_statistics(baseline_rows)["missing_vat_rows"],
+            "note": "The superseded July workbook repeats the June rows apart from VAT identifiers; the corrected workbook replaces them with July-dated rows.",
+        },
+    }
+    return diff_rows, summary
+
+
+def build_release(path: Path | list[Path], source: dict[str, Any], target: Path) -> Path:
+    paths = [path] if isinstance(path, Path) else path
+    records, stats, source_statistics = parse_release(paths, source)
+    columns = _output_columns(source)
+    schema_version = int(source["normalization_schema_version"])
     content_fingerprint = _content_fingerprint(records)
     provenance = {
         "dataset": "nhs-england-payments-over-25000",
         "dataset_version": f"{source['period']}.1",
-        "schema_version": 1,
+        "schema_version": schema_version,
         "tool": "nhse-research-data",
         "tool_version": TOOL_VERSION,
-        "source": _source_provenance(source),
         "normalized_content_sha256": content_fingerprint,
     }
+    if "workbooks" in source:
+        provenance["sources"] = [_source_provenance(workbook) for workbook in _workbook_sources(source)]
+    else:
+        provenance["source"] = _source_provenance(source)
 
     target.parent.mkdir(parents=True, exist_ok=True)
     temporary = Path(tempfile.mkdtemp(prefix=f".{target.name}.", dir=target.parent))
@@ -467,7 +830,7 @@ def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
     try:
         parquet_path = temporary / "payments.parquet"
         csv_path = temporary / "payments.csv.gz"
-        table = pa.Table.from_pylist(records, schema=_arrow_schema(provenance))
+        table = pa.Table.from_pylist(records, schema=_arrow_schema(provenance, columns))
         pq.write_table(
             table,
             parquet_path,
@@ -477,15 +840,14 @@ def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
             version="2.6",
             write_statistics=True,
         )
-        _write_csv(csv_path, records)
+        _write_csv(csv_path, records, columns)
 
         parquet_hash = sha256_file(parquet_path)
         csv_hash = sha256_file(csv_path)
         validation = {
             "dataset": "nhs-england-payments-over-25000",
             "dataset_version": f"{source['period']}.1",
-            "schema_version": 1,
-            "source_sha256": source["sha256"],
+            "schema_version": schema_version,
             "normalized_content_sha256": content_fingerprint,
             "artifacts": {
                 "payments.csv.gz": {"bytes": csv_path.stat().st_size, "sha256": csv_hash},
@@ -494,8 +856,11 @@ def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
             "statistics": _jsonable(stats),
             "status": "passed",
         }
-        (temporary / "validation.json").write_bytes(_json_bytes(validation))
-
+        if "workbooks" in source:
+            validation["source_statistics"] = _jsonable(source_statistics)
+            validation["source_sha256s"] = [workbook["sha256"] for workbook in _workbook_sources(source)]
+        else:
+            validation["source_sha256"] = source["sha256"]
         descriptor = {
             "profile": "tabular-data-package",
             "name": f"nhs-england-payments-over-25000-{source['period']}",
@@ -511,10 +876,10 @@ def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
             ],
             "rights": source["rights_note"],
             "rights_status": source["rights_status"],
-            "sources": [_source_provenance(source)],
+            "sources": [_source_provenance(workbook) for workbook in _workbook_sources(source)],
             "nhse": {
                 "normalized_content_sha256": content_fingerprint,
-                "schema_version": 1,
+                "schema_version": schema_version,
                 "tool_version": TOOL_VERSION,
                 "limitations": [
                     "This thresholded payments publication is not a general ledger and does not reconcile one-for-one to annual accrual accounts.",
@@ -531,7 +896,7 @@ def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
                     "mediatype": "application/vnd.apache.parquet",
                     "bytes": parquet_path.stat().st_size,
                     "hash": f"sha256:{parquet_hash}",
-                    "schema": _resource_schema(),
+                    "schema": _resource_schema(columns),
                 },
                 {
                     "name": "payments-csv",
@@ -542,16 +907,62 @@ def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
                     "encoding": "utf-8",
                     "bytes": csv_path.stat().st_size,
                     "hash": f"sha256:{csv_hash}",
-                    "schema": _resource_schema(),
+                    "schema": _resource_schema(columns),
                 },
             ],
         }
+
+        if "revision_diff" in source:
+            diff_rows, revision_summary = _revision_diff(source, records, records)
+            revision_path = temporary / "july-2024-correction.json"
+            diff_path = temporary / "july-2024-correction-diff.csv.gz"
+            revision_path.write_bytes(_json_bytes(revision_summary))
+            _write_csv(diff_path, diff_rows, REVISION_DIFF_COLUMNS)
+            validation["revision"] = revision_summary["comparison"]
+            validation["artifacts"][diff_path.name] = {
+                "bytes": diff_path.stat().st_size,
+                "sha256": sha256_file(diff_path),
+            }
+            validation["artifacts"][revision_path.name] = {
+                "bytes": revision_path.stat().st_size,
+                "sha256": sha256_file(revision_path),
+            }
+            descriptor["nhse"]["revision"] = revision_summary
+            descriptor["resources"].extend(
+                [
+                    {
+                        "name": "july-2024-correction-diff",
+                        "path": diff_path.name,
+                        "format": "csv",
+                        "mediatype": "text/csv",
+                        "compression": "gzip",
+                        "encoding": "utf-8",
+                        "bytes": diff_path.stat().st_size,
+                        "hash": f"sha256:{sha256_file(diff_path)}",
+                        "schema": _resource_schema(
+                            REVISION_DIFF_COLUMNS,
+                            primary_key=["change_type", "observation_id"],
+                        ),
+                    },
+                    {
+                        "name": "july-2024-correction-summary",
+                        "path": revision_path.name,
+                        "format": "json",
+                        "mediatype": "application/json",
+                        "bytes": revision_path.stat().st_size,
+                        "hash": f"sha256:{sha256_file(revision_path)}",
+                    },
+                ]
+            )
+        (temporary / "validation.json").write_bytes(_json_bytes(validation))
         (temporary / "datapackage.json").write_bytes(_json_bytes(descriptor))
 
         checksummed = ["datapackage.json", "payments.csv.gz", "payments.parquet", "validation.json"]
+        if "revision_diff" in source:
+            checksummed.extend(["july-2024-correction-diff.csv.gz", "july-2024-correction.json"])
         checksum_lines = [f"{sha256_file(temporary / name)}  {name}\n" for name in sorted(checksummed)]
         (temporary / "checksums.sha256").write_text("".join(checksum_lines), encoding="ascii")
-        validate_release(temporary, source)
+        validate_release(temporary, source, verify_against_sources=True, source_files=paths)
 
         if backup.exists():
             shutil.rmtree(backup)
@@ -569,8 +980,16 @@ def build_release(path: Path, source: dict[str, Any], target: Path) -> Path:
         raise
 
 
-def validate_release(target: Path, source: dict[str, Any]) -> None:
+def validate_release(
+    target: Path,
+    source: dict[str, Any],
+    *,
+    verify_against_sources: bool = False,
+    source_files: list[Path] | None = None,
+) -> None:
     required_files = {"checksums.sha256", "datapackage.json", "payments.csv.gz", "payments.parquet", "validation.json"}
+    if "revision_diff" in source:
+        required_files.update({"july-2024-correction-diff.csv.gz", "july-2024-correction.json"})
     actual_files = {path.name for path in target.iterdir() if path.is_file()}
     if actual_files != required_files:
         raise SpendingDataError(f"release files are {sorted(actual_files)}; expected {sorted(required_files)}")
@@ -588,6 +1007,75 @@ def validate_release(target: Path, source: dict[str, Any]) -> None:
     descriptor = json.loads((target / "datapackage.json").read_text(encoding="utf-8"))
     if descriptor.get("rights_status") != source["rights_status"]:
         raise SpendingDataError("Data Package rights status does not match the source registry")
+    expected_sources = [_source_provenance(workbook) for workbook in _workbook_sources(source)]
+    if descriptor.get("sources") != expected_sources:
+        raise SpendingDataError("Data Package sources do not match the source registry")
+
+    validation = json.loads((target / "validation.json").read_text(encoding="utf-8"))
+    if "workbooks" in source:
+        expected_source_sha256s = [workbook["sha256"] for workbook in _workbook_sources(source)]
+        if validation.get("source_sha256s") != expected_source_sha256s:
+            raise SpendingDataError("validation source digests do not match the source registry")
+    elif validation.get("source_sha256") != source["sha256"]:
+        raise SpendingDataError("validation source digest does not match the source registry")
+    parquet_records = pq.read_table(target / "payments.parquet").to_pylist()
+    content_fingerprint = _content_fingerprint(parquet_records)
+    if validation.get("normalized_content_sha256") != content_fingerprint:
+        raise SpendingDataError("validation content fingerprint does not match Parquet rows")
+    if descriptor.get("nhse", {}).get("normalized_content_sha256") != content_fingerprint:
+        raise SpendingDataError("Data Package content fingerprint does not match Parquet rows")
+    observation_ids = [record["observation_id"] for record in parquet_records]
+    if len(observation_ids) != len(set(observation_ids)):
+        raise SpendingDataError("Parquet observation IDs are not unique")
+    if any(record["source_row"] < 1 for record in parquet_records):
+        raise SpendingDataError("Parquet contains an invalid source row")
+    if any(record["currency"] != "GBP" for record in parquet_records):
+        raise SpendingDataError("Parquet contains a non-GBP currency")
+    if any(record["redaction_status"] not in {"none", "source_removed"} for record in parquet_records):
+        raise SpendingDataError("Parquet contains an invalid redaction status")
+
+    schema_version = int(source["normalization_schema_version"])
+    if any(record["observation_id"] != _expected_observation_id(record, schema_version) for record in parquet_records):
+        raise SpendingDataError("Parquet observation ID does not match its values and source provenance")
+    if schema_version == 2:
+        expected_bindings = {
+            (
+                workbook["id"],
+                str(workbook["period"]),
+                workbook["sha256"],
+                workbook["filename"],
+                workbook["workbook"]["sheet"],
+            )
+            for workbook in _workbook_sources(source)
+        }
+        actual_bindings = {
+            (
+                record["source_id"],
+                record["source_period"],
+                record["source_sha256"],
+                record["source_file"],
+                record["source_sheet"],
+            )
+            for record in parquet_records
+        }
+    else:
+        expected_bindings = {
+            (source["sha256"], source["filename"], source["workbook"]["sheet"]),
+        }
+        actual_bindings = {
+            (record["source_sha256"], record["source_file"], record["source_sheet"])
+            for record in parquet_records
+        }
+    if actual_bindings != expected_bindings:
+        raise SpendingDataError("Parquet row provenance does not match the source registry")
+    if schema_version == 2:
+        for workbook in _workbook_sources(source):
+            workbook_records = [record for record in parquet_records if record["source_id"] == workbook["id"]]
+            _validate_expected_stats(_record_statistics(workbook_records), workbook["expected"])
+    if verify_against_sources:
+        expected_records, _, _ = parse_release(source_files or source_paths(source), source)
+        if parquet_records != expected_records:
+            raise SpendingDataError("Parquet rows do not match the registered source workbooks")
 
     connection = duckdb.connect(":memory:")
     try:
@@ -616,15 +1104,68 @@ def validate_release(target: Path, source: dict[str, Any]) -> None:
 
     csv_rows = 0
     csv_total = Decimal("0.00")
+    csv_records: list[dict[str, Any]] = []
     with gzip.open(target / "payments.csv.gz", "rt", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
-        if reader.fieldnames != OUTPUT_COLUMNS:
+        if reader.fieldnames != _output_columns(source):
             raise SpendingDataError("CSV column order does not match the canonical schema")
         for record in reader:
             csv_rows += 1
             csv_total += Decimal(record["amount_gbp"])
+            csv_records.append(_typed_csv_record(record))
     if csv_rows != parquet_stats["rows"] or csv_total != parquet_stats["total_gbp"]:
         raise SpendingDataError("CSV and Parquet row counts or totals differ")
+    if csv_records != parquet_records:
+        raise SpendingDataError("CSV and Parquet normalized rows or row order differ")
+
+    if "revision_diff" in source:
+        revision = json.loads((target / "july-2024-correction.json").read_text(encoding="utf-8"))
+        comparison = revision["comparison"]
+        config = source["revision_diff"]
+        if revision.get("revision_id") != str(config["id"]):
+            raise SpendingDataError("revision summary ID does not match the source registry")
+        if revision.get("original_source", {}).get("id") != str(config["original_source_id"]):
+            raise SpendingDataError("revision summary original source does not match the source registry")
+        if revision.get("corrected_source", {}).get("id") != str(config["corrected_source_id"]):
+            raise SpendingDataError("revision summary corrected source does not match the source registry")
+        resources = {resource["name"]: resource for resource in descriptor.get("resources", [])}
+        expected_diff_schema = _resource_schema(
+            REVISION_DIFF_COLUMNS,
+            primary_key=["change_type", "observation_id"],
+        )
+        if resources.get("july-2024-correction-diff", {}).get("schema") != expected_diff_schema:
+            raise SpendingDataError("revision-diff Data Package schema does not match its CSV schema")
+        diff_counts: Counter[str] = Counter()
+        typed_diff_rows: list[dict[str, Any]] = []
+        with gzip.open(target / "july-2024-correction-diff.csv.gz", "rt", encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            if reader.fieldnames != REVISION_DIFF_COLUMNS:
+                raise SpendingDataError("revision-diff CSV column order does not match its schema")
+            for record in reader:
+                change_type = record["change_type"]
+                if change_type not in {"added", "removed"}:
+                    raise SpendingDataError(f"unknown revision change type {change_type!r}")
+                expected_source_id = str(
+                    config["corrected_source_id"] if change_type == "added" else config["original_source_id"]
+                )
+                if record["revision_source_id"] != expected_source_id or record["source_id"] != expected_source_id:
+                    raise SpendingDataError("revision-diff row source does not match its change type")
+                semantic_record = _typed_csv_record(record)
+                expected_fingerprint = hashlib.sha256(_canonical_json(_semantic_row(semantic_record))).hexdigest()
+                if record["row_fingerprint"] != expected_fingerprint:
+                    raise SpendingDataError("revision-diff row fingerprint does not match its analytical values")
+                diff_counts[record["change_type"]] += 1
+                typed_diff_rows.append(semantic_record)
+        if diff_counts["removed"] != comparison["removed_rows"]:
+            raise SpendingDataError("revision-diff removed-row count does not match its summary")
+        if diff_counts["added"] != comparison["added_rows"]:
+            raise SpendingDataError("revision-diff added-row count does not match its summary")
+        if verify_against_sources:
+            expected_diff_rows, expected_revision = _revision_diff(source, parquet_records, parquet_records)
+            if revision != expected_revision:
+                raise SpendingDataError("revision summary does not match the registered source workbooks")
+            if typed_diff_rows != expected_diff_rows:
+                raise SpendingDataError("revision-diff rows do not match the registered source workbooks")
 
 
 def validate_top_level_finances() -> None:
@@ -660,6 +1201,24 @@ def validate_top_level_finances() -> None:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
+    inventory_parser = subparsers.add_parser(
+        "inventory", help="discover and classify the historical payments corpus"
+    )
+    inventory_parser.add_argument(
+        "--observed-on", required=True, type=dt.date.fromisoformat, help="inventory observation date (YYYY-MM-DD)"
+    )
+    inventory_parser.add_argument(
+        "--output",
+        type=Path,
+        default=ROOT / "spending" / "historical-schema-census.json",
+        help="machine-readable census output",
+    )
+    inventory_parser.add_argument(
+        "--download-directory",
+        type=Path,
+        default=SOURCE_DIR / "inventory",
+        help="ignored raw-source cache",
+    )
     fetch_parser = subparsers.add_parser("fetch", help="download and verify the registered source workbook")
     fetch_parser.add_argument("--source", default="2025-09-payments-over-25000", help="source registry ID")
     fetch_parser.add_argument("--archive", action="store_true", help="download the archived source URL")
@@ -678,23 +1237,31 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
+        if args.command == "inventory":
+            result = build_inventory(args.output, args.download_directory, args.observed_on)
+            print(
+                f"wrote inventory: {args.output} ({result['file_count']} files, "
+                f"{result['schema_count']} physical schemas, {result['column_profile_count']} column profiles)",
+                file=sys.stderr,
+            )
+            return 0
         source = load_source(args.source)
         if args.command in {"fetch", "all"}:
-            path = fetch_source(source, use_archive=getattr(args, "archive", False))
-            print(f"verified source: {path}", file=sys.stderr)
+            paths = fetch_sources(source, use_archive=getattr(args, "archive", False))
+            for path in paths:
+                print(f"verified source: {path}", file=sys.stderr)
         else:
-            path = source_path(source)
-            verify_source_file(path, source)
+            paths = verify_registered_sources(source)
 
         if args.command in {"build", "all"}:
-            target = build_release(path, source, release_path(source))
+            target = build_release(paths, source, release_path(source))
             print(f"built release: {target}", file=sys.stderr)
         if args.command in {"validate", "all"}:
             validate_top_level_finances()
-            validate_release(release_path(source), source)
+            validate_release(release_path(source), source, verify_against_sources=True)
             print(f"validated release: {release_path(source)}", file=sys.stderr)
         return 0
-    except (OSError, SpendingDataError, duckdb.Error, yaml.YAMLError) as error:
+    except (OSError, SpendingDataError, duckdb.Error, yaml.YAMLError, InventoryError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
 

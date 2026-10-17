@@ -12,7 +12,7 @@ The typed figures and exact source references live in `spending/top-level-financ
 
 ## First detailed source
 
-The first source adapter targets NHS England's September 2025 payments-over-£25,000 workbook. It is deliberately bounded but exercises the main ingestion risks: one sheet whose formatting extends to row 4,428 despite only 2,515 non-empty data rows, five published entities, 239 negative amounts, 584 absent VAT identifiers and mixed string/numeric identifiers. The immutable source facts and expected reconciliation totals live in `spending/data-sources.yaml`.
+The first source adapter targets NHS England's September 2025 payments-over-£25,000 workbook. It is deliberately bounded but exercises the main ingestion risks: one sheet whose formatting extends to row 4,428 despite only 2,515 non-empty data rows, five published entities, 239 negative amounts, 584 absent VAT identifiers and mixed string/numeric identifiers. The second release covers all twelve 2024 workbooks: 51,971 current rows totalling £32,326,771,267.64, with exact monthly reconciliation and the superseded July source retained locally for revision analysis. The immutable source facts and expected totals live in `spending/data-sources.yaml`.
 
 The payments publication is not a general ledger and does not reconcile one-for-one to annual accrual accounts. It is a transaction-level transparency series above a publication threshold. Supplier payments, allocations, annual accounts, management reports and procurement notices remain distinct datasets with distinct financial meanings.
 
@@ -25,6 +25,8 @@ Each source release builds into:
 - `datapackage.json` - source, schema, rights, limitations and artifact metadata.
 - `validation.json` - row counts, signed totals, entity counts, date bounds and invariant results.
 - `checksums.sha256` - exact artifact identities.
+
+Revised sources also produce a deterministic correction summary and compressed row-level diff. The July 2024 diff classifies 3,879 superseded rows as removed and 4,508 corrected rows as added. No rows share the documented candidate key because the superseded file contains June dates and transactions; an independent ordered comparison confirms that its non-VAT fields reproduce the registered June workbook exactly.
 
 DuckDB queries Parquet directly, so a mutable `.duckdb` database is not a publication format. SQLite may be added later only for a concrete lookup or full-text-search use case. NDJSON is useful for irregular joined documents such as SNOMED CT concepts, but adds repeated keys and weaker typing to this regular table, so it is not a default spending release.
 
@@ -44,23 +46,34 @@ Every row preserves both analytical values and workbook provenance:
 | `expense_area` | string | Published expense area |
 | `supplier` | string | Published supplier text, not silently entity-resolved |
 | `transaction_number` | string | Published transaction number preserved as an identifier |
+| `purchase_invoice_number` | nullable string | Published purchase-invoice identifier where the source schema provides it (schema v2) |
 | `amount_gbp` | decimal(18,2) | Signed amount in pounds at the source report's two-decimal display precision; negatives are retained |
 | `source_amount_raw` | string | Exact numeric value exposed by the XLSX parser before two-decimal report normalization |
 | `currency` | string | `GBP` for this source |
 | `vat_registration_number` | nullable string | Published VAT identifier without numeric interpretation |
 | `redaction_status` | string | `none` or `source_removed` |
+| `source_id` | string | Registered workbook identity (schema v2) |
+| `source_period` | string | Registered calendar period without inferring absent months (schema v2) |
 | `source_sha256` | string | Exact source workbook digest |
 | `source_file` | string | Stable source filename |
 | `source_sheet` | string | Workbook sheet name |
 | `source_row` | int32 | One-based physical workbook row |
 
-Unknown sheets, columns, dates, formulas, Excel errors or value types fail closed. The parser skips only fully empty formatted rows. Three September cells contain higher-precision binary values beneath an Excel format that displays two decimal places; `amount_gbp` applies the registered two-decimal scale with explicit half-up rounding while `source_amount_raw` preserves the parser-visible value. The independently checked £1,082,583,670.12 workbook total reconciles to the row-wise displayed amounts. Supplier normalization and procurement matching are separate, reviewable enrichment layers rather than destructive parsing steps.
+Unknown sheets, columns, dates, formulas, Excel errors or value types fail closed. The parser skips only fully empty formatted rows. Schema v1 preserves the already published September 2025 shape; schema v2 adds registered source identity, source period and purchase-invoice identifiers for multi-workbook releases. Three September cells contain higher-precision binary values beneath an Excel format that displays two decimal places; `amount_gbp` applies the registered two-decimal scale with explicit half-up rounding while `source_amount_raw` preserves the parser-visible value. The independently checked £1,082,583,670.12 workbook total reconciles to the row-wise displayed amounts. Supplier normalization and procurement matching are separate, reviewable enrichment layers rather than destructive parsing steps.
 
 ## Provenance and reproducibility
 
 The design borrows `sct`'s stable intermediate and source-verification principles and `ods`'s deterministic Parquet, embedded Data Package provenance and release identity. Source version, schema version, dataset version, tool version, normalized content fingerprint and exact artifact SHA-256 are separate identities. Build timestamps, machine names and absolute paths do not enter deterministic artifacts.
 
 The source workbook is downloaded to a same-directory temporary file, checked against its committed byte length and SHA-256, synced and atomically renamed. A failed refresh cannot replace a previously verified source. Repeated clean builds from the same source and dependency lock must produce byte-identical release files.
+
+## Historical schema census
+
+`spending/historical-schema-census.json` is the pre-backfill inventory of the canonical publication index as observed on 17 October 2026. It records 144 logical file-link occurrences representing 143 unique source URLs across the 2013/14 direct files and twelve calendar-year collection pages. The duplicate logical occurrence is the 2013/14 Q4 CSV, which is linked from both the landing page and the 2014 collection. Every source record carries its current URL, byte length, SHA-256, detected header, physical workbook sheets and a deterministic schema fingerprint.
+
+The corpus has 17 physical layouts once sheet names and empty auxiliary sheets are distinguished, but only six column profiles. The main ten-column XLSX profile covers 125 occurrences from 2014 through 2024. Separate profiles cover the five Windows-1252 2013/14 CSV links, the combined 2013/14 XLSX, three late-2024 files whose expense headings add “for Report”, nine 2025 files without purchase-invoice numbers, and one May 2019 anomaly without a transaction-number column. Backfill adapters must bind to these observed profiles and continue to reject unregistered drift.
+
+Coverage is explicit. The 2014 collection exposes April through December while the fiscal 2013/14 files cover the earlier transition in a different publication shape. The 2015-2024 calendar collections expose all twelve months. The 2025 collection exposes January through September and records October-December as missing, not zero. Filename revision markers identify December 2014 v2, every 2015 file as v2, January-September 2016 as v2, revised February and March 2018 files, and corrected July 2024; those markers are discovery evidence, not proof of a particular row-level correction.
 
 ## Rights
 
@@ -74,8 +87,8 @@ Legend: `[x]` done, `[~]` in progress, `[ ]` not started
 - [x] **D2 - Register the September 2025 payments source** with archived landing, collection and workbook URLs, digest, schema and reconciliation totals.
 - [x] **D3 - Build the first deterministic Parquet and CSV.gz release** with row-level provenance, tests and DuckDB validation.
 - [x] **D4 - Confirm redistribution rights and publish the first immutable data release.** The normalized September 2025 Parquet and CSV.gz release is committed with Data Package metadata and checksums; the raw workbook remains local.
-- [ ] **D5 - Ingest all twelve 2024 workbooks**, including the corrected July file, and produce a revision diff.
-- [ ] **D6 - Census all historical schemas before backfilling 2013/14 onward.**
+- [x] **D5 - Ingest all twelve 2024 workbooks**, including the corrected July file, and produce a revision diff. The release contains 51,971 current rows plus a complete 8,387-row added/removed diff against the superseded file recovered from the UK Government Web Archive.
+- [x] **D6 - Census all historical schemas before backfilling 2013/14 onward.** The committed census covers 144 logical source occurrences, 17 physical layouts and six column profiles, with exact digests and explicit monthly coverage.
 - [ ] **D7 - Add procurement-notice enrichment** without treating estimated or awarded values as payments.
 - [ ] **D8 - Automate source-inventory monitoring** so newly published, removed and corrected workbooks produce reviewable registry changes rather than silent gaps.
 - [ ] **D9 - Add multi-period analytical views** with explicit coverage and comparability metadata; never turn an absent month into zero spending.

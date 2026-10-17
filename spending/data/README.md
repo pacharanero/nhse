@@ -4,6 +4,7 @@ This directory contains normalized, immutable spending-data releases generated b
 
 ## Releases
 
+- `2024-payments-over-25000/` - all twelve current 2024 monthly workbooks, 51,971 rows and a deterministic diff between the superseded and corrected July publications. The original “July” file repeated June-dated rows apart from VAT identifiers; the corrected file replaces the whole month.
 - `2025-09-payments-over-25000/` - NHS England payments over £25,000 for September 2025, including all five published entities. The project owner approved redistribution of this normalized release on 17 October 2026 under the rights basis recorded in `../data-sources.yaml`. The raw workbook is not committed.
 
 Each release carries a Data Package descriptor, exact SHA-256 checksums and machine-readable reconciliation results. `payments.parquet` is canonical; `payments.csv.gz` is the deterministic compatibility export.

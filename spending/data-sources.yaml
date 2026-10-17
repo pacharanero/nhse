@@ -2,6 +2,7 @@ schema_version: 1
 sources:
   - id: 2025-09-payments-over-25000
     title: NHS England payments over £25,000, September 2025
+    normalization_schema_version: 1
     period: 2025-09
     publication_date: 2026-07-01
     publication_date_precision: month
@@ -43,3 +44,234 @@ sources:
       nhs_england_total_gbp: "1080171482.46"
       negative_rows: 239
       missing_vat_rows: 584
+  - id: 2024-payments-over-25000
+    title: NHS England payments over £25,000, calendar year 2024
+    normalization_schema_version: 2
+    period: "2024"
+    publication_date: 2025-04-11
+    publication_date_precision: day
+    publisher: NHS England
+    landing_page_url: https://www.england.nhs.uk/contact-us/pub-scheme/spend/
+    landing_page_archive_url: https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/
+    collection_url: https://www.england.nhs.uk/publication/payments-over-25k-reports-2024/
+    collection_archive_url: https://web.archive.org/web/20261017143428/https://www.england.nhs.uk/publication/payments-over-25k-reports-2024/
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: Open Government Licence v3 and project-owner fair-use/fair-dealing determination
+    rights_decision_date: 2026-10-17
+    rights_note: The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.
+    rights_evidence_url: https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k
+    rights_evidence_archive_url: https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    expected:
+      rows: 51971
+      total_gbp: "32326771267.64"
+      nhs_england_rows: 51112
+      nhs_england_total_gbp: "32263550941.38"
+      negative_rows: 3179
+      missing_vat_rows: 5271
+    workbooks:
+      - id: 2024-01-payments-over-25000
+        title: NHS England payments over £25,000, January 2024
+        period: 2024-01
+        publication_date: 2024-08-08
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/over-25K-spend-jan-24.xlsx
+        archive_url: https://web.archive.org/web/20261017142742/https://www.england.nhs.uk/wp-content/uploads/2024/08/over-25K-spend-jan-24.xlsx
+        filename: over-25K-spend-jan-24.xlsx
+        sha256: d55f27826ab5bdf6c7ee8e239e9c4352683b2f5e7102082620e7bb59b2f18057
+        bytes: 329949
+        workbook:
+          sheet: Sheet 1
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 4779, total_gbp: "2556450908.31", nhs_england_rows: 4693, nhs_england_total_gbp: "2551404539.49", negative_rows: 268, missing_vat_rows: 0}
+      - id: 2024-02-payments-over-25000
+        title: NHS England payments over £25,000, February 2024
+        period: 2024-02
+        publication_date: 2024-08-08
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/over-25K-spend-feb-24.xlsx
+        archive_url: https://web.archive.org/web/20261017142902/https://www.england.nhs.uk/wp-content/uploads/2024/08/over-25K-spend-feb-24.xlsx
+        filename: over-25K-spend-feb-24.xlsx
+        sha256: 24b88c6bd55ddf9a5cc6549274c1061ab1e83555ee9d393ce01cac5ad3cd2bac
+        bytes: 334394
+        workbook:
+          sheet: Sheet 1
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 4842, total_gbp: "3320129643.75", nhs_england_rows: 4763, nhs_england_total_gbp: "3314399503.14", negative_rows: 304, missing_vat_rows: 0}
+      - id: 2024-03-payments-over-25000
+        title: NHS England payments over £25,000, March 2024
+        period: 2024-03
+        publication_date: 2024-08-08
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/over-25K-spend-mar-24.xlsx
+        archive_url: https://web.archive.org/web/20261017142910/https://www.england.nhs.uk/wp-content/uploads/2024/08/over-25K-spend-mar-24.xlsx
+        filename: over-25K-spend-mar-24.xlsx
+        sha256: 3da51d788d0df3f00aa68ce920e6a3403b0fde0cee15ff16f1ee7545bdaea982
+        bytes: 358793
+        workbook:
+          sheet: Sheet 1
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 5247, total_gbp: "2933330173.40", nhs_england_rows: 5145, nhs_england_total_gbp: "2926440021.33", negative_rows: 309, missing_vat_rows: 0}
+      - id: 2024-04-payments-over-25000
+        title: NHS England payments over £25,000, April 2024
+        period: 2024-04
+        publication_date: 2025-02-06
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/1-April-2024-over-25K-spend.xlsx
+        archive_url: https://web.archive.org/web/20261017142924/https://www.england.nhs.uk/wp-content/uploads/2024/08/1-April-2024-over-25K-spend.xlsx
+        filename: 1-April-2024-over-25K-spend.xlsx
+        sha256: a77adb41cec6b2229d57aec068f01c90b0d086b6ea236228c8d71052c6090ec7
+        bytes: 303586
+        workbook:
+          sheet: Sheet 1
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 3952, total_gbp: "3375117220.54", nhs_england_rows: 3819, nhs_england_total_gbp: "3361238248.87", negative_rows: 226, missing_vat_rows: 0}
+      - id: 2024-05-payments-over-25000
+        title: NHS England payments over £25,000, May 2024
+        period: 2024-05
+        publication_date: 2025-02-06
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/2-May-2024-Over-25k-Spend.xlsx
+        archive_url: https://web.archive.org/web/20261017143027/https://www.england.nhs.uk/wp-content/uploads/2024/08/2-May-2024-Over-25k-Spend.xlsx
+        filename: 2-May-2024-Over-25k-Spend.xlsx
+        sha256: 4ac68a503aa31f1fcd48eff3ec24d6e89284b467d4958ddffb3f451282c1ec75
+        bytes: 295469
+        workbook:
+          sheet: Sheet 1
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 3756, total_gbp: "2234373886.59", nhs_england_rows: 3681, nhs_england_total_gbp: "2229608576.08", negative_rows: 178, missing_vat_rows: 0}
+      - id: 2024-06-payments-over-25000
+        title: NHS England payments over £25,000, June 2024
+        period: 2024-06
+        publication_date: 2025-02-06
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/3-June-2024-Over-25k-Spend.xlsx
+        archive_url: https://web.archive.org/web/20261017143052/https://www.england.nhs.uk/wp-content/uploads/2024/08/3-June-2024-Over-25k-Spend.xlsx
+        filename: 3-June-2024-Over-25k-Spend.xlsx
+        sha256: 5639dfd400e59f2d008d4830d901ee2770470943cad94af878f8bcab8cae013e
+        bytes: 299404
+        workbook:
+          sheet: Sheet 1
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 3879, total_gbp: "2037850321.59", nhs_england_rows: 3838, nhs_england_total_gbp: "2034513328.61", negative_rows: 301, missing_vat_rows: 0}
+      - id: 2024-07-payments-over-25000-corrected
+        title: NHS England payments over £25,000, July 2024, corrected
+        period: 2024-07
+        publication_date: 2025-04-11
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/july-2024-over-25k-spend-corrected.xlsx
+        archive_url: https://web.archive.org/web/20261017143152/https://www.england.nhs.uk/wp-content/uploads/2024/08/july-2024-over-25k-spend-corrected.xlsx
+        filename: july-2024-over-25k-spend-corrected.xlsx
+        sha256: 111ef98e0d295eba40757150f4ff598e5d3661a7f377a18fc3c00efd01977d8d
+        bytes: 314136
+        supersedes: 2024-07-payments-over-25000-original
+        workbook:
+          sheet: Sheet 1
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 4508, total_gbp: "3091459487.81", nhs_england_rows: 4434, nhs_england_total_gbp: "3086597589.73", negative_rows: 382, missing_vat_rows: 879}
+      - id: 2024-08-payments-over-25000
+        title: NHS England payments over £25,000, August 2024
+        period: 2024-08
+        publication_date: 2025-03-07
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/august-2024-over-25k-spend.xlsx
+        archive_url: https://web.archive.org/web/20261017143246/https://www.england.nhs.uk/wp-content/uploads/2024/08/august-2024-over-25k-spend.xlsx
+        filename: august-2024-over-25k-spend.xlsx
+        sha256: 8c0786a065e9ad6bc94e8adbeca3f944738c4a3921eab842191eff86eb7373a1
+        bytes: 244863
+        workbook:
+          sheet: A3131 report final working
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 3585, total_gbp: "2104650312.26", nhs_england_rows: 3543, nhs_england_total_gbp: "2102416320.45", negative_rows: 252, missing_vat_rows: 590}
+      - id: 2024-09-payments-over-25000
+        title: NHS England payments over £25,000, September 2024
+        period: 2024-09
+        publication_date: 2025-03-07
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/september-2024-over-25k-spend.xlsx
+        archive_url: https://web.archive.org/web/20261017143250/https://www.england.nhs.uk/wp-content/uploads/2024/08/september-2024-over-25k-spend.xlsx
+        filename: september-2024-over-25k-spend.xlsx
+        sha256: 20866ef6436324f1c20117ccc14aa88e52a6c3a5b63bf2ae374a3d63c84d065c
+        bytes: 254135
+        workbook:
+          sheet: A3131 report final working
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type for Report, Expense Area for Report, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 3646, total_gbp: "2122045071.36", nhs_england_rows: 3597, nhs_england_total_gbp: "2119176147.38", negative_rows: 243, missing_vat_rows: 641}
+      - id: 2024-10-payments-over-25000
+        title: NHS England payments over £25,000, October 2024
+        period: 2024-10
+        publication_date: 2025-03-07
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/october-2024-over-25k-spend.xlsx
+        archive_url: https://web.archive.org/web/20261017143258/https://www.england.nhs.uk/wp-content/uploads/2024/08/october-2024-over-25k-spend.xlsx
+        filename: october-2024-over-25k-spend.xlsx
+        sha256: 42216a702674bd67f02a2b9256e03fb7192a87d2702a88b56acfe5db6c78b0a2
+        bytes: 306717
+        workbook:
+          sheet: A3131 report final working
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 4590, total_gbp: "3792238906.87", nhs_england_rows: 4530, nhs_england_total_gbp: "3788048444.72", negative_rows: 225, missing_vat_rows: 777}
+      - id: 2024-11-payments-over-25000
+        title: NHS England payments over £25,000, November 2024
+        period: 2024-11
+        publication_date: 2025-03-07
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/november-2024-over-25k-spend.xlsx
+        archive_url: https://web.archive.org/web/20261017143333/https://www.england.nhs.uk/wp-content/uploads/2024/08/november-2024-over-25k-spend.xlsx
+        filename: november-2024-over-25k-spend.xlsx
+        sha256: 7b47023d57374a6110f84f15fc609e15e1999a842c5e0eadb5e0c31185172605
+        bytes: 315594
+        workbook:
+          sheet: A3131 report final working
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type for Report, Expense Area for Report, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 4656, total_gbp: "2542523913.80", nhs_england_rows: 4597, nhs_england_total_gbp: "2537440582.07", negative_rows: 268, missing_vat_rows: 1117}
+      - id: 2024-12-payments-over-25000
+        title: NHS England payments over £25,000, December 2024
+        period: 2024-12
+        publication_date: 2025-03-07
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/december-2024-over-25k-spend.xlsx
+        archive_url: https://web.archive.org/web/20261017143337/https://www.england.nhs.uk/wp-content/uploads/2024/08/december-2024-over-25k-spend.xlsx
+        filename: december-2024-over-25k-spend.xlsx
+        sha256: d79a7ba63710aeee993ecfc3ab69a4ab747213971657e25a59e5b9a8908f8afc
+        bytes: 310906
+        workbook:
+          sheet: A3131 report final working
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type for Report, Expense Area for Report, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 4531, total_gbp: "2216601421.36", nhs_england_rows: 4472, nhs_england_total_gbp: "2212267639.51", negative_rows: 223, missing_vat_rows: 1267}
+    revisions:
+      - id: 2024-07-payments-over-25000-original
+        title: NHS England payments over £25,000, July 2024, superseded original
+        period: 2024-07
+        publication_date: 2025-03-07
+        publication_date_precision: day
+        source_url: https://www.england.nhs.uk/wp-content/uploads/2024/08/july-2024-over-25k-spend.xlsx
+        archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20250312124459id_/https://www.england.nhs.uk/wp-content/uploads/2024/08/july-2024-over-25k-spend.xlsx
+        filename: july-2024-over-25k-spend-original.xlsx
+        sha256: 9a241bb55957d871d1a805bd55a3166583ca907c3da21aa0325bea8ffd14349c
+        bytes: 294077
+        status: superseded
+        superseded_by: 2024-07-payments-over-25000-corrected
+        workbook:
+          sheet: A3131 report to publish
+          amount_scale: 2
+          columns: [Department family, Entity, Date, Expense Type, Expense Area, Supplier, Transaction number, AP Amount (£), VAT registration number, Purchase invoice number]
+        expected: {rows: 3879, total_gbp: "2037850321.59", nhs_england_rows: 3838, nhs_england_total_gbp: "2034513328.61", negative_rows: 301, missing_vat_rows: 755}
+    revision_diff:
+      id: 2024-07-correction
+      original_source_id: 2024-07-payments-over-25000-original
+      corrected_source_id: 2024-07-payments-over-25000-corrected
+      baseline_source_id: 2024-06-payments-over-25000

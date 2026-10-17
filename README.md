@@ -37,8 +37,8 @@ s/fetch-blog-index           # build/extend the NHS England blog post index + ar
 s/build-index                # regenerate fdp/index.json after adding/editing an entry
 s/build-bartlett-index       # regenerate fdp/bartlett-appearances.json after editing that file
 uv sync --locked             # install the exact spending-pipeline dependencies
-s/fetch-spending-data        # download and verify the registered September 2025 workbook
-s/build-spending-data        # build and validate local Parquet and CSV.gz artifacts
+s/fetch-spending-data --source 2024-payments-over-25000  # download and verify all twelve current 2024 workbooks
+s/build-spending-data --source 2024-payments-over-25000  # build and validate the annual release and July correction diff
 s/test                       # run parser, determinism, query, and finance-registry tests
 python3 -m http.server 8000  # preview the site at localhost:8000
 ```
@@ -89,4 +89,4 @@ If you've written about the FDP and you're not listed here, or we've got your af
 - Prose, including the spec: CC-BY-SA-4.0.
 - Binary documents in `fdp/sources/` are third-party primary-source material retained for evidence and preservation. They are not covered by the repository's software or prose licences; copyright and other rights remain with their original owners.
 - `nhs-board-transcripts/` is third-party content derived from NHS England's YouTube uploads and is not covered by either repository licence.
-- Downloaded spending workbooks remain local. The normalized September 2025 spending release is redistributed under OGL v3 and the project owner's recorded fair-use/fair-dealing determination; its Data Package carries the source evidence, decision and limitations.
+- Downloaded spending workbooks remain local. The normalized 2024 and September 2025 spending releases are redistributed under OGL v3 and the project owner's recorded fair-use/fair-dealing determination; their Data Packages carry the source evidence, decision and limitations.
