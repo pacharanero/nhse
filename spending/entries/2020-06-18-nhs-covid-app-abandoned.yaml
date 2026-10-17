@@ -1,0 +1,27 @@
+id: 2020-06-18-nhs-covid-app-abandoned
+date: 2020-06-18
+date_precision: day
+tags:
+  - media
+  - covid
+  - nhsx
+  - contact-tracing
+title: NHS abandons centralised Covid-19 contact-tracing app for Apple/Google model
+summary: >-
+  After a trial on the Isle of Wight from early May 2020 and a promised
+  nationwide rollout that slipped from mid-May to June to "the winter",
+  NHSX abandoned its own centrally-designed Covid-19 contact-tracing app in
+  favour of the decentralised model offered by Apple and Google. The
+  centralised app recognised only 4% of Apple phones and 75% of Android
+  models in testing. Officials refused to disclose the total development
+  cost, but an official government contracts database recorded three
+  contracts worth £4.8m awarded to the company engaged to build the app,
+  Pivotal VMware.
+source_url: https://www.theguardian.com/world/2020/jun/18/piloted-in-may-ditched-in-june-the-failure-of-englands-covid-19-app
+source_title: "The Guardian: Piloted in May, ditched in June - the failure of England's Covid-19 app"
+archive_url: https://web.archive.org/web/20261017105829/https://www.theguardian.com/world/2020/jun/18/piloted-in-may-ditched-in-june-the-failure-of-englands-covid-19-app
+contested: >-
+  The £4.8m figure is the Guardian's reading of disclosed contract values
+  only, explicitly reported as a floor, not a total: "officials refused to
+  say how much money has been spent on developing the failed app". The true
+  total development cost was never officially disclosed.
