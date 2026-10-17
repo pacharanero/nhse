@@ -13,7 +13,11 @@ from unittest import mock
 
 import duckdb
 import openpyxl
+import pyarrow as pa
+import pyarrow.parquet as pq
+import yaml
 
+import nhse_procurement
 import nhse_spending
 import nhse_spending_inventory
 
@@ -384,6 +388,420 @@ class SpendingInventoryTest(unittest.TestCase):
         duplicate_url = "https://www.england.nhs.uk/wp-content/uploads/2014/11/payments-greater-25k-report-Q4-1314.csv"
         duplicate_periods = {file["period"] for file in inventory["files"] if file["source_url"] == duplicate_url}
         self.assertEqual(duplicate_periods, {"2013-14"})
+
+
+class ProcurementDataTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temporary_directory = tempfile.TemporaryDirectory()
+        self.root = Path(self.temporary_directory.name)
+
+    def tearDown(self) -> None:
+        self.temporary_directory.cleanup()
+
+    def _write_json(self, directory: Path, filename: str, value: dict) -> tuple[int, str]:
+        path = directory / filename
+        path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        return path.stat().st_size, hashlib.sha256(path.read_bytes()).hexdigest()
+
+    def _fixture_registry(self) -> tuple[Path, Path]:
+        source_directory = self.root / "sources"
+        source_directory.mkdir()
+        payment_directory = self.root / "payments"
+        payment_directory.mkdir()
+        payment_path = payment_directory / "payments.parquet"
+        pq.write_table(
+            pa.table(
+                {
+                    "observation_id": ["payment-1", "payment-2"],
+                    "entity": ["NHS England", "NHS England"],
+                    "supplier": ["ACME LTD", "Unrelated supplier"],
+                    "vat_registration_number": ["123456789", None],
+                    "amount_gbp": [nhse_spending.Decimal("10.00"), nhse_spending.Decimal("0.00")],
+                }
+            ),
+            payment_path,
+        )
+        (payment_directory / "validation.json").write_text(
+            json.dumps({"statistics": {"rows": 999, "total_gbp": "999.00"}}),
+            encoding="utf-8",
+        )
+
+        find_tender = {
+            "extensions": [],
+            "license": "https://example.test/licence",
+            "packages": [],
+            "publicationPolicy": "https://example.test/policy",
+            "publishedDate": "2025-02-01T00:00:00Z",
+            "publisher": {"name": "Fixture publisher"},
+            "records": [
+                {
+                    "ocid": "ocds-example-1",
+                    "releases": [
+                        {
+                            "id": "planning-1",
+                            "date": "2025-01-01T00:00:00Z",
+                            "tag": ["planning"],
+                            "buyer": {"id": "buyer-1"},
+                            "tender": {
+                                "title": "Fixture procurement",
+                                "value": {"amount": 100, "currency": "GBP"},
+                            },
+                            "parties": [
+                                {
+                                    "id": "buyer-1",
+                                    "name": "NHS England",
+                                    "identifier": {"scheme": "GB-PPON", "id": "AAAA-1111-BBBB"},
+                                    "roles": ["buyer"],
+                                }
+                            ],
+                        },
+                        {
+                            "id": "award-1",
+                            "date": "2025-02-01T00:00:00Z",
+                            "tag": ["award", "contract"],
+                            "buyer": {"id": "buyer-1"},
+                            "tender": {"title": "Fixture procurement"},
+                            "awards": [
+                                {
+                                    "id": "award-a",
+                                    "suppliers": [{"id": "GB-COH-00000001", "name": "ACME LIMITED"}],
+                                }
+                            ],
+                            "contracts": [
+                                {
+                                    "id": "contract-a",
+                                    "awardID": "award-a",
+                                    "value": {"amount": 80, "currency": "GBP"},
+                                }
+                            ],
+                            "parties": [
+                                {
+                                    "id": "GB-COH-00000001",
+                                    "name": "ACME LIMITED",
+                                    "identifier": {"scheme": "GB-COH", "id": "00000001"},
+                                    "roles": ["supplier"],
+                                },
+                                {
+                                    "id": "GB-COH-00000002",
+                                    "name": "ACME LIMITED",
+                                    "identifier": {"scheme": "GB-COH", "id": "00000002"},
+                                    "roles": ["supplier"],
+                                },
+                                {
+                                    "id": "GB-COH-00000003",
+                                    "name": "ACME LIMITED",
+                                    "identifier": {"scheme": "GB-COH", "id": "00000003"},
+                                    "roles": ["tenderer"],
+                                },
+                            ],
+                        },
+                    ],
+                    "compiledRelease": {},
+                    "versionedRelease": {},
+                }
+            ],
+            "uri": "https://example.test/record",
+            "version": "1.1",
+        }
+        find_tender_bytes, find_tender_hash = self._write_json(source_directory, "find-tender.json", find_tender)
+
+        contracts_finder = {
+            "id": "replacement-guid",
+            "notice": {
+                "id": "replacement-guid",
+                "parentId": "original-guid",
+                "version": 1,
+                "publishedDate": "2025-02-02T00:00:00Z",
+                "title": "Fixture procurement",
+                "organisationName": "NHS England",
+            },
+            "awards": [
+                {
+                    "id": "cf-award",
+                    "value": 80,
+                    "supplierName": "ACME LIMITED",
+                    "dunsNumber": "123456789",
+                }
+            ],
+            "additionalDetails": [],
+        }
+        contracts_finder_bytes, contracts_finder_hash = self._write_json(
+            source_directory, "contracts-finder.json", contracts_finder
+        )
+
+        registry = {
+            "schema_version": 1,
+            "release": {
+                "id": "fixture-procurement",
+                "title": "Fixture procurement release",
+                "observed_on": dt.date(2026, 10, 17),
+                "normalization_schema_version": 1,
+                "rights_status": "test-only",
+                "rights_url": "https://example.test/licence",
+                "payment_release": {
+                    "id": "fixture-payments",
+                    "parquet": str(payment_path),
+                    "sha256": hashlib.sha256(payment_path.read_bytes()).hexdigest(),
+                },
+                "matching_release_ids": ["award-1"],
+                "limitations": ["Test fixture"],
+            },
+            "sources": [
+                {
+                    "id": "find-tender-fixture",
+                    "source_system": "find-a-tender",
+                    "source_family": "find-a-tender-record",
+                    "source_url": "https://example.test/record",
+                    "media_type": "application/json",
+                    "filename": "find-tender.json",
+                    "bytes": find_tender_bytes,
+                    "sha256": find_tender_hash,
+                    "expected_ocid": "ocds-example-1",
+                    "expected_release_ids": ["planning-1", "award-1"],
+                    "monetary_observations": [
+                        {
+                            "id": "planning-value",
+                            "release_id": "planning-1",
+                            "value_type": "planning_estimate",
+                            "source_pointer": "/tender/value",
+                            "amount_field": "amount",
+                            "expected_amount": "100.00",
+                            "currency": "GBP",
+                            "vat_basis": "excluding",
+                            "scope_type": "procurement",
+                            "scope_id": "ocds-example-1",
+                        },
+                        {
+                            "id": "contract-value",
+                            "release_id": "award-1",
+                            "value_type": "contract_value",
+                            "source_pointer": "/contracts/0/value",
+                            "amount_field": "amount",
+                            "expected_amount": "80.00",
+                            "currency": "GBP",
+                            "vat_basis": "excluding",
+                            "scope_type": "contract",
+                            "scope_id": "contract-a",
+                            "commercial_event_id": "fixture-award",
+                        },
+                    ],
+                },
+                {
+                    "id": "contracts-finder-fixture",
+                    "source_system": "contracts-finder",
+                    "source_family": "contracts-finder-published-notice-v2",
+                    "source_url": "https://example.test/notice",
+                    "media_type": "application/json",
+                    "filename": "contracts-finder.json",
+                    "bytes": contracts_finder_bytes,
+                    "sha256": contracts_finder_hash,
+                    "expected_notice_id": "replacement-guid",
+                    "expected_parent_id": "original-guid",
+                    "expected_version": 1,
+                    "monetary_observations": [
+                        {
+                            "id": "cf-award-value",
+                            "value_type": "award_value",
+                            "source_pointer": "/awards/0/value",
+                            "expected_amount": "80.00",
+                            "currency": "GBP",
+                            "vat_basis": "unspecified",
+                            "scope_type": "award",
+                            "scope_id": "cf-award",
+                            "commercial_event_id": "fixture-award",
+                        }
+                    ],
+                },
+            ],
+        }
+        registry_path = self.root / "procurement-sources.yaml"
+        registry_path.write_text(yaml.safe_dump(registry, sort_keys=False), encoding="utf-8")
+        return registry_path, source_directory
+
+    def test_procurement_release_build_is_deterministic(self) -> None:
+        registry_path, source_directory = self._fixture_registry()
+        first = nhse_procurement.build_release(self.root / "first", registry_path, source_directory)
+        second = nhse_procurement.build_release(self.root / "second", registry_path, source_directory)
+        self.assertEqual(
+            {path.name: path.read_bytes() for path in first.iterdir()},
+            {path.name: path.read_bytes() for path in second.iterdir()},
+        )
+        registry = nhse_procurement.load_registry(registry_path)
+        nhse_procurement.validate_release(
+            first,
+            registry,
+            registry_path=registry_path,
+            source_directory=source_directory,
+            verify_against_sources=True,
+        )
+        release = json.loads((first / "procurement.json").read_text(encoding="utf-8"))
+        self.assertEqual({item["value_type"] for item in release["monetary_observations"]}, {"planning_estimate", "contract_value", "award_value"})
+        self.assertTrue(all(item["is_payment"] is False for item in release["monetary_observations"]))
+        self.assertEqual(len(release["match_candidates"]), 1)
+        self.assertEqual(release["match_candidates"][0]["decision"], "needs_review")
+        self.assertEqual(release["match_candidates"][0]["contract_attribution"], "not_asserted")
+        self.assertEqual(release["canonical_payment_release"]["rows"], 2)
+        self.assertEqual(release["canonical_payment_release"]["total_gbp"], "10.00")
+        event_values = {
+            (item["amount"], item["currency"])
+            for item in release["monetary_observations"]
+            if item["commercial_event_id"] == "fixture-award"
+        }
+        self.assertEqual(event_values, {("80.00", "GBP")})
+        self.assertEqual(
+            [item["relationship_type"] for item in release["relationships"]].count("replaces_notice"),
+            1,
+        )
+
+    def test_procurement_release_refuses_overwrite_with_different_bytes(self) -> None:
+        registry_path, source_directory = self._fixture_registry()
+        target = nhse_procurement.build_release(self.root / "release", registry_path, source_directory)
+        (target / "procurement.json").write_text("{}\n", encoding="utf-8")
+        with self.assertRaisesRegex(nhse_procurement.ProcurementDataError, "immutable procurement release"):
+            nhse_procurement.build_release(target, registry_path, source_directory)
+
+    def test_procurement_artifact_pins_reject_coordinated_tampering(self) -> None:
+        registry_path, source_directory = self._fixture_registry()
+        target = nhse_procurement.build_release(self.root / "release", registry_path, source_directory)
+        registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
+        registry["release"]["expected_artifacts"] = {
+            filename: hashlib.sha256((target / filename).read_bytes()).hexdigest()
+            for filename in ("procurement.json", "validation.json")
+        }
+        registry_path.write_text(yaml.safe_dump(registry, sort_keys=False), encoding="utf-8")
+        registry = nhse_procurement.load_registry(registry_path)
+        nhse_procurement.validate_release(target, registry, registry_path=registry_path)
+
+        release = json.loads((target / "procurement.json").read_text(encoding="utf-8"))
+        release["title"] = "Tampered title"
+        (target / "procurement.json").write_text(
+            json.dumps(release, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        checksums = "".join(
+            f"{hashlib.sha256((target / filename).read_bytes()).hexdigest()}  {filename}\n"
+            for filename in ("procurement.json", "validation.json")
+        )
+        (target / "checksums.sha256").write_text(checksums, encoding="ascii")
+        with self.assertRaisesRegex(nhse_procurement.ProcurementDataError, "artifact digests"):
+            nhse_procurement.validate_release(target, registry, registry_path=registry_path)
+
+    def test_text_monetary_observation_is_parsed_from_source_excerpt(self) -> None:
+        source = {"id": "fixture", "source_system": "find-a-tender"}
+        document = {
+            "records": [
+                {
+                    "ocid": "ocds-example-1",
+                    "releases": [
+                        {
+                            "id": "award-1",
+                            "date": "2025-01-01T00:00:00Z",
+                            "tender": {"description": "The forecasted amount is £330m and is not committed."},
+                        }
+                    ],
+                }
+            ]
+        }
+        config = {
+            "id": "forecast",
+            "release_id": "award-1",
+            "value_type": "forecast_not_committed",
+            "source_pointer": "/tender/description",
+            "source_text_contains": "forecasted amount is £330m",
+            "expected_amount": "330000000.00",
+            "currency": "GBP",
+            "vat_basis": "unspecified",
+            "scope_type": "procurement",
+            "scope_id": "ocds-example-1",
+        }
+        observation = nhse_procurement._extract_monetary_observation(source, config, document)
+        self.assertEqual(observation["amount"], "330000000.00")
+
+        with self.assertRaisesRegex(nhse_procurement.ProcurementDataError, "amount mismatch"):
+            nhse_procurement._extract_monetary_observation(
+                source,
+                {**config, "expected_amount": "331000000.00"},
+                document,
+            )
+
+    def test_procurement_malformed_json_fails_without_raw_parser_error(self) -> None:
+        registry_path, source_directory = self._fixture_registry()
+        target = nhse_procurement.build_release(self.root / "release", registry_path, source_directory)
+        (target / "procurement.json").write_text("{\n", encoding="utf-8")
+        checksums = "".join(
+            f"{hashlib.sha256((target / filename).read_bytes()).hexdigest()}  {filename}\n"
+            for filename in ("procurement.json", "validation.json")
+        )
+        (target / "checksums.sha256").write_text(checksums, encoding="ascii")
+        registry = nhse_procurement.load_registry(registry_path)
+        with self.assertRaisesRegex(nhse_procurement.ProcurementDataError, "invalid procurement release JSON"):
+            nhse_procurement.validate_release(target, registry, registry_path=registry_path)
+
+    def test_procurement_malformed_structure_fails_without_key_error(self) -> None:
+        registry_path, source_directory = self._fixture_registry()
+        target = nhse_procurement.build_release(self.root / "release", registry_path, source_directory)
+        release = json.loads((target / "procurement.json").read_text(encoding="utf-8"))
+        del release["notices"][0]["notice_key"]
+        (target / "procurement.json").write_text(
+            json.dumps(release, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        checksums = "".join(
+            f"{hashlib.sha256((target / filename).read_bytes()).hexdigest()}  {filename}\n"
+            for filename in ("procurement.json", "validation.json")
+        )
+        (target / "checksums.sha256").write_text(checksums, encoding="ascii")
+        registry = nhse_procurement.load_registry(registry_path)
+        with self.assertRaisesRegex(nhse_procurement.ProcurementDataError, "malformed procurement release structure"):
+            nhse_procurement.validate_release(target, registry, registry_path=registry_path)
+
+    def test_procurement_source_hash_mismatch_fails_closed(self) -> None:
+        registry_path, source_directory = self._fixture_registry()
+        registry = nhse_procurement.load_registry(registry_path)
+        (source_directory / "find-tender.json").write_bytes(b"{}")
+        with self.assertRaisesRegex(nhse_procurement.ProcurementDataError, "byte length"):
+            nhse_procurement.verify_sources(registry, source_directory)
+
+    def test_identifier_evidence_is_scheme_aware(self) -> None:
+        exact = nhse_procurement.identifier_evidence("GB-COH", "001", "GB-COH", "001")
+        conflict = nhse_procurement.identifier_evidence("GB-COH", "001", "GB-COH", "002")
+        cross_scheme = nhse_procurement.identifier_evidence("GB-VAT", "001", "GB-COH", "001")
+        self.assertEqual(exact, {"tier": "A", "result": "same_authoritative_identifier", "contradiction": False})
+        self.assertTrue(conflict["contradiction"])
+        self.assertEqual(cross_scheme["tier"], "D")
+
+    def test_committed_procurement_release_preserves_uncertainty(self) -> None:
+        registry = nhse_procurement.load_registry()
+        nhse_procurement.validate_release(registry=registry)
+        release = json.loads((nhse_procurement.DATA_DIR / "procurement.json").read_text(encoding="utf-8"))
+        candidates = release["match_candidates"]
+        self.assertEqual(len(candidates), 5)
+        self.assertEqual({item["supplier_text_raw"] for item in candidates}, {"PALANTIR TECHNOLOGIES UK LTD", "NOVARTIS PHARMACEUTICALS UK LTD", "PFIZER LTD"})
+        self.assertTrue(all(item["decision"] == "needs_review" for item in candidates))
+        self.assertTrue(all(item["evidence_tier"] == "D" for item in candidates))
+        self.assertTrue(all(item["contract_attribution"] == "not_asserted" for item in candidates))
+        self.assertFalse(any("NIFTY" in item["supplier_text_normalized"] for item in candidates))
+        self.assertFalse(any("ACCORD" in item["notice_supplier_name_normalized"] for item in candidates))
+
+        values = {item["monetary_observation_id"]: item for item in release["monetary_observations"]}
+        self.assertEqual(values["fdp-planning-estimate"]["amount"], "240000000.00")
+        self.assertEqual(values["fdp-tender-ceiling"]["amount"], "480000000.00")
+        self.assertEqual(values["fdp-contract-value"]["amount"], "182242760.00")
+        self.assertEqual(values["fdp-forecast-not-committed"]["amount"], "330000000.00")
+        self.assertEqual(
+            nhse_spending.Decimal(values["cass-modified-contract-value"]["amount"])
+            - nhse_spending.Decimal(values["cass-modification-increment"]["amount"]),
+            nhse_spending.Decimal("22990.00"),
+        )
+        self.assertTrue(all(item["is_payment"] is False for item in values.values()))
+        self.assertTrue(all("amount_gbp" not in item for item in values.values()))
+
+        replacements = [
+            item for item in release["relationships"] if item["relationship_type"] == "replaces_notice"
+        ]
+        self.assertEqual(len(replacements), 1)
+        self.assertEqual(replacements[0]["from_id"], "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0")
+        self.assertEqual(replacements[0]["to_id"], "2e8c61c0-faab-4f99-ae69-b00df6bae165")
 
 
 if __name__ == "__main__":

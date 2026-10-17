@@ -26,6 +26,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import yaml
 
+import nhse_procurement
 from nhse_spending_inventory import InventoryError, build_inventory
 
 
@@ -1201,6 +1202,12 @@ def validate_top_level_finances() -> None:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
+    procurement_fetch_parser = subparsers.add_parser(
+        "procurement-fetch", help="download and verify one registered procurement source"
+    )
+    procurement_fetch_parser.add_argument("--source", required=True, help="procurement source registry ID")
+    subparsers.add_parser("procurement-build", help="build and validate the procurement fixture release")
+    subparsers.add_parser("procurement-validate", help="validate the procurement fixture release")
     inventory_parser = subparsers.add_parser(
         "inventory", help="discover and classify the historical payments corpus"
     )
@@ -1237,6 +1244,24 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
+        if args.command.startswith("procurement-"):
+            registry = nhse_procurement.load_registry()
+            if args.command == "procurement-fetch":
+                path = nhse_procurement.fetch_source(args.source, registry)
+                print(f"verified procurement source: {path}", file=sys.stderr)
+            elif args.command == "procurement-build":
+                target = nhse_procurement.build_release()
+                nhse_procurement.validate_release(target, registry, verify_against_sources=True)
+                print(f"built procurement release: {target}", file=sys.stderr)
+            else:
+                target = nhse_procurement.release_path(registry)
+                nhse_procurement.validate_release(
+                    target,
+                    registry,
+                    verify_against_sources=True,
+                )
+                print(f"validated procurement release: {target}", file=sys.stderr)
+            return 0
         if args.command == "inventory":
             result = build_inventory(args.output, args.download_directory, args.observed_on)
             print(
@@ -1261,7 +1286,14 @@ def main(argv: list[str] | None = None) -> int:
             validate_release(release_path(source), source, verify_against_sources=True)
             print(f"validated release: {release_path(source)}", file=sys.stderr)
         return 0
-    except (OSError, SpendingDataError, duckdb.Error, yaml.YAMLError, InventoryError) as error:
+    except (
+        OSError,
+        SpendingDataError,
+        duckdb.Error,
+        yaml.YAMLError,
+        InventoryError,
+        nhse_procurement.ProcurementDataError,
+    ) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
 

@@ -1,0 +1,2051 @@
+{
+  "canonical_payment_release": {
+    "artifact": "spending/data/2024-payments-over-25000/payments.parquet",
+    "id": "2024-payments-over-25000",
+    "mutation_policy": "immutable; procurement enrichment is a separate derivative",
+    "rows": 51971,
+    "sha256": "74ef385ff615a8b392b1fd8012d4c9603f3d641da42f54b4d0bc19d94577c6e1",
+    "total_gbp": "32326771267.64"
+  },
+  "documents": [
+    {
+      "document_id": "215b5e77-999c-4df4-a582-ec954d0b9d43",
+      "document_type": "contract_attachment",
+      "filename": "FDPAS_Contract_Redacted_2of3.pdf",
+      "format": "application/pdf",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_pointer": "/additionalDetails/2",
+      "url": null
+    },
+    {
+      "document_id": "4201589d-82a4-4375-be7c-3bd2777d3f0e",
+      "document_type": "contract_attachment",
+      "filename": "FDPAS_Contract_Redacted_1of3.pdf",
+      "format": "application/pdf",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_pointer": "/additionalDetails/1",
+      "url": null
+    },
+    {
+      "document_id": "ecf0b22a-dd78-48d3-95a0-ec1465aaceb7",
+      "document_type": "contract_attachment",
+      "filename": "FDPAS_Contract_Redacted_3of3.pdf",
+      "format": "application/pdf",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_pointer": "/additionalDetails/3",
+      "url": null
+    },
+    {
+      "document_id": "158e7e2a-8132-4b1e-a89c-16aede156cec",
+      "document_type": "contract_attachment",
+      "filename": "FDP-AS Contract 3 of 4.pdf",
+      "format": "application/pdf",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/additionalDetails/1",
+      "url": null
+    },
+    {
+      "document_id": "7676c1d8-95f4-4e40-93df-a34d90b3ca02",
+      "document_type": "contract_attachment",
+      "filename": "FDP-AS Contract 4 of 4.pdf",
+      "format": "application/pdf",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/additionalDetails/4",
+      "url": null
+    },
+    {
+      "document_id": "dbd3c42f-2d7f-4419-8ec2-a5091015eadb",
+      "document_type": "contract_attachment",
+      "filename": "FDP-AS Contract 1 of 4.pdf",
+      "format": "application/pdf",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/additionalDetails/3",
+      "url": null
+    },
+    {
+      "document_id": "e3d2b70a-b57d-4771-a3de-c10d77253caa",
+      "document_type": "contract_attachment",
+      "filename": "FDP-AS Contract 2 of 4.pdf",
+      "format": "application/pdf",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/additionalDetails/2",
+      "url": null
+    },
+    {
+      "document_id": "029971-2025",
+      "document_type": "tenderNotice",
+      "format": "text/html",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:029971-2025",
+      "release_id": "029971-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/1/tender/documents/2",
+      "url": "https://www.find-tender.service.gov.uk/Notice/029971-2025"
+    },
+    {
+      "document_id": "A-1893",
+      "document_type": "biddingDocuments",
+      "format": "application/x-zip-compressed",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:029971-2025",
+      "release_id": "029971-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/1/tender/documents/1",
+      "url": "https://www.find-tender.service.gov.uk/Notice/Attachment/A-1893"
+    },
+    {
+      "document_id": "conflictOfInterest",
+      "document_type": "conflictOfInterest",
+      "format": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:029971-2025",
+      "release_id": "029971-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/1/tender/documents/0",
+      "url": null
+    },
+    {
+      "document_id": "044175-2025",
+      "document_type": "awardNotice",
+      "format": "text/html",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/documents/0",
+      "url": "https://www.find-tender.service.gov.uk/Notice/044175-2025"
+    },
+    {
+      "document_id": "054095-2025",
+      "document_type": "contractNotice",
+      "format": "text/html",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/contracts/0/documents/1",
+      "url": "https://www.find-tender.service.gov.uk/Notice/054095-2025"
+    },
+    {
+      "document_id": "A-4824",
+      "document_type": "contractSigned",
+      "format": "application/pdf",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/contracts/0/documents/0",
+      "url": "https://www.find-tender.service.gov.uk/Notice/Attachment/A-4824"
+    },
+    {
+      "document_id": "conflictOfInterest",
+      "document_type": "conflictOfInterest",
+      "format": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/tender/documents/0",
+      "url": null
+    }
+  ],
+  "limitations": [
+    "Procurement notices provide commercial context, not evidence that a payment occurred.",
+    "Name-only supplier candidates do not establish legal-entity identity or contract attribution.",
+    "The captured Cass record package exposes the modified total and increment but not the original contract value as a structured source field.",
+    "Find a Tender extension URLs are retained, but their moving schema targets are not yet frozen; this fixture release parses only the explicitly registered fields above.",
+    "The source registry pins exact bytes from mutable live APIs; retain the ignored local captures until durable archive URLs with matching bytes are registered."
+  ],
+  "match_candidate_sets": [
+    {
+      "candidate_ids": [
+        "2d8b62e837ed813b86b0fcd572bf3b5781529facb6a91ba1d9d2631572569a92"
+      ],
+      "payment_supplier_key": "1416e03d157fc7592ae4bc41eade78a30d4782c00d0a4f6a4e9848fde010e456",
+      "state": "single_candidate"
+    },
+    {
+      "candidate_ids": [
+        "ece6cb815c15eb9a5a8d87d4f9bd23f96159044de9b90ce38a4467d874726768"
+      ],
+      "payment_supplier_key": "4ae0bddb92439a56540591956a4ccd97f80b73b663ba4e88a5e00ca2dc2c6613",
+      "state": "single_candidate"
+    },
+    {
+      "candidate_ids": [
+        "d1be14c3ff222838e850a22d14768fe9f01973513d109599052a2be1fd94cd2c"
+      ],
+      "payment_supplier_key": "aeb3642f4332f93a11140b012d5d9777b5b4f8822b6b4be2e9c5ae192817dc7f",
+      "state": "single_candidate"
+    },
+    {
+      "candidate_ids": [
+        "2c57616d830e54d30858d0640e2a96c2f07732111124340a30fa60c03f15ba17"
+      ],
+      "payment_supplier_key": "b1d57ac764e030d62d5fdc3ae2a1f2dd0ae6988737110647408df9370c08cf59",
+      "state": "single_candidate"
+    },
+    {
+      "candidate_ids": [
+        "2ea9bd02814e9090cc7aa6b02642cdca61951548e758099741fe5ebaa30ddf7b"
+      ],
+      "payment_supplier_key": "e0c15a3b554c59db34a0a683ba494de7dd47e60d36ce19615d3313216bb8ffd9",
+      "state": "single_candidate"
+    }
+  ],
+  "match_candidates": [
+    {
+      "candidate_generation_rule": "name-candidate-v1",
+      "candidate_id": "2c57616d830e54d30858d0640e2a96c2f07732111124340a30fa60c03f15ba17",
+      "contract_attribution": "not_asserted",
+      "decision": "needs_review",
+      "evidence_tier": "D",
+      "identifier_evidence": {
+        "contradiction": false,
+        "result": "no_same_scheme_identifier",
+        "tier": "D"
+      },
+      "name_comparison": "exact_normalized_or_legal_suffix_variant",
+      "normalization_version": "supplier-name-v1",
+      "notice_identifier_scheme": "GB-COH",
+      "notice_identifier_value": "00119006",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "notice_party_id": "GB-COH-00119006",
+      "notice_release_id": "044175-2025",
+      "notice_supplier_name": "NOVARTIS PHARMACEUTICALS UK LIMITED",
+      "notice_supplier_name_normalized": "NOVARTIS PHARMACEUTICALS UK LIMITED",
+      "notice_value_is_not_payment": true,
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00119006",
+      "payment_identifier_scheme": null,
+      "payment_identifier_status": "invalid_or_placeholder",
+      "payment_identifier_value": null,
+      "payment_observation_ids": [
+        "1ec88717d1a92676b0fb6a32beb3e9f423fde67dc90976d9aab77d7099946b88",
+        "467512ce12d7a54fff9d39f1d2298db1ac5d7b1a4f27ea735a7766fe87022189",
+        "7c014e90c0609244f2e9da25fe62d234c128c031d121e3d8a5f8638709688da0",
+        "93d8b00fa889bcfa7f9a82897ee14def89e8d7f487fb21b7e6b93cbe2f04c8cf",
+        "c3a7bc79c969dcc3a83653e387e3f95f8dd62e3a8f98b78740bae48d0f3dd452",
+        "df5e7031d8332fe885df779b9bac7b6b1fc84e4c42b1bd0417eac99d30cabf55"
+      ],
+      "payment_release_id": "2024-payments-over-25000",
+      "payment_release_sha256": "74ef385ff615a8b392b1fd8012d4c9603f3d641da42f54b4d0bc19d94577c6e1",
+      "payment_row_count": 6,
+      "payment_supplier_key": "b1d57ac764e030d62d5fdc3ae2a1f2dd0ae6988737110647408df9370c08cf59",
+      "relation_type": "payment_supplier_to_organisation",
+      "shared_name_variants": [
+        "NOVARTIS PHARMACEUTICALS UK"
+      ],
+      "supplier_text_normalized": "NOVARTIS PHARMACEUTICALS UK LTD",
+      "supplier_text_raw": "NOVARTIS PHARMACEUTICALS UK LTD"
+    },
+    {
+      "candidate_generation_rule": "name-candidate-v1",
+      "candidate_id": "2d8b62e837ed813b86b0fcd572bf3b5781529facb6a91ba1d9d2631572569a92",
+      "contract_attribution": "not_asserted",
+      "decision": "needs_review",
+      "evidence_tier": "D",
+      "identifier_evidence": {
+        "contradiction": false,
+        "result": "no_same_scheme_identifier",
+        "tier": "D"
+      },
+      "name_comparison": "exact_normalized_or_legal_suffix_variant",
+      "normalization_version": "supplier-name-v1",
+      "notice_identifier_scheme": "GB-COH",
+      "notice_identifier_value": "00119006",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "notice_party_id": "GB-COH-00119006",
+      "notice_release_id": "044175-2025",
+      "notice_supplier_name": "NOVARTIS PHARMACEUTICALS UK LIMITED",
+      "notice_supplier_name_normalized": "NOVARTIS PHARMACEUTICALS UK LIMITED",
+      "notice_value_is_not_payment": true,
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00119006",
+      "payment_identifier_scheme": null,
+      "payment_identifier_status": "missing",
+      "payment_identifier_value": null,
+      "payment_observation_ids": [
+        "24d5102fe0e4b1f75b1765ad101066c494da9b5e5c53cd5c99d9e8e57236c04c",
+        "36c91c9331f5722e48fa301c5caf26997edb2fdfa2f0dc236293074c5ee1feb6",
+        "4f80892cc04197a5dc202013fa7c57f76f84f5b1b99d3d6ac837ed0bb64eb186",
+        "a9f9019d083e776558389f1645f625882f3bbf180e20e7edc759530b98a63485",
+        "bb859d1f1eb7254b6cfe33f3aa5c5f3ec538c12a0f128b23c8d499b112bc87d4",
+        "d8d875b77d443bc4e748fc220779c8d6f93a5e6319c3891b859f79f65c3cddae",
+        "f1325f5b16315d34de22a82f1f7f37b7155409e87969d66ab76707869554407e"
+      ],
+      "payment_release_id": "2024-payments-over-25000",
+      "payment_release_sha256": "74ef385ff615a8b392b1fd8012d4c9603f3d641da42f54b4d0bc19d94577c6e1",
+      "payment_row_count": 7,
+      "payment_supplier_key": "1416e03d157fc7592ae4bc41eade78a30d4782c00d0a4f6a4e9848fde010e456",
+      "relation_type": "payment_supplier_to_organisation",
+      "shared_name_variants": [
+        "NOVARTIS PHARMACEUTICALS UK"
+      ],
+      "supplier_text_normalized": "NOVARTIS PHARMACEUTICALS UK LTD",
+      "supplier_text_raw": "NOVARTIS PHARMACEUTICALS UK LTD"
+    },
+    {
+      "candidate_generation_rule": "name-candidate-v1",
+      "candidate_id": "2ea9bd02814e9090cc7aa6b02642cdca61951548e758099741fe5ebaa30ddf7b",
+      "contract_attribution": "not_asserted",
+      "decision": "needs_review",
+      "evidence_tier": "D",
+      "identifier_evidence": {
+        "contradiction": false,
+        "result": "no_same_scheme_identifier",
+        "tier": "D"
+      },
+      "name_comparison": "exact_normalized_or_legal_suffix_variant",
+      "normalization_version": "supplier-name-v1",
+      "notice_identifier_scheme": "GB-COH",
+      "notice_identifier_value": "00526209",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "notice_party_id": "GB-COH-00526209",
+      "notice_release_id": "044175-2025",
+      "notice_supplier_name": "PFIZER LIMITED",
+      "notice_supplier_name_normalized": "PFIZER LIMITED",
+      "notice_value_is_not_payment": true,
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00526209",
+      "payment_identifier_scheme": null,
+      "payment_identifier_status": "invalid_or_placeholder",
+      "payment_identifier_value": null,
+      "payment_observation_ids": [
+        "269c3f3592dcd002c081e98dad589bc6d1898c2fec9ad7955d3043f391ab8122",
+        "529e8bc663350503fdf9f89ff6a6b1aca77ca93c5dca9a89c23cc52b550ba5d2"
+      ],
+      "payment_release_id": "2024-payments-over-25000",
+      "payment_release_sha256": "74ef385ff615a8b392b1fd8012d4c9603f3d641da42f54b4d0bc19d94577c6e1",
+      "payment_row_count": 2,
+      "payment_supplier_key": "e0c15a3b554c59db34a0a683ba494de7dd47e60d36ce19615d3313216bb8ffd9",
+      "relation_type": "payment_supplier_to_organisation",
+      "shared_name_variants": [
+        "PFIZER"
+      ],
+      "supplier_text_normalized": "PFIZER LTD",
+      "supplier_text_raw": "PFIZER LTD"
+    },
+    {
+      "candidate_generation_rule": "name-candidate-v1",
+      "candidate_id": "d1be14c3ff222838e850a22d14768fe9f01973513d109599052a2be1fd94cd2c",
+      "contract_attribution": "not_asserted",
+      "decision": "needs_review",
+      "evidence_tier": "D",
+      "identifier_evidence": {
+        "contradiction": false,
+        "result": "no_same_scheme_identifier",
+        "tier": "D"
+      },
+      "name_comparison": "exact_normalized_or_legal_suffix_variant",
+      "normalization_version": "supplier-name-v1",
+      "notice_identifier_scheme": "GB-COH",
+      "notice_identifier_value": "00526209",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "notice_party_id": "GB-COH-00526209",
+      "notice_release_id": "044175-2025",
+      "notice_supplier_name": "PFIZER LIMITED",
+      "notice_supplier_name_normalized": "PFIZER LIMITED",
+      "notice_value_is_not_payment": true,
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00526209",
+      "payment_identifier_scheme": null,
+      "payment_identifier_status": "missing",
+      "payment_identifier_value": null,
+      "payment_observation_ids": [
+        "51d22b776b1ec6dc783fdb3c3bde276213ede8ee07a5133acbc615e35feff759",
+        "92dbf5a0ec7f5d0b91ccb623e9b4d60756055c38fd27d1f04eceb0af64ac8f16"
+      ],
+      "payment_release_id": "2024-payments-over-25000",
+      "payment_release_sha256": "74ef385ff615a8b392b1fd8012d4c9603f3d641da42f54b4d0bc19d94577c6e1",
+      "payment_row_count": 2,
+      "payment_supplier_key": "aeb3642f4332f93a11140b012d5d9777b5b4f8822b6b4be2e9c5ae192817dc7f",
+      "relation_type": "payment_supplier_to_organisation",
+      "shared_name_variants": [
+        "PFIZER"
+      ],
+      "supplier_text_normalized": "PFIZER LTD",
+      "supplier_text_raw": "PFIZER LTD"
+    },
+    {
+      "candidate_generation_rule": "name-candidate-v1",
+      "candidate_id": "ece6cb815c15eb9a5a8d87d4f9bd23f96159044de9b90ce38a4467d874726768",
+      "contract_attribution": "not_asserted",
+      "decision": "needs_review",
+      "evidence_tier": "D",
+      "identifier_evidence": {
+        "contradiction": false,
+        "result": "no_same_scheme_identifier",
+        "tier": "D"
+      },
+      "name_comparison": "exact_normalized_or_legal_suffix_variant",
+      "normalization_version": "supplier-name-v1",
+      "notice_identifier_scheme": null,
+      "notice_identifier_value": "07042994",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "notice_party_id": "GB-FTS-101398",
+      "notice_release_id": "037776-2023",
+      "notice_supplier_name": "PALANTIR TECHNOLOGIES UK, LTD.",
+      "notice_supplier_name_normalized": "PALANTIR TECHNOLOGIES UK LTD",
+      "notice_value_is_not_payment": true,
+      "organisation_observation_id": "find-tender-fdp:037776-2023:GB-FTS-101398",
+      "payment_identifier_scheme": "GB-VAT",
+      "payment_identifier_status": "present",
+      "payment_identifier_value": "101229178",
+      "payment_observation_ids": [
+        "0120bca5c95083a6be1497b653c84c2be7389bf2888977f3aac0d02542d66dcf",
+        "0474ca3efd6d00160ffe6456fc308ba19e34a225e14899dba428e6518456feb1",
+        "09c0585205d7382075f5b3330ae5103229e14749a2314d32fe11a76f26d840aa",
+        "215f5cfeb7b42f51566232dc315f4fcc699be481d98ccf9726511faba33c63e8",
+        "2d0a2837f247480d1b53a61d164b21f61c225a3cd004b15fc144331b809909e7",
+        "35e73c28a1d539ac707dd5c80c468e9bbd9e90af55544d7d254198c5b0c02fbc",
+        "3be2d8cc94eb506d6b0965df6b29dda347d4fc9fe0a4cbf6c424150ae57779aa",
+        "3fb1dc2581846ce388344ca91e9cd0f59298aa52dbcb7130d7442629ab93cd45",
+        "474db2faedc1f7f0362eee0c879f4deeb709683c87ddfc51118b5dc003c7900a",
+        "4766fa1bc6f3a1b57144b7bae0d0c1681d8d8030ec1cd835ca4676419a205418",
+        "50417588d0f1ab2b714371dbeeb4df5f6a061b8697529e736d29880d9df21834",
+        "507151f182d025099d5348b8b81ebd0aab2456b2e49ecff0c22b37a0bb6ecf4b",
+        "5b8124477e3081def7e606a4d21ffc2663e35dcc19e83ed13edc9f213012b593",
+        "6c1b7bc9e123e85e78244093b173f5eca230caa4171d82b6b53f3e0a38320cb4",
+        "77128f929d212ea834426d66b25a9738d046a49521c05e7b20cc3d24adbb904a",
+        "7b321ec18c9eb70e45e09ef754f9b1f131b997d73bf8d27f5b7ffab103bbc742",
+        "84cd388afbaea95f9828d66bb497414797eebaeee06b8f1c493d34ae366cf7c6",
+        "84f2075e097efb71658a20a268dbde19fba848087b5cbc5dd39e5023e0e932a2",
+        "852fa6aecf7490a39703ba2c41ac64d21086b08c32aa710d77f0a8764121b361",
+        "91b35bd60a42a561605da09fd297182ddc936b98636adf1f4519a9172ee255ef",
+        "97340964698d46b3566f0ff6b3c8c4ca2b13bdf4c9bc59f5e174c0642c87b15c",
+        "a9f20c118f27ee060a9529b396f13cfe75a03895c251fe96441b341e0a4d809c",
+        "b53e20993135aacf57ba28aebe9da60e2ce5675510ac7e2ad76d03cc44a60596",
+        "c02a284c42000b13497c6598b8c1046171c9fd45da61184ce5114641e1f1f554",
+        "c5df957e252eca9337ef17f6af7b6df69e5c5e7d07cd096ddae724de38f94c10",
+        "cb2ffbb8a96d14f021c558d70d3c8cc7004dd22ad8e5d66e38f03a75758f4b79",
+        "cb4bed709c596ed435c72daeae936b27a152539b032b85737d9835524ffd07a0",
+        "d0f6507b2472f2ebd7a65fe6ae18f28341216f341e0005bb30aeebd2832adce4",
+        "dc3a2487c6a119d4cd493ddfb0a6f4ac0959c205a5533429e27ba04e84ed4655",
+        "de07d0b020e827d68f280a939dd9a58452b8acf48df4bdc1778b6b38868c6c63",
+        "e16433012041525aeafe2e590c59e35141f5c1d28304fef49ce4572ddc4c7d1f",
+        "ec2727d801df3476b440c0874e9597ca6c24d98d8ce0c5976abf76b38f2c8fd0",
+        "f77223984de0886845ad3e127345448bb7098e65621765a782d9f684327ded42"
+      ],
+      "payment_release_id": "2024-payments-over-25000",
+      "payment_release_sha256": "74ef385ff615a8b392b1fd8012d4c9603f3d641da42f54b4d0bc19d94577c6e1",
+      "payment_row_count": 33,
+      "payment_supplier_key": "4ae0bddb92439a56540591956a4ccd97f80b73b663ba4e88a5e00ca2dc2c6613",
+      "relation_type": "payment_supplier_to_organisation",
+      "shared_name_variants": [
+        "PALANTIR TECHNOLOGIES UK",
+        "PALANTIR TECHNOLOGIES UK LTD"
+      ],
+      "supplier_text_normalized": "PALANTIR TECHNOLOGIES UK LTD",
+      "supplier_text_raw": "PALANTIR TECHNOLOGIES UK LTD"
+    }
+  ],
+  "match_run": {
+    "candidate_generation_rule": "name-candidate-v1",
+    "id": "procurement-notice-fixtures-2026-10-17-match-run-1",
+    "matching_release_ids": [
+      "037776-2023",
+      "044175-2025"
+    ],
+    "normalization_version": "supplier-name-v1",
+    "notice_value_is_not_payment": true,
+    "organisation_match_does_not_imply_contract_attribution": true
+  },
+  "monetary_observations": [
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "10485.00",
+      "authority": "observed",
+      "commercial_event_id": null,
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "cass-modification-increment",
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "ocid": "ocds-h6vhtk-04ec25",
+      "release_date": "2025-03-12T13:32:27Z",
+      "release_id": "008980-2025",
+      "scope_id": "008980-2025-1-1",
+      "scope_type": "contract",
+      "source_capture_id": "find-tender-cass-modification",
+      "source_excerpt": "Increase value of contract by £10,485.00",
+      "source_pointer": "/records/0/releases/0/contracts/0/amendments/0/description",
+      "source_system": "find-a-tender",
+      "value_type": "modification_increment",
+      "vat_basis": "excluding"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "33475.00",
+      "authority": "observed",
+      "commercial_event_id": null,
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "cass-modified-contract-value",
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "ocid": "ocds-h6vhtk-04ec25",
+      "release_date": "2025-03-12T13:32:27Z",
+      "release_id": "008980-2025",
+      "scope_id": "008980-2025-1-1",
+      "scope_type": "contract",
+      "source_capture_id": "find-tender-cass-modification",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/0/contracts/0/value/amount",
+      "source_system": "find-a-tender",
+      "value_type": "modified_contract_value",
+      "vat_basis": "excluding"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "182242760.00",
+      "authority": "observed",
+      "commercial_event_id": "fdp-award-contract-2023-11-22",
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "contracts-finder-fdp-original-award",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "ocid": null,
+      "release_date": "2023-12-22T09:27:34Z",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "scope_id": "632677",
+      "scope_type": "award",
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_excerpt": null,
+      "source_pointer": "/awards/0/value",
+      "source_system": "contracts-finder",
+      "value_type": "award_value",
+      "vat_basis": "unspecified"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "182242760.00",
+      "authority": "observed",
+      "commercial_event_id": "fdp-award-contract-2023-11-22",
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "contracts-finder-fdp-replacement-award",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "ocid": null,
+      "release_date": "2024-03-21T17:24:35Z",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "scope_id": "656806",
+      "scope_type": "award",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_excerpt": null,
+      "source_pointer": "/awards/0/value",
+      "source_system": "contracts-finder",
+      "value_type": "award_value",
+      "vat_basis": "unspecified"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "182242760.00",
+      "authority": "observed",
+      "commercial_event_id": "fdp-award-contract-2023-11-22",
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "fdp-contract-value",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2023-12-22T09:21:57Z",
+      "release_id": "037776-2023",
+      "scope_id": "037776-2023-1",
+      "scope_type": "contract",
+      "source_capture_id": "find-tender-fdp",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/4/contracts/0/value/amount",
+      "source_system": "find-a-tender",
+      "value_type": "contract_value",
+      "vat_basis": "excluding"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "330000000.00",
+      "authority": "observed",
+      "commercial_event_id": null,
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "fdp-forecast-not-committed",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2023-12-22T09:21:57Z",
+      "release_id": "037776-2023",
+      "scope_id": "C104091",
+      "scope_type": "procurement",
+      "source_capture_id": "find-tender-fdp",
+      "source_excerpt": "forecasted amount of £330m. This figure is also not a committed amount.",
+      "source_pointer": "/records/0/releases/4/tender/description",
+      "source_system": "find-a-tender",
+      "value_type": "forecast_not_committed",
+      "vat_basis": "unspecified"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "240000000.00",
+      "authority": "observed",
+      "commercial_event_id": null,
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "fdp-planning-estimate",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:008755-2022",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2022-04-01T08:16:44+01:00",
+      "release_id": "008755-2022",
+      "scope_id": "ocds-h6vhtk-0328ce",
+      "scope_type": "procurement",
+      "source_capture_id": "find-tender-fdp",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/0/tender/value/amount",
+      "source_system": "find-a-tender",
+      "value_type": "planning_estimate",
+      "vat_basis": "excluding"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "480000000.00",
+      "authority": "observed",
+      "commercial_event_id": null,
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "fdp-tender-ceiling",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:000669-2023",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2023-01-10T13:19:40Z",
+      "release_id": "000669-2023",
+      "scope_id": "C104091",
+      "scope_type": "procurement",
+      "source_capture_id": "find-tender-fdp",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/3/tender/value/amount",
+      "source_system": "find-a-tender",
+      "value_type": "tender_ceiling",
+      "vat_basis": "excluding"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "62862000.00",
+      "authority": "observed",
+      "commercial_event_id": "transition-products-framework-award-2025",
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "transition-contract-value-gross",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-09-04T17:47:36+01:00",
+      "release_id": "054095-2025",
+      "scope_id": "1",
+      "scope_type": "contract",
+      "source_capture_id": "find-tender-transition-products",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/3/contracts/0/value/amountGross",
+      "source_system": "find-a-tender",
+      "value_type": "contract_value",
+      "vat_basis": "including"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "52385000.00",
+      "authority": "observed",
+      "commercial_event_id": "transition-products-framework-award-2025",
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "transition-contract-value-net",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-09-04T17:47:36+01:00",
+      "release_id": "054095-2025",
+      "scope_id": "1",
+      "scope_type": "contract",
+      "source_capture_id": "find-tender-transition-products",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/3/contracts/0/value/amount",
+      "source_system": "find-a-tender",
+      "value_type": "contract_value",
+      "vat_basis": "excluding"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "62862000.00",
+      "authority": "observed",
+      "commercial_event_id": "transition-products-framework-award-2025",
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "transition-framework-maximum-gross",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-07-30T11:23:30+01:00",
+      "release_id": "044175-2025",
+      "scope_id": "1",
+      "scope_type": "award",
+      "source_capture_id": "find-tender-transition-products",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/2/awards/0/value/amountGross",
+      "source_system": "find-a-tender",
+      "value_type": "framework_maximum",
+      "vat_basis": "including"
+    },
+    {
+      "aggregation_policy": "do_not_sum_across_observations",
+      "amount": "52385000.00",
+      "authority": "observed",
+      "commercial_event_id": "transition-products-framework-award-2025",
+      "currency": "GBP",
+      "is_payment": false,
+      "monetary_observation_id": "transition-framework-maximum-net",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-07-30T11:23:30+01:00",
+      "release_id": "044175-2025",
+      "scope_id": "1",
+      "scope_type": "award",
+      "source_capture_id": "find-tender-transition-products",
+      "source_excerpt": null,
+      "source_pointer": "/records/0/releases/2/awards/0/value/amount",
+      "source_system": "find-a-tender",
+      "value_type": "framework_maximum",
+      "vat_basis": "excluding"
+    }
+  ],
+  "notices": [
+    {
+      "buyer_party_id": "NHS England",
+      "human_url": "https://www.contractsfinder.service.gov.uk/Notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "ocid": null,
+      "release_date": "2024-03-21T17:24:35Z",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_notice_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0",
+      "source_system": "contracts-finder",
+      "tags": [
+        "award",
+        "contract"
+      ],
+      "title": "Federated Data Platform and Associated Services",
+      "version": 1
+    },
+    {
+      "buyer_party_id": "NHS England",
+      "human_url": "https://www.contractsfinder.service.gov.uk/Notice/2e8c61c0-faab-4f99-ae69-b00df6bae165",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "ocid": null,
+      "release_date": "2023-12-22T09:27:34Z",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_notice_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165",
+      "source_system": "contracts-finder",
+      "tags": [
+        "award",
+        "contract"
+      ],
+      "title": "Federated Data Platform and Associated Services",
+      "version": 1
+    },
+    {
+      "buyer_party_id": "GB-FTS-67205",
+      "human_url": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:000669-2023",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2023-01-10T13:19:40Z",
+      "release_id": "000669-2023",
+      "source_capture_id": "find-tender-fdp",
+      "source_notice_id": "000669-2023",
+      "source_system": "find-a-tender",
+      "tags": [
+        "tender"
+      ],
+      "title": "NHS Federated Data Platform and Associated Services",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-FTS-3717",
+      "human_url": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:008755-2022",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2022-04-01T08:16:44+01:00",
+      "release_id": "008755-2022",
+      "source_capture_id": "find-tender-fdp",
+      "source_notice_id": "008755-2022",
+      "source_system": "find-a-tender",
+      "tags": [
+        "planning"
+      ],
+      "title": "NHS Federated Data Platform",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-FTS-3717",
+      "human_url": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:009960-2022",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2022-04-13T16:26:41+01:00",
+      "release_id": "009960-2022",
+      "source_capture_id": "find-tender-fdp",
+      "source_notice_id": "009960-2022",
+      "source_system": "find-a-tender",
+      "tags": [
+        "tenderUpdate"
+      ],
+      "title": "NHS Federated Data Platform",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-FTS-3717",
+      "human_url": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:020196-2022",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2022-07-25T15:54:24+01:00",
+      "release_id": "020196-2022",
+      "source_capture_id": "find-tender-fdp",
+      "source_notice_id": "020196-2022",
+      "source_system": "find-a-tender",
+      "tags": [
+        "tenderUpdate"
+      ],
+      "title": "NHS Federated Data Platform",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-FTS-67205",
+      "human_url": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "ocid": "ocds-h6vhtk-0328ce",
+      "release_date": "2023-12-22T09:21:57Z",
+      "release_id": "037776-2023",
+      "source_capture_id": "find-tender-fdp",
+      "source_notice_id": "037776-2023",
+      "source_system": "find-a-tender",
+      "tags": [
+        "award",
+        "contract"
+      ],
+      "title": "Federated Data Platform and Associated Services",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-FTS-130973",
+      "human_url": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "ocid": "ocds-h6vhtk-04ec25",
+      "release_date": "2025-03-12T13:32:27Z",
+      "release_id": "008980-2025",
+      "source_capture_id": "find-tender-cass-modification",
+      "source_notice_id": "008980-2025",
+      "source_system": "find-a-tender",
+      "tags": [
+        "awardUpdate",
+        "contractUpdate"
+      ],
+      "title": "Finalisation and Communication of Cass Review Report",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-PPON-PDPT-3135-BWWY",
+      "human_url": null,
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:018549-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-05-01T16:18:05+01:00",
+      "release_id": "018549-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_notice_id": "018549-2025",
+      "source_system": "find-a-tender",
+      "tags": [
+        "planning"
+      ],
+      "title": "NHS National Framework for Transition products (Axitinib and Eltrombopag)",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-PPON-PDPT-3135-BWWY",
+      "human_url": "https://www.find-tender.service.gov.uk/Notice/029971-2025",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:029971-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-06-04T15:34:58+01:00",
+      "release_id": "029971-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_notice_id": "029971-2025",
+      "source_system": "find-a-tender",
+      "tags": [
+        "tender"
+      ],
+      "title": "NHS National Framework for Transition products (Axitinib and Eltrombopag)",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-PPON-PDPT-3135-BWWY",
+      "human_url": "https://www.find-tender.service.gov.uk/Notice/044175-2025",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-07-30T11:23:30+01:00",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_notice_id": "044175-2025",
+      "source_system": "find-a-tender",
+      "tags": [
+        "award",
+        "contract"
+      ],
+      "title": "NHS National Framework for Transition products (Axitinib and Eltrombopag)",
+      "version": null
+    },
+    {
+      "buyer_party_id": "GB-PPON-PDPT-3135-BWWY",
+      "human_url": "https://www.find-tender.service.gov.uk/Notice/054095-2025",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "ocid": "ocds-h6vhtk-050bb9",
+      "release_date": "2025-09-04T17:47:36+01:00",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_notice_id": "054095-2025",
+      "source_system": "find-a-tender",
+      "tags": [
+        "award",
+        "contract"
+      ],
+      "title": "NHS National Framework for Transition products (Axitinib and Eltrombopag)",
+      "version": null
+    }
+  ],
+  "observed_on": "2026-10-17",
+  "organisation_observations": [
+    {
+      "identifier_scheme": "DUNS",
+      "identifier_status": "typed",
+      "identifier_value": "216241882",
+      "legal_name": "PALANTIR TECHNOLOGIES UK, LTD.",
+      "name": "PALANTIR TECHNOLOGIES UK, LTD.",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "organisation_observation_id": "contracts-finder-fdp-original:2e8c61c0-faab-4f99-ae69-b00df6bae165:award-632677-supplier",
+      "party_id": "award-632677-supplier",
+      "party_id_scope": "notice",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_pointer": "/awards/0",
+      "source_system": "contracts-finder"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "organisation_observation_id": "contracts-finder-fdp-original:2e8c61c0-faab-4f99-ae69-b00df6bae165:buyer",
+      "party_id": "NHS England",
+      "party_id_scope": "notice",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_pointer": "/notice/organisationName",
+      "source_system": "contracts-finder"
+    },
+    {
+      "identifier_scheme": "DUNS",
+      "identifier_status": "typed",
+      "identifier_value": "216241882",
+      "legal_name": "PALANTIR TECHNOLOGIES UK, LTD.",
+      "name": "PALANTIR TECHNOLOGIES UK, LTD.",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "organisation_observation_id": "contracts-finder-fdp-replacement:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:award-656806-supplier",
+      "party_id": "award-656806-supplier",
+      "party_id_scope": "notice",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/awards/0",
+      "source_system": "contracts-finder"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "organisation_observation_id": "contracts-finder-fdp-replacement:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:buyer",
+      "party_id": "NHS England",
+      "party_id_scope": "notice",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/notice/organisationName",
+      "source_system": "contracts-finder"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "organisation_observation_id": "find-tender-cass-modification:008980-2025:GB-FTS-130973",
+      "party_id": "GB-FTS-130973",
+      "party_id_scope": "release",
+      "release_id": "008980-2025",
+      "roles": [
+        "buyer",
+        "mediationBody"
+      ],
+      "source_capture_id": "find-tender-cass-modification",
+      "source_pointer": "/records/0/releases/0/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "scheme_missing",
+      "identifier_value": "12040715",
+      "legal_name": "Nifty Fox Creative Ltd",
+      "name": "Nifty Fox Creative Ltd",
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "organisation_observation_id": "find-tender-cass-modification:008980-2025:GB-FTS-140481",
+      "party_id": "GB-FTS-140481",
+      "party_id_scope": "release",
+      "release_id": "008980-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-cass-modification",
+      "source_pointer": "/records/0/releases/0/parties/1",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "High Court",
+      "name": "High Court",
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "organisation_observation_id": "find-tender-cass-modification:008980-2025:GB-FTS-87082",
+      "party_id": "GB-FTS-87082",
+      "party_id_scope": "release",
+      "release_id": "008980-2025",
+      "roles": [
+        "reviewBody"
+      ],
+      "source_capture_id": "find-tender-cass-modification",
+      "source_pointer": "/records/0/releases/0/parties/2",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "The High Court",
+      "name": "The High Court",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:000669-2023",
+      "organisation_observation_id": "find-tender-fdp:000669-2023:GB-FTS-497",
+      "party_id": "GB-FTS-497",
+      "party_id_scope": "release",
+      "release_id": "000669-2023",
+      "roles": [
+        "reviewBody"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/3/parties/1",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:000669-2023",
+      "organisation_observation_id": "find-tender-fdp:000669-2023:GB-FTS-67205",
+      "party_id": "GB-FTS-67205",
+      "party_id_scope": "release",
+      "release_id": "000669-2023",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/3/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:008755-2022",
+      "organisation_observation_id": "find-tender-fdp:008755-2022:GB-FTS-3717",
+      "party_id": "GB-FTS-3717",
+      "party_id_scope": "release",
+      "release_id": "008755-2022",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/0/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:009960-2022",
+      "organisation_observation_id": "find-tender-fdp:009960-2022:GB-FTS-3717",
+      "party_id": "GB-FTS-3717",
+      "party_id_scope": "release",
+      "release_id": "009960-2022",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/1/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:020196-2022",
+      "organisation_observation_id": "find-tender-fdp:020196-2022:GB-FTS-3717",
+      "party_id": "GB-FTS-3717",
+      "party_id_scope": "release",
+      "release_id": "020196-2022",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/2/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "scheme_missing",
+      "identifier_value": "07042994",
+      "legal_name": "PALANTIR TECHNOLOGIES UK, LTD.",
+      "name": "PALANTIR TECHNOLOGIES UK, LTD.",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "organisation_observation_id": "find-tender-fdp:037776-2023:GB-FTS-101398",
+      "party_id": "GB-FTS-101398",
+      "party_id_scope": "release",
+      "release_id": "037776-2023",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/4/parties/1",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "The High Court",
+      "name": "The High Court",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "organisation_observation_id": "find-tender-fdp:037776-2023:GB-FTS-1661",
+      "party_id": "GB-FTS-1661",
+      "party_id_scope": "release",
+      "release_id": "037776-2023",
+      "roles": [
+        "reviewBody"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/4/parties/2",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": null,
+      "identifier_status": "missing",
+      "identifier_value": null,
+      "legal_name": "NHS England",
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "organisation_observation_id": "find-tender-fdp:037776-2023:GB-FTS-67205",
+      "party_id": "GB-FTS-67205",
+      "party_id_scope": "release",
+      "release_id": "037776-2023",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/4/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-PPON",
+      "identifier_status": "typed",
+      "identifier_value": "PDPT-3135-BWWY",
+      "legal_name": null,
+      "name": "NHS England, Leeds",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:018549-2025",
+      "organisation_observation_id": "find-tender-transition-products:018549-2025:GB-PPON-PDPT-3135-BWWY",
+      "party_id": "GB-PPON-PDPT-3135-BWWY",
+      "party_id_scope": "release",
+      "release_id": "018549-2025",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/0/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-PPON",
+      "identifier_status": "typed",
+      "identifier_value": "PDPT-3135-BWWY",
+      "legal_name": null,
+      "name": "NHS England, Leeds",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:029971-2025",
+      "organisation_observation_id": "find-tender-transition-products:029971-2025:GB-PPON-PDPT-3135-BWWY",
+      "party_id": "GB-PPON-PDPT-3135-BWWY",
+      "party_id_scope": "release",
+      "release_id": "029971-2025",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/1/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00079585",
+      "legal_name": null,
+      "name": "ACCORD-UK LTD",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00079585",
+      "party_id": "GB-COH-00079585",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/8",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00119006",
+      "legal_name": null,
+      "name": "NOVARTIS PHARMACEUTICALS UK LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00119006",
+      "party_id": "GB-COH-00119006",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "supplier",
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/2",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00185947",
+      "legal_name": null,
+      "name": "THORNTON & ROSS LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00185947",
+      "party_id": "GB-COH-00185947",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "supplier",
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/6",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00302461",
+      "legal_name": null,
+      "name": "TEVA UK LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00302461",
+      "party_id": "GB-COH-00302461",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "supplier",
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/5",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00526209",
+      "legal_name": null,
+      "name": "PFIZER LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-00526209",
+      "party_id": "GB-COH-00526209",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "supplier",
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/4",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "01729064",
+      "legal_name": null,
+      "name": "DR REDDY'S LABORATORIES (UK) LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-01729064",
+      "party_id": "GB-COH-01729064",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "supplier",
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/1",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "04212740",
+      "legal_name": null,
+      "name": "C. S. T. PHARMA LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-04212740",
+      "party_id": "GB-COH-04212740",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/10",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "05040260",
+      "legal_name": null,
+      "name": "GLENMARK PHARMACEUTICALS EUROPE LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-05040260",
+      "party_id": "GB-COH-05040260",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/11",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "05835570",
+      "legal_name": null,
+      "name": "WOCKHARDT UK LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-05835570",
+      "party_id": "GB-COH-05835570",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "supplier",
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/7",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "09189103",
+      "legal_name": null,
+      "name": "VIATRIS UK HEALTHCARE LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-09189103",
+      "party_id": "GB-COH-09189103",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/14",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "10015046",
+      "legal_name": null,
+      "name": "ORIFARM UK LTD",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-10015046",
+      "party_id": "GB-COH-10015046",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/15",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "10185013",
+      "legal_name": null,
+      "name": "MSN LABORATORIES EUROPE LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-10185013",
+      "party_id": "GB-COH-10185013",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/13",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "10997632",
+      "legal_name": null,
+      "name": "AMAROX LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-10997632",
+      "party_id": "GB-COH-10997632",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/9",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "11576098",
+      "legal_name": null,
+      "name": "KENT PHARMA UK LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-11576098",
+      "party_id": "GB-COH-11576098",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/12",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "11826246",
+      "legal_name": null,
+      "name": "PERENNIAL PHARMA LTD",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-COH-11826246",
+      "party_id": "GB-COH-11826246",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "supplier",
+        "tenderer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/3",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-PPON",
+      "identifier_status": "typed",
+      "identifier_value": "PDPT-3135-BWWY",
+      "legal_name": null,
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "organisation_observation_id": "find-tender-transition-products:044175-2025:GB-PPON-PDPT-3135-BWWY",
+      "party_id": "GB-PPON-PDPT-3135-BWWY",
+      "party_id_scope": "release",
+      "release_id": "044175-2025",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/parties/0",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00119006",
+      "legal_name": null,
+      "name": "NOVARTIS PHARMACEUTICALS UK LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-COH-00119006",
+      "party_id": "GB-COH-00119006",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/2",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00185947",
+      "legal_name": null,
+      "name": "THORNTON & ROSS LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-COH-00185947",
+      "party_id": "GB-COH-00185947",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/6",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00302461",
+      "legal_name": null,
+      "name": "TEVA UK LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-COH-00302461",
+      "party_id": "GB-COH-00302461",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/5",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "00526209",
+      "legal_name": null,
+      "name": "PFIZER LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-COH-00526209",
+      "party_id": "GB-COH-00526209",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/4",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "01729064",
+      "legal_name": null,
+      "name": "DR REDDY'S LABORATORIES (UK) LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-COH-01729064",
+      "party_id": "GB-COH-01729064",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/1",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "05835570",
+      "legal_name": null,
+      "name": "WOCKHARDT UK LIMITED",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-COH-05835570",
+      "party_id": "GB-COH-05835570",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/7",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-COH",
+      "identifier_status": "typed",
+      "identifier_value": "11826246",
+      "legal_name": null,
+      "name": "PERENNIAL PHARMA LTD",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-COH-11826246",
+      "party_id": "GB-COH-11826246",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "supplier"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/3",
+      "source_system": "find-a-tender"
+    },
+    {
+      "identifier_scheme": "GB-PPON",
+      "identifier_status": "typed",
+      "identifier_value": "PDPT-3135-BWWY",
+      "legal_name": null,
+      "name": "NHS England",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "organisation_observation_id": "find-tender-transition-products:054095-2025:GB-PPON-PDPT-3135-BWWY",
+      "party_id": "GB-PPON-PDPT-3135-BWWY",
+      "party_id_scope": "release",
+      "release_id": "054095-2025",
+      "roles": [
+        "buyer"
+      ],
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/parties/0",
+      "source_system": "find-a-tender"
+    }
+  ],
+  "registry_sha256": "6499958d33eedfb79beff515fd13bb84f5c3c827359e88c7292a5a1ac6a25656",
+  "relationships": [
+    {
+      "from_id": "632677",
+      "from_type": "award",
+      "notice_key": "contracts-finder:2e8c61c0-faab-4f99-ae69-b00df6bae165:version-1",
+      "relationship_type": "award_supplier",
+      "release_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165-v1",
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_pointer": "/awards/0/supplierName",
+      "to_id": "award-632677-supplier",
+      "to_type": "party"
+    },
+    {
+      "from_id": "656806",
+      "from_type": "award",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "relationship_type": "award_supplier",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/awards/0/supplierName",
+      "to_id": "award-656806-supplier",
+      "to_type": "party"
+    },
+    {
+      "from_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0",
+      "from_type": "notice",
+      "notice_key": "contracts-finder:0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0:version-1",
+      "relationship_type": "replaces_notice",
+      "release_id": "0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0-v1",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_pointer": "/notice/parentId",
+      "to_id": "2e8c61c0-faab-4f99-ae69-b00df6bae165",
+      "to_type": "notice"
+    },
+    {
+      "from_id": "008980-2025-1-1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "008980-2025",
+      "source_capture_id": "find-tender-cass-modification",
+      "source_pointer": "/records/0/releases/0/awards/0/suppliers/0",
+      "to_id": "GB-FTS-140481",
+      "to_type": "party"
+    },
+    {
+      "from_id": "008980-2025-1-1",
+      "from_type": "contract",
+      "notice_key": "find-a-tender:ocds-h6vhtk-04ec25:008980-2025",
+      "relationship_type": "contract_award",
+      "release_id": "008980-2025",
+      "source_capture_id": "find-tender-cass-modification",
+      "source_pointer": "/records/0/releases/0/contracts/0/awardID",
+      "to_id": "008980-2025-1-1",
+      "to_type": "award"
+    },
+    {
+      "from_id": "037776-2023-1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "relationship_type": "award_supplier",
+      "release_id": "037776-2023",
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/4/awards/0/suppliers/0",
+      "to_id": "GB-FTS-101398",
+      "to_type": "party"
+    },
+    {
+      "from_id": "037776-2023-1",
+      "from_type": "contract",
+      "notice_key": "find-a-tender:ocds-h6vhtk-0328ce:037776-2023",
+      "relationship_type": "contract_award",
+      "release_id": "037776-2023",
+      "source_capture_id": "find-tender-fdp",
+      "source_pointer": "/records/0/releases/4/contracts/0/awardID",
+      "to_id": "037776-2023-1",
+      "to_type": "award"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/suppliers/1",
+      "to_id": "GB-COH-00119006",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/suppliers/5",
+      "to_id": "GB-COH-00185947",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/suppliers/4",
+      "to_id": "GB-COH-00302461",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/suppliers/3",
+      "to_id": "GB-COH-00526209",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/suppliers/0",
+      "to_id": "GB-COH-01729064",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/suppliers/6",
+      "to_id": "GB-COH-05835570",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:044175-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "044175-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/2/awards/0/suppliers/2",
+      "to_id": "GB-COH-11826246",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/awards/0/suppliers/1",
+      "to_id": "GB-COH-00119006",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/awards/0/suppliers/5",
+      "to_id": "GB-COH-00185947",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/awards/0/suppliers/4",
+      "to_id": "GB-COH-00302461",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/awards/0/suppliers/3",
+      "to_id": "GB-COH-00526209",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/awards/0/suppliers/0",
+      "to_id": "GB-COH-01729064",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/awards/0/suppliers/6",
+      "to_id": "GB-COH-05835570",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "award",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "award_supplier",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/awards/0/suppliers/2",
+      "to_id": "GB-COH-11826246",
+      "to_type": "party"
+    },
+    {
+      "from_id": "1",
+      "from_type": "contract",
+      "notice_key": "find-a-tender:ocds-h6vhtk-050bb9:054095-2025",
+      "relationship_type": "contract_award",
+      "release_id": "054095-2025",
+      "source_capture_id": "find-tender-transition-products",
+      "source_pointer": "/records/0/releases/3/contracts/0/awardID",
+      "to_id": "1",
+      "to_type": "award"
+    }
+  ],
+  "release_id": "procurement-notice-fixtures-2026-10-17",
+  "rights": {
+    "status": "Open Government Licence v3.0",
+    "url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+  },
+  "schema_version": 1,
+  "source_captures": [
+    {
+      "api_version": 2,
+      "bytes": 7651,
+      "media_type": "application/json",
+      "observed_on": "2026-10-17",
+      "sha256": "b71ad7f946fc5fa30fece451010cdca50c102d5b20adebae3ff1f5673ae9792b",
+      "source_capture_id": "contracts-finder-fdp-original",
+      "source_family": "contracts-finder-published-notice-v2",
+      "source_system": "contracts-finder",
+      "source_url": "https://www.contractsfinder.service.gov.uk/api/rest/2/get_published_notice/json/2e8c61c0-faab-4f99-ae69-b00df6bae165"
+    },
+    {
+      "api_version": 2,
+      "bytes": 8002,
+      "media_type": "application/json",
+      "observed_on": "2026-10-17",
+      "sha256": "80a42060e8b7cda887bd0b19a259e276dec1b28d623f71956eb5a837e3de6c09",
+      "source_capture_id": "contracts-finder-fdp-replacement",
+      "source_family": "contracts-finder-published-notice-v2",
+      "source_system": "contracts-finder",
+      "source_url": "https://www.contractsfinder.service.gov.uk/api/rest/2/get_published_notice/json/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0"
+    },
+    {
+      "bytes": 58846,
+      "media_type": "application/json",
+      "observed_on": "2026-10-17",
+      "package_metadata": {
+        "extensions": [
+          "https://standard.open-contracting.org/profiles/eu/latest/en/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_amendment_rationale_classifications_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_breakdown_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_contract_completion_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_documentation_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_pagination_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_suitability_extension/master/extension.json",
+          "https://raw.githubusercontent.com/portaledcahn/ocds_Links_extension/main/extension.json",
+          "https://raw.githubusercontent.com/cabinetoffice/ocds_uk_extension/main/extension.json"
+        ],
+        "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+        "packages": [
+          "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-04ec25"
+        ],
+        "publicationPolicy": "https://www.gov.uk/government/publications/open-contracting",
+        "publishedDate": "2025-03-12T13:32:28Z",
+        "publisher": {
+          "name": "Cabinet Office",
+          "scheme": "GB-GOR",
+          "uid": "D2",
+          "uri": "https://www.gov.uk/government/organisations/cabinet-office"
+        },
+        "uri": "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-04ec25",
+        "version": "1.1"
+      },
+      "sha256": "4ecdd8611b41f01052174d77d4f44530619a98bf62b8fd64383c0ad9afbec62d",
+      "source_capture_id": "find-tender-cass-modification",
+      "source_family": "find-a-tender-record",
+      "source_system": "find-a-tender",
+      "source_url": "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-04ec25"
+    },
+    {
+      "bytes": 154603,
+      "media_type": "application/json",
+      "observed_on": "2026-10-17",
+      "package_metadata": {
+        "extensions": [
+          "https://standard.open-contracting.org/profiles/eu/latest/en/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_amendment_rationale_classifications_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_breakdown_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_contract_completion_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_documentation_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_pagination_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_suitability_extension/master/extension.json",
+          "https://raw.githubusercontent.com/portaledcahn/ocds_Links_extension/main/extension.json",
+          "https://raw.githubusercontent.com/cabinetoffice/ocds_uk_extension/main/extension.json"
+        ],
+        "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+        "packages": [
+          "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-0328ce"
+        ],
+        "publicationPolicy": "https://www.gov.uk/government/publications/open-contracting",
+        "publishedDate": "2023-12-22T09:21:57Z",
+        "publisher": {
+          "name": "Cabinet Office",
+          "scheme": "GB-GOR",
+          "uid": "D2",
+          "uri": "https://www.gov.uk/government/organisations/cabinet-office"
+        },
+        "uri": "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-0328ce",
+        "version": "1.1"
+      },
+      "sha256": "bc69731cbbe043220709553a680a36209e6ff520e3f1750df02acbbc1c86469a",
+      "source_capture_id": "find-tender-fdp",
+      "source_family": "find-a-tender-record",
+      "source_system": "find-a-tender",
+      "source_url": "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-0328ce"
+    },
+    {
+      "bytes": 417444,
+      "media_type": "application/json",
+      "observed_on": "2026-10-17",
+      "package_metadata": {
+        "extensions": [
+          "https://standard.open-contracting.org/profiles/eu/latest/en/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_amendment_rationale_classifications_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_breakdown_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_contract_completion_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_documentation_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_pagination_extension/master/extension.json",
+          "https://raw.githubusercontent.com/open-contracting-extensions/ocds_suitability_extension/master/extension.json",
+          "https://raw.githubusercontent.com/portaledcahn/ocds_Links_extension/main/extension.json",
+          "https://raw.githubusercontent.com/cabinetoffice/ocds_uk_extension/main/extension.json"
+        ],
+        "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+        "packages": [
+          "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-050bb9"
+        ],
+        "publicationPolicy": "https://www.gov.uk/government/publications/open-contracting",
+        "publishedDate": "2025-09-04T17:47:37+01:00",
+        "publisher": {
+          "name": "Cabinet Office",
+          "scheme": "GB-GOR",
+          "uid": "D2",
+          "uri": "https://www.gov.uk/government/organisations/cabinet-office"
+        },
+        "uri": "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-050bb9",
+        "version": "1.1"
+      },
+      "sha256": "22fbc926e7083863d38f947b93391115401230387c5e0b70dc0bfcb5a87bfe61",
+      "source_capture_id": "find-tender-transition-products",
+      "source_family": "find-a-tender-record",
+      "source_system": "find-a-tender",
+      "source_url": "https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-050bb9"
+    }
+  ],
+  "title": "NHS England procurement-notice enrichment fixtures",
+  "tool": {
+    "name": "nhse_procurement.py",
+    "version": "0.1.0"
+  }
+}

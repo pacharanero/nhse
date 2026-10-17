@@ -12,5 +12,7 @@ Scripts are small entry points for repeated repository processes. They run from 
 - `s/fetch-board-papers-index` - update the board-paper source index.
 - `s/fetch-spending-data` - fetch and verify a registered spending workbook.
 - `s/build-spending-data` - build and validate Parquet and CSV.gz spending artifacts.
+- `s/fetch-procurement-data --source <id>` - fetch and verify one exact registered procurement capture.
+- `s/build-procurement-data` - build and validate the bounded procurement-enrichment fixture release.
 - `s/test` - run the Python unit and determinism tests through the locked `uv` environment.
 - `s/up` - commit and push a coherent update using the repository workflow.

@@ -1,0 +1,47 @@
+{
+  "invariants": {
+    "canonical_payment_release_unchanged": true,
+    "contracts_finder_replacement_is_not_a_version": true,
+    "name_only_matches_are_candidates": true,
+    "notice_values_are_not_payments": true,
+    "organisation_matches_do_not_assert_contract_attribution": true,
+    "tenderer_only_parties_excluded_from_award_candidates": true
+  },
+  "limitations": [
+    "Procurement notices provide commercial context, not evidence that a payment occurred.",
+    "Name-only supplier candidates do not establish legal-entity identity or contract attribution.",
+    "The captured Cass record package exposes the modified total and increment but not the original contract value as a structured source field.",
+    "Find a Tender extension URLs are retained, but their moving schema targets are not yet frozen; this fixture release parses only the explicitly registered fields above.",
+    "The source registry pins exact bytes from mutable live APIs; retain the ignored local captures until durable archive URLs with matching bytes are registered."
+  ],
+  "release_id": "procurement-notice-fixtures-2026-10-17",
+  "schema_version": 1,
+  "statistics": {
+    "documents": 14,
+    "match_candidate_sets": 5,
+    "match_candidates": 5,
+    "match_decision_counts": {
+      "needs_review": 5
+    },
+    "monetary_observation_counts": {
+      "award_value": 2,
+      "contract_value": 3,
+      "forecast_not_committed": 1,
+      "framework_maximum": 2,
+      "modification_increment": 1,
+      "modified_contract_value": 1,
+      "planning_estimate": 1,
+      "tender_ceiling": 1
+    },
+    "monetary_observations": 12,
+    "notices": 12,
+    "organisation_observations": 41,
+    "relationship_counts": {
+      "award_supplier": 18,
+      "contract_award": 3,
+      "replaces_notice": 1
+    },
+    "relationships": 22,
+    "source_captures": 5
+  }
+}

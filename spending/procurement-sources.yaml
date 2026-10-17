@@ -1,0 +1,207 @@
+schema_version: 1
+release:
+  id: procurement-notice-fixtures-2026-10-17
+  title: NHS England procurement-notice enrichment fixtures
+  observed_on: 2026-10-17
+  normalization_schema_version: 1
+  rights_status: Open Government Licence v3.0
+  rights_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+  payment_release:
+    id: 2024-payments-over-25000
+    parquet: spending/data/2024-payments-over-25000/payments.parquet
+    sha256: 74ef385ff615a8b392b1fd8012d4c9603f3d641da42f54b4d0bc19d94577c6e1
+  matching_release_ids:
+    - 037776-2023
+    - 044175-2025
+  limitations:
+    - Procurement notices provide commercial context, not evidence that a payment occurred.
+    - Name-only supplier candidates do not establish legal-entity identity or contract attribution.
+    - The captured Cass record package exposes the modified total and increment but not the original contract value as a structured source field.
+    - Find a Tender extension URLs are retained, but their moving schema targets are not yet frozen; this fixture release parses only the explicitly registered fields above.
+    - The source registry pins exact bytes from mutable live APIs; retain the ignored local captures until durable archive URLs with matching bytes are registered.
+  expected_artifacts:
+    procurement.json: 646ae63a57a069752be21921305d982c27ba56836459eaf11702fbee8a3ffd9a
+    validation.json: 385353104b62f719a87ffc0661fbc3b225790d7851f4ee4a36e15c00953dc447
+sources:
+  - id: find-tender-fdp
+    source_system: find-a-tender
+    source_family: find-a-tender-record
+    source_url: https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-0328ce
+    media_type: application/json
+    filename: find-tender-ocds-h6vhtk-0328ce.json
+    bytes: 154603
+    sha256: bc69731cbbe043220709553a680a36209e6ff520e3f1750df02acbbc1c86469a
+    expected_ocid: ocds-h6vhtk-0328ce
+    expected_release_ids: [008755-2022, 009960-2022, 020196-2022, 000669-2023, 037776-2023]
+    monetary_observations:
+      - id: fdp-planning-estimate
+        release_id: 008755-2022
+        value_type: planning_estimate
+        source_pointer: /tender/value
+        amount_field: amount
+        expected_amount: "240000000.00"
+        currency: GBP
+        vat_basis: excluding
+        scope_type: procurement
+        scope_id: ocds-h6vhtk-0328ce
+      - id: fdp-tender-ceiling
+        release_id: 000669-2023
+        value_type: tender_ceiling
+        source_pointer: /tender/value
+        amount_field: amount
+        expected_amount: "480000000.00"
+        currency: GBP
+        vat_basis: excluding
+        scope_type: procurement
+        scope_id: C104091
+      - id: fdp-contract-value
+        release_id: 037776-2023
+        value_type: contract_value
+        source_pointer: /contracts/0/value
+        amount_field: amount
+        expected_amount: "182242760.00"
+        currency: GBP
+        vat_basis: excluding
+        scope_type: contract
+        scope_id: 037776-2023-1
+        commercial_event_id: fdp-award-contract-2023-11-22
+      - id: fdp-forecast-not-committed
+        release_id: 037776-2023
+        value_type: forecast_not_committed
+        source_pointer: /tender/description
+        source_text_contains: forecasted amount of £330m. This figure is also not a committed amount.
+        expected_amount: "330000000.00"
+        currency: GBP
+        vat_basis: unspecified
+        scope_type: procurement
+        scope_id: C104091
+  - id: find-tender-transition-products
+    source_system: find-a-tender
+    source_family: find-a-tender-record
+    source_url: https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-050bb9
+    media_type: application/json
+    filename: find-tender-ocds-h6vhtk-050bb9.json
+    bytes: 417444
+    sha256: 22fbc926e7083863d38f947b93391115401230387c5e0b70dc0bfcb5a87bfe61
+    expected_ocid: ocds-h6vhtk-050bb9
+    expected_release_ids: [018549-2025, 029971-2025, 044175-2025, 054095-2025]
+    monetary_observations:
+      - id: transition-framework-maximum-net
+        release_id: 044175-2025
+        value_type: framework_maximum
+        source_pointer: /awards/0/value
+        amount_field: amount
+        expected_amount: "52385000.00"
+        currency: GBP
+        vat_basis: excluding
+        scope_type: award
+        scope_id: "1"
+        commercial_event_id: transition-products-framework-award-2025
+      - id: transition-framework-maximum-gross
+        release_id: 044175-2025
+        value_type: framework_maximum
+        source_pointer: /awards/0/value
+        amount_field: amountGross
+        expected_amount: "62862000.00"
+        currency: GBP
+        vat_basis: including
+        scope_type: award
+        scope_id: "1"
+        commercial_event_id: transition-products-framework-award-2025
+      - id: transition-contract-value-net
+        release_id: 054095-2025
+        value_type: contract_value
+        source_pointer: /contracts/0/value
+        amount_field: amount
+        expected_amount: "52385000.00"
+        currency: GBP
+        vat_basis: excluding
+        scope_type: contract
+        scope_id: "1"
+        commercial_event_id: transition-products-framework-award-2025
+      - id: transition-contract-value-gross
+        release_id: 054095-2025
+        value_type: contract_value
+        source_pointer: /contracts/0/value
+        amount_field: amountGross
+        expected_amount: "62862000.00"
+        currency: GBP
+        vat_basis: including
+        scope_type: contract
+        scope_id: "1"
+        commercial_event_id: transition-products-framework-award-2025
+  - id: find-tender-cass-modification
+    source_system: find-a-tender
+    source_family: find-a-tender-record
+    source_url: https://www.find-tender.service.gov.uk/api/1.0/ocdsRecordPackages/ocds-h6vhtk-04ec25
+    media_type: application/json
+    filename: find-tender-ocds-h6vhtk-04ec25.json
+    bytes: 58846
+    sha256: 4ecdd8611b41f01052174d77d4f44530619a98bf62b8fd64383c0ad9afbec62d
+    expected_ocid: ocds-h6vhtk-04ec25
+    expected_release_ids: [008980-2025]
+    monetary_observations:
+      - id: cass-modification-increment
+        release_id: 008980-2025
+        value_type: modification_increment
+        source_pointer: /contracts/0/amendments/0/description
+        source_text_contains: Increase value of contract by £10,485.00
+        expected_amount: "10485.00"
+        currency: GBP
+        vat_basis: excluding
+        scope_type: contract
+        scope_id: 008980-2025-1-1
+      - id: cass-modified-contract-value
+        release_id: 008980-2025
+        value_type: modified_contract_value
+        source_pointer: /contracts/0/value
+        amount_field: amount
+        expected_amount: "33475.00"
+        currency: GBP
+        vat_basis: excluding
+        scope_type: contract
+        scope_id: 008980-2025-1-1
+  - id: contracts-finder-fdp-original
+    source_system: contracts-finder
+    source_family: contracts-finder-published-notice-v2
+    source_url: https://www.contractsfinder.service.gov.uk/api/rest/2/get_published_notice/json/2e8c61c0-faab-4f99-ae69-b00df6bae165
+    human_url: https://www.contractsfinder.service.gov.uk/Notice/2e8c61c0-faab-4f99-ae69-b00df6bae165
+    media_type: application/json
+    filename: contracts-finder-2e8c61c0-faab-4f99-ae69-b00df6bae165.json
+    bytes: 7651
+    sha256: b71ad7f946fc5fa30fece451010cdca50c102d5b20adebae3ff1f5673ae9792b
+    expected_notice_id: 2e8c61c0-faab-4f99-ae69-b00df6bae165
+    expected_parent_id: null
+    expected_version: 1
+    monetary_observations:
+      - id: contracts-finder-fdp-original-award
+        value_type: award_value
+        source_pointer: /awards/0/value
+        expected_amount: "182242760.00"
+        currency: GBP
+        vat_basis: unspecified
+        scope_type: award
+        scope_id: "632677"
+        commercial_event_id: fdp-award-contract-2023-11-22
+  - id: contracts-finder-fdp-replacement
+    source_system: contracts-finder
+    source_family: contracts-finder-published-notice-v2
+    source_url: https://www.contractsfinder.service.gov.uk/api/rest/2/get_published_notice/json/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
+    human_url: https://www.contractsfinder.service.gov.uk/Notice/0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
+    media_type: application/json
+    filename: contracts-finder-0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0.json
+    bytes: 8002
+    sha256: 80a42060e8b7cda887bd0b19a259e276dec1b28d623f71956eb5a837e3de6c09
+    expected_notice_id: 0f8a65b5-23a2-4294-abb1-a7fd8efb3ad0
+    expected_parent_id: 2e8c61c0-faab-4f99-ae69-b00df6bae165
+    expected_version: 1
+    monetary_observations:
+      - id: contracts-finder-fdp-replacement-award
+        value_type: award_value
+        source_pointer: /awards/0/value
+        expected_amount: "182242760.00"
+        currency: GBP
+        vat_basis: unspecified
+        scope_type: award
+        scope_id: "656806"
+        commercial_event_id: fdp-award-contract-2023-11-22

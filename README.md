@@ -14,7 +14,7 @@ Public. Live at <https://pacharanero.github.io/nhse/>, with an FDP timeline of 9
 - `fdp/entries/` - FDP timeline entries, one YAML file each. `fdp/index.json` is generated from these by `s/build-index` - never hand-edited.
 - `fdp/bartlett-appearances.yaml` - lightweight cumulative-appearance tracker (date, title, url) rendered as small numbered dots on the timeline, not full entries. `fdp/bartlett-appearances.json` is generated from this by `s/build-bartlett-index`. See "Appearance trackers" in `CONTRIBUTING.md`.
 - `people/` - biographical role timelines (appointment/departure dates) for individuals who recur across topics.
-- `spending/` - typed top-level financial figures, the detailed-source registry, reproducible build instructions and a separate five-entry editorial timeline.
+- `spending/` - typed top-level financial figures, detailed payment and procurement source registries, reproducible build instructions and a separate five-entry editorial timeline.
 - `nhs-board-transcripts/` - YouTube caption tracks for NHS England Board meetings, 2013 onwards, plus `manifest.tsv` mapping video IDs to titles and URLs.
 - `nhs-england-blogs/` - index of every NHS England blog post found, with archive links (`manifest.tsv`, from `s/fetch-blog-index`). 1,825 posts indexed so far (2017 onwards - nothing earlier is showing up in either archive yet), each with a Wayback Machine link and a UK Government Web Archive link. Pre-2025 posts were moved to UKGWA; see the script's header comment for why its own search is effectively broken and how this works around it.
 - `index.html` - landing page linking to each utility. `fdp/index.html` is the FDP timeline viewer and `spending/index.html` explains the spending figures and release status. All pages share `css/app.css` and the light/dark theme toggle.
@@ -39,13 +39,14 @@ s/build-bartlett-index       # regenerate fdp/bartlett-appearances.json after ed
 uv sync --locked             # install the exact spending-pipeline dependencies
 s/fetch-spending-data --source 2024-payments-over-25000  # download and verify all twelve current 2024 workbooks
 s/build-spending-data --source 2024-payments-over-25000  # build and validate the annual release and July correction diff
+s/build-procurement-data      # build the bounded notice-enrichment fixtures from verified local captures
 s/test                       # run parser, determinism, query, and finance-registry tests
 python3 -m http.server 8000  # preview the site at localhost:8000
 ```
 
 `s/fetch-transcripts` needs either `yt-dlp` on `PATH` or `uv` installed (it will run yt-dlp via `uvx`). It is idempotent - re-run it whenever a new board meeting is published and it fetches only what is missing.
 
-The timeline index builders use the system `python3` and PyYAML. The spending pipeline uses the fully pinned `uv.lock` environment: `openpyxl` parses workbook structure, PyArrow writes typed Parquet, DuckDB independently validates analytical queries and PyYAML reads committed registries. Raw workbooks remain local; normalized releases are committed with provenance, validation and checksums.
+The timeline index builders use the system `python3` and PyYAML. The spending pipeline uses the fully pinned `uv.lock` environment: `openpyxl` parses workbook structure, PyArrow writes typed Parquet, DuckDB independently validates analytical queries and PyYAML reads committed registries. Raw workbooks and procurement captures remain local; normalized releases are committed with provenance, validation and checksums.
 
 Styling (`css/app.css`) is generated from `css/tailwind.css` via `npm install && npm run build:css` - only needed if you're changing markup or styles, not for viewing the site. See "Styling" in `CONTRIBUTING.md`.
 
