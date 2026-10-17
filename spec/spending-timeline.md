@@ -29,7 +29,9 @@ No fixed kind-tag taxonomy yet (unlike FDP's seven kind tags) - too few entries 
 
 Started 2026-10-17, seeded with 5 entries while researching an EDH episode on NHS technology spending (`episodes/in-planning/nhse-profligate-tech-spending/` in the parent EDH workspace). Spans 2011 (NAO's NPfIT care-records update) to 2026 (the Healthcare AI Solutions framework). Built the same way as `fdp/`: `s/build-index spending` regenerates `spending/index.json` from `spending/entries/*.yaml`.
 
-No viewer page yet - `fdp/index.html` is the only topic viewer so far. A `spending/` viewer, and a landing-page card for it, are open work, not blocking: the YAML entries and index are useful as research material on their own before a viewer exists.
+The bulk spending-data work is specified separately in `spec/spending-data.md`. `spending/entries/` remains a selected editorial timeline; transaction rows, audited controls and derived analytical releases do not use the timeline-entry schema.
+
+`spending/index.html` now provides a source-linked landing page for headline financial figures and the detailed-data pipeline. A filterable renderer for the five editorial timeline entries remains open work; the YAML entries and generated index are already useful as research material without one.
 
 ## Open questions
 

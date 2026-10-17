@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spending data — nhse</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/app.css">
+<script>
+  (function () {
+    var t = localStorage.getItem("nhse-theme");
+    if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "business" : "corporate";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body class="bg-base-100">
+
+<div class="navbar bg-base-100 border-b border-base-200 max-w-5xl mx-auto px-4">
+  <div class="flex-1 text-sm">
+    <a href="../" class="link link-hover">NHSE database</a>
+    <span class="opacity-60">/ Spending data</span>
+  </div>
+  <button type="button" class="btn btn-sm btn-ghost" data-theme-toggle aria-pressed="false">🌙 Dark</button>
+</div>
+
+<main class="max-w-5xl mx-auto px-4 py-8">
+  <header class="max-w-3xl">
+    <p class="text-xs uppercase tracking-wider font-semibold text-primary mb-2">2025/26 accounting group</p>
+    <h1 class="text-xl font-bold mb-3">What NHS England was authorised to spend, what it reported, and the transactions beneath the headlines</h1>
+    <p class="text-base-content/70">The figures below use the NHS England accounting-group boundary: NHS England, 42 integrated care boards and Supply Chain Coordination Ltd. NHS trusts and foundation trusts are excluded. The first detailed payments release is published here as source-traceable Parquet and deterministic CSV.gz.</p>
+  </header>
+
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8" aria-label="Headline revenue figures">
+    <div class="border-l-4 border-l-primary bg-base-200 p-5 rounded-box">
+      <p class="text-xs uppercase tracking-wide text-base-content/60">Revenue limit</p>
+      <p class="text-xl font-bold mt-1">£203.813bn</p>
+      <p class="text-sm text-base-content/70 mt-2">Section 223E total revenue resource limit</p>
+    </div>
+    <div class="border-l-4 border-l-secondary bg-base-200 p-5 rounded-box">
+      <p class="text-xs uppercase tracking-wide text-base-content/60">Audited outturn</p>
+      <p class="text-xl font-bold mt-1">£202.088bn</p>
+      <p class="text-sm text-base-content/70 mt-2">Total net resource expenditure</p>
+    </div>
+    <div class="border-l-4 border-l-accent bg-base-200 p-5 rounded-box">
+      <p class="text-xs uppercase tracking-wide text-base-content/60">Underspend</p>
+      <p class="text-xl font-bold mt-1">£1.725bn</p>
+      <p class="text-sm text-base-content/70 mt-2">Control variance, not unrestricted cash</p>
+    </div>
+  </section>
+  <p class="text-xs text-base-content/60 mt-3 max-w-3xl">Sources: <a class="link" href="https://www.gov.uk/government/publications/2025-to-2026-revised-financial-directions-to-nhs-england">2025/26 revised financial directions, Annex A2</a> (<a class="link" href="https://web.archive.org/web/20260325183240/https://www.gov.uk/government/publications/2025-to-2026-revised-financial-directions-to-nhs-england">archive</a>) and <a class="link" href="https://www.gov.uk/government/publications/nhs-england-annual-report-and-accounts-2025-to-2026">NHS England Annual Report and Accounts 2025/26, Note 21</a> (<a class="link" href="https://web.archive.org/web/20260903103558/https://www.gov.uk/government/publications/nhs-england-annual-report-and-accounts-2025-to-2026">archive</a>).</p>
+
+  <section class="mt-10 max-w-3xl">
+    <h2 class="text-lg font-bold">Detailed payments</h2>
+    <p class="text-sm text-base-content/70 mt-2">The first adapter covers the <a class="link" href="https://www.england.nhs.uk/wp-content/uploads/2026/07/september-2025-over-25k-spend.xlsx">September 2025 payments-over-£25,000 workbook</a> (<a class="link" href="https://web.archive.org/web/20261017131638/https://www.england.nhs.uk/wp-content/uploads/2026/07/september-2025-over-25k-spend.xlsx">archive</a>): 2,515 published rows totalling £1.083bn across NHS England and four commissioning support units. Every normalized row retains the source workbook digest, sheet and physical row. Negative values and missing VAT identifiers are preserved rather than guessed away.</p>
+    <div class="flex flex-wrap gap-3 mt-4">
+      <a class="btn btn-sm btn-primary" href="data/2025-09-payments-over-25000/payments.parquet">Download Parquet</a>
+      <a class="btn btn-sm btn-outline" href="data/2025-09-payments-over-25000/payments.csv.gz">Download CSV.gz</a>
+      <a class="btn btn-sm btn-outline" href="data/2025-09-payments-over-25000/datapackage.json">View Data Package</a>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-3">
+      <a class="btn btn-sm btn-primary" href="../spec/spending-data.md">Read the data specification</a>
+      <a class="btn btn-sm btn-outline" href="../spec/spending-timeline.md">Read the editorial timeline scope</a>
+      <a class="btn btn-sm btn-outline" href="index.json">Inspect timeline JSON</a>
+    </div>
+  </section>
+
+  <aside class="mt-10 border border-base-300 rounded-box p-5 max-w-3xl">
+    <h2 class="font-semibold">Do not compare unlike totals</h2>
+    <p class="text-sm text-base-content/70 mt-2">The £207.963bn provider-inclusive NHS revenue limit adds trusts and foundation trusts. DHSC's £210.676bn Parliamentary resource DEL covers a still wider departmental boundary. Both are authoritative, but neither is the comparable budget for NHS England's £202.088bn audited group outturn.</p>
+  </aside>
+</main>
+
+<footer class="max-w-5xl mx-auto px-4 py-4 border-t border-base-200 text-sm text-base-content/60">
+  <p><a class="link" href="https://github.com/pacharanero/nhse">Source on GitHub</a> · <a class="link" href="../CONTRIBUTING.md">Contributor guide</a> · CC-BY-SA-4.0 prose, AGPL-3.0-or-later code, OGL v3 normalized spending data.</p>
+</footer>
+
+<script src="../js/theme-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "artifacts": {
+    "payments.csv.gz": {
+      "bytes": 169371,
+      "sha256": "e06c528e13823a803be6cc7ae9cf0af4f1e1abc281d755ae596c6fa43c66dbd1"
+    },
+    "payments.parquet": {
+      "bytes": 173529,
+      "sha256": "e701c1334ea4dac4270e865e8f5de7e38fed2bfeca5d799758c9deadcc787838"
+    }
+  },
+  "dataset": "nhs-england-payments-over-25000",
+  "dataset_version": "2025-09.1",
+  "normalized_content_sha256": "ac918d2abd973c12fcc1a6cb8e74dc4b1dd997d89b4b2c1bda097f88746a8fd5",
+  "schema_version": 1,
+  "source_sha256": "c97a8042fe9aa872e04cfad3ee0891d84dd68bbc1850545727ebd133e6c2851b",
+  "statistics": {
+    "entity_counts": {
+      "Arden & Gem CSU": 3,
+      "NHS England": 2468,
+      "NHS Midlands And Lancashire CSU": 10,
+      "NHS North Of England CSU": 10,
+      "NHS South, Central & West CSU": 24
+    },
+    "entity_totals_gbp": {
+      "Arden & Gem CSU": "119471.08",
+      "NHS England": "1080171482.46",
+      "NHS Midlands And Lancashire CSU": "525955.12",
+      "NHS North Of England CSU": "630842.45",
+      "NHS South, Central & West CSU": "1135919.01"
+    },
+    "maximum_date": "2025-09-30",
+    "minimum_date": "2025-09-30",
+    "missing_vat_rows": 584,
+    "negative_rows": 239,
+    "nhs_england_rows": 2468,
+    "nhs_england_total_gbp": "1080171482.46",
+    "rows": 2515,
+    "total_gbp": "1082583670.12"
+  },
+  "status": "passed"
+}

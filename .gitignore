@@ -8,6 +8,11 @@ test-results/
 
 # Retained local-only notes, captures, and reports
 /.private/
+/reports/
+/research_notes/
+
+# Downloaded and generated spending data
+/spending/sources/
 
 # Transient fetch state
 nhs-board-transcripts/*.batch
@@ -15,6 +20,7 @@ nhs-board-transcripts/*.part
 nhs-board-transcripts/*.ytdl
 
 # Python bytecode cache
+.venv/
 __pycache__/
 *.pyc
 

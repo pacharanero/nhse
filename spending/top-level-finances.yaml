@@ -1,0 +1,75 @@
+schema_version: 1
+currency: GBP
+financial_years:
+  - financial_year: 2025-26
+    figures:
+      - id: dhsc-parliamentary-total-del-resource
+        boundary: Department of Health and Social Care group
+        measure: Parliamentary total departmental expenditure limit, resource
+        amount_gbp: 210675916000
+        use: Whole-department Parliamentary authority, not a standalone NHS England budget
+        source_id: supplementary-estimates-2025-26
+        source_reference: pages 53-54
+      - id: provider-inclusive-nhs-revenue-limit
+        boundary: NHS England, ICBs, NHS trusts and foundation trusts after eliminations
+        measure: Section 223D total revenue resource limit
+        amount_gbp: 207963000000
+        use: Commissioner-plus-provider NHS affordability, not NHS England group outturn
+        source_id: revised-financial-directions-2025-26
+        source_reference: Annex A1, pages 2-3
+      - id: nhs-england-group-revenue-limit
+        boundary: NHS England, 42 ICBs and Supply Chain Coordination Ltd
+        measure: Section 223E total revenue resource limit
+        amount_gbp: 203813000000
+        use: Headline NHS England budget and control
+        source_id: revised-financial-directions-2025-26
+        source_reference: Annex A2, pages 4-8
+      - id: nhs-england-group-revenue-outturn
+        boundary: NHS England, 42 ICBs and Supply Chain Coordination Ltd
+        measure: Audited total net expenditure, resource
+        amount_gbp: 202087763000
+        use: Headline NHS England actual spending and outturn against the section 223E limit
+        source_id: nhs-england-accounts-2025-26
+        source_reference: Note 21, pages 169-170
+      - id: nhs-england-group-revenue-underspend
+        boundary: NHS England, 42 ICBs and Supply Chain Coordination Ltd
+        measure: Revenue resource limit less audited resource outturn
+        amount_gbp: 1725237000
+        use: Accrual-control variance across ring-fenced, AME and technical categories, not unrestricted cash
+        derived_from:
+          - nhs-england-group-revenue-limit
+          - nhs-england-group-revenue-outturn
+      - id: nhs-england-group-capital-limit
+        boundary: NHS England, 42 ICBs and Supply Chain Coordination Ltd
+        measure: Section 223E total capital resource limit
+        amount_gbp: 781000000
+        use: Headline NHS England capital control
+        source_id: revised-financial-directions-2025-26
+        source_reference: Annex A2, pages 4-8
+      - id: nhs-england-group-capital-outturn
+        boundary: NHS England, 42 ICBs and Supply Chain Coordination Ltd
+        measure: Audited total capital resource use
+        amount_gbp: 686672000
+        use: Headline NHS England capital outturn against the section 223E limit
+        source_id: nhs-england-accounts-2025-26
+        source_reference: Note 21, pages 169-170
+      - id: nhs-england-group-gross-operating-expenditure
+        boundary: NHS England, 42 ICBs and Supply Chain Coordination Ltd
+        measure: Gross operating expenditure before operating income
+        amount_gbp: 208844058000
+        use: Cost analysis only; not the statutory control outturn
+        source_id: nhs-england-accounts-2025-26
+        source_reference: page 123
+sources:
+  - id: revised-financial-directions-2025-26
+    title: 2025 to 2026 revised financial directions to NHS England
+    url: https://www.gov.uk/government/publications/2025-to-2026-revised-financial-directions-to-nhs-england
+    archive_url: https://web.archive.org/web/20260325183240/https://www.gov.uk/government/publications/2025-to-2026-revised-financial-directions-to-nhs-england
+  - id: nhs-england-accounts-2025-26
+    title: NHS England annual report and accounts 2025 to 2026
+    url: https://www.gov.uk/government/publications/nhs-england-annual-report-and-accounts-2025-to-2026
+    archive_url: https://web.archive.org/web/20260903103558/https://www.gov.uk/government/publications/nhs-england-annual-report-and-accounts-2025-to-2026
+  - id: supplementary-estimates-2025-26
+    title: Supplementary Estimates 2025-26
+    url: https://www.gov.uk/government/publications/supplementary-estimates-2025-26
+    archive_url: https://web.archive.org/web/20260210140422/https://www.gov.uk/government/publications/supplementary-estimates-2025-26

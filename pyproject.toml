@@ -1,0 +1,14 @@
+[project]
+name = "nhse-research-data"
+version = "0.1.0"
+description = "Reproducible data tooling for the nhse research corpus"
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb==1.5.6",
+  "openpyxl==3.1.5",
+  "pyarrow==26.0.0",
+  "PyYAML==6.0.3",
+]
+
+[tool.uv]
+package = false

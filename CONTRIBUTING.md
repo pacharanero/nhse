@@ -11,8 +11,7 @@ Everything from here down is for contributing directly via a pull request.
 This repo covers more than the FDP timeline over time. Each research topic
 gets its own top-level folder:
 
-- `fdp/` - the Federated Data Platform timeline (`spec/fdp-timeline.md`). The
-  only topic so far. Its viewer is `fdp/index.html`, served at `/fdp/`;
+- `fdp/` - the Federated Data Platform timeline (`spec/fdp-timeline.md`). Its viewer is `fdp/index.html`, served at `/fdp/`;
   it shares `css/app.css` and `js/theme-toggle.js` with the root landing
   page rather than keeping its own copies.
 - `index.html` (repo root) - the landing page linking out to each topic's
@@ -32,6 +31,7 @@ gets its own top-level folder:
   Government Web Archive (UKGWA) link for each. This is raw source
   material, like the transcripts - extracting dated facts from a specific
   post into a topic's `entries/` is a separate step, done by hand.
+- `spending/` - the editorial spending timeline plus typed top-level financial figures and the detailed-payments source registry. Bulk transaction artifacts use `spec/spending-data.md`, not the timeline-entry schema; normalized releases with approved rights are committed under `spending/data/`, while raw workbooks remain local.
 - `fdp/sources/` - raw primary documents retained alongside the entries
   that cite them, for cases where the source isn't a stable URL (an FOI
   response attachment, for example) or where archive.org has proved
@@ -135,6 +135,12 @@ s/build-index
 
 This regenerates `fdp/index.json` from everything in `fdp/entries/` and checks required fields, unique ids, ISO dates, and that `archive_url` is present. Commit the updated `index.json` alongside your entry.
 
+## Adding detailed spending data
+
+Read `spec/spending-data.md` and `spending/README.md` before adding a source. Register its immutable URL, archive URL, exact byte length, SHA-256, workbook schema, rights status and independently checked reconciliation totals in `spending/data-sources.yaml`. Do not make an existing adapter permissive to accommodate schema drift; add an explicit source-specific adapter or schema version. Downloaded workbooks are ignored by Git; commit an approved normalized release only with its complete generated metadata and checksums.
+
+Run `s/fetch-spending-data`, `s/build-spending-data`, and `s/test`. A release is not ready until its source digest, expected totals, DuckDB query results, CSV/Parquet equivalence and two clean-build byte identities all pass.
+
 ## Appearance trackers
 
 Not everything worth charting is worth a full entry. `fdp/bartlett-appearances.yaml` is a lightweight, hand-maintained list for tracking the pace of one person's or organisation's public output (Tom Bartlett's blog posts, Computer Weekly columns, and media quotes, so far) as small numbered dots on the timeline, rather than as full cards with quotes and archive copies. Each item needs `date`, `title`, `url`, `outlet` (shown as the dot's label prefix, e.g. "Computer Weekly" or "Bartlett Data Blog"), and `self` - a boolean distinguishing a channel the subject fully controls (their own blog, their own LinkedIn - `self: true`) from third-party press/media coverage (a trade press column, a newspaper quote - `self: false`). The distinction matters for exactly the question this tracker exists to help answer: how much of someone's apparent prominence is self-published versus access they'd need some kind of help to get. Dots are colour-coded accordingly, with a legend under the controls bar.
@@ -218,7 +224,7 @@ A card's `related` list (see the entry schema above) is rendered as clickable li
 
 - No hard-wrapped prose; hyphens, not em dashes.
 - Filenames: slug-case-with-hyphens.
-- `bash -n s/fetch-transcripts s/search s/up` passes before committing anything under those Bash scripts.
+- `bash -n s/fetch-transcripts s/search s/up s/fetch-spending-data s/build-spending-data s/test` passes before committing changes to Bash scripts, and `s/test` passes for spending-data changes.
 - No paywalled article bodies committed, no credentials, ever.
 
 ## What not to do

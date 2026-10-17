@@ -1,0 +1,45 @@
+schema_version: 1
+sources:
+  - id: 2025-09-payments-over-25000
+    title: NHS England payments over £25,000, September 2025
+    period: 2025-09
+    publication_date: 2026-07-01
+    publication_date_precision: month
+    publisher: NHS England
+    landing_page_url: https://www.england.nhs.uk/contact-us/pub-scheme/spend/
+    landing_page_archive_url: https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/
+    collection_url: https://www.england.nhs.uk/publication/payments-over-25k-reports-2025/
+    collection_archive_url: https://web.archive.org/web/20261017131553/https://www.england.nhs.uk/publication/payments-over-25k-reports-2025/
+    source_url: https://www.england.nhs.uk/wp-content/uploads/2026/07/september-2025-over-25k-spend.xlsx
+    archive_url: https://web.archive.org/web/20261017131638/https://www.england.nhs.uk/wp-content/uploads/2026/07/september-2025-over-25k-spend.xlsx
+    filename: september-2025-over-25k-spend.xlsx
+    sha256: c97a8042fe9aa872e04cfad3ee0891d84dd68bbc1850545727ebd133e6c2851b
+    bytes: 156259
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: Open Government Licence v3 and project-owner fair-use/fair-dealing determination
+    rights_decision_date: 2026-10-17
+    rights_note: The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.
+    rights_evidence_url: https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k
+    rights_evidence_archive_url: https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    workbook:
+      sheet: A3131 report final
+      amount_scale: 2
+      columns:
+        - Department family
+        - Entity
+        - Date
+        - Expense Type for Report
+        - Expense Area for Report
+        - Supplier
+        - Transaction number
+        - AP Amount (£)
+        - VAT registration number
+    expected:
+      rows: 2515
+      total_gbp: "1082583670.12"
+      nhs_england_rows: 2468
+      nhs_england_total_gbp: "1080171482.46"
+      negative_rows: 239
+      missing_vat_rows: 584
