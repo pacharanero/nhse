@@ -277,7 +277,7 @@ class SpendingDataTest(unittest.TestCase):
         self.assertNotEqual(nhse_spending._semantic_row(record), nhse_spending._semantic_row(changed))
 
     def test_committed_releases_validate(self) -> None:
-        for source_id in ("2024-payments-over-25000", "2025-09-payments-over-25000"):
+        for source_id in ("2023-payments-over-25000", "2024-payments-over-25000", "2025-09-payments-over-25000"):
             source = nhse_spending.load_source(source_id)
             nhse_spending.validate_release(nhse_spending.release_path(source), source)
 
