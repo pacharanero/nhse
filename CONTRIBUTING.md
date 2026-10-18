@@ -141,6 +141,16 @@ Read `spec/spending-data.md` and `spending/README.md` before adding a source. Re
 
 Run `s/fetch-spending-data`, `s/build-spending-data`, and `s/test`. A release is not ready until its source digest, expected totals, DuckDB query results, CSV/Parquet equivalence and two clean-build byte identities all pass.
 
+## Adding or extending a person entry
+
+`people/` files (one per person, e.g. `ming-tang.yaml`) are informal so far - name, `notes`, a `roles` list, and an optional `departure_announcement`, each role carrying `title`, `start_date`/`end_date` with a `_precision`, a `note`, and a sourced `source_url`/`source_title`/`archive_url` triple. Extend that shape rather than starting a parallel one:
+
+- `organisation` on a role - the employer, made explicit rather than left implicit in `title`. Needed for any non-NHS role at all, since `title` alone doesn't say who someone worked for.
+- `organisation_type` on a role - `nhs`, `supplier`, or `other`. This is what lets a future script ask "does this person have an adjoining `supplier`-typed role either side of an NHS appointment" without re-deriving it from free text each time.
+- `supplier_match_name` on a role, only when `organisation_type: supplier` - the organisation's name exactly as it should be compared against payments/procurement supplier text, so a join uses the same normalization as `nhse_procurement.normalize_supplier_name()` (case-folded, legal-suffix-aware) rather than a coincidental string match.
+
+What this is deliberately *not*: a `revolving_door` flag or similar asserted conclusion on the person entry itself. `spec/roadmap.md`'s vendor-capture notes are explicit that the pattern, not the fact, is the finding - a supplier-typed role bracketing an NHS appointment is a review candidate, generated and evidence-tiered the same way D7's `match_candidates` are (`evidence_tier`, `decision: needs_review`, a generation-rule version, never auto-accepted), published as its own derivative file when that tooling exists. Don't bake the inference into the person's own record.
+
 ## Appearance trackers
 
 Not everything worth charting is worth a full entry. `fdp/bartlett-appearances.yaml` is a lightweight, hand-maintained list for tracking the pace of one person's or organisation's public output (Tom Bartlett's blog posts, Computer Weekly columns, and media quotes, so far) as small numbered dots on the timeline, rather than as full cards with quotes and archive copies. Each item needs `date`, `title`, `url`, `outlet` (shown as the dot's label prefix, e.g. "Computer Weekly" or "Bartlett Data Blog"), and `self` - a boolean distinguishing a channel the subject fully controls (their own blog, their own LinkedIn - `self: true`) from third-party press/media coverage (a trade press column, a newspaper quote - `self: false`). The distinction matters for exactly the question this tracker exists to help answer: how much of someone's apparent prominence is self-published versus access they'd need some kind of help to get. Dots are colour-coded accordingly, with a legend under the controls bar.
