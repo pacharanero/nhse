@@ -320,7 +320,9 @@ def verify_registered_sources(source: dict[str, Any]) -> list[Path]:
     return paths
 
 
-def _required_text(value: Any, field: str, row_number: int) -> str:
+def _required_text(value: Any, field: str, row_number: int, permit_numeric: bool = False) -> str:
+    if permit_numeric and isinstance(value, (int, float)) and not isinstance(value, bool):
+        value = str(value)
     if not isinstance(value, str):
         raise SpendingDataError(f"row {row_number}: {field} must be non-empty text")
     text = value.strip()
@@ -329,7 +331,9 @@ def _required_text(value: Any, field: str, row_number: int) -> str:
     return text
 
 
-def _identifier(value: Any, field: str, row_number: int, nullable: bool = False) -> str | None:
+def _identifier(
+    value: Any, field: str, row_number: int, nullable: bool = False, permit_non_integral: bool = False
+) -> str | None:
     if value is None or (isinstance(value, str) and not value.strip()):
         if nullable:
             return None
@@ -338,6 +342,8 @@ def _identifier(value: Any, field: str, row_number: int, nullable: bool = False)
         raise SpendingDataError(f"row {row_number}: {field} cannot be boolean")
     if isinstance(value, float):
         if not value.is_integer():
+            if permit_non_integral:
+                return str(value)
             raise SpendingDataError(f"row {row_number}: {field} has a non-integral numeric identifier")
         return str(int(value))
     if isinstance(value, int):
@@ -378,8 +384,17 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
         sheet = workbook[sheet_name]
         expected_headers = list(source["workbook"]["columns"])
         amount_scale = int(source["workbook"]["amount_scale"])
-        if sheet.max_column != len(expected_headers):
-            raise SpendingDataError(f"sheet has {sheet.max_column} columns; expected {len(expected_headers)}")
+        ignore_trailing_columns = bool(source["workbook"].get("ignore_trailing_columns", False))
+        excluded_rows = {int(value) for value in source["workbook"].get("excluded_rows", [])}
+        if excluded_rows and not source["workbook"].get("excluded_rows_reason"):
+            raise SpendingDataError("excluded_rows requires an excluded_rows_reason")
+        if sheet.max_column < len(expected_headers):
+            raise SpendingDataError(f"sheet has {sheet.max_column} columns; expected at least {len(expected_headers)}")
+        if sheet.max_column > len(expected_headers) and not ignore_trailing_columns:
+            raise SpendingDataError(
+                f"sheet has {sheet.max_column} columns; expected {len(expected_headers)}. "
+                "Set workbook.ignore_trailing_columns only after inspecting what the extra columns contain."
+            )
 
         rows = sheet.iter_rows(min_row=1, max_col=len(expected_headers))
         header_cells = next(rows, None)
@@ -390,7 +405,11 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
             raise SpendingDataError(f"unexpected workbook headers: {actual_headers!r}")
 
         records: list[dict[str, Any]] = []
+        excluded_count = 0
         for row_number, cells in enumerate(rows, start=2):
+            if row_number in excluded_rows:
+                excluded_count += 1
+                continue
             values = [cell.value for cell in cells]
             if all(value is None or (isinstance(value, str) and not value.strip()) for value in values):
                 continue
@@ -401,23 +420,52 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
             if error_columns:
                 raise SpendingDataError(f"row {row_number}: Excel errors are not allowed in {', '.join(error_columns)}")
 
-            department_family = _required_text(values[0], "Department family", row_number)
-            entity = _required_text(values[1], "Entity", row_number)
+            permit_numeric_text_fields = bool(source["workbook"].get("permit_numeric_text_fields", False))
+            department_family = _required_text(values[0], "Department family", row_number, permit_numeric_text_fields)
+            entity = _required_text(values[1], "Entity", row_number, permit_numeric_text_fields)
             transaction_date = _date(values[2], row_number)
-            expense_type = _required_text(values[3], "Expense Type for Report", row_number)
-            expense_area = _required_text(values[4], "Expense Area for Report", row_number)
-            supplier = _required_text(values[5], "Supplier", row_number)
-            transaction_number = _identifier(values[6], "Transaction number", row_number)
-            amount, source_amount_raw = _money(values[7], row_number, amount_scale)
-            vat_number = _identifier(values[8], "VAT registration number", row_number, nullable=True)
+            expense_type = _required_text(values[3], "Expense Type for Report", row_number, permit_numeric_text_fields)
+            expense_area = _required_text(values[4], "Expense Area for Report", row_number, permit_numeric_text_fields)
+            supplier = _required_text(values[5], "Supplier", row_number, permit_numeric_text_fields)
             schema_version = int(source["normalization_schema_version"])
-            purchase_invoice_number = None
-            if schema_version >= 2:
-                if len(values) != 10:
-                    raise SpendingDataError(f"row {row_number}: schema v2 requires a purchase invoice number column")
-                purchase_invoice_number = _identifier(
-                    values[9], "Purchase invoice number", row_number, nullable=True
+            no_transaction_number = bool(source["workbook"].get("no_transaction_number_column", False))
+            no_vat_registration_number = bool(source["workbook"].get("no_vat_registration_number_column", False))
+            if no_transaction_number and no_vat_registration_number:
+                raise SpendingDataError("no_transaction_number_column and no_vat_registration_number_column are mutually exclusive")
+            if (no_transaction_number or no_vat_registration_number) and schema_version < 2:
+                raise SpendingDataError(
+                    "no_transaction_number_column and no_vat_registration_number_column require normalization schema v2"
                 )
+            permit_non_integral = bool(source["workbook"].get("permit_non_integral_purchase_invoice_numbers", False))
+            purchase_invoice_number = None
+            if no_transaction_number:
+                transaction_number = None
+                amount, source_amount_raw = _money(values[6], row_number, amount_scale)
+                vat_number = _identifier(values[7], "VAT registration number", row_number, nullable=True)
+                purchase_invoice_number = _identifier(
+                    values[8], "Purchase invoice number", row_number, nullable=True, permit_non_integral=permit_non_integral
+                )
+            elif no_vat_registration_number:
+                transaction_number = _identifier(values[6], "Transaction number", row_number)
+                amount, source_amount_raw = _money(values[7], row_number, amount_scale)
+                vat_number = None
+                purchase_invoice_number = _identifier(
+                    values[8], "Purchase invoice number", row_number, nullable=True, permit_non_integral=permit_non_integral
+                )
+            else:
+                transaction_number = _identifier(values[6], "Transaction number", row_number)
+                amount, source_amount_raw = _money(values[7], row_number, amount_scale)
+                vat_number = _identifier(values[8], "VAT registration number", row_number, nullable=True)
+                if schema_version >= 2:
+                    if len(values) != 10:
+                        raise SpendingDataError(f"row {row_number}: schema v2 requires a purchase invoice number column")
+                    purchase_invoice_number = _identifier(
+                        values[9],
+                        "Purchase invoice number",
+                        row_number,
+                        nullable=True,
+                        permit_non_integral=permit_non_integral,
+                    )
             source_values = {
                 "department_family": department_family,
                 "entity": entity,
@@ -467,6 +515,11 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
     )
     if len({row["observation_id"] for row in records}) != len(records):
         raise SpendingDataError("observation IDs are not unique")
+    if excluded_count != len(excluded_rows):
+        raise SpendingDataError(
+            f"registered excluded_rows did not match {excluded_count} encountered rows against "
+            f"{len(excluded_rows)} registered row numbers"
+        )
 
     entity_counts = Counter(row["entity"] for row in records)
     entity_totals: Counter[str] = Counter()
@@ -484,6 +537,8 @@ def parse_workbook(path: Path, source: dict[str, Any]) -> tuple[list[dict[str, A
         "entity_counts": dict(sorted(entity_counts.items())),
         "entity_totals_gbp": dict(sorted(entity_totals.items())),
     }
+    if excluded_count:
+        stats["excluded_malformed_rows"] = excluded_count
     _validate_expected_stats(stats, source["expected"])
     return records, stats
 
@@ -539,6 +594,8 @@ def _record_statistics(records: list[dict[str, Any]]) -> dict[str, Any]:
 def _validate_expected_stats(stats: dict[str, Any], expected: dict[str, Any]) -> None:
     decimal_fields = {"total_gbp", "nhs_england_total_gbp"}
     for field, expected_value in expected.items():
+        if field not in stats:
+            raise SpendingDataError(f"{field} is not a recognized statistic for this workbook's rows")
         actual_value = stats[field]
         if field in decimal_fields:
             expected_value = Decimal(str(expected_value))
@@ -548,7 +605,9 @@ def _validate_expected_stats(stats: dict[str, Any], expected: dict[str, Any]) ->
             raise SpendingDataError(f"{field} is {actual_value}; expected {expected_value}")
 
 
-def _arrow_schema(provenance: dict[str, Any], columns: list[str]) -> pa.Schema:
+def _arrow_schema(
+    provenance: dict[str, Any], columns: list[str], transaction_number_nullable: bool = False
+) -> pa.Schema:
     types: dict[str, tuple[pa.DataType, bool]] = {
         "observation_id": (pa.string(), False),
         "department_family": (pa.string(), False),
@@ -557,7 +616,7 @@ def _arrow_schema(provenance: dict[str, Any], columns: list[str]) -> pa.Schema:
         "expense_type": (pa.string(), False),
         "expense_area": (pa.string(), False),
         "supplier": (pa.string(), False),
-        "transaction_number": (pa.string(), False),
+        "transaction_number": (pa.string(), transaction_number_nullable),
         "purchase_invoice_number": (pa.string(), True),
         "amount_gbp": (pa.decimal128(18, 2), False),
         "source_amount_raw": (pa.string(), False),
@@ -601,7 +660,7 @@ def _typed_csv_record(record: dict[str, str]) -> dict[str, Any]:
         typed["amount_gbp"] = Decimal(record["amount_gbp"])
     if "source_row" in typed:
         typed["source_row"] = int(record["source_row"])
-    for field in ("purchase_invoice_number", "vat_registration_number"):
+    for field in ("purchase_invoice_number", "vat_registration_number", "transaction_number"):
         if field in typed:
             typed[field] = record[field] or None
     return typed
@@ -831,7 +890,10 @@ def build_release(path: Path | list[Path], source: dict[str, Any], target: Path)
     try:
         parquet_path = temporary / "payments.parquet"
         csv_path = temporary / "payments.csv.gz"
-        table = pa.Table.from_pylist(records, schema=_arrow_schema(provenance, columns))
+        transaction_number_nullable = any(record.get("transaction_number") is None for record in records)
+        table = pa.Table.from_pylist(
+            records, schema=_arrow_schema(provenance, columns, transaction_number_nullable)
+        )
         pq.write_table(
             table,
             parquet_path,
@@ -1072,7 +1134,12 @@ def validate_release(
     if schema_version == 2:
         for workbook in _workbook_sources(source):
             workbook_records = [record for record in parquet_records if record["source_id"] == workbook["id"]]
-            _validate_expected_stats(_record_statistics(workbook_records), workbook["expected"])
+            # excluded_malformed_rows describes rows skipped before the Parquet was written, so it
+            # cannot be rederived from committed rows; parse_workbook already checks it at parse time.
+            workbook_expected = {
+                key: value for key, value in workbook["expected"].items() if key != "excluded_malformed_rows"
+            }
+            _validate_expected_stats(_record_statistics(workbook_records), workbook_expected)
     if verify_against_sources:
         expected_records, _, _ = parse_release(source_files or source_paths(source), source)
         if parquet_records != expected_records:

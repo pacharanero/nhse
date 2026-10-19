@@ -1,0 +1,371 @@
+{
+  "artifacts": {
+    "payments.csv.gz": {
+      "bytes": 2461363,
+      "sha256": "242975d5b1233692951972d43d19eeef89d36789e45c5e1fa874010352726bba"
+    },
+    "payments.parquet": {
+      "bytes": 2198811,
+      "sha256": "5ce6165dc5927e6aa37be615d296bfb33c77b4d90fa43a7a0db2db222c4d4933"
+    }
+  },
+  "dataset": "nhs-england-payments-over-25000",
+  "dataset_version": "2020.1",
+  "normalized_content_sha256": "723fdcff5c876b4f6fe2e1d0ac6b1d97f9ba5d74f619512ca9c36dd015dbdc84",
+  "schema_version": 2,
+  "source_sha256s": [
+    "268ed55a26821fec04ecb8ed05f8022740b629823268a1e8330ca22613fcd25c",
+    "e2ebbbbf7546c53f1d408d9a8cf9812d1ec79587495fa263c0f73a996152806c",
+    "65b99dd4d243812b933ae83ac4b7c1f75e7efbc43f4cdd88be916457338d949f",
+    "1587c6ddf5ff2cb6dceaf64ab09fa1d579e297569fda86a6f490e7aaa76c91a2",
+    "f667b03fc161d3c40726bddbb667090b351bb52677ce9053a0f56b129c8ca8aa",
+    "e0e66289c90ab5e3487bcaf5e8329a066f512c0a61bb815a6390f35a3bb5f768",
+    "85bd01ad8e1a7697a6a8514d29d783170c23fdadd0e453ded76f45baed13d13b",
+    "18b05da06c2ae8a55c90967eb5e1279d79c8cd33aa682a10e668c6e0d18542e4",
+    "ce6e279a101ba11fce374951e95ba25886e8134cda8efe1da3fb4b3bc73fb863",
+    "d59fb07565745ba6ad9f2091292ab77516e3bde2fb6ed8e071ea6c8878bed684",
+    "4b2af9969f719c2ba515028d129d8e0c1ed31e04da123e98c1aeba5c47343607",
+    "76acb6d7787069b4e752413172babc95a0ca96e6de5875eea2c2eab7089e7d43"
+  ],
+  "source_statistics": {
+    "2020-01-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 34,
+        "NEL CSU": 25,
+        "NHS England": 2900,
+        "NHS Midlands And Lancashire CSU": 10,
+        "NHS North Of England CSU": 35,
+        "NHS South, Central & West CSU": 19
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "1260244.46",
+        "NEL CSU": "829895.91",
+        "NHS England": "1902040498.84",
+        "NHS Midlands And Lancashire CSU": "462981.90",
+        "NHS North Of England CSU": "2250016.40",
+        "NHS South, Central & West CSU": "621192.63"
+      },
+      "maximum_date": "2020-01-31",
+      "minimum_date": "2020-01-31",
+      "missing_vat_rows": 0,
+      "negative_rows": 202,
+      "nhs_england_rows": 2900,
+      "nhs_england_total_gbp": "1902040498.84",
+      "rows": 3023,
+      "total_gbp": "1907464830.14"
+    },
+    "2020-02-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 51,
+        "NEL CSU": 13,
+        "NHS England": 2709,
+        "NHS Midlands And Lancashire CSU": 21,
+        "NHS North Of England CSU": 35,
+        "NHS South, Central & West CSU": 19
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "2920109.90",
+        "NEL CSU": "708619.32",
+        "NHS England": "1560424516.57",
+        "NHS Midlands And Lancashire CSU": "515918.08",
+        "NHS North Of England CSU": "2885442.82",
+        "NHS South, Central & West CSU": "887425.70"
+      },
+      "maximum_date": "2020-02-29",
+      "minimum_date": "2020-02-29",
+      "missing_vat_rows": 0,
+      "negative_rows": 177,
+      "nhs_england_rows": 2709,
+      "nhs_england_total_gbp": "1560424516.57",
+      "rows": 2848,
+      "total_gbp": "1568342032.39"
+    },
+    "2020-03-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 70,
+        "NEL CSU": 66,
+        "NHS England": 3909,
+        "NHS Midlands And Lancashire CSU": 26,
+        "NHS North Of England CSU": 52,
+        "NHS South, Central & West CSU": 18
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "3134458.24",
+        "NEL CSU": "5038329.72",
+        "NHS England": "2118926727.45",
+        "NHS Midlands And Lancashire CSU": "1278137.02",
+        "NHS North Of England CSU": "6570096.26",
+        "NHS South, Central & West CSU": "956283.90"
+      },
+      "maximum_date": "2020-03-31",
+      "minimum_date": "2020-03-31",
+      "missing_vat_rows": 0,
+      "negative_rows": 336,
+      "nhs_england_rows": 3909,
+      "nhs_england_total_gbp": "2118926727.45",
+      "rows": 4141,
+      "total_gbp": "2135904032.59"
+    },
+    "2020-04-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 48,
+        "NEL CSU": 41,
+        "NHS England": 3556,
+        "NHS Midlands And Lancashire CSU": 31,
+        "NHS North Of England CSU": 40,
+        "NHS South, Central & West CSU": 21
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "2323237.75",
+        "NEL CSU": "6345743.43",
+        "NHS England": "3321003364.72",
+        "NHS Midlands And Lancashire CSU": "2254543.21",
+        "NHS North Of England CSU": "4883797.83",
+        "NHS South, Central & West CSU": "1076397.62"
+      },
+      "maximum_date": "2020-04-30",
+      "minimum_date": "2020-04-30",
+      "missing_vat_rows": 0,
+      "negative_rows": 346,
+      "nhs_england_rows": 3556,
+      "nhs_england_total_gbp": "3321003364.72",
+      "rows": 3737,
+      "total_gbp": "3337887084.56"
+    },
+    "2020-05-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 16,
+        "NEL CSU": 29,
+        "NHS England": 3088,
+        "NHS Midlands And Lancashire CSU": 12,
+        "NHS North Of England CSU": 30,
+        "NHS South, Central & West CSU": 10
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "969387.64",
+        "NEL CSU": "2897141.63",
+        "NHS England": "3947481516.92",
+        "NHS Midlands And Lancashire CSU": "521548.77",
+        "NHS North Of England CSU": "3097667.50",
+        "NHS South, Central & West CSU": "776717.25"
+      },
+      "maximum_date": "2020-05-31",
+      "minimum_date": "2020-05-31",
+      "missing_vat_rows": 0,
+      "negative_rows": 191,
+      "nhs_england_rows": 3088,
+      "nhs_england_total_gbp": "3947481516.92",
+      "rows": 3185,
+      "total_gbp": "3955743979.71"
+    },
+    "2020-06-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 18,
+        "NEL CSU": 29,
+        "NHS England": 2737,
+        "NHS Midlands And Lancashire CSU": 12,
+        "NHS North Of England CSU": 24,
+        "NHS South, Central & West CSU": 18
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "1556189.28",
+        "NEL CSU": "807117.78",
+        "NHS England": "2176854031.31",
+        "NHS Midlands And Lancashire CSU": "497115.76",
+        "NHS North Of England CSU": "1955317.70",
+        "NHS South, Central & West CSU": "938584.52"
+      },
+      "maximum_date": "2020-06-30",
+      "minimum_date": "2020-06-30",
+      "missing_vat_rows": 0,
+      "negative_rows": 201,
+      "nhs_england_rows": 2737,
+      "nhs_england_total_gbp": "2176854031.31",
+      "rows": 2838,
+      "total_gbp": "2182608356.35"
+    },
+    "2020-07-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 14,
+        "NEL CSU": 47,
+        "NHS England": 2577,
+        "NHS Midlands And Lancashire CSU": 13,
+        "NHS North Of England CSU": 27,
+        "NHS South, Central & West CSU": 12
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "704854.63",
+        "NEL CSU": "3329286.18",
+        "NHS England": "2800925260.58",
+        "NHS Midlands And Lancashire CSU": "784249.19",
+        "NHS North Of England CSU": "1647047.46",
+        "NHS South, Central & West CSU": "547646.12"
+      },
+      "maximum_date": "2020-07-31",
+      "minimum_date": "2020-07-31",
+      "missing_vat_rows": 0,
+      "negative_rows": 169,
+      "nhs_england_rows": 2577,
+      "nhs_england_total_gbp": "2800925260.58",
+      "rows": 2690,
+      "total_gbp": "2807938344.16"
+    },
+    "2020-08-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 14,
+        "NEL CSU": 9,
+        "NHS England": 2216,
+        "NHS Midlands And Lancashire CSU": 3,
+        "NHS North Of England CSU": 14,
+        "NHS South, Central & West CSU": 9
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "778034.24",
+        "NEL CSU": "501379.84",
+        "NHS England": "2931957475.94",
+        "NHS Midlands And Lancashire CSU": "131601.04",
+        "NHS North Of England CSU": "833975.37",
+        "NHS South, Central & West CSU": "4467167.25"
+      },
+      "maximum_date": "2020-08-31",
+      "minimum_date": "2020-08-01",
+      "missing_vat_rows": 0,
+      "negative_rows": 148,
+      "nhs_england_rows": 2216,
+      "nhs_england_total_gbp": "2931957475.94",
+      "rows": 2265,
+      "total_gbp": "2938669633.68"
+    },
+    "2020-09-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 7,
+        "NEL CSU": 19,
+        "NHS England": 2337,
+        "NHS Midlands And Lancashire CSU": 14,
+        "NHS North Of England CSU": 10,
+        "NHS South, Central & West CSU": 53
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "1014555.91",
+        "NEL CSU": "1763307.77",
+        "NHS England": "2930527991.65",
+        "NHS Midlands And Lancashire CSU": "539633.06",
+        "NHS North Of England CSU": "322612.46",
+        "NHS South, Central & West CSU": "6866618.98"
+      },
+      "maximum_date": "2020-09-30",
+      "minimum_date": "2020-09-30",
+      "missing_vat_rows": 0,
+      "negative_rows": 150,
+      "nhs_england_rows": 2337,
+      "nhs_england_total_gbp": "2930527991.65",
+      "rows": 2440,
+      "total_gbp": "2941034719.83"
+    },
+    "2020-10-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 13,
+        "NEL CSU": 22,
+        "NHS England": 2803,
+        "NHS Midlands And Lancashire CSU": 12,
+        "NHS North Of England CSU": 29,
+        "NHS South, Central & West CSU": 38
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "1104172.90",
+        "NEL CSU": "2682818.15",
+        "NHS England": "2472978882.80",
+        "NHS Midlands And Lancashire CSU": "403365.88",
+        "NHS North Of England CSU": "2043295.26",
+        "NHS South, Central & West CSU": "6171434.39"
+      },
+      "maximum_date": "2020-10-31",
+      "minimum_date": "2020-10-31",
+      "missing_vat_rows": 0,
+      "negative_rows": 597,
+      "nhs_england_rows": 2803,
+      "nhs_england_total_gbp": "2472978882.80",
+      "rows": 2917,
+      "total_gbp": "2485383969.38"
+    },
+    "2020-11-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 16,
+        "NEL CSU": 19,
+        "NHS England": 2103,
+        "NHS Midlands And Lancashire CSU": 13,
+        "NHS North Of England CSU": 19,
+        "NHS South, Central & West CSU": 17
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "1330390.09",
+        "NEL CSU": "1247157.06",
+        "NHS England": "1973861168.14",
+        "NHS Midlands And Lancashire CSU": "589685.68",
+        "NHS North Of England CSU": "747843.68",
+        "NHS South, Central & West CSU": "582486.66"
+      },
+      "maximum_date": "2020-11-30",
+      "minimum_date": "2020-11-01",
+      "missing_vat_rows": 0,
+      "negative_rows": 264,
+      "nhs_england_rows": 2103,
+      "nhs_england_total_gbp": "1973861168.14",
+      "rows": 2187,
+      "total_gbp": "1978358731.31"
+    },
+    "2020-12-payments-over-25000": {
+      "entity_counts": {
+        "Arden & Gem CSU": 13,
+        "NEL CSU": 18,
+        "NHS England": 2983,
+        "NHS Midlands And Lancashire CSU": 14,
+        "NHS North Of England CSU": 20,
+        "NHS South, Central & West CSU": 40
+      },
+      "entity_totals_gbp": {
+        "Arden & Gem CSU": "1050164.40",
+        "NEL CSU": "1740722.74",
+        "NHS England": "2842135259.85",
+        "NHS Midlands And Lancashire CSU": "492259.70",
+        "NHS North Of England CSU": "1711903.91",
+        "NHS South, Central & West CSU": "5547029.99"
+      },
+      "maximum_date": "2020-12-31",
+      "minimum_date": "2020-12-31",
+      "missing_vat_rows": 0,
+      "negative_rows": 300,
+      "nhs_england_rows": 2983,
+      "nhs_england_total_gbp": "2842135259.85",
+      "rows": 3088,
+      "total_gbp": "2852677340.59"
+    }
+  },
+  "statistics": {
+    "entity_counts": {
+      "Arden & Gem CSU": 314,
+      "NEL CSU": 337,
+      "NHS England": 33918,
+      "NHS Midlands And Lancashire CSU": 181,
+      "NHS North Of England CSU": 335,
+      "NHS South, Central & West CSU": 274
+    },
+    "entity_totals_gbp": {
+      "Arden & Gem CSU": "18145799.44",
+      "NEL CSU": "27891519.53",
+      "NHS England": "30979116694.77",
+      "NHS Midlands And Lancashire CSU": "8471039.29",
+      "NHS North Of England CSU": "28949016.65",
+      "NHS South, Central & West CSU": "29438985.01"
+    },
+    "maximum_date": "2020-12-31",
+    "minimum_date": "2020-01-31",
+    "missing_vat_rows": 0,
+    "negative_rows": 3081,
+    "nhs_england_rows": 33918,
+    "nhs_england_total_gbp": "30979116694.77",
+    "rows": 35359,
+    "total_gbp": "31092013054.69"
+  },
+  "status": "passed"
+}

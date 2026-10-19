@@ -134,6 +134,49 @@ class SpendingDataTest(unittest.TestCase):
         self.assertEqual(validation["statistics"]["entity_counts"]["NHS England"], 2)
         self.assertEqual(validation["statistics"]["entity_totals_gbp"]["NHS England"], "8.00")
 
+    def test_build_release_round_trips_no_transaction_number_column(self) -> None:
+        headers_no_transaction_number = [
+            "Department family", "Entity", "Date", "Expense Type", "Expense Area",
+            "Supplier", "AP Amount (£)", "VAT registration number", "Purchase invoice number",
+        ]
+        path = self.root / "no-transaction-number-build.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(headers_no_transaction_number)
+        sheet.append(["Department of Health", "NHS England", dt.date(2019, 5, 1), "Services", "Digital", "Supplier A", 10.25, "123456789", "INV-1"])
+        workbook.save(path)
+        source = self._source(path)
+        source["normalization_schema_version"] = 2
+        source["workbook"] = {
+            "sheet": "Payments",
+            "amount_scale": 2,
+            "columns": headers_no_transaction_number,
+            "no_transaction_number_column": True,
+        }
+        source["expected"] = {
+            "rows": 1,
+            "total_gbp": "10.25",
+            "nhs_england_rows": 1,
+            "nhs_england_total_gbp": "10.25",
+            "negative_rows": 0,
+            "missing_vat_rows": 0,
+        }
+        target = nhse_spending.build_release(path, source, self.root / "no-transaction-number-release")
+        nhse_spending.validate_release(target, source, verify_against_sources=True, source_files=[path])
+
+        table = pq.read_table(target / "payments.parquet")
+        self.assertTrue(table.schema.field("transaction_number").nullable)
+        self.assertIsNone(table.to_pylist()[0]["transaction_number"])
+
+        # A workbook with no actual null transaction_number keeps the field non-nullable,
+        # so already-published releases are not retroactively re-encoded.
+        normal_path = self._workbook()
+        normal_source = self._source(normal_path)
+        normal_target = nhse_spending.build_release(normal_path, normal_source, self.root / "normal-release")
+        normal_table = pq.read_table(normal_target / "payments.parquet")
+        self.assertFalse(normal_table.schema.field("transaction_number").nullable)
+
     def test_schema_drift_fails_closed(self) -> None:
         wrong_headers = copy.copy(HEADERS)
         wrong_headers[7] = "Amount"
@@ -141,6 +184,247 @@ class SpendingDataTest(unittest.TestCase):
         source = self._source(path)
         with self.assertRaisesRegex(nhse_spending.SpendingDataError, "unexpected workbook headers"):
             nhse_spending.build_release(path, source, self.root / "release")
+
+    def test_trailing_columns_fail_closed_by_default(self) -> None:
+        path = self.root / "trailing.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(HEADERS)
+        sheet.append(["Department of Health", "NHS England", dt.date(2025, 9, 1), "Services", "Digital", "Supplier A", 1001, 10.25, "123456789"])
+        sheet.cell(row=2, column=10, value="unexpected")
+        workbook.save(path)
+        source = self._source(path)
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "ignore_trailing_columns"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_non_integral_purchase_invoice_number_fails_closed_by_default(self) -> None:
+        path = self.root / "non-integral.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(HEADERS_V2)
+        sheet.append(
+            [
+                "Department of Health", "NHS England", dt.date(2025, 9, 1), "Services", "Digital",
+                "Supplier A", 1001, 10.25, "123456789", 99479.196,
+            ]
+        )
+        workbook.save(path)
+        source = self._source(path)
+        source["normalization_schema_version"] = 2
+        source["workbook"] = {"sheet": "Payments", "amount_scale": 2, "columns": HEADERS_V2}
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "non-integral numeric identifier"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_non_integral_purchase_invoice_number_permitted_when_registered(self) -> None:
+        path = self.root / "non-integral-ok.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(HEADERS_V2)
+        sheet.append(
+            [
+                "Department of Health", "NHS England", dt.date(2025, 9, 1), "Services", "Digital",
+                "Supplier A", 1001, 10.25, "123456789", 99479.196,
+            ]
+        )
+        workbook.save(path)
+        source = self._source(path)
+        source["normalization_schema_version"] = 2
+        source["workbook"] = {
+            "sheet": "Payments",
+            "amount_scale": 2,
+            "columns": HEADERS_V2,
+            "permit_non_integral_purchase_invoice_numbers": True,
+        }
+        source["expected"] = {}
+        records, stats = nhse_spending.parse_workbook(path, source)
+        self.assertEqual(records[0]["purchase_invoice_number"], "99479.196")
+
+    def test_no_transaction_number_column_parses_shifted_fields(self) -> None:
+        headers_no_transaction_number = [
+            "Department family", "Entity", "Date", "Expense Type", "Expense Area",
+            "Supplier", "AP Amount (£)", "VAT registration number", "Purchase invoice number",
+        ]
+        path = self.root / "no-transaction-number.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(headers_no_transaction_number)
+        sheet.append(
+            ["Department of Health", "NHS England", dt.date(2019, 5, 1), "Services", "Digital", "Supplier A", 10.25, "123456789", "INV-1"]
+        )
+        workbook.save(path)
+        source = self._source(path)
+        source["normalization_schema_version"] = 2
+        source["workbook"] = {
+            "sheet": "Payments",
+            "amount_scale": 2,
+            "columns": headers_no_transaction_number,
+            "no_transaction_number_column": True,
+        }
+        source["expected"] = {}
+        records, stats = nhse_spending.parse_workbook(path, source)
+        self.assertIsNone(records[0]["transaction_number"])
+        self.assertEqual(records[0]["purchase_invoice_number"], "INV-1")
+        self.assertEqual(records[0]["vat_registration_number"], "123456789")
+        self.assertEqual(records[0]["amount_gbp"], nhse_spending.Decimal("10.25"))
+
+    def test_no_transaction_number_column_requires_schema_v2(self) -> None:
+        headers = ["Department family", "Entity", "Date", "Expense Type", "Expense Area", "Supplier", "AP Amount (£)", "VAT registration number"]
+        path = self.root / "no-transaction-number-v1.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(headers)
+        sheet.append(["Department of Health", "NHS England", dt.date(2019, 5, 1), "Services", "Digital", "Supplier A", 10.25, "123456789"])
+        workbook.save(path)
+        source = self._source(path)
+        source["normalization_schema_version"] = 1
+        source["workbook"] = {"sheet": "Payments", "amount_scale": 2, "columns": headers, "no_transaction_number_column": True}
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "require normalization schema v2"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_no_vat_registration_number_column_requires_schema_v2(self) -> None:
+        headers = ["Department family", "Entity", "Date", "Expense Type", "Expense Area", "Supplier", "Transaction number", "AP Amount (£)"]
+        path = self.root / "no-vat-v1.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(headers)
+        sheet.append(["Department of Health", "NHS England", dt.date(2013, 9, 1), "Services", "Digital", "Supplier A", 1001, 10.25])
+        workbook.save(path)
+        source = self._source(path)
+        source["normalization_schema_version"] = 1
+        source["workbook"] = {"sheet": "Payments", "amount_scale": 2, "columns": headers, "no_vat_registration_number_column": True}
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "require normalization schema v2"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_excluded_rows_are_skipped_with_a_registered_reason(self) -> None:
+        path = self.root / "excluded-rows.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(HEADERS)
+        sheet.append(["Department of Health", "NHS England", dt.date(2025, 9, 1), "Services", "Digital", "Supplier A", 1001, 10.25, "123456789"])
+        sheet.append(["Department of Health", "NHS England", dt.date(2025, 9, 2), "Services", "Digital", "Supplier B", 1002, "corrupted-url-value", "123456789"])
+        workbook.save(path)
+        source = self._source(path)
+        source["workbook"]["excluded_rows"] = [3]
+        source["workbook"]["excluded_rows_reason"] = "AP Amount cell contains a pasted document URL, not a numeric value"
+        source["expected"] = {}
+        records, stats = nhse_spending.parse_workbook(path, source)
+        self.assertEqual(stats["rows"], 1)
+        self.assertEqual(stats["excluded_malformed_rows"], 1)
+
+    def test_excluded_rows_require_a_reason(self) -> None:
+        path = self._workbook()
+        source = self._source(path)
+        source["workbook"]["excluded_rows"] = [2]
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "excluded_rows_reason"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_excluded_rows_count_must_match_rows_encountered(self) -> None:
+        path = self._workbook()
+        source = self._source(path)
+        source["workbook"]["excluded_rows"] = [2, 9999]
+        source["workbook"]["excluded_rows_reason"] = "test"
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "did not match"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_schema_v2_without_purchase_invoice_column_fails_closed(self) -> None:
+        path = self._workbook()
+        source = self._source(path)
+        source["normalization_schema_version"] = 2
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "requires a purchase invoice number column"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_unrecognized_expected_stat_fails_closed(self) -> None:
+        path = self._workbook()
+        source = self._source(path)
+        source["expected"]["excluded_malformed_rows"] = 1
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "not a recognized statistic"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_numeric_text_field_fails_closed_by_default(self) -> None:
+        path = self.root / "numeric-text.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(HEADERS)
+        sheet.append(["Department of Health", "NHS England", dt.date(2025, 9, 1), "Services", 0, "Supplier A", 1001, 10.25, "123456789"])
+        workbook.save(path)
+        source = self._source(path)
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "must be non-empty text"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_numeric_text_field_permitted_when_registered(self) -> None:
+        path = self.root / "numeric-text-ok.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(HEADERS)
+        sheet.append(["Department of Health", "NHS England", dt.date(2025, 9, 1), "Services", 0, "Supplier A", 1001, 10.25, "123456789"])
+        workbook.save(path)
+        source = self._source(path)
+        source["workbook"]["permit_numeric_text_fields"] = True
+        source["expected"] = {}
+        records, stats = nhse_spending.parse_workbook(path, source)
+        self.assertEqual(records[0]["expense_area"], "0")
+
+    def test_no_vat_registration_number_column_parses_shifted_fields(self) -> None:
+        headers_no_vat = [
+            "Department family", "Entity", "Date", "Expense Type", "Expense Area",
+            "Supplier", "Transaction number", "AP Amount (£)", "Purchase invoice number", "Comments from NHS England",
+        ]
+        path = self.root / "no-vat.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(headers_no_vat)
+        sheet.append(
+            ["Department of Health", "NHS England", dt.date(2013, 9, 1), "Services", "Digital", "Supplier A", 1001, 10.25, "INV-1", "a comment"]
+        )
+        workbook.save(path)
+        source = self._source(path)
+        source["normalization_schema_version"] = 2
+        source["workbook"] = {
+            "sheet": "Payments",
+            "amount_scale": 2,
+            "columns": headers_no_vat,
+            "no_vat_registration_number_column": True,
+        }
+        source["expected"] = {}
+        records, stats = nhse_spending.parse_workbook(path, source)
+        self.assertEqual(records[0]["transaction_number"], "1001")
+        self.assertIsNone(records[0]["vat_registration_number"])
+        self.assertEqual(records[0]["purchase_invoice_number"], "INV-1")
+        self.assertEqual(stats["missing_vat_rows"], 1)
+
+    def test_no_transaction_number_and_no_vat_flags_are_mutually_exclusive(self) -> None:
+        path = self._workbook()
+        source = self._source(path)
+        source["workbook"]["no_transaction_number_column"] = True
+        source["workbook"]["no_vat_registration_number_column"] = True
+        with self.assertRaisesRegex(nhse_spending.SpendingDataError, "mutually exclusive"):
+            nhse_spending.parse_workbook(path, source)
+
+    def test_trailing_columns_ignored_when_registered(self) -> None:
+        path = self.root / "trailing-ok.xlsx"
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet.title = "Payments"
+        sheet.append(HEADERS)
+        sheet.append(["Department of Health", "NHS England", dt.date(2025, 9, 1), "Services", "Digital", "Supplier A", 1001, 10.25, "123456789"])
+        sheet.cell(row=2, column=10, value="internal marker")
+        workbook.save(path)
+        source = self._source(path)
+        source["workbook"]["ignore_trailing_columns"] = True
+        source["expected"] = {}
+        records, stats = nhse_spending.parse_workbook(path, source)
+        self.assertEqual(stats["rows"], 1)
+        self.assertNotIn("internal marker", json.dumps(records[0], default=str))
 
     def test_multi_workbook_release_includes_revision_diff(self) -> None:
         def workbook(name: str, date: dt.date, transaction: str, vat: str | None) -> Path:
@@ -277,7 +561,10 @@ class SpendingDataTest(unittest.TestCase):
         self.assertNotEqual(nhse_spending._semantic_row(record), nhse_spending._semantic_row(changed))
 
     def test_committed_releases_validate(self) -> None:
-        for source_id in ("2023-payments-over-25000", "2024-payments-over-25000", "2025-09-payments-over-25000"):
+        source_ids = [f"{year}-payments-over-25000" for year in range(2014, 2025)]
+        source_ids.insert(0, "2013-14-payments-over-25000")
+        source_ids.append("2025-09-payments-over-25000")
+        for source_id in source_ids:
             source = nhse_spending.load_source(source_id)
             nhse_spending.validate_release(nhse_spending.release_path(source), source)
 

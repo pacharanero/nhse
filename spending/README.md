@@ -11,7 +11,7 @@ s/build-spending-data --source 2024-payments-over-25000
 uv run python nhse_spending.py validate --source 2024-payments-over-25000
 ```
 
-Verified workbooks are written to the ignored `spending/sources/` directory. The 2024 release combines twelve current monthly workbooks in `spending/data/2024-payments-over-25000/`; its correction artifacts compare the superseded July workbook with its replacement. The 2023 release (`--source 2023-payments-over-25000`) combines the twelve calendar-year 2023 workbooks the same way, with no superseded revision. The smaller September 2025 release remains available as `--source 2025-09-payments-over-25000`, which is also the command default.
+Verified workbooks are written to the ignored `spending/sources/` directory. The 2024 release combines twelve current monthly workbooks in `spending/data/2024-payments-over-25000/`; its correction artifacts compare the superseded July workbook with its replacement. Every calendar year 2014-2023, plus the combined fiscal year 2013/14 workbook, is registered and built the same way (`--source <year>-payments-over-25000`), the result of the D11 historical backfill; see `spending/data/README.md` for each year's exact coverage and any source-level anomalies. The smaller September 2025 release remains available as `--source 2025-09-payments-over-25000`, which is also the command default.
 
 Use `s/fetch-spending-data --archive --source <id>` to fetch registered archive captures instead of live NHS England URLs. Superseded revision inputs are always recovered from their archive. Every route must produce the exact SHA-256 in `data-sources.yaml`.
 

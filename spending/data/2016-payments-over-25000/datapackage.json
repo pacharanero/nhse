@@ -1,0 +1,521 @@
+{
+  "description": "Normalized NHS England payments-over-£25,000 transparency data with physical workbook-row provenance.",
+  "licenses": [
+    {
+      "name": "OGL-UK-3.0",
+      "path": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "title": "Open Government Licence v3.0"
+    }
+  ],
+  "name": "nhs-england-payments-over-25000-2016",
+  "nhse": {
+    "limitations": [
+      "This thresholded payments publication is not a general ledger and does not reconcile one-for-one to annual accrual accounts.",
+      "Supplier text is preserved as published and has not been entity-resolved.",
+      "Negative values are retained and not classified as refunds, reversals or corrections without source evidence.",
+      "The project-owner redistribution decision covers this normalized release, not a raw-workbook mirror."
+    ],
+    "normalized_content_sha256": "ef1a439be120e51564c1689d2e2b4c8476da6d3eee2e1fc5e4b5ae57bfa30217",
+    "schema_version": 2,
+    "tool_version": "0.1.0"
+  },
+  "profile": "tabular-data-package",
+  "resources": [
+    {
+      "bytes": 5247101,
+      "format": "parquet",
+      "hash": "sha256:7115e2f9db8565dd0f3c235b020d63507520ee2abfb19cdf922536251b419a6c",
+      "mediatype": "application/vnd.apache.parquet",
+      "name": "payments-parquet",
+      "path": "payments.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "observation_id",
+            "type": "string"
+          },
+          {
+            "name": "department_family",
+            "type": "string"
+          },
+          {
+            "name": "entity",
+            "type": "string"
+          },
+          {
+            "name": "transaction_date",
+            "type": "date"
+          },
+          {
+            "name": "expense_type",
+            "type": "string"
+          },
+          {
+            "name": "expense_area",
+            "type": "string"
+          },
+          {
+            "name": "supplier",
+            "type": "string"
+          },
+          {
+            "name": "transaction_number",
+            "type": "string"
+          },
+          {
+            "name": "purchase_invoice_number",
+            "type": "string"
+          },
+          {
+            "decimalChar": ".",
+            "name": "amount_gbp",
+            "type": "number"
+          },
+          {
+            "name": "source_amount_raw",
+            "type": "string"
+          },
+          {
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "name": "vat_registration_number",
+            "type": "string"
+          },
+          {
+            "name": "redaction_status",
+            "type": "string"
+          },
+          {
+            "name": "source_id",
+            "type": "string"
+          },
+          {
+            "name": "source_period",
+            "type": "string"
+          },
+          {
+            "name": "source_sha256",
+            "type": "string"
+          },
+          {
+            "name": "source_file",
+            "type": "string"
+          },
+          {
+            "name": "source_sheet",
+            "type": "string"
+          },
+          {
+            "name": "source_row",
+            "type": "integer"
+          }
+        ],
+        "primaryKey": "observation_id"
+      }
+    },
+    {
+      "bytes": 5909912,
+      "compression": "gzip",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hash": "sha256:b40fc994a04eb7abbd938072abe38f4fcd41259abea140fd79ceff7b25d4555f",
+      "mediatype": "text/csv",
+      "name": "payments-csv",
+      "path": "payments.csv.gz",
+      "schema": {
+        "fields": [
+          {
+            "name": "observation_id",
+            "type": "string"
+          },
+          {
+            "name": "department_family",
+            "type": "string"
+          },
+          {
+            "name": "entity",
+            "type": "string"
+          },
+          {
+            "name": "transaction_date",
+            "type": "date"
+          },
+          {
+            "name": "expense_type",
+            "type": "string"
+          },
+          {
+            "name": "expense_area",
+            "type": "string"
+          },
+          {
+            "name": "supplier",
+            "type": "string"
+          },
+          {
+            "name": "transaction_number",
+            "type": "string"
+          },
+          {
+            "name": "purchase_invoice_number",
+            "type": "string"
+          },
+          {
+            "decimalChar": ".",
+            "name": "amount_gbp",
+            "type": "number"
+          },
+          {
+            "name": "source_amount_raw",
+            "type": "string"
+          },
+          {
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "name": "vat_registration_number",
+            "type": "string"
+          },
+          {
+            "name": "redaction_status",
+            "type": "string"
+          },
+          {
+            "name": "source_id",
+            "type": "string"
+          },
+          {
+            "name": "source_period",
+            "type": "string"
+          },
+          {
+            "name": "source_sha256",
+            "type": "string"
+          },
+          {
+            "name": "source_file",
+            "type": "string"
+          },
+          {
+            "name": "source_sheet",
+            "type": "string"
+          },
+          {
+            "name": "source_row",
+            "type": "integer"
+          }
+        ],
+        "primaryKey": "observation_id"
+      }
+    }
+  ],
+  "rights": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+  "rights_status": "approved-for-normalized-redistribution",
+  "sources": [
+    {
+      "archive_url": "https://web.archive.org/web/20261019105931/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-january-2016-v2.xlsx",
+      "bytes": 704438,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-january-2016-v2.xlsx",
+      "id": "2016-01-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-01",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "744e70ff873411783f15d1b20ff90e17084387b22ab544f833e3730f57e67eab",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-january-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, January 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110019/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-february-2016-v2.xlsx",
+      "bytes": 736817,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-february-2016-v2.xlsx",
+      "id": "2016-02-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-02",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "0571050c4c24a0af53f13a147d34e324bba329cafcf548fdfab7f967e2ebfe7d",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-february-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, February 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110049/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-march-2016-v2.xlsx",
+      "bytes": 807793,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-march-2016-v2.xlsx",
+      "id": "2016-03-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-03",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "ceacb1de3ca6b64fff5afa95cb8a07e7cbdfafdd6f3e98967bd4d988f3793cc1",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-march-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, March 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110140/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-april-2016-v2.xlsx",
+      "bytes": 491761,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-april-2016-v2.xlsx",
+      "id": "2016-04-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-04",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "9e0c7484a2187c7e5f0aac4adbe8edf7687ed942d379b560a14a4f496dc94cde",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-april-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, April 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110150/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-may-2016-v2.xlsx",
+      "bytes": 470127,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-may-2016-v2.xlsx",
+      "id": "2016-05-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-05",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "f6fd41e05cf04546b657043e3507f285a56acf7e463e829fdbb71d4b2398adaa",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-may-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, May 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110200/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-june-2016-v2.xlsx",
+      "bytes": 493987,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-june-2016-v2.xlsx",
+      "id": "2016-06-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-06",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "f744772603185cef4fbd47cfdd528dc4c89f166ce54a30c8cbefb3ce1bd494ae",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-june-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, June 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110211/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-july-2016-v2.xlsx",
+      "bytes": 448971,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-july-2016-v2.xlsx",
+      "id": "2016-07-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-07",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "0b10411dc8ba8fafeb1235eb09dd02d4b2dc6a680f935afd81cd5b54af8efeeb",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-july-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, July 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110222/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-august-2016-v2.xlsx",
+      "bytes": 461707,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-august-2016-v2.xlsx",
+      "id": "2016-08-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-08",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "9c4431e6b1c9b80c2a83da733ff2629348181eaf5c6e273de84e012fcb26f1f5",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-august-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, August 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110312/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-september-2016-v2.xlsx",
+      "bytes": 440282,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-september-2016-v2.xlsx",
+      "id": "2016-09-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-09",
+      "publication_date": "2017-10-27",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "dc5f49742442b5aa85a498ca7a10e4727648bf6e8eaecda2d3ea887ff4309c3e",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-september-2016-v2.xlsx",
+      "title": "NHS England payments over £25,000, September 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110322/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-october-2016.xlsx",
+      "bytes": 431464,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-october-2016.xlsx",
+      "id": "2016-10-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-10",
+      "publication_date": "2017-07-14",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "41dbea31960f2fa7207947d1ea4c315f5fa01d9cd6a9573061c0985c40ac2eba",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-october-2016.xlsx",
+      "title": "NHS England payments over £25,000, October 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110333/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-november-2016.xlsx",
+      "bytes": 462502,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-november-2016.xlsx",
+      "id": "2016-11-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-11",
+      "publication_date": "2017-07-14",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "1ef21714107d17af215d5dcf9d55c95970d822bcebb754a57987dda906833f2d",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-november-2016.xlsx",
+      "title": "NHS England payments over £25,000, November 2016"
+    },
+    {
+      "archive_url": "https://web.archive.org/web/20261019110413/https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-december-2016.xlsx",
+      "bytes": 455431,
+      "collection_archive_url": "https://web.archive.org/web/20261019110548/https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "collection_url": "https://www.england.nhs.uk/publication/payments-over-25k-report-2016/",
+      "filename": "25k-report-december-2016.xlsx",
+      "id": "2016-12-payments-over-25000",
+      "landing_page_archive_url": "https://web.archive.org/web/20261017132039/https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "landing_page_url": "https://www.england.nhs.uk/contact-us/pub-scheme/spend/",
+      "period": "2016-12",
+      "publication_date": "2017-07-14",
+      "publication_date_precision": "day",
+      "publisher": "NHS England",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "Open Government Licence v3 and project-owner fair-use/fair-dealing determination",
+      "rights_decision_date": "2026-10-17",
+      "rights_evidence_archive_url": "https://web.archive.org/web/20261017133823/https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_evidence_url": "https://www.data.gov.uk/dataset/b07015fb-4eb8-4c5c-93ad-d5600bd53f89/payments-over-25k",
+      "rights_note": "The project owner approved redistribution of the normalized release on 17 October 2026, relying on the historical dataset's OGL designation and a fair-use/fair-dealing determination. This decision covers the normalized release, not a raw-workbook mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "3730a4866773e1fbdc43ef7416df6e605a13c01377a588764922626a4f114a6d",
+      "source_url": "https://www.england.nhs.uk/wp-content/uploads/2016/04/25k-report-december-2016.xlsx",
+      "title": "NHS England payments over £25,000, December 2016"
+    }
+  ],
+  "title": "NHS England payments over £25,000, calendar year 2016",
+  "version": "2016.1"
+}
