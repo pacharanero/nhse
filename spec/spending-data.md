@@ -82,6 +82,8 @@ The design borrows `sct`'s stable intermediate and source-verification principle
 
 The source workbook is downloaded to a same-directory temporary file, checked against its committed byte length and SHA-256, synced and atomically renamed. A failed refresh cannot replace a previously verified source. Repeated clean builds from the same source and dependency lock must produce byte-identical release files.
 
+`spending/spend-by-year.json` (`s/build-spend-summary`) is a small derived summary - one total per registered year, read from each release's own committed `validation.json` rather than recomputed from Parquet - that drives the "Spend over time" chart on `spending/index.html`. Each year's coverage is an explicit mapping (`nhse_spending.SPEND_SUMMARY_COVERAGE`): full calendar year, partial calendar year with its exact month count, or the non-calendar fiscal year. The chart (`js/spend-chart.js`) renders partial and fiscal-year bars with a hatched fill and dashed outline rather than plotting them as if a full year's total were simply smaller, consistent with D9's "never turn an absent month into zero spending."
+
 ## Historical schema census
 
 `spending/historical-schema-census.json` is the pre-backfill inventory of the canonical publication index as observed on 17 October 2026. It records 144 logical file-link occurrences representing 143 unique source URLs across the 2013/14 direct files and twelve calendar-year collection pages. The duplicate logical occurrence is the 2013/14 Q4 CSV, which is linked from both the landing page and the 2014 collection. Every source record carries its current URL, byte length, SHA-256, detected header, physical workbook sheets and a deterministic schema fingerprint.

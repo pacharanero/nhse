@@ -571,6 +571,37 @@ class SpendingDataTest(unittest.TestCase):
     def test_top_level_finances_reconcile(self) -> None:
         nhse_spending.validate_top_level_finances()
 
+    def test_spend_summary_matches_committed_releases_and_is_deterministic(self) -> None:
+        first = nhse_spending.build_spend_summary(self.root / "first.json")
+        second = nhse_spending.build_spend_summary(self.root / "second.json")
+        self.assertEqual(first.read_bytes(), second.read_bytes())
+
+        summary = json.loads(first.read_text(encoding="utf-8"))
+        self.assertEqual(len(summary["years"]), len(nhse_spending.SPEND_SUMMARY_COVERAGE))
+        periods = [year["period"] for year in summary["years"]]
+        self.assertEqual(periods, sorted(periods))
+
+        for year in summary["years"]:
+            source = nhse_spending.load_source(year["source_id"])
+            validation = json.loads(
+                (nhse_spending.release_path(source) / "validation.json").read_text(encoding="utf-8")
+            )
+            stats = validation["statistics"]
+            self.assertEqual(year["rows"], stats["rows"])
+            self.assertEqual(year["total_gbp"], str(nhse_spending.Decimal(stats["total_gbp"])))
+            self.assertEqual(
+                year["nhs_england_total_gbp"], str(nhse_spending.Decimal(stats["nhs_england_total_gbp"]))
+            )
+
+        committed = (nhse_spending.ROOT / "spending" / "spend-by-year.json").read_bytes()
+        self.assertEqual(first.read_bytes(), committed)
+
+        full_years = [year for year in summary["years"] if year["coverage"] == "full_calendar_year"]
+        partial_years = [year for year in summary["years"] if year["coverage"] != "full_calendar_year"]
+        self.assertTrue(full_years)
+        self.assertTrue(all(year["months_covered"] == 12 for year in full_years))
+        self.assertTrue(all(year["coverage"] in {"partial_calendar_year", "fiscal_year"} for year in partial_years))
+
 
 class SpendingInventoryTest(unittest.TestCase):
     def test_filename_month_detection_handles_published_variants(self) -> None:

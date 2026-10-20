@@ -15,6 +15,14 @@ Verified workbooks are written to the ignored `spending/sources/` directory. The
 
 Use `s/fetch-spending-data --archive --source <id>` to fetch registered archive captures instead of live NHS England URLs. Superseded revision inputs are always recovered from their archive. Every route must produce the exact SHA-256 in `data-sources.yaml`.
 
+## Build the spend-over-time chart data
+
+```sh
+s/build-spend-summary
+```
+
+Regenerates `spend-by-year.json` from every committed release's own `validation.json`, driving the "Spend over time" bar chart on `index.html` (`../js/spend-chart.js`). Each year's coverage (full calendar year, partial calendar year, or fiscal year) is an explicit, reviewed mapping in `nhse_spending.SPEND_SUMMARY_COVERAGE`, not inferred from period strings, so a release can never silently misrepresent as more complete than it is. Run this after building or rebuilding any payments release.
+
 ## Build the procurement fixtures
 
 ```sh

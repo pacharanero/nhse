@@ -1266,6 +1266,71 @@ def validate_top_level_finances() -> None:
                 raise SpendingDataError(f"{figure['id']} is {figure['amount_gbp']}; expected {expected}")
 
 
+# Coverage is asserted explicitly per source, not inferred from period strings or
+# workbook counts, so an incomplete period can never silently read as a full year.
+# "months" is the count of calendar months the release's rows can fall in; it is
+# None for the fiscal-year release, which does not map onto calendar-year bars.
+SPEND_SUMMARY_COVERAGE: dict[str, dict[str, Any]] = {
+    "2013-14-payments-over-25000": {"kind": "fiscal_year", "months": None, "label": "2013/14"},
+    "2014-payments-over-25000": {"kind": "partial_calendar_year", "months": 9, "label": "2014"},
+    "2015-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2015"},
+    "2016-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2016"},
+    "2017-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2017"},
+    "2018-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2018"},
+    "2019-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2019"},
+    "2020-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2020"},
+    "2021-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2021"},
+    "2022-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2022"},
+    "2023-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2023"},
+    "2024-payments-over-25000": {"kind": "full_calendar_year", "months": 12, "label": "2024"},
+    "2025-09-payments-over-25000": {"kind": "partial_calendar_year", "months": 1, "label": "2025 (Sep only)"},
+}
+
+
+def build_spend_summary(target: Path | None = None) -> Path:
+    registry = _load_yaml(SOURCE_REGISTRY)
+    sources = registry.get("sources", [])
+    registered_ids = {str(source["id"]) for source in sources}
+    if set(SPEND_SUMMARY_COVERAGE) - registered_ids:
+        raise SpendingDataError("spend summary coverage refers to an unregistered source")
+
+    years: list[dict[str, Any]] = []
+    for source in sources:
+        source_id = str(source["id"])
+        coverage = SPEND_SUMMARY_COVERAGE.get(source_id)
+        if coverage is None:
+            continue
+        source_obj = load_source(source_id)
+        release = release_path(source_obj)
+        validation_path = release / "validation.json"
+        if not validation_path.exists():
+            raise SpendingDataError(f"no committed release found for {source_id}; build it first")
+        validation = json.loads(validation_path.read_text(encoding="utf-8"))
+        stats = validation["statistics"]
+        years.append(
+            {
+                "source_id": source_id,
+                "period": str(source_obj["period"]),
+                "label": coverage["label"],
+                "coverage": coverage["kind"],
+                "months_covered": coverage["months"],
+                "rows": stats["rows"],
+                "total_gbp": str(Decimal(stats["total_gbp"])),
+                "nhs_england_total_gbp": str(Decimal(stats["nhs_england_total_gbp"])),
+            }
+        )
+    years.sort(key=lambda year: year["period"])
+
+    summary = {
+        "schema_version": 1,
+        "generated_from": sorted(SPEND_SUMMARY_COVERAGE),
+        "years": years,
+    }
+    target = target or (ROOT / "spending" / "spend-by-year.json")
+    target.write_bytes(_json_bytes(summary))
+    return target
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -1305,6 +1370,7 @@ def _parser() -> argparse.ArgumentParser:
         command_parser.add_argument("--source", default="2025-09-payments-over-25000", help="source registry ID")
         if command == "all":
             command_parser.add_argument("--archive", action="store_true", help="download the archived source URL")
+    subparsers.add_parser("spend-summary", help="rebuild the committed spend-by-year chart data")
     return parser
 
 
@@ -1336,6 +1402,10 @@ def main(argv: list[str] | None = None) -> int:
                 f"{result['schema_count']} physical schemas, {result['column_profile_count']} column profiles)",
                 file=sys.stderr,
             )
+            return 0
+        if args.command == "spend-summary":
+            target = build_spend_summary()
+            print(f"wrote spend summary: {target}", file=sys.stderr)
             return 0
         source = load_source(args.source)
         if args.command in {"fetch", "all"}:

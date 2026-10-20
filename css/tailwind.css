@@ -45,3 +45,17 @@
 body {
   font-family: var(--font-sans);
 }
+
+/* spending/index.html's "Spend over time" chart (js/spend-chart.js) draws
+   plain SVG rather than Tailwind-classed HTML, so its text needs explicit
+   font-size/fill rules rather than utility classes. */
+.spend-chart-value-label {
+  font-size: 9px;
+  fill: var(--color-base-content);
+}
+
+.spend-chart-axis-label {
+  font-size: 10px;
+  fill: var(--color-base-content);
+  opacity: 0.8;
+}

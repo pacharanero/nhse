@@ -50,6 +50,18 @@
   </section>
   <p class="text-xs text-base-content/60 mt-3 max-w-3xl">Sources: <a class="link" href="https://www.gov.uk/government/publications/2025-to-2026-revised-financial-directions-to-nhs-england">2025/26 revised financial directions, Annex A2</a> (<a class="link" href="https://web.archive.org/web/20260325183240/https://www.gov.uk/government/publications/2025-to-2026-revised-financial-directions-to-nhs-england">archive</a>) and <a class="link" href="https://www.gov.uk/government/publications/nhs-england-annual-report-and-accounts-2025-to-2026">NHS England Annual Report and Accounts 2025/26, Note 21</a> (<a class="link" href="https://web.archive.org/web/20260903103558/https://www.gov.uk/government/publications/nhs-england-annual-report-and-accounts-2025-to-2026">archive</a>).</p>
 
+  <section class="mt-10">
+    <h2 class="text-lg font-bold">Spend over time</h2>
+    <p class="text-sm text-base-content/70 mt-2 max-w-3xl">Total published payments over £25,000 per year, 2013/14 through September 2025. Hatched, dashed bars are not full calendar years: 2013/14 is an April-March fiscal year, 2014 covers April-December only, and 2025 covers September only so far - each is kept visually distinct rather than plotted as if a full year's figure were simply smaller. Generated from <a class="link" href="spend-by-year.json">spend-by-year.json</a> by <code>s/build-spend-summary</code>.</p>
+    <div id="spend-chart" class="mt-4 overflow-x-auto" aria-live="polite">
+      <p class="text-sm text-base-content/60">Loading chart…</p>
+    </div>
+    <details class="mt-2">
+      <summary class="text-sm link cursor-pointer">View exact figures as a table</summary>
+      <div id="spend-chart-table" class="overflow-x-auto"></div>
+    </details>
+  </section>
+
   <section class="mt-10 max-w-3xl">
     <h2 class="text-lg font-bold">Detailed payments</h2>
     <h3 class="font-semibold mt-4">Calendar year 2024</h3>
@@ -113,5 +125,6 @@
 </footer>
 
 <script src="../js/theme-toggle.js"></script>
+<script src="../js/spend-chart.js"></script>
 </body>
 </html>

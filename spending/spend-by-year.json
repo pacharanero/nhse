@@ -1,0 +1,150 @@
+{
+  "generated_from": [
+    "2013-14-payments-over-25000",
+    "2014-payments-over-25000",
+    "2015-payments-over-25000",
+    "2016-payments-over-25000",
+    "2017-payments-over-25000",
+    "2018-payments-over-25000",
+    "2019-payments-over-25000",
+    "2020-payments-over-25000",
+    "2021-payments-over-25000",
+    "2022-payments-over-25000",
+    "2023-payments-over-25000",
+    "2024-payments-over-25000",
+    "2025-09-payments-over-25000"
+  ],
+  "schema_version": 1,
+  "years": [
+    {
+      "coverage": "fiscal_year",
+      "label": "2013/14",
+      "months_covered": null,
+      "nhs_england_total_gbp": "23938926717.61",
+      "period": "2013-14",
+      "rows": 140907,
+      "source_id": "2013-14-payments-over-25000",
+      "total_gbp": "24061615563.64"
+    },
+    {
+      "coverage": "partial_calendar_year",
+      "label": "2014",
+      "months_covered": 9,
+      "nhs_england_total_gbp": "18315696213.73",
+      "period": "2014",
+      "rows": 95563,
+      "source_id": "2014-payments-over-25000",
+      "total_gbp": "18424685745.38"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2015",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "23870884065.40",
+      "period": "2015",
+      "rows": 119710,
+      "source_id": "2015-payments-over-25000",
+      "total_gbp": "24000110083.10"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2016",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "22077894189.14",
+      "period": "2016",
+      "rows": 84956,
+      "source_id": "2016-payments-over-25000",
+      "total_gbp": "22184603551.71"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2017",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "20874519961.75",
+      "period": "2017",
+      "rows": 53612,
+      "source_id": "2017-payments-over-25000",
+      "total_gbp": "20973050073.94"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2018",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "21567142821.08",
+      "period": "2018",
+      "rows": 43030,
+      "source_id": "2018-payments-over-25000",
+      "total_gbp": "21662502533.23"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2019",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "22474011758.17",
+      "period": "2019",
+      "rows": 39371,
+      "source_id": "2019-payments-over-25000",
+      "total_gbp": "22556780316.59"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2020",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "30979116694.77",
+      "period": "2020",
+      "rows": 35359,
+      "source_id": "2020-payments-over-25000",
+      "total_gbp": "31092013054.69"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2021",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "30250016779.67",
+      "period": "2021",
+      "rows": 49055,
+      "source_id": "2021-payments-over-25000",
+      "total_gbp": "30412668075.39"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2022",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "28552638062.48",
+      "period": "2022",
+      "rows": 44922,
+      "source_id": "2022-payments-over-25000",
+      "total_gbp": "28702461875.91"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2023",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "35125955822.46",
+      "period": "2023",
+      "rows": 50915,
+      "source_id": "2023-payments-over-25000",
+      "total_gbp": "35234034498.09"
+    },
+    {
+      "coverage": "full_calendar_year",
+      "label": "2024",
+      "months_covered": 12,
+      "nhs_england_total_gbp": "32263550941.38",
+      "period": "2024",
+      "rows": 51971,
+      "source_id": "2024-payments-over-25000",
+      "total_gbp": "32326771267.64"
+    },
+    {
+      "coverage": "partial_calendar_year",
+      "label": "2025 (Sep only)",
+      "months_covered": 1,
+      "nhs_england_total_gbp": "1080171482.46",
+      "period": "2025-09",
+      "rows": 2515,
+      "source_id": "2025-09-payments-over-25000",
+      "total_gbp": "1082583670.12"
+    }
+  ]
+}
