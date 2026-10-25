@@ -63,6 +63,18 @@
   </section>
 
   <section class="mt-10">
+    <h2 class="text-lg font-bold">NHS Digital / HSCIC spend (pre-merger)</h2>
+    <p class="text-sm text-base-content/70 mt-2 max-w-3xl">NHS Digital (formerly the Health and Social Care Information Centre, HSCIC) published its own spend-information series, separately from NHS England's payments-over-£25,000 publication, until the two bodies merged on 1 February 2023. These ten fiscal years are a <strong>separate legal entity's spending, never summed into the NHS England chart above</strong> - the two are shown side by side only for scale, not as parts of one total. Generated from <a class="link" href="nhsd-spend-by-year.json">nhsd-spend-by-year.json</a> by <code>s/build-nhsd-summary</code>.</p>
+    <div id="nhsd-spend-chart" class="mt-4 overflow-x-auto" aria-live="polite">
+      <p class="text-sm text-base-content/60">Loading chart…</p>
+    </div>
+    <details class="mt-2">
+      <summary class="text-sm link cursor-pointer">View exact figures as a table</summary>
+      <div id="nhsd-spend-chart-table" class="overflow-x-auto"></div>
+    </details>
+  </section>
+
+  <section class="mt-10">
     <h2 class="text-lg font-bold">Search suppliers</h2>
     <p class="text-sm text-base-content/70 mt-2 max-w-3xl">Search matches the exact supplier text as NHS England published it, not a resolved legal entity - the same organisation can appear under more than one spelling (an abbreviation, a trading name, a later rebrand) with no guarantee they are linked here. Results are year-by-year totals across every published release, 2013/14 through September 2025. Generated from <a class="link" href="supplier-spend.json">supplier-spend.json</a> by the same <code>s/build-spend-summary</code>; see "Query with DuckDB" in <a class="link" href="README.md">the spending README</a> to search transaction-level rows yourself.</p>
     <div class="max-w-xl mt-4">
@@ -139,6 +151,7 @@
 <script src="../js/theme-toggle.js"></script>
 <script src="../js/bar-chart.js"></script>
 <script src="../js/spend-chart.js"></script>
+<script src="../js/nhsd-spend-chart.js"></script>
 <script src="../js/supplier-search.js"></script>
 </body>
 </html>

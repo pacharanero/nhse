@@ -1,0 +1,108 @@
+{
+  "generated_from": [
+    "2013-14-nhsd-spend-information",
+    "2014-15-nhsd-spend-information",
+    "2015-16-nhsd-spend-information",
+    "2016-17-nhsd-spend-information",
+    "2017-18-nhsd-spend-information",
+    "2018-19-nhsd-spend-information",
+    "2019-20-nhsd-spend-information",
+    "2020-21-nhsd-spend-information",
+    "2021-22-nhsd-spend-information",
+    "2022-23-nhsd-spend-information"
+  ],
+  "note": "NHS Digital (formerly HSCIC) was a legally distinct body from NHS England until their 1 February 2023 merger. This series is published separately and must never be summed into NHS England's own spend-by-year totals.",
+  "schema_version": 1,
+  "years": [
+    {
+      "coverage": "fiscal_year",
+      "entity": "HSCIC",
+      "label": "2013/14",
+      "period": "2013-14",
+      "rows": 491,
+      "source_id": "2013-14-nhsd-spend-information",
+      "total_gbp": "53587094.05"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "HSCIC",
+      "label": "2014/15",
+      "period": "2014-15",
+      "rows": 538,
+      "source_id": "2014-15-nhsd-spend-information",
+      "total_gbp": "63302493.16"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "HSCIC",
+      "label": "2015/16",
+      "period": "2015-16",
+      "rows": 575,
+      "source_id": "2015-16-nhsd-spend-information",
+      "total_gbp": "63415503.41"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "NHS Digital",
+      "label": "2016/17",
+      "period": "2016-17",
+      "rows": 766,
+      "source_id": "2016-17-nhsd-spend-information",
+      "total_gbp": "123312948.00"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "NHS Digital",
+      "label": "2017/18",
+      "period": "2017-18",
+      "rows": 1480,
+      "source_id": "2017-18-nhsd-spend-information",
+      "total_gbp": "206629280.43"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "NHS Digital",
+      "label": "2018/19",
+      "period": "2018-19",
+      "rows": 1933,
+      "source_id": "2018-19-nhsd-spend-information",
+      "total_gbp": "261353425.19"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "NHS Digital",
+      "label": "2019/20",
+      "period": "2019-20",
+      "rows": 1896,
+      "source_id": "2019-20-nhsd-spend-information",
+      "total_gbp": "305854166.09"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "NHS Digital",
+      "label": "2020/21",
+      "period": "2020-21",
+      "rows": 2443,
+      "source_id": "2020-21-nhsd-spend-information",
+      "total_gbp": "440171340.48"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "NHS Digital",
+      "label": "2021/22",
+      "period": "2021-22",
+      "rows": 2735,
+      "source_id": "2021-22-nhsd-spend-information",
+      "total_gbp": "604285762.46"
+    },
+    {
+      "coverage": "fiscal_year",
+      "entity": "NHS Digital",
+      "label": "2022/23",
+      "period": "2022-23",
+      "rows": 2901,
+      "source_id": "2022-23-nhsd-spend-information",
+      "total_gbp": "564534269.95"
+    }
+  ]
+}

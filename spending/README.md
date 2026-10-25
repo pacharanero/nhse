@@ -23,6 +23,17 @@ s/build-spend-summary
 
 Regenerates `spend-by-year.json` from every committed release's own `validation.json`, driving the "Spend over time" bar chart on `index.html` (`../js/spend-chart.js`). Each year's coverage (full calendar year, partial calendar year, or fiscal year) is an explicit, reviewed mapping in `nhse_spending.SPEND_SUMMARY_COVERAGE`, not inferred from period strings, so a release can never silently misrepresent as more complete than it is. Run this after building or rebuilding any payments release.
 
+## Build an NHS Digital/HSCIC release
+
+```sh
+s/fetch-nhsd-data --source 2013-14-nhsd-spend-information
+s/build-nhsd-data --source 2013-14-nhsd-spend-information
+uv run python nhse_spending.py nhsd-validate --source 2013-14-nhsd-spend-information
+s/build-nhsd-summary
+```
+
+`spending/nhsd-data-sources.yaml` registers NHS Digital's (formerly HSCIC's) own pre-merger "spend information" series - ten fiscal years, 2013/14 through 2022/23, each `--source <fiscal-year>-nhsd-spend-information`. This is a **legally and editorially separate corpus** from NHS England's own payments: see "NHS Digital / HSCIC spend information (pre-merger)" in `../spec/spending-data.md` for why, its structurally different schema, and the open TPP-absence finding it surfaces. Every digital.nhs.uk source URL now 404s after the NHS Digital/NHS England merger, so `nhsd-fetch` always downloads from the registered UK Government Web Archive capture; there is no live-vs-archive choice to make. `s/build-nhsd-summary` regenerates `nhsd-spend-by-year.json`, its own chart series on `index.html`, never summed into `spend-by-year.json`'s NHS England totals.
+
 ## Build the procurement fixtures
 
 ```sh
@@ -60,6 +71,18 @@ ORDER BY source_file
 ```
 
 Match on `supplier` as published, not a resolved legal entity - the same company can appear under more than one spelling (an all-caps abbreviation, a trading name, a later rebrand) with no guarantee the registry links them. Treat a second plausible name as a candidate to check by hand, not as the same row count. The published site's "Search suppliers" tool on `index.html` (`spending/supplier-spend.json`, built by `s/build-spend-summary`) runs the same raw-text, no-entity-resolution substring search pre-aggregated by year, for anyone who would rather not run DuckDB themselves.
+
+This `*-payments-over-25000/payments.parquet` glob deliberately does not match NHS Digital/HSCIC's own pre-merger releases, which use different artifact names (`nhsd-spend.parquet`) precisely so they are never silently pulled into an NHS England cross-year query. Query them explicitly:
+
+```sh
+duckdb -c "
+SELECT source_period, supplier, count(*) AS payments, sum(amount_gbp) AS total_gbp
+FROM read_parquet('spending/data/*-nhsd-spend-information/nhsd-spend.parquet')
+WHERE supplier ILIKE '%phoenix partnership%'
+GROUP BY source_period, supplier
+ORDER BY source_period
+"
+```
 
 ## Add a source
 

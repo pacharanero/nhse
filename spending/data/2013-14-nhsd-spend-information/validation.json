@@ -1,0 +1,26 @@
+{
+  "artifacts": {
+    "nhsd-spend.csv.gz": {
+      "bytes": 34810,
+      "sha256": "7b0df9cec3913f9fd19bab214d21ac2b258fc0a577d1cc8a019fc7b667fb4bbc"
+    },
+    "nhsd-spend.parquet": {
+      "bytes": 43980,
+      "sha256": "d7e150b061ebdde044f5e51b7a0253c7af25fa34ead02e469377153648853058"
+    }
+  },
+  "dataset": "nhs-digital-spend-information",
+  "dataset_version": "2013-14.1",
+  "normalized_content_sha256": "4e644adee6e48af4367d3b8e7d3c891a72cbb9aa1aa283bf7b8da32670e984a4",
+  "schema_version": 1,
+  "source_sha256": "ecf35dd02967dd870eaee46b539506dc76bf1bf87a03fef4b0e3558ba0cddbe7",
+  "statistics": {
+    "entity": "HSCIC",
+    "maximum_date": "2014-03-26",
+    "minimum_date": "2012-11-01",
+    "negative_rows": 0,
+    "rows": 491,
+    "total_gbp": "53587094.05"
+  },
+  "status": "passed"
+}

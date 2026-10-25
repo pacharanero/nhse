@@ -1,0 +1,227 @@
+{
+  "description": "Normalized NHS Digital (formerly HSCIC) spend-information transparency data, published separately from NHS England pre-merger, with physical source-row provenance.",
+  "licenses": [
+    {
+      "name": "OGL-UK-3.0",
+      "path": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "title": "Open Government Licence v3.0"
+    }
+  ],
+  "name": "nhs-digital-spend-information-2016-17",
+  "nhse": {
+    "limitations": [
+      "NHS Digital (formerly HSCIC) was a legally distinct body from NHS England until their 1 February 2023 merger; these rows are never summed into NHS England's own payments totals.",
+      "This thresholded spend publication is not a general ledger and does not reconcile one-for-one to annual accrual accounts.",
+      "Supplier text is preserved as published and has not been entity-resolved.",
+      "Negative values are retained and not classified as refunds, reversals or corrections without source evidence.",
+      "The project-owner redistribution decision for this source relies on the archived publication page's own 'freely re-usable under the same terms as data.gov.uk' statement."
+    ],
+    "normalized_content_sha256": "274bf0959c5ccbbb552ed364d32467e11c62d97e9b4163f5444ac85fc902fffe",
+    "schema_version": 1,
+    "tool_version": "0.1.0"
+  },
+  "profile": "tabular-data-package",
+  "resources": [
+    {
+      "bytes": 59175,
+      "format": "parquet",
+      "hash": "sha256:52d2bd8653b8b5322ca2a23ca1a452cd8ce94ef0ef51f71b62a583a17fe03794",
+      "mediatype": "application/vnd.apache.parquet",
+      "name": "nhsd-spend-parquet",
+      "path": "nhsd-spend.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "observation_id",
+            "type": "string"
+          },
+          {
+            "name": "department_family",
+            "type": "string"
+          },
+          {
+            "name": "entity",
+            "type": "string"
+          },
+          {
+            "name": "transaction_date",
+            "type": "date"
+          },
+          {
+            "name": "expense_type",
+            "type": "string"
+          },
+          {
+            "name": "expense_area",
+            "type": "string"
+          },
+          {
+            "name": "supplier",
+            "type": "string"
+          },
+          {
+            "name": "purchase_invoice_number",
+            "type": "string"
+          },
+          {
+            "decimalChar": ".",
+            "name": "amount_gbp",
+            "type": "number"
+          },
+          {
+            "name": "source_amount_raw",
+            "type": "string"
+          },
+          {
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "redaction_status",
+            "type": "string"
+          },
+          {
+            "name": "source_id",
+            "type": "string"
+          },
+          {
+            "name": "source_period",
+            "type": "string"
+          },
+          {
+            "name": "source_sha256",
+            "type": "string"
+          },
+          {
+            "name": "source_file",
+            "type": "string"
+          },
+          {
+            "name": "source_row",
+            "type": "integer"
+          }
+        ],
+        "primaryKey": "observation_id"
+      }
+    },
+    {
+      "bytes": 50864,
+      "compression": "gzip",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hash": "sha256:b5dc89e9215151f40a4b45c93fb3f3aba4ee609b5120769a01bdedd67dd221f4",
+      "mediatype": "text/csv",
+      "name": "nhsd-spend-csv",
+      "path": "nhsd-spend.csv.gz",
+      "schema": {
+        "fields": [
+          {
+            "name": "observation_id",
+            "type": "string"
+          },
+          {
+            "name": "department_family",
+            "type": "string"
+          },
+          {
+            "name": "entity",
+            "type": "string"
+          },
+          {
+            "name": "transaction_date",
+            "type": "date"
+          },
+          {
+            "name": "expense_type",
+            "type": "string"
+          },
+          {
+            "name": "expense_area",
+            "type": "string"
+          },
+          {
+            "name": "supplier",
+            "type": "string"
+          },
+          {
+            "name": "purchase_invoice_number",
+            "type": "string"
+          },
+          {
+            "decimalChar": ".",
+            "name": "amount_gbp",
+            "type": "number"
+          },
+          {
+            "name": "source_amount_raw",
+            "type": "string"
+          },
+          {
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "redaction_status",
+            "type": "string"
+          },
+          {
+            "name": "source_id",
+            "type": "string"
+          },
+          {
+            "name": "source_period",
+            "type": "string"
+          },
+          {
+            "name": "source_sha256",
+            "type": "string"
+          },
+          {
+            "name": "source_file",
+            "type": "string"
+          },
+          {
+            "name": "source_row",
+            "type": "integer"
+          }
+        ],
+        "primaryKey": "observation_id"
+      }
+    }
+  ],
+  "rights": "The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.",
+  "rights_status": "approved-for-normalized-redistribution",
+  "sources": [
+    {
+      "archive_url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over__25000_2016-17.csv",
+      "bytes": 107441,
+      "filename": "nhs_digital_expenditure_over__25000_2016-17.csv",
+      "id": "2016-17-nhsd-spend-information",
+      "landing_page_archive_url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information",
+      "landing_page_url": "https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information",
+      "period": "2016-17",
+      "publisher": "NHS Digital",
+      "referenced_licence_archive_url": "https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "referenced_licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "rights_basis": "NHS Digital's own publication-scheme page states this data is \"freely re-usable under the same terms as data.gov.uk\", equivalent to Open Government Licence v3.",
+      "rights_decision_date": "2026-10-25",
+      "rights_evidence_archive_url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information",
+      "rights_evidence_url": "https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information",
+      "rights_note": "The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.",
+      "rights_status": "approved-for-normalized-redistribution",
+      "sha256": "6ecd9a9f55990bb0b9ff73b491ad7f843ca38f811fdc4bc100e01a0addda4145",
+      "source_url": "https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over__25000_2016-17.csv",
+      "title": "NHS Digital spend information, fiscal year 2016/17"
+    }
+  ],
+  "title": "NHS Digital spend information, fiscal year 2016/17",
+  "version": "2016-17.1"
+}

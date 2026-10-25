@@ -1,0 +1,413 @@
+schema_version: 1
+
+# NHS Digital (formerly the Health and Social Care Information Centre, HSCIC)
+# published its own "spend information" series on digital.nhs.uk, separately
+# from NHS England's own payments-over-£25,000 publication, until NHS Digital
+# merged into NHS England on 1 February 2023. Every digital.nhs.uk source_url
+# below now 404s; archive_url (UK Government Web Archive) is the only live
+# route. See spec/spending-data.md for why this registry, and its built
+# releases, are kept separate from spending/data-sources.yaml.
+
+sources:
+  - id: 2013-14-nhsd-spend-information
+    title: HSCIC spend information, fiscal year 2013/14
+    period: "2013-14"
+    publisher: Health and Social Care Information Centre (HSCIC)
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/hscic-expenditure-over-gbp25000-2013-14-csv-file.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/hscic-expenditure-over-gbp25000-2013-14-csv-file.csv
+    filename: hscic-expenditure-over-gbp25000-2013-14-csv-file.csv
+    sha256: ecf35dd02967dd870eaee46b539506dc76bf1bf87a03fef4b0e3558ba0cddbe7
+    bytes: 66705
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: cp1252
+      header_row: 1
+      columns:
+        department_family: Department Family
+        entity: Entity
+        transaction_date: Invoice Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Value including irrecoverable VAT where applicable £
+        description: Description
+    expected:
+      rows: 491
+      total_gbp: "53587094.05"
+      entity: HSCIC
+      negative_rows: 0
+      minimum_date: 2012-11-01
+      maximum_date: 2014-03-26
+
+  - id: 2014-15-nhsd-spend-information
+    title: HSCIC spend information, fiscal year 2014/15
+    period: "2014-15"
+    publisher: Health and Social Care Information Centre (HSCIC)
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/hscic_expenditure_over__25000_2014-15.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/hscic_expenditure_over__25000_2014-15.csv
+    filename: hscic_expenditure_over__25000_2014-15.csv
+    sha256: df00ad4d19fd7ad15d1b1befa89427979260a27f31a14623119cb51062a32213
+    bytes: 73949
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: cp1252
+      header_row: 1
+      columns:
+        department_family: Department Family
+        entity: Entity
+        transaction_date: Invoice Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 538
+      total_gbp: "63302493.16"
+      entity: HSCIC
+      negative_rows: 0
+      minimum_date: 2013-11-26
+      maximum_date: 2015-03-31
+
+  - id: 2015-16-nhsd-spend-information
+    title: HSCIC spend information, fiscal year 2015/16
+    period: "2015-16"
+    publisher: Health and Social Care Information Centre (HSCIC)
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/hscic_expenditure_over__25000_2015_2016.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/hscic_expenditure_over__25000_2015_2016.csv
+    filename: hscic_expenditure_over__25000_2015_2016.csv
+    sha256: 7c8557050ddef28572f247fd06f0786b82fb57d72928fc1f1cb884a20365e146
+    bytes: 77867
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: cp1252
+      header_row: 1
+      columns:
+        department_family: Department Family
+        entity: Entity
+        transaction_date: Invoice Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 575
+      total_gbp: "63415503.41"
+      entity: HSCIC
+      negative_rows: 0
+      minimum_date: 2013-03-12
+      maximum_date: 2016-03-24
+
+  - id: 2016-17-nhsd-spend-information
+    title: NHS Digital spend information, fiscal year 2016/17
+    period: "2016-17"
+    publisher: NHS Digital
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over__25000_2016-17.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over__25000_2016-17.csv
+    filename: nhs_digital_expenditure_over__25000_2016-17.csv
+    sha256: 6ecd9a9f55990bb0b9ff73b491ad7f843ca38f811fdc4bc100e01a0addda4145
+    bytes: 107441
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: cp1252
+      header_row: 1
+      columns:
+        department_family: Department Family
+        entity: Entity
+        transaction_date: Invoice Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 766
+      total_gbp: "123312948.00"
+      entity: NHS Digital
+      negative_rows: 0
+      minimum_date: 2016-02-11
+      maximum_date: 2017-03-30
+
+  - id: 2017-18-nhsd-spend-information
+    title: NHS Digital spend information, fiscal year 2017/18
+    period: "2017-18"
+    publisher: NHS Digital
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over__25000_2017-18.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over__25000_2017-18.csv
+    filename: nhs_digital_expenditure_over__25000_2017-18.csv
+    sha256: c5b84759b88a327a2e261bb3de1faef99dd3612f74140672bfe436ec844d317d
+    bytes: 273171
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: cp1252
+      header_row: 4
+      columns:
+        department_family: Department Family
+        entity: Entity
+        transaction_date: Invoice Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 1480
+      total_gbp: "206629280.43"
+      entity: NHS Digital
+      negative_rows: 85
+      minimum_date: 2016-07-11
+      maximum_date: 2018-04-01
+
+  - id: 2018-19-nhsd-spend-information
+    title: NHS Digital spend information, fiscal year 2018/19
+    period: "2018-19"
+    publisher: NHS Digital
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over_25000_apr_2018-mar_2019.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs_digital_expenditure_over_25000_apr_2018-mar_2019.csv
+    filename: nhs_digital_expenditure_over_25000_apr_2018-mar_2019.csv
+    sha256: 44c2646b4de33e527f0ac896799577d1987d163038677f26f65b9034c009ab16
+    bytes: 314048
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: utf-8-sig
+      header_row: 4
+      columns:
+        department_family: Department Family
+        entity: Entity
+        transaction_date: Invoice Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 1933
+      total_gbp: "261353425.19"
+      entity: NHS Digital
+      negative_rows: 68
+      minimum_date: 2017-11-24
+      maximum_date: 2019-03-29
+
+  - id: 2019-20-nhsd-spend-information
+    title: NHS Digital spend information, fiscal year 2019/20
+    period: "2019-20"
+    publisher: NHS Digital
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/nhs_digital_expenditure_over_25000_apr_2019-mar_2020.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/nhs_digital_expenditure_over_25000_apr_2019-mar_2020.csv
+    filename: nhs_digital_expenditure_over_25000_apr_2019-mar_2020.csv
+    sha256: d509594c880cc318e42ed46468586d774dc487f0368657b8360931754569511c
+    bytes: 342523
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: utf-8-sig
+      header_row: 4
+      columns:
+        department_family: Department Family
+        entity: Entity
+        transaction_date: Invoice Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense Area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 1896
+      total_gbp: "305854166.09"
+      entity: NHS Digital
+      negative_rows: 47
+      minimum_date: 2002-02-12
+      maximum_date: 2020-10-02
+    notes:
+      - Row 1564 publishes transaction date 12/02/2002 for a DEPARTMENT OF HEALTH row surrounded by February/March 2020 entries of similar size and description; almost certainly a typographical error for 12/02/2020, but preserved exactly as published rather than silently corrected. This is why minimum_date is 2002, not a 2019/2020 date.
+      - Two rows (MCSA GROUP LTD, 02/10/2020 and 03/04/2020) fall just after the fiscal year's 31 March 2020 end; preserved as published rather than excluded, since late-dated invoices within a published threshold report are not evidence of an error.
+
+  - id: 2020-21-nhsd-spend-information
+    title: NHS Digital spend information, fiscal year 2020/21
+    period: "2020-21"
+    publisher: NHS Digital
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/nhs-digital-expenditure-over-gbp25000-april-2020-to-march-2021.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/nhs-digital-expenditure-over-gbp25000-april-2020-to-march-2021.csv
+    filename: nhs-digital-expenditure-over-gbp25000-april-2020-to-march-2021.csv
+    sha256: f5a3b2f37f17da7fd7313c73345c972a11f2e114645f4dbf4dad88d009561d1a
+    bytes: 426956
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: cp1252
+      header_row: 5
+      columns:
+        department_family: Department family
+        entity: Entity
+        transaction_date: Invoiced Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 2443
+      total_gbp: "440171340.48"
+      entity: NHS Digital
+      negative_rows: 125
+      minimum_date: 2019-10-29
+      maximum_date: 2021-04-15
+
+  - id: 2021-22-nhsd-spend-information
+    title: NHS Digital spend information, fiscal year 2021/22
+    period: "2021-22"
+    publisher: NHS Digital
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/nhs-digital-expenditure-over-gbp25000-april-21-to-march-22.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/publication-scheme/nhs-digital-spend-information/nhs-digital-expenditure-over-gbp25000-april-21-to-march-22.csv
+    filename: nhs-digital-expenditure-over-gbp25000-april-21-to-march-22.csv
+    sha256: 465d6d615470931c43a709ed5f8da63330f9b688ce3f6639fbae3180abf24034
+    bytes: 451585
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: utf-8-sig
+      header_row: 4
+      columns:
+        department_family: Department family
+        entity: Entity
+        transaction_date: Invoiced Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 2735
+      total_gbp: "604285762.46"
+      entity: NHS Digital
+      negative_rows: 178
+      minimum_date: 2020-12-31
+      maximum_date: 2022-03-31
+
+  - id: 2022-23-nhsd-spend-information
+    title: NHS Digital spend information, fiscal year 2022/23
+    period: "2022-23"
+    publisher: NHS Digital
+    landing_page_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    landing_page_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    source_url: https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs-digital-expenditure-over-gbp25000-april-22-to-march-23.csv
+    archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/binaries/content/assets/website-assets/corporate-information/corporate-information-and-documents/spend-information/nhs-digital-expenditure-over-gbp25000-april-22-to-march-23.csv
+    filename: nhs-digital-expenditure-over-gbp25000-april-22-to-march-23.csv
+    sha256: 1bd43f46b028f1a6b6c0750d1f150439b4756bfe99f7b537454077cab0174718
+    bytes: 474113
+    rights_status: approved-for-normalized-redistribution
+    rights_basis: NHS Digital's own publication-scheme page states this data is "freely re-usable under the same terms as data.gov.uk", equivalent to Open Government Licence v3.
+    rights_decision_date: 2026-10-25
+    rights_note: The project owner approved redistribution of the normalized release on 25 October 2026, relying on the archived publication-scheme page's own re-usable statement. This decision covers the normalized release, not a raw-CSV mirror.
+    rights_evidence_url: https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    rights_evidence_archive_url: https://webarchive.nationalarchives.gov.uk/ukgwa/20231220234620mp_/https://digital.nhs.uk/about-nhs-digital/corporate-information-and-documents/publication-scheme/nhs-digital-spend-information
+    referenced_licence_url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    referenced_licence_archive_url: https://web.archive.org/web/20261017133849/https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+    csv:
+      encoding: cp1252
+      header_row: 4
+      columns:
+        department_family: Department family
+        entity: Entity
+        transaction_date: Invoiced Date
+        expense_type: Consolidated Expense Type
+        expense_area: Expense area
+        supplier: Supplier
+        purchase_invoice_number: Purchase Invoice Number
+        amount_gbp: Invoice Value £
+        description: Description
+    expected:
+      rows: 2901
+      total_gbp: "564534269.95"
+      entity: NHS Digital
+      negative_rows: 189
+      minimum_date: 2021-07-08
+      maximum_date: 2023-03-24

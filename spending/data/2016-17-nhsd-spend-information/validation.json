@@ -1,0 +1,26 @@
+{
+  "artifacts": {
+    "nhsd-spend.csv.gz": {
+      "bytes": 50864,
+      "sha256": "b5dc89e9215151f40a4b45c93fb3f3aba4ee609b5120769a01bdedd67dd221f4"
+    },
+    "nhsd-spend.parquet": {
+      "bytes": 59175,
+      "sha256": "52d2bd8653b8b5322ca2a23ca1a452cd8ce94ef0ef51f71b62a583a17fe03794"
+    }
+  },
+  "dataset": "nhs-digital-spend-information",
+  "dataset_version": "2016-17.1",
+  "normalized_content_sha256": "274bf0959c5ccbbb552ed364d32467e11c62d97e9b4163f5444ac85fc902fffe",
+  "schema_version": 1,
+  "source_sha256": "6ecd9a9f55990bb0b9ff73b491ad7f843ca38f811fdc4bc100e01a0addda4145",
+  "statistics": {
+    "entity": "NHS Digital",
+    "maximum_date": "2017-03-30",
+    "minimum_date": "2016-02-11",
+    "negative_rows": 0,
+    "rows": 766,
+    "total_gbp": "123312948.00"
+  },
+  "status": "passed"
+}

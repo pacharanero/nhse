@@ -26,6 +26,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import yaml
 
+import nhse_nhsd_spending
 import nhse_procurement
 from nhse_spending_inventory import InventoryError, build_inventory
 
@@ -1448,6 +1449,18 @@ def _parser() -> argparse.ArgumentParser:
     subparsers.add_parser(
         "spend-summary", help="rebuild the committed spend-by-year and per-supplier chart data"
     )
+    nhsd_fetch_parser = subparsers.add_parser(
+        "nhsd-fetch", help="download and verify one registered NHS Digital/HSCIC spend-information source"
+    )
+    nhsd_fetch_parser.add_argument("--source", required=True, help="NHSD source registry ID")
+    for command, help_text in (
+        ("nhsd-build", "build and validate the local NHSD release"),
+        ("nhsd-validate", "validate the built NHSD release against its registry entry"),
+        ("nhsd-all", "fetch, build, and validate one registered NHSD source"),
+    ):
+        nhsd_command_parser = subparsers.add_parser(command, help=help_text)
+        nhsd_command_parser.add_argument("--source", required=True, help="NHSD source registry ID")
+    subparsers.add_parser("nhsd-summary", help="rebuild the committed NHSD spend-by-year series")
     return parser
 
 
@@ -1486,6 +1499,27 @@ def main(argv: list[str] | None = None) -> int:
             supplier_target = build_supplier_spend_summary()
             print(f"wrote supplier spend summary: {supplier_target}", file=sys.stderr)
             return 0
+        if args.command == "nhsd-summary":
+            target = nhse_nhsd_spending.build_nhsd_spend_summary()
+            print(f"wrote NHSD spend summary: {target}", file=sys.stderr)
+            return 0
+        if args.command.startswith("nhsd-"):
+            nhsd_registry = nhse_nhsd_spending.load_registry()
+            nhsd_source = nhse_nhsd_spending.load_source(args.source, nhsd_registry)
+            if args.command in {"nhsd-fetch", "nhsd-all"}:
+                path = nhse_nhsd_spending.fetch_source(nhsd_source)
+                print(f"verified NHSD source: {path}", file=sys.stderr)
+            else:
+                path = nhse_nhsd_spending.verify_registered_source(nhsd_source)
+            if args.command in {"nhsd-build", "nhsd-all"}:
+                target = nhse_nhsd_spending.build_release(path, nhsd_source, nhse_nhsd_spending.release_path(nhsd_source))
+                print(f"built NHSD release: {target}", file=sys.stderr)
+            if args.command in {"nhsd-validate", "nhsd-all"}:
+                nhse_nhsd_spending.validate_release(
+                    nhse_nhsd_spending.release_path(nhsd_source), nhsd_source, verify_against_source=True, source_file=path
+                )
+                print(f"validated NHSD release: {nhse_nhsd_spending.release_path(nhsd_source)}", file=sys.stderr)
+            return 0
         source = load_source(args.source)
         if args.command in {"fetch", "all"}:
             paths = fetch_sources(source, use_archive=getattr(args, "archive", False))
@@ -1509,6 +1543,7 @@ def main(argv: list[str] | None = None) -> int:
         yaml.YAMLError,
         InventoryError,
         nhse_procurement.ProcurementDataError,
+        nhse_nhsd_spending.NhsdDataError,
     ) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
