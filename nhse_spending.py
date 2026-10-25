@@ -1331,6 +1331,81 @@ def build_spend_summary(target: Path | None = None) -> Path:
     return target
 
 
+def build_supplier_spend_summary(target: Path | None = None) -> Path:
+    registry = _load_yaml(SOURCE_REGISTRY)
+    sources = registry.get("sources", [])
+    registered_ids = {str(source["id"]) for source in sources}
+    if set(SPEND_SUMMARY_COVERAGE) - registered_ids:
+        raise SpendingDataError("spend summary coverage refers to an unregistered source")
+
+    periods: list[dict[str, Any]] = []
+    suppliers: dict[str, dict[str, Any]] = {}
+    for source_id in sorted(SPEND_SUMMARY_COVERAGE):
+        coverage = SPEND_SUMMARY_COVERAGE[source_id]
+        source_obj = load_source(source_id)
+        period = str(source_obj["period"])
+        parquet_path = release_path(source_obj) / "payments.parquet"
+        if not parquet_path.exists():
+            raise SpendingDataError(f"no committed release found for {source_id}; build it first")
+        periods.append(
+            {
+                "period": period,
+                "source_id": source_id,
+                "label": coverage["label"],
+                "coverage": coverage["kind"],
+                "months_covered": coverage["months"],
+            }
+        )
+        connection = duckdb.connect(":memory:")
+        try:
+            rows = connection.execute(
+                """
+                SELECT supplier, count(*) AS row_count, sum(amount_gbp) AS total_gbp,
+                       sum(CASE WHEN entity = 'NHS England' THEN amount_gbp ELSE 0 END) AS nhs_england_total_gbp
+                FROM read_parquet(?)
+                GROUP BY supplier
+                """,
+                [str(parquet_path)],
+            ).fetchall()
+        finally:
+            connection.close()
+        for supplier, row_count, total_gbp, nhs_england_total_gbp in rows:
+            entry = suppliers.setdefault(supplier, {"total_rows": 0, "total_gbp": Decimal("0.00"), "years": []})
+            entry["total_rows"] += row_count
+            entry["total_gbp"] += total_gbp
+            entry["years"].append(
+                {
+                    "period": period,
+                    "rows": row_count,
+                    "total_gbp": str(total_gbp),
+                    "nhs_england_total_gbp": str(nhs_england_total_gbp),
+                }
+            )
+
+    supplier_list = []
+    for supplier, entry in sorted(suppliers.items()):
+        entry["years"].sort(key=lambda year: year["period"])
+        supplier_list.append(
+            {
+                "supplier": supplier,
+                "total_rows": entry["total_rows"],
+                "total_gbp": str(entry["total_gbp"]),
+                "years": entry["years"],
+            }
+        )
+    periods.sort(key=lambda item: item["period"])
+
+    summary = {
+        "schema_version": 1,
+        "generated_from": sorted(SPEND_SUMMARY_COVERAGE),
+        "periods": periods,
+        "suppliers": supplier_list,
+    }
+    target = target or (ROOT / "spending" / "supplier-spend.json")
+    target.write_bytes(_json_bytes(summary))
+    return target
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -1370,7 +1445,9 @@ def _parser() -> argparse.ArgumentParser:
         command_parser.add_argument("--source", default="2025-09-payments-over-25000", help="source registry ID")
         if command == "all":
             command_parser.add_argument("--archive", action="store_true", help="download the archived source URL")
-    subparsers.add_parser("spend-summary", help="rebuild the committed spend-by-year chart data")
+    subparsers.add_parser(
+        "spend-summary", help="rebuild the committed spend-by-year and per-supplier chart data"
+    )
     return parser
 
 
@@ -1406,6 +1483,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "spend-summary":
             target = build_spend_summary()
             print(f"wrote spend summary: {target}", file=sys.stderr)
+            supplier_target = build_supplier_spend_summary()
+            print(f"wrote supplier spend summary: {supplier_target}", file=sys.stderr)
             return 0
         source = load_source(args.source)
         if args.command in {"fetch", "all"}:

@@ -602,6 +602,58 @@ class SpendingDataTest(unittest.TestCase):
         self.assertTrue(all(year["months_covered"] == 12 for year in full_years))
         self.assertTrue(all(year["coverage"] in {"partial_calendar_year", "fiscal_year"} for year in partial_years))
 
+    def test_supplier_spend_summary_matches_committed_releases_and_is_deterministic(self) -> None:
+        first = nhse_spending.build_supplier_spend_summary(self.root / "first-suppliers.json")
+        second = nhse_spending.build_supplier_spend_summary(self.root / "second-suppliers.json")
+        self.assertEqual(first.read_bytes(), second.read_bytes())
+
+        committed = (nhse_spending.ROOT / "spending" / "supplier-spend.json").read_bytes()
+        self.assertEqual(first.read_bytes(), committed)
+
+        summary = json.loads(first.read_text(encoding="utf-8"))
+        expected_periods = {
+            str(nhse_spending.load_source(sid)["period"]) for sid in nhse_spending.SPEND_SUMMARY_COVERAGE
+        }
+        self.assertEqual({period["period"] for period in summary["periods"]}, expected_periods)
+        supplier_names = [supplier["supplier"] for supplier in summary["suppliers"]]
+        self.assertEqual(supplier_names, sorted(supplier_names))
+        self.assertEqual(len(supplier_names), len(set(supplier_names)))
+
+        # Every supplier's own rows/total must reconcile with its listed years, and no year
+        # may reference a period outside the published coverage table.
+        known_periods = {period["period"] for period in summary["periods"]}
+        for supplier in summary["suppliers"]:
+            self.assertEqual(supplier["total_rows"], sum(year["rows"] for year in supplier["years"]))
+            self.assertEqual(
+                nhse_spending.Decimal(supplier["total_gbp"]),
+                sum((nhse_spending.Decimal(year["total_gbp"]) for year in supplier["years"]), nhse_spending.Decimal("0.00")),
+            )
+            self.assertTrue(all(year["period"] in known_periods for year in supplier["years"]))
+
+        # Cross-check against the independently built spend-by-year.json: summing every
+        # supplier's rows/total for one period must reconcile with that period's own total.
+        spend_by_year = json.loads((nhse_spending.ROOT / "spending" / "spend-by-year.json").read_text(encoding="utf-8"))
+        for year in spend_by_year["years"]:
+            supplier_rows = sum(
+                entry["rows"]
+                for supplier in summary["suppliers"]
+                for entry in supplier["years"]
+                if entry["period"] == year["period"]
+            )
+            supplier_total = sum(
+                (nhse_spending.Decimal(entry["total_gbp"]) for supplier in summary["suppliers"] for entry in supplier["years"] if entry["period"] == year["period"]),
+                nhse_spending.Decimal("0.00"),
+            )
+            self.assertEqual(supplier_rows, year["rows"])
+            self.assertEqual(supplier_total, nhse_spending.Decimal(year["total_gbp"]))
+
+        # Regression check tying back to this session's manual TPP/SystmOne finding.
+        phoenix = next(s for s in summary["suppliers"] if s["supplier"] == "PHOENIX PARTNERSHIP (LEEDS) LTD")
+        self.assertEqual(phoenix["total_rows"], 199)
+        self.assertEqual(phoenix["total_gbp"], "62839462.71")
+        years_2024 = next(year for year in phoenix["years"] if year["period"] == "2024")
+        self.assertEqual(years_2024["total_gbp"], "40680872.43")
+
 
 class SpendingInventoryTest(unittest.TestCase):
     def test_filename_month_detection_handles_published_variants(self) -> None:

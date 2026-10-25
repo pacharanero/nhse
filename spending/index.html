@@ -62,6 +62,18 @@
     </details>
   </section>
 
+  <section class="mt-10">
+    <h2 class="text-lg font-bold">Search suppliers</h2>
+    <p class="text-sm text-base-content/70 mt-2 max-w-3xl">Search matches the exact supplier text as NHS England published it, not a resolved legal entity - the same organisation can appear under more than one spelling (an abbreviation, a trading name, a later rebrand) with no guarantee they are linked here. Results are year-by-year totals across every published release, 2013/14 through September 2025. Generated from <a class="link" href="supplier-spend.json">supplier-spend.json</a> by the same <code>s/build-spend-summary</code>; see "Query with DuckDB" in <a class="link" href="README.md">the spending README</a> to search transaction-level rows yourself.</p>
+    <div class="max-w-xl mt-4">
+      <label for="supplier-search-input" class="sr-only">Search supplier name</label>
+      <input type="search" id="supplier-search-input" class="input input-bordered w-full" placeholder="Search a supplier, e.g. &quot;Phoenix Partnership&quot; or &quot;SystmOne&quot;" autocomplete="off" aria-describedby="supplier-search-status">
+    </div>
+    <p id="supplier-search-status" class="text-sm text-base-content/60 mt-2" aria-live="polite"></p>
+    <ul id="supplier-search-results" class="menu bg-base-200 rounded-box mt-2 max-w-xl"></ul>
+    <div id="supplier-search-detail"></div>
+  </section>
+
   <section class="mt-10 max-w-3xl">
     <h2 class="text-lg font-bold">Detailed payments</h2>
     <h3 class="font-semibold mt-4">Calendar year 2024</h3>
@@ -125,6 +137,8 @@
 </footer>
 
 <script src="../js/theme-toggle.js"></script>
+<script src="../js/bar-chart.js"></script>
 <script src="../js/spend-chart.js"></script>
+<script src="../js/supplier-search.js"></script>
 </body>
 </html>

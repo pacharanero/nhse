@@ -47,6 +47,20 @@ duckdb -c "SELECT source_period, count(*) AS payments, sum(amount_gbp) AS total_
 
 Filter `entity = 'NHS England'` for the NHS England-parent view. Do not silently exclude CSU rows from whole-workbook totals. `source_period` and `source_id` identify each current monthly workbook in schema v2.
 
+Glob across every committed release to search for one supplier across all years. `union_by_name=true` is required because schema v1 releases (currently only September 2025) lack the `source_id`/`source_period`/`purchase_invoice_number` columns schema v2 adds:
+
+```sh
+duckdb -c "
+SELECT supplier, source_file, count(*) AS payments, sum(amount_gbp) AS total_gbp
+FROM read_parquet('spending/data/*-payments-over-25000/payments.parquet', union_by_name = true)
+WHERE supplier ILIKE '%phoenix partnership%'
+GROUP BY supplier, source_file
+ORDER BY source_file
+"
+```
+
+Match on `supplier` as published, not a resolved legal entity - the same company can appear under more than one spelling (an all-caps abbreviation, a trading name, a later rebrand) with no guarantee the registry links them. Treat a second plausible name as a candidate to check by hand, not as the same row count. The published site's "Search suppliers" tool on `index.html` (`spending/supplier-spend.json`, built by `s/build-spend-summary`) runs the same raw-text, no-entity-resolution substring search pre-aggregated by year, for anyone who would rather not run DuckDB themselves.
+
 ## Add a source
 
 Add immutable source metadata, archive and rights evidence URLs, SHA-256, exact byte length, workbook schema and independently checked reconciliation totals to `data-sources.yaml`. The converter fails closed on schema drift; a structurally different workbook needs an explicit adapter rather than permissive parsing. Run `s/test` and perform two clean builds before treating a new release as deterministic.
