@@ -1407,6 +1407,106 @@ def build_supplier_spend_summary(target: Path | None = None) -> Path:
     return target
 
 
+# Reviewed, fixed pair of suppliers investigated for the D13 GPSoC/GP IT
+# Futures routing-change finding (see spec/spending-data.md). Deliberately
+# not a generic "any supplier" tool: each pattern is a name variant actually
+# confirmed present in the corpus, the same evidence-tier discipline as the
+# rest of this project's supplier matching.
+TRACKED_GPSOC_SUPPLIERS: list[dict[str, Any]] = [
+    {
+        "key": "emis",
+        "label": "EMIS (Egton Medical Information Systems Ltd)",
+        "name_patterns": ["%egton medical%"],
+    },
+    {
+        "key": "tpp",
+        "label": "TPP (Phoenix Partnership (Leeds) Ltd)",
+        "name_patterns": ["%phoenix partnership%"],
+    },
+]
+
+GPSOC_CHANNELS = ["NHS England", "CSU", "NHS Digital / HSCIC"]
+
+
+def build_gpsoc_supplier_breakdown(target: Path | None = None) -> Path:
+    registry = _load_yaml(SOURCE_REGISTRY)
+    for source in registry.get("sources", []):
+        release = release_path(source)
+        if not (release / "payments.parquet").exists():
+            raise SpendingDataError(f"no committed release found for {source['id']}; build it first")
+    nhsd_registry = nhse_nhsd_spending.load_registry()
+    for source in nhsd_registry["sources"]:
+        release = nhse_nhsd_spending.release_path(source)
+        if not (release / "nhsd-spend.parquet").exists():
+            raise SpendingDataError(f"no committed NHSD release found for {source['id']}; build it first")
+
+    nhse_glob = str(DATA_DIR / "*-payments-over-25000" / "payments.parquet")
+    nhsd_glob = str(DATA_DIR / "*-nhsd-spend-information" / "nhsd-spend.parquet")
+
+    connection = duckdb.connect(":memory:")
+    try:
+        suppliers_out = []
+        for supplier in TRACKED_GPSOC_SUPPLIERS:
+            like_clause = " OR ".join("supplier ILIKE ?" for _ in supplier["name_patterns"])
+            rows = connection.execute(
+                f"""
+                SELECT CAST(extract(year FROM transaction_date) AS INTEGER) AS year,
+                       CASE WHEN entity = 'NHS England' THEN 'NHS England' ELSE 'CSU' END AS channel,
+                       sum(amount_gbp) AS total_gbp
+                FROM read_parquet('{nhse_glob}', union_by_name = true)
+                WHERE {like_clause}
+                GROUP BY year, channel
+                UNION ALL
+                SELECT CAST(extract(year FROM transaction_date) AS INTEGER) AS year,
+                       'NHS Digital / HSCIC' AS channel,
+                       sum(amount_gbp) AS total_gbp
+                FROM read_parquet('{nhsd_glob}', union_by_name = true)
+                WHERE {like_clause}
+                GROUP BY year
+                """,
+                [*supplier["name_patterns"], *supplier["name_patterns"]],
+            ).fetchall()
+            by_year: dict[int, dict[str, Decimal]] = {}
+            for year, channel, total_gbp in rows:
+                by_year.setdefault(int(year), {})[channel] = Decimal(str(total_gbp))
+            years_out = []
+            for year in sorted(by_year):
+                channels = by_year[year]
+                years_out.append(
+                    {
+                        "year": year,
+                        "channels": {channel: str(channels.get(channel, Decimal("0.00"))) for channel in GPSOC_CHANNELS},
+                        "total_gbp": str(sum(channels.values(), Decimal("0.00"))),
+                    }
+                )
+            suppliers_out.append(
+                {
+                    "key": supplier["key"],
+                    "label": supplier["label"],
+                    "years": years_out,
+                }
+            )
+    finally:
+        connection.close()
+
+    summary = {
+        "schema_version": 1,
+        "channels": GPSOC_CHANNELS,
+        "note": (
+            "Grouped by calendar year from each row's own transaction_date, not by release period, so NHS England's "
+            "monthly releases and NHS Digital's fiscal-year releases align on one axis. A zero in NHS Digital / HSCIC "
+            "before 1 February 2023 means no row for this supplier was found in NHS Digital's own published series, "
+            "not that no such spending existed; GP IT core-system costs funded through Integrated Care Boards' own "
+            "baseline allocations are not captured in either corpus and would not appear as a channel here. "
+            "See 'NHS Digital / HSCIC spend information (pre-merger)' in spec/spending-data.md for the full finding."
+        ),
+        "suppliers": suppliers_out,
+    }
+    target = target or (ROOT / "spending" / "gpsoc-supplier-breakdown.json")
+    target.write_bytes(_json_bytes(summary))
+    return target
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -1461,6 +1561,9 @@ def _parser() -> argparse.ArgumentParser:
         nhsd_command_parser = subparsers.add_parser(command, help=help_text)
         nhsd_command_parser.add_argument("--source", required=True, help="NHSD source registry ID")
     subparsers.add_parser("nhsd-summary", help="rebuild the committed NHSD spend-by-year series")
+    subparsers.add_parser(
+        "gpsoc-breakdown", help="rebuild the committed EMIS/TPP NHS England vs CSU vs NHS Digital breakdown"
+    )
     return parser
 
 
@@ -1502,6 +1605,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "nhsd-summary":
             target = nhse_nhsd_spending.build_nhsd_spend_summary()
             print(f"wrote NHSD spend summary: {target}", file=sys.stderr)
+            return 0
+        if args.command == "gpsoc-breakdown":
+            target = build_gpsoc_supplier_breakdown()
+            print(f"wrote GPSoC supplier breakdown: {target}", file=sys.stderr)
             return 0
         if args.command.startswith("nhsd-"):
             nhsd_registry = nhse_nhsd_spending.load_registry()

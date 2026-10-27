@@ -23,6 +23,14 @@ s/build-spend-summary
 
 Regenerates `spend-by-year.json` from every committed release's own `validation.json`, driving the "Spend over time" bar chart on `index.html` (`../js/spend-chart.js`). Each year's coverage (full calendar year, partial calendar year, or fiscal year) is an explicit, reviewed mapping in `nhse_spending.SPEND_SUMMARY_COVERAGE`, not inferred from period strings, so a release can never silently misrepresent as more complete than it is. Run this after building or rebuilding any payments release.
 
+## Build the EMIS/TPP payment-routing breakdown
+
+```sh
+s/build-gpsoc-breakdown
+```
+
+Regenerates `gpsoc-supplier-breakdown.json` from both the NHS England and NHS Digital/HSCIC committed releases, grouping EMIS and TPP's payments by calendar year and paying channel (NHS England centrally, any regional CSU, or NHS Digital/HSCIC). Run this after rebuilding any NHS England or NHSD release. See "NHS Digital / HSCIC spend information (pre-merger)" in `../spec/spending-data.md` for the finding this chart visualizes, and its still-unconfirmed hypothesis for the April 2024 jump.
+
 ## Build an NHS Digital/HSCIC release
 
 ```sh

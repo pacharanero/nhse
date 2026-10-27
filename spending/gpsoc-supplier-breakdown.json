@@ -1,0 +1,257 @@
+{
+  "channels": [
+    "NHS England",
+    "CSU",
+    "NHS Digital / HSCIC"
+  ],
+  "note": "Grouped by calendar year from each row's own transaction_date, not by release period, so NHS England's monthly releases and NHS Digital's fiscal-year releases align on one axis. A zero in NHS Digital / HSCIC before 1 February 2023 means no row for this supplier was found in NHS Digital's own published series, not that no such spending existed; GP IT core-system costs funded through Integrated Care Boards' own baseline allocations are not captured in either corpus and would not appear as a channel here. See 'NHS Digital / HSCIC spend information (pre-merger)' in spec/spending-data.md for the full finding.",
+  "schema_version": 1,
+  "suppliers": [
+    {
+      "key": "emis",
+      "label": "EMIS (Egton Medical Information Systems Ltd)",
+      "years": [
+        {
+          "channels": {
+            "CSU": "4528205.59",
+            "NHS Digital / HSCIC": "904850.40",
+            "NHS England": "0.00"
+          },
+          "total_gbp": "5433055.99",
+          "year": 2013
+        },
+        {
+          "channels": {
+            "CSU": "6110779.07",
+            "NHS Digital / HSCIC": "1377869.84",
+            "NHS England": "69800.00"
+          },
+          "total_gbp": "7558448.91",
+          "year": 2014
+        },
+        {
+          "channels": {
+            "CSU": "2040590.46",
+            "NHS Digital / HSCIC": "1829907.18",
+            "NHS England": "83878.80"
+          },
+          "total_gbp": "3954376.44",
+          "year": 2015
+        },
+        {
+          "channels": {
+            "CSU": "2546059.02",
+            "NHS Digital / HSCIC": "1328814.19",
+            "NHS England": "430904.02"
+          },
+          "total_gbp": "4305777.23",
+          "year": 2016
+        },
+        {
+          "channels": {
+            "CSU": "2309363.12",
+            "NHS Digital / HSCIC": "1203186.60",
+            "NHS England": "97162.80"
+          },
+          "total_gbp": "3609712.52",
+          "year": 2017
+        },
+        {
+          "channels": {
+            "CSU": "2313743.11",
+            "NHS Digital / HSCIC": "355697.54",
+            "NHS England": "78036.00"
+          },
+          "total_gbp": "2747476.65",
+          "year": 2018
+        },
+        {
+          "channels": {
+            "CSU": "1083271.51",
+            "NHS Digital / HSCIC": "35707.94",
+            "NHS England": "25478.24"
+          },
+          "total_gbp": "1144457.69",
+          "year": 2019
+        },
+        {
+          "channels": {
+            "CSU": "2578005.44",
+            "NHS Digital / HSCIC": "2213745.97",
+            "NHS England": "0.00"
+          },
+          "total_gbp": "4791751.41",
+          "year": 2020
+        },
+        {
+          "channels": {
+            "CSU": "1520326.51",
+            "NHS Digital / HSCIC": "1898881.75",
+            "NHS England": "2175840.00"
+          },
+          "total_gbp": "5595048.26",
+          "year": 2021
+        },
+        {
+          "channels": {
+            "CSU": "589331.86",
+            "NHS Digital / HSCIC": "559666.68",
+            "NHS England": "1777612.07"
+          },
+          "total_gbp": "2926610.61",
+          "year": 2022
+        },
+        {
+          "channels": {
+            "CSU": "279218.53",
+            "NHS Digital / HSCIC": "55000.00",
+            "NHS England": "5555277.47"
+          },
+          "total_gbp": "5889496.00",
+          "year": 2023
+        },
+        {
+          "channels": {
+            "CSU": "248924.26",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "41700489.44"
+          },
+          "total_gbp": "41949413.70",
+          "year": 2024
+        },
+        {
+          "channels": {
+            "CSU": "43578.00",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "5017079.51"
+          },
+          "total_gbp": "5060657.51",
+          "year": 2025
+        }
+      ]
+    },
+    {
+      "key": "tpp",
+      "label": "TPP (Phoenix Partnership (Leeds) Ltd)",
+      "years": [
+        {
+          "channels": {
+            "CSU": "0.00",
+            "NHS Digital / HSCIC": "32144.87",
+            "NHS England": "0.00"
+          },
+          "total_gbp": "32144.87",
+          "year": 2012
+        },
+        {
+          "channels": {
+            "CSU": "142106.78",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "0.00"
+          },
+          "total_gbp": "142106.78",
+          "year": 2013
+        },
+        {
+          "channels": {
+            "CSU": "74192.04",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "0.00"
+          },
+          "total_gbp": "74192.04",
+          "year": 2014
+        },
+        {
+          "channels": {
+            "CSU": "84438.06",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "27631.18"
+          },
+          "total_gbp": "112069.24",
+          "year": 2016
+        },
+        {
+          "channels": {
+            "CSU": "127062.73",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "0.00"
+          },
+          "total_gbp": "127062.73",
+          "year": 2017
+        },
+        {
+          "channels": {
+            "CSU": "132739.12",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "2360994.44"
+          },
+          "total_gbp": "2493733.56",
+          "year": 2018
+        },
+        {
+          "channels": {
+            "CSU": "169463.88",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "2123454.74"
+          },
+          "total_gbp": "2292918.62",
+          "year": 2019
+        },
+        {
+          "channels": {
+            "CSU": "148512.63",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "2434819.89"
+          },
+          "total_gbp": "2583332.52",
+          "year": 2020
+        },
+        {
+          "channels": {
+            "CSU": "228184.60",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "2199934.14"
+          },
+          "total_gbp": "2428118.74",
+          "year": 2021
+        },
+        {
+          "channels": {
+            "CSU": "221720.18",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "2972710.53"
+          },
+          "total_gbp": "3194430.71",
+          "year": 2022
+        },
+        {
+          "channels": {
+            "CSU": "248628.71",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "3695860.42"
+          },
+          "total_gbp": "3944489.13",
+          "year": 2023
+        },
+        {
+          "channels": {
+            "CSU": "738271.33",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "39942601.10"
+          },
+          "total_gbp": "40680872.43",
+          "year": 2024
+        },
+        {
+          "channels": {
+            "CSU": "0.00",
+            "NHS Digital / HSCIC": "0.00",
+            "NHS England": "4766136.21"
+          },
+          "total_gbp": "4766136.21",
+          "year": 2025
+        }
+      ]
+    }
+  ]
+}

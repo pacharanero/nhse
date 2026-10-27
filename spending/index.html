@@ -74,6 +74,31 @@
     </details>
   </section>
 
+  <section class="mt-10 max-w-3xl">
+    <h2 class="text-lg font-bold">GPSoC payment routing: EMIS vs TPP</h2>
+    <p class="text-sm text-base-content/70 mt-2">EMIS and TPP (SystmOne) hold the large majority of the GP clinical-system market, funded through the GPSoC/GP IT Futures framework. Grouping every payment to each supplier by calendar year and paying channel shows the framework was <strong>never paid via NHS Digital/HSCIC's own corporate accounts</strong> - only a small, separate General Practice Extraction Service engagement for EMIS shows up there - and that both suppliers' NHS England-paid monthly total jumped roughly 10-15x starting precisely in April 2024, fourteen months after the NHS Digital merger and not explained by it. See "NHS Digital / HSCIC spend information (pre-merger)" in <a class="link" href="../spec/spending-data.md">spec/spending-data.md</a> for the full evidenced finding, including an unconfirmed hypothesis for the April 2024 jump. Generated from <a class="link" href="gpsoc-supplier-breakdown.json">gpsoc-supplier-breakdown.json</a> by <code>s/build-gpsoc-breakdown</code>.</p>
+
+    <h3 class="font-semibold mt-6">EMIS (Egton Medical Information Systems Ltd)</h3>
+    <div id="gpsoc-legend-emis" class="mt-2"></div>
+    <div id="gpsoc-chart-emis" class="mt-2 overflow-x-auto" aria-live="polite">
+      <p class="text-sm text-base-content/60">Loading chart…</p>
+    </div>
+    <details class="mt-2">
+      <summary class="text-sm link cursor-pointer">View exact figures as a table</summary>
+      <div id="gpsoc-table-emis" class="overflow-x-auto"></div>
+    </details>
+
+    <h3 class="font-semibold mt-8">TPP (Phoenix Partnership (Leeds) Ltd)</h3>
+    <div id="gpsoc-legend-tpp" class="mt-2"></div>
+    <div id="gpsoc-chart-tpp" class="mt-2 overflow-x-auto" aria-live="polite">
+      <p class="text-sm text-base-content/60">Loading chart…</p>
+    </div>
+    <details class="mt-2">
+      <summary class="text-sm link cursor-pointer">View exact figures as a table</summary>
+      <div id="gpsoc-table-tpp" class="overflow-x-auto"></div>
+    </details>
+  </section>
+
   <section class="mt-10">
     <h2 class="text-lg font-bold">Search suppliers</h2>
     <p class="text-sm text-base-content/70 mt-2 max-w-3xl">Search matches the exact supplier text as NHS England published it, not a resolved legal entity - the same organisation can appear under more than one spelling (an abbreviation, a trading name, a later rebrand) with no guarantee they are linked here. Results are year-by-year totals across every published release, 2013/14 through September 2025. Generated from <a class="link" href="supplier-spend.json">supplier-spend.json</a> by the same <code>s/build-spend-summary</code>; see "Query with DuckDB" in <a class="link" href="README.md">the spending README</a> to search transaction-level rows yourself.</p>
@@ -152,6 +177,8 @@
 <script src="../js/bar-chart.js"></script>
 <script src="../js/spend-chart.js"></script>
 <script src="../js/nhsd-spend-chart.js"></script>
+<script src="../js/supplier-channel-chart.js"></script>
+<script src="../js/gpsoc-breakdown-chart.js"></script>
 <script src="../js/supplier-search.js"></script>
 </body>
 </html>

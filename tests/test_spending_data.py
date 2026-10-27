@@ -654,6 +654,39 @@ class SpendingDataTest(unittest.TestCase):
         years_2024 = next(year for year in phoenix["years"] if year["period"] == "2024")
         self.assertEqual(years_2024["total_gbp"], "40680872.43")
 
+    def test_gpsoc_supplier_breakdown_is_deterministic_and_channel_sums_reconcile(self) -> None:
+        first = nhse_spending.build_gpsoc_supplier_breakdown(self.root / "first-gpsoc.json")
+        second = nhse_spending.build_gpsoc_supplier_breakdown(self.root / "second-gpsoc.json")
+        self.assertEqual(first.read_bytes(), second.read_bytes())
+
+        committed = (nhse_spending.ROOT / "spending" / "gpsoc-supplier-breakdown.json").read_bytes()
+        self.assertEqual(first.read_bytes(), committed)
+
+        summary = json.loads(first.read_text(encoding="utf-8"))
+        self.assertEqual(summary["channels"], ["NHS England", "CSU", "NHS Digital / HSCIC"])
+        self.assertEqual({s["key"] for s in summary["suppliers"]}, {"emis", "tpp"})
+
+        for supplier in summary["suppliers"]:
+            for entry in supplier["years"]:
+                self.assertEqual(set(entry["channels"]), set(summary["channels"]))
+                channel_sum = sum(
+                    (nhse_spending.Decimal(value) for value in entry["channels"].values()), nhse_spending.Decimal("0.00")
+                )
+                self.assertEqual(channel_sum, nhse_spending.Decimal(entry["total_gbp"]))
+            years = [entry["year"] for entry in supplier["years"]]
+            self.assertEqual(years, sorted(years))
+
+        # Regression check tying back to this session's channel-routing finding: TPP's
+        # GPSoC payments move from CSU-only, to a CSU/NHS England mix, to an NHS
+        # England-dominated jump in 2024 - never paid via NHS Digital/HSCIC at all.
+        tpp = next(s for s in summary["suppliers"] if s["key"] == "tpp")
+        year_2012 = next(e for e in tpp["years"] if e["year"] == 2012)
+        self.assertEqual(year_2012["channels"]["NHS Digital / HSCIC"], "32144.87")
+        self.assertEqual(year_2012["channels"]["NHS England"], "0.00")
+        year_2024 = next(e for e in tpp["years"] if e["year"] == 2024)
+        self.assertEqual(year_2024["channels"]["NHS England"], "39942601.10")
+        self.assertTrue(all(e["channels"]["NHS Digital / HSCIC"] == "0.00" for e in tpp["years"] if e["year"] != 2012))
+
 
 class SpendingInventoryTest(unittest.TestCase):
     def test_filename_month_detection_handles_published_variants(self) -> None:
